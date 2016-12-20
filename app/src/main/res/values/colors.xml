@@ -32,4 +32,6 @@
     <color name="colorPlayerProgressSecond">#c1c1c1</color>
     <color name="colorPlayerProgress">#FFFFFF</color>
     <color name="bg_f2">#f2f2f2</color>
+    <color name="smile_loading_color">#E8EAEB</color>
+
 </resources>

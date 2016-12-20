@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.lpan.study.context.AppContext;
 import com.lpan.study.utils.ViewUtils;
+import com.test.lpanstudyrecord.R;
 
 /**
  * Created by lpan on 2016/12/20.
@@ -17,7 +18,7 @@ import com.lpan.study.utils.ViewUtils;
 public class SimleFaceView extends View {
     private int mFaceOutRadiu = ViewUtils.dp2px(AppContext.getContext(), 21.5f);
 
-    private int mStrokWidth= ViewUtils.dp2px(AppContext.getContext(), 4);
+    private int mStrokWidth = ViewUtils.dp2px(AppContext.getContext(), 4);
 
     private int mFaceInRadiu = ViewUtils.dp2px(AppContext.getContext(), 19.5f);
 
@@ -37,7 +38,7 @@ public class SimleFaceView extends View {
 
     private int mWhiteColor = 0x00ffffff;
 
-    private int mGrayColor = 0xff636363;
+    private int mGrayColor = 0xE8EAEB;
 
     public SimleFaceView(Context context) {
         super(context);
@@ -66,13 +67,23 @@ public class SimleFaceView extends View {
         super.onDraw(canvas);
         mPaint.setAntiAlias(true);
 
-        // 1画脸  画圆
+        // 1画脸  画空白圆
         mPaint.setColor(mWhiteColor);
         mPaint.setStyle(Paint.Style.FILL);
         canvas.drawCircle(centerX, centerY, mFaceInRadiu, mPaint);
 
-        // 1画脸  画圆形进度
-        mPaint.setColor(mGrayColor);
+        // 1画脸  画边缘上末尾
+        mPaint.setColor(getResources().getColor(R.color.smile_loading_color));
+        mPaint.setStyle(Paint.Style.FILL);
+        canvas.drawCircle(centerX + mStrokWidth / 5, centerY - mFaceInRadiu, mStrokWidth / 2, mPaint);
+
+        // 1画脸  画边缘左末尾
+        mPaint.setColor(getResources().getColor(R.color.smile_loading_color));
+        mPaint.setStyle(Paint.Style.FILL);
+        canvas.drawCircle(centerX - mFaceInRadiu + mStrokWidth / 8, centerY - mEyesBallRadiu * 1.7f, mStrokWidth / 2, mPaint);
+
+        // 1画脸  画描边
+        mPaint.setColor(getResources().getColor(R.color.smile_loading_color));
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(mStrokWidth);
         RectF oval = new RectF(centerX - mFaceInRadiu, centerY - mFaceInRadiu, mFaceInRadiu + centerX, mFaceInRadiu + centerY);

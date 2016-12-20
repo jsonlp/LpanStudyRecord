@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.lpan.study.context.AppContext;
 import com.lpan.study.utils.ViewUtils;
+import com.test.lpanstudyrecord.R;
 
 /**
  * Created by lpan on 2016/12/20.
@@ -39,7 +40,7 @@ public class SimleEyesView extends View {
 
     private int mWhiteColor = 0x00ffffff;
 
-    private int mGrayColor = 0xff636363;
+    private int mGrayColor = 0xE8EAEB;
 
 
     public SimleEyesView(Context context) {
@@ -75,7 +76,7 @@ public class SimleEyesView extends View {
         canvas.drawCircle(centerX - mEyesInRadiu, centerY - mEyesBallRadiuDis, mEyesInRadiu, mPaint);
 
         // 2画左眼  画圆形进度
-        mPaint.setColor(mGrayColor);
+        mPaint.setColor(getResources().getColor(R.color.smile_loading_color));
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(mStrokWidth);
         RectF oval2 = new RectF(centerX - 2 * mEyesInRadiu, centerY - mEyesInRadiu - mEyesBallRadiuDis, centerX, mEyesInRadiu + centerY - mEyesBallRadiuDis);
@@ -88,7 +89,7 @@ public class SimleEyesView extends View {
         canvas.drawCircle(centerX + mEyesInRadiu, centerY - mEyesBallRadiuDis, mEyesInRadiu, mPaint);
 
         // 3画右眼  画圆形进度
-        mPaint.setColor(mGrayColor);
+        mPaint.setColor(getResources().getColor(R.color.smile_loading_color));
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(mStrokWidth);
         RectF oval3 = new RectF(centerX, centerY - mEyesInRadiu - mEyesBallRadiuDis, centerX + 2 * mEyesInRadiu, mEyesInRadiu + centerY - mEyesBallRadiuDis);

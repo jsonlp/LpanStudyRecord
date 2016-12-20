@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.lpan.study.context.AppContext;
 import com.lpan.study.utils.ViewUtils;
+import com.test.lpanstudyrecord.R;
 
 /**
  * Created by lpan on 2016/12/20.
@@ -36,7 +37,7 @@ public class SimleLeftEyeView extends View {
 
     private int mWhiteColor = 0x00ffffff;
 
-    private int mGrayColor = 0xff636363;
+    private int mGrayColor = 0xE8EAEB;
 
     public SimleLeftEyeView(Context context) {
         super(context);
@@ -66,7 +67,7 @@ public class SimleLeftEyeView extends View {
         mPaint.setAntiAlias(true);
 
         //4画左眼珠
-        mPaint.setColor(mGrayColor);
+        mPaint.setColor(getResources().getColor(R.color.smile_loading_color));
         mPaint.setStyle(Paint.Style.FILL);
         canvas.drawCircle(centerX - mEyesInRadiu - mEyesBallRadiu - mErrorDis, centerY - mEyesBallRadiuDis - mEyesBallRadiu -mErrorDis, mEyesBallRadiu, mPaint);
 
