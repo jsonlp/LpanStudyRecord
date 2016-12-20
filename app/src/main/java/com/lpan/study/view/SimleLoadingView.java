@@ -4,11 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
-import android.view.animation.BaseInterpolator;
-import android.view.animation.CycleInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.FrameLayout;
@@ -21,7 +17,7 @@ import com.test.lpanstudyrecord.R;
  * Created by lpan on 2016/12/19.
  */
 
-public class SimleView extends FrameLayout {
+public class SimleLoadingView extends FrameLayout {
 
     private int mFaceOutRadiu = ViewUtils.dp2px(AppContext.getContext(), 21.5f);
 
@@ -58,16 +54,16 @@ public class SimleView extends FrameLayout {
     private SimleLeftEyeView mSimleLeftEyeView;
     private SimleRightEyeView mSimleRightEyeView;
 
-    public SimleView(Context context) {
+    public SimleLoadingView(Context context) {
         this(context, null);
 
     }
 
-    public SimleView(Context context, AttributeSet attrs) {
+    public SimleLoadingView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public SimleView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SimleLoadingView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
@@ -97,22 +93,11 @@ public class SimleView extends FrameLayout {
     }
 
     private void rotateView(View view, float pivotX, float pivotY) {
-//        LinearInterpolator interpolator = new LinearInterpolator();// 以常量速率改变
-//        AccelerateDecelerateInterpolator interpolator=new AccelerateDecelerateInterpolator();  //在动画开始与结束的地方速率改变比较慢，在中间的时候加速
-//        AccelerateInterpolator interpolator=new AccelerateInterpolator();//在动画开始的地方速率改变比较慢，然后开始加速
         RotateAnimation rotateAnimation = new RotateAnimation(0, 359, Animation.RELATIVE_TO_PARENT, pivotX, Animation.RELATIVE_TO_PARENT, pivotY);
         rotateAnimation.setRepeatCount(-1);
         rotateAnimation.setDuration(1000);
 
-//        if(mAnimationType ==0){
-//            rotateAnimation.setInterpolator(new LinearInterpolator());
-//        }else if(mAnimationType ==1){
-//            rotateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-//        }else if(mAnimationType ==2){
-//            rotateAnimation.setInterpolator(new AccelerateInterpolator());
-//        }
         rotateAnimation.setInterpolator(new LinearInterpolator());
-
         view.startAnimation(rotateAnimation);
     }
 

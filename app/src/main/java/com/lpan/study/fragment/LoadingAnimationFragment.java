@@ -3,7 +3,7 @@ package com.lpan.study.fragment;
 import android.view.View;
 import android.widget.Button;
 
-import com.lpan.study.view.SimleView;
+import com.lpan.study.view.SimleLoadingView;
 import com.test.lpanstudyrecord.R;
 
 /**
@@ -12,7 +12,7 @@ import com.test.lpanstudyrecord.R;
 
 public class LoadingAnimationFragment extends BaseFragment implements View.OnClickListener {
 
-    private SimleView mSimleLoadingView;
+    private SimleLoadingView mSimleLoadingView;
 
     private Button mButton1;
 
@@ -29,7 +29,7 @@ public class LoadingAnimationFragment extends BaseFragment implements View.OnCli
     @Override
     protected void initViews(View view) {
         super.initViews(view);
-        mSimleLoadingView = (SimleView) view.findViewById(R.id.smile);
+        mSimleLoadingView = (SimleLoadingView) view.findViewById(R.id.smile);
         mButton1 = (Button) view.findViewById(R.id.button1);
         mButton2 = (Button) view.findViewById(R.id.button2);
         mButton3 = (Button) view.findViewById(R.id.button3);

@@ -7,7 +7,7 @@
 
 
 
-    <com.lpan.study.view.SimleView
+    <com.lpan.study.view.SimleLoadingView
         android:id="@id/smile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
