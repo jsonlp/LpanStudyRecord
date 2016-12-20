@@ -1,8 +1,12 @@
 package com.lpan.study.fragment;
 
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.lpan.study.context.AppContext;
 import com.lpan.study.view.SimleLoadingView;
 import com.test.lpanstudyrecord.R;
 
@@ -10,15 +14,17 @@ import com.test.lpanstudyrecord.R;
  * Created by lpan on 2016/12/19.
  */
 
-public class LoadingAnimationFragment extends BaseFragment implements View.OnClickListener {
+public class LoadingAnimationFragment extends BaseFragment {
 
     private SimleLoadingView mSimleLoadingView;
 
-    private Button mButton1;
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
 
-    private Button mButton2;
-
-    private Button mButton3;
+        }
+    };
 
 
     @Override
@@ -30,34 +36,16 @@ public class LoadingAnimationFragment extends BaseFragment implements View.OnCli
     protected void initViews(View view) {
         super.initViews(view);
         mSimleLoadingView = (SimleLoadingView) view.findViewById(R.id.smile);
-        mButton1 = (Button) view.findViewById(R.id.button1);
-        mButton2 = (Button) view.findViewById(R.id.button2);
-        mButton3 = (Button) view.findViewById(R.id.button3);
 
-        mButton1.setOnClickListener(this);
-        mButton2.setOnClickListener(this);
-        mButton3.setOnClickListener(this);
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mSimleLoadingView.setVisibility(View.GONE);
+                Toast.makeText(AppContext.getContext(), "  loading over ", Toast.LENGTH_SHORT).show();
+            }
+        }, 5000);
 
     }
 
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.button1:
-//                mSimleLoadingView.setAnimationType(0);
-//                mSimleLoadingView.rotateView();
-                break;
-            case R.id.button2:
-//                mSimleLoadingView.setAnimationType(1);
-//                mSimleLoadingView.rotateView();
-
-                break;
-            case R.id.button3:
-//                mSimleLoadingView.setAnimationType(2);
-//                mSimleLoadingView.rotateView();
-
-                break;
-        }
-    }
 }
