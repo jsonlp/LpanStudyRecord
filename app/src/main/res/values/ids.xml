@@ -2,5 +2,7 @@
 <resources>
     <item name="container" type="id"/>
     <item name="listview" type="id"/>
+    <item name="smile" type="id">smile</item>
+    <item name="image" type="id">image</item>
 
 </resources>

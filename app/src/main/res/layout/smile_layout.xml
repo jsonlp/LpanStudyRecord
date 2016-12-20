@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="#ffffff"
+             android:orientation="vertical">
+
+    <com.lpan.study.view.SimleFaceView
+        android:id="@+id/smileView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+    <com.lpan.study.view.SimleEyesView
+        android:id="@+id/smileView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+    <com.lpan.study.view.SimleLeftEyeView
+        android:id="@+id/smileView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+    <com.lpan.study.view.SimleRightEyeView
+        android:id="@+id/smileView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+
+</FrameLayout>
