@@ -4,5 +4,7 @@
     <item name="listview" type="id"/>
     <item name="smile" type="id">smile</item>
     <item name="image" type="id">image</item>
+    <item name="index" type="id">index</item>
+    <item name="title" type="id">title</item>
 
 </resources>
