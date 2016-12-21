@@ -37,9 +37,15 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         super.initData();
         mList = new ArrayList<>();
         mList.add("Loading动画");
+        mList.add("AudioFocus");
+
+
+
+
 
         mToActivityList = new ArrayList<>();
         mToActivityList.add(new LoadingAnimationFragment());
+        mToActivityList.add(new AudioFocusTestFragment());
 
         getAdapter().addItems(mList);
         mListView.setAdapter(getAdapter());

@@ -18,6 +18,14 @@ public class LoadingAnimationFragment extends BaseFragment {
 
     private SimleLoadingView mSimleLoadingView;
 
+    private Runnable mRunnable = new Runnable() {
+        @Override
+        public void run() {
+            mSimleLoadingView.setVisibility(View.GONE);
+            Toast.makeText(AppContext.getContext(), "  loading over ", Toast.LENGTH_SHORT).show();
+        }
+    };
+
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -36,16 +44,14 @@ public class LoadingAnimationFragment extends BaseFragment {
     protected void initViews(View view) {
         super.initViews(view);
         mSimleLoadingView = (SimleLoadingView) view.findViewById(R.id.smile);
-
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mSimleLoadingView.setVisibility(View.GONE);
-                Toast.makeText(AppContext.getContext(), "  loading over ", Toast.LENGTH_SHORT).show();
-            }
-        }, 5000);
+        mHandler.postDelayed(mRunnable, 5000);
 
     }
 
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mHandler.removeCallbacks(mRunnable);
+        mHandler = null;
+    }
 }
