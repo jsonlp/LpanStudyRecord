@@ -80,13 +80,13 @@ public class SimleFaceView extends View {
         // 1画脸  画边缘左末尾
         mPaint.setColor(getResources().getColor(R.color.smile_loading_color));
         mPaint.setStyle(Paint.Style.FILL);
-        canvas.drawCircle(centerX - mFaceInRadiu + mStrokWidth / 8, centerY - mEyesBallRadiu * 1.7f, mStrokWidth / 2, mPaint);
+        canvas.drawCircle(centerX - mFaceInRadiu + mStrokWidth / 4, centerY - mEyesBallRadiu * 3.2f, mStrokWidth / 2, mPaint);
 
         // 1画脸  画描边
         mPaint.setColor(getResources().getColor(R.color.smile_loading_color));
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(mStrokWidth);
         RectF oval = new RectF(centerX - mFaceInRadiu, centerY - mFaceInRadiu, mFaceInRadiu + centerX, mFaceInRadiu + centerY);
-        canvas.drawArc(oval, -90, 280, false, mPaint);
+        canvas.drawArc(oval, -90, 290, false, mPaint);
     }
 }

@@ -21,7 +21,6 @@ public class LoadingAnimationFragment extends BaseFragment {
     private Runnable mRunnable = new Runnable() {
         @Override
         public void run() {
-            mSimleLoadingView.setVisibility(View.GONE);
             Toast.makeText(AppContext.getContext(), "  loading over ", Toast.LENGTH_SHORT).show();
         }
     };

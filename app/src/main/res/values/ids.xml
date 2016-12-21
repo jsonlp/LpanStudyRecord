@@ -9,5 +9,6 @@
     <item name="play_button" type="id">play_button</item>
     <item name="song_name" type="id">song_name</item>
     <item name="singer_name" type="id">singer_name</item>
+    <item name="background" type="id">background</item>
 
 </resources>

@@ -53,6 +53,7 @@ public class SimleLoadingView extends FrameLayout {
     private SimleEyesView mSimleEyesView;
     private SimleLeftEyeView mSimleLeftEyeView;
     private SimleRightEyeView mSimleRightEyeView;
+    private FrameLayout mBackground;
 
     public SimleLoadingView(Context context) {
         this(context, null);
@@ -81,6 +82,7 @@ public class SimleLoadingView extends FrameLayout {
         mSimleEyesView = (SimleEyesView) view.findViewById(R.id.smileView2);
         mSimleLeftEyeView = (SimleLeftEyeView) view.findViewById(R.id.smileView3);
         mSimleRightEyeView = (SimleRightEyeView) view.findViewById(R.id.smileView4);
+        mBackground= (FrameLayout) view.findViewById(R.id.background);
 
         rotateView(mSmileViewFace, 0.5f, getPovit(mScreenheight, mScreenStatus));
         rotateView(mSimleLeftEyeView, getPovit(centerX, (mEyesInRadiu)), getPovit(centerY, mEyesBallRadiu + 6 * mEyesBallRadiuDis));
@@ -103,6 +105,12 @@ public class SimleLoadingView extends FrameLayout {
 
     private float getPovit(int widthOrHeight, int distance) {
         return ((widthOrHeight - distance) * 0.5f) / widthOrHeight;
+    }
+
+    public void setBackColor(int color) {
+        if (mBackground != null) {
+            mBackground.setBackgroundColor(color);
+        }
     }
 
 
