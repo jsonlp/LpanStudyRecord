@@ -38,7 +38,7 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mList = new ArrayList<>();
         mList.add("Loading动画");
         mList.add("AudioFocus");
-        mList.add("5行显示全文");
+        mList.add("Android Shimmer");
 
 
 
@@ -47,7 +47,7 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mToActivityList = new ArrayList<>();
         mToActivityList.add(new LoadingAnimationFragment());
         mToActivityList.add(new AudioFocusTestFragment());
-        mToActivityList.add(new AllDescShowFragment());
+        mToActivityList.add(new ShimmerFragment());
 
         getAdapter().addItems(mList);
         mListView.setAdapter(getAdapter());

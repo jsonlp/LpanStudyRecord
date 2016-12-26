@@ -4,7 +4,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.lpan.study.view.ShimmerFrameLayout;
 import com.test.lpanstudyrecord.R;
@@ -14,7 +13,7 @@ import java.util.List;
 /**
  * Created by lpan on 2016/12/21.
  */
-public class AllDescShowFragment extends BaseFragment {
+public class ShimmerFragment extends BaseFragment {
 
     private ListView mListView;
 
@@ -24,7 +23,7 @@ public class AllDescShowFragment extends BaseFragment {
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.fragment_custom_dialog;
+        return R.layout.fragment_shimmer;
     }
 
     @Override
