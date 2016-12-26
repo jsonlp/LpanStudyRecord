@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:shimmer="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:background="@color/white"
+              android:layout_height="match_parent">
+
+    <com.lpan.study.view.ShimmerFrameLayout
+        android:id="@+id/shimmer_view_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        shimmer:duration="1000">
+
+        <TextView
+            android:id="@id/desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="吹着前奏望着天空我想起花瓣试着掉落为你翘课的那一天\n2.花落的那一天教室的那一间我怎"
+            android:background="@color/gray"
+            android:gravity="center"
+            android:lineSpacingExtra="3dp"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@id/all_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blue"
+            android:layout_marginTop="10dp"
+            android:text="全文"
+
+            />
+        </com.lpan.study.view.ShimmerFrameLayout>
+
+</LinearLayout>

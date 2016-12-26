@@ -10,5 +10,7 @@
     <item name="song_name" type="id">song_name</item>
     <item name="singer_name" type="id">singer_name</item>
     <item name="background" type="id">background</item>
+    <item name="all_desc" type="id">all_desc</item>
+    <item name="desc" type="id">desc</item>
 
 </resources>

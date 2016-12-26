@@ -57,8 +57,14 @@ public class SimleFaceView extends View {
 
     private void init() {
         mPaint = new Paint();
-        centerX = ViewUtils.getScreenWidth(AppContext.getContext()) / 2;
-        centerY = ViewUtils.getScreenHeight(AppContext.getContext()) / 2 - ViewUtils.getStatusHeight(AppContext.getContext());
+
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        centerX = getMeasuredWidth()/2;
+        centerY = getMeasuredHeight()/2;
 
     }
 
@@ -73,17 +79,17 @@ public class SimleFaceView extends View {
         canvas.drawCircle(centerX, centerY, mFaceInRadiu, mPaint);
 
         // 1画脸  画边缘上末尾
-        mPaint.setColor(getResources().getColor(R.color.smile_loading_color));
+        mPaint.setColor(getResources().getColor(R.color.red));
         mPaint.setStyle(Paint.Style.FILL);
         canvas.drawCircle(centerX + mStrokWidth / 5, centerY - mFaceInRadiu, mStrokWidth / 2, mPaint);
 
         // 1画脸  画边缘左末尾
-        mPaint.setColor(getResources().getColor(R.color.smile_loading_color));
+        mPaint.setColor(getResources().getColor(R.color.red));
         mPaint.setStyle(Paint.Style.FILL);
         canvas.drawCircle(centerX - mFaceInRadiu + mStrokWidth / 4, centerY - mEyesBallRadiu * 3.2f, mStrokWidth / 2, mPaint);
 
         // 1画脸  画描边
-        mPaint.setColor(getResources().getColor(R.color.smile_loading_color));
+        mPaint.setColor(getResources().getColor(R.color.red));
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(mStrokWidth);
         RectF oval = new RectF(centerX - mFaceInRadiu, centerY - mFaceInRadiu, mFaceInRadiu + centerX, mFaceInRadiu + centerY);

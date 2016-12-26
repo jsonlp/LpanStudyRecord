@@ -58,10 +58,18 @@ public class SimleEyesView extends View {
         init();
     }
 
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        centerX = getMeasuredWidth()/2;
+        centerY = getMeasuredHeight()/2;
+
+    }
+
     private void init() {
         mPaint = new Paint();
-        centerX = ViewUtils.getScreenWidth(AppContext.getContext()) / 2;
-        centerY = ViewUtils.getScreenHeight(AppContext.getContext()) / 2 - ViewUtils.getStatusHeight(AppContext.getContext());
+//        centerX = ViewUtils.getScreenWidth(AppContext.getContext()) / 2;
+//        centerY = ViewUtils.getScreenHeight(AppContext.getContext()) / 2 - ViewUtils.getStatusHeight(AppContext.getContext());
 
     }
 
@@ -76,7 +84,7 @@ public class SimleEyesView extends View {
         canvas.drawCircle(centerX - mEyesInRadiu, centerY - mEyesBallRadiuDis, mEyesInRadiu, mPaint);
 
         // 2画左眼  画圆形进度
-        mPaint.setColor(getResources().getColor(R.color.smile_loading_color));
+        mPaint.setColor(getResources().getColor(R.color.red));
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(mStrokWidth);
         RectF oval2 = new RectF(centerX - 2 * mEyesInRadiu, centerY - mEyesInRadiu - mEyesBallRadiuDis, centerX, mEyesInRadiu + centerY - mEyesBallRadiuDis);
@@ -89,7 +97,7 @@ public class SimleEyesView extends View {
         canvas.drawCircle(centerX + mEyesInRadiu, centerY - mEyesBallRadiuDis, mEyesInRadiu, mPaint);
 
         // 3画右眼  画圆形进度
-        mPaint.setColor(getResources().getColor(R.color.smile_loading_color));
+        mPaint.setColor(getResources().getColor(R.color.red));
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(mStrokWidth);
         RectF oval3 = new RectF(centerX, centerY - mEyesInRadiu - mEyesBallRadiuDis, centerX + 2 * mEyesInRadiu, mEyesInRadiu + centerY - mEyesBallRadiuDis);

@@ -2,6 +2,7 @@ package com.lpan.study.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
@@ -69,10 +70,15 @@ public class SimleLoadingView extends FrameLayout {
         init(context);
     }
 
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        centerX = getMeasuredWidth();
+        centerY = getMeasuredHeight();
+        startAnimation();
+    }
 
     private void init(Context context) {
-        centerX = ViewUtils.getScreenWidth(AppContext.getContext()) / 2;
-        centerY = ViewUtils.getScreenHeight(AppContext.getContext()) / 2 - ViewUtils.getStatusHeight(AppContext.getContext());
         mScreenheight = ViewUtils.getScreenHeight(AppContext.getContext());
         mScreenStatus = ViewUtils.getStatusHeight(AppContext.getContext());
 
@@ -82,15 +88,15 @@ public class SimleLoadingView extends FrameLayout {
         mSimleEyesView = (SimleEyesView) view.findViewById(R.id.smileView2);
         mSimleLeftEyeView = (SimleLeftEyeView) view.findViewById(R.id.smileView3);
         mSimleRightEyeView = (SimleRightEyeView) view.findViewById(R.id.smileView4);
-        mBackground= (FrameLayout) view.findViewById(R.id.background);
+        mBackground = (FrameLayout) view.findViewById(R.id.background);
 
-        rotateView(mSmileViewFace, 0.5f, getPovit(mScreenheight, mScreenStatus));
-        rotateView(mSimleLeftEyeView, getPovit(centerX, (mEyesInRadiu)), getPovit(centerY, mEyesBallRadiu + 6 * mEyesBallRadiuDis));
-        rotateView(mSimleRightEyeView, getPovit(centerX, (-mEyesInRadiu)), getPovit(centerY, mEyesBallRadiu + 6 * mEyesBallRadiuDis));
+//        rotateView(mSmileViewFace, 0.5f, 0.5f);
+//        rotateView(mSimleLeftEyeView, getPovit(centerX,mEyesInRadiu),0.5f);
+//        rotateView(mSimleRightEyeView, getPovit(centerX, (-mEyesInRadiu)), getPovit(centerY, mEyesBallRadiu + 6 * mEyesBallRadiuDis));
 
 
         LayoutParams params = new LayoutParams(
-                LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+                LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         addView(view, params);
     }
 
@@ -103,7 +109,18 @@ public class SimleLoadingView extends FrameLayout {
         view.startAnimation(rotateAnimation);
     }
 
+    public void startAnimation() {
+        rotateView(mSmileViewFace, 0.5f, 0.5f);
+        rotateView(mSimleLeftEyeView, getPovit(centerX, mEyesOutRadiu + 4 * mErrorDis), getPovit(centerY, mEyesBallRadiuDis + 2 * mErrorDis));
+        rotateView(mSimleRightEyeView, getPovit(centerX, -(mEyesOutRadiu + 8 * mErrorDis)), getPovit(centerY, mEyesBallRadiuDis + 2 * mErrorDis));
+    }
+
+    public void stopAnimation() {
+
+    }
+
     private float getPovit(int widthOrHeight, int distance) {
+        Log.e("lp-test", "----p = " + ((widthOrHeight - distance) * 0.5f) / widthOrHeight);
         return ((widthOrHeight - distance) * 0.5f) / widthOrHeight;
     }
 

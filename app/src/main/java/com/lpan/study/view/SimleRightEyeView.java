@@ -58,8 +58,16 @@ public class SimleRightEyeView extends View {
 
     private void init() {
         mPaint = new Paint();
-        centerX = ViewUtils.getScreenWidth(AppContext.getContext()) / 2;
-        centerY = ViewUtils.getScreenHeight(AppContext.getContext()) / 2 - ViewUtils.getStatusHeight(AppContext.getContext());
+//        centerX = ViewUtils.getScreenWidth(AppContext.getContext()) / 2;
+//        centerY = ViewUtils.getScreenHeight(AppContext.getContext()) / 2 - ViewUtils.getStatusHeight(AppContext.getContext());
+
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        centerX = getMeasuredWidth()/2;
+        centerY = getMeasuredHeight()/2;
 
     }
 
@@ -68,7 +76,7 @@ public class SimleRightEyeView extends View {
         super.onDraw(canvas);
         mPaint.setAntiAlias(true);
         //4画右眼珠
-        mPaint.setColor(getResources().getColor(R.color.smile_loading_color));
+        mPaint.setColor(getResources().getColor(R.color.red));
         mPaint.setStyle(Paint.Style.FILL);
         canvas.drawCircle(centerX + mEyesInRadiu - mEyesBallRadiu - mErrorDis, centerY - mEyesBallRadiuDis - mEyesBallRadiu - mErrorDis, mEyesBallRadiu, mPaint);
 
