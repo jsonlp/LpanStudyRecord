@@ -120,7 +120,8 @@ public class SimleLoadingView extends FrameLayout {
     }
 
     private float getPovit(float widthOrHeight, float distance) {
-        Log.e("lp-test", "----p = " + ((widthOrHeight - distance) * 0.5f) / widthOrHeight);
+        Log.e("lp-test", "----pw = " + ((widthOrHeight - distance) * 0.5f) / widthOrHeight);
+
         return ((widthOrHeight - distance) * 0.5f) / widthOrHeight;
     }
 
