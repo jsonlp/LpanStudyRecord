@@ -111,15 +111,15 @@ public class SimleLoadingView extends FrameLayout {
 
     public void startAnimation() {
         rotateView(mSmileViewFace, 0.5f, 0.5f);
-        rotateView(mSimleLeftEyeView, getPovit(centerX, mEyesOutRadiu + 4 * mErrorDis), getPovit(centerY, mEyesBallRadiuDis + 2 * mErrorDis));
-        rotateView(mSimleRightEyeView, getPovit(centerX, -(mEyesOutRadiu + 8 * mErrorDis)), getPovit(centerY, mEyesBallRadiuDis + 2 * mErrorDis));
+        rotateView(mSimleLeftEyeView, getPovit(centerX, mEyesOutRadiu + 5 * mErrorDis), getPovit(centerY, mEyesBallRadiuDis + 2 * mErrorDis));
+        rotateView(mSimleRightEyeView, getPovit(centerX, -(mEyesOutRadiu + 6.5f * mErrorDis)), getPovit(centerY, mEyesBallRadiuDis + 2 * mErrorDis));
     }
 
     public void stopAnimation() {
 
     }
 
-    private float getPovit(int widthOrHeight, int distance) {
+    private float getPovit(float widthOrHeight, float distance) {
         Log.e("lp-test", "----p = " + ((widthOrHeight - distance) * 0.5f) / widthOrHeight);
         return ((widthOrHeight - distance) * 0.5f) / widthOrHeight;
     }

@@ -3,11 +3,16 @@ package com.lpan.study.utils;
 import android.content.Context;
 import android.util.Log;
 
+import com.lpan.study.context.AppContext;
+
 /**
  * Created by lpan on 2016/12/20.
  */
 
 public class ViewUtils {
+
+    public static final float ONE_DP = dp2px(AppContext.getContext(), 1);
+
 
     /**
      * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
