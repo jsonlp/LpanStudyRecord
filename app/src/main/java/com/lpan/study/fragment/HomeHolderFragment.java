@@ -1,6 +1,7 @@
 package com.lpan.study.fragment;
 
 import android.support.v4.app.Fragment;
+import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.ListView;
 
@@ -39,6 +40,7 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mList.add("Loading动画");
         mList.add("AudioFocus");
         mList.add("Android Shimmer");
+        mList.add("ClickableSpan");
 
 
 
@@ -48,6 +50,7 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mToActivityList.add(new LoadingAnimationFragment());
         mToActivityList.add(new AudioFocusTestFragment());
         mToActivityList.add(new ShimmerFragment());
+        mToActivityList.add(new ClickableSpanDemoFragment());
 
         getAdapter().addItems(mList);
         mListView.setAdapter(getAdapter());

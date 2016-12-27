@@ -12,5 +12,6 @@
     <item name="background" type="id">background</item>
     <item name="all_desc" type="id">all_desc</item>
     <item name="desc" type="id">desc</item>
+    <item name="text" type="id">text</item>
 
 </resources>
