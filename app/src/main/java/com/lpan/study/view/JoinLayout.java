@@ -10,7 +10,7 @@ public class JoinLayout {
 
     //控制缺口圆弧的位置
     private static final float[][] rotations = { new float[] { 360 }, new float[] { 360, 225 },
-            new float[] { 120, 0, -120 }, new float[] { 90, 180, -90, 0 },
+            new float[] { 120, -120, 0 }, new float[] { 90, 180, -90, 0 },
             new float[] { 144, 72, 0, -72, -144 }, };
 
     public static float[] rotation(int count) {
@@ -170,26 +170,33 @@ public class JoinLayout {
     private static float[] offset3(int index, float dimension, float[] size) {
         // 圆的直径
         float cd = (float) dimension * size[0];
+
         // 边距
         float s1 = cd * size[1];
+
         // 第二个圆的 Y坐标
         float y2 = s1 * (3 / 2);
+
         // 第二个圆的 X坐标
         float x2 = s1 - y2 / 1.73205f;
+
         // 第三个圆的 X坐标
         float x3 = s1 * 2 - x2;
+
         // 居中 Y轴偏移量
         float xx1 = (dimension - cd - y2) / 2;
+
         // 居中 X轴偏移量
         float xxc1 = (dimension - cd) / 2 - s1;
+
         // xx1 = xxc1 = 0;
         switch (index) {
             case 0:
                 return new float[] { s1 + xxc1, xx1 };
             case 1:
-                return new float[] { x2 + xxc1, y2 + xx1 };
-            case 2:
                 return new float[] { x3 + xxc1, y2 + xx1 };
+            case 2:
+                return new float[] { x2 + xxc1, y2 + xx1 };
             default:
                 break;
         }
