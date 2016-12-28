@@ -17,7 +17,7 @@ public class JoinLayout {
         return count > 0 && count <= rotations.length ? rotations[count - 1] : null;
     }
     //控制相对父控件大小比例
-    private static final float[][] sizes = { new float[] { 0.9f, 0.9f },
+    private static final float[][] sizes = { new float[] { 0.5f, 0.5f },
             new float[] { 0.5f, 0.65f }, new float[] { 0.45f, 0.8f },
             new float[] { 0.45f, 0.91f }, new float[] { 0.38f, 0.80f } };
 

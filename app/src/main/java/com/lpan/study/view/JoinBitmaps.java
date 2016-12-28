@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
@@ -48,7 +49,7 @@ public class JoinBitmaps {
         matrixJoin.postScale(size[0], size[0]);
 
         canvas.save();
-        // canvas.drawColor(Color.RED);
+//         canvas.drawColor(Color.BLACK);
 
         for (int index = 0; index < bitmaps.size(); index++) {
             Bitmap bitmap = bitmaps.get(index);
@@ -94,7 +95,7 @@ public class JoinBitmaps {
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         canvas.drawBitmap(bitmap, 0, 0, paint);
 
-        //控制边角的圆弧
+        //控制缺口的圆弧
         if (rotation != 360) {
             Matrix matrix = new Matrix();
             // 根据原图的中心位置旋转
