@@ -41,6 +41,7 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mList.add("AudioFocus");
         mList.add("Android Shimmer");
         mList.add("ClickableSpan");
+        mList.add("群组头像");
 
 
 
@@ -51,6 +52,7 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mToActivityList.add(new AudioFocusTestFragment());
         mToActivityList.add(new ShimmerFragment());
         mToActivityList.add(new ClickableSpanDemoFragment());
+        mToActivityList.add(new GroupImageFragment());
 
         getAdapter().addItems(mList);
         mListView.setAdapter(getAdapter());

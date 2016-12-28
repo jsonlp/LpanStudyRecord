@@ -13,5 +13,7 @@
     <item name="all_desc" type="id">all_desc</item>
     <item name="desc" type="id">desc</item>
     <item name="text" type="id">text</item>
+    <item name="circle_image" type="id">circle_image</item>
+    <item name="group_image" type="id">group_image</item>
 
 </resources>

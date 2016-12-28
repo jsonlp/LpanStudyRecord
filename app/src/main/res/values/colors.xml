@@ -12,6 +12,7 @@
     <color name="transparent">#00000000</color>
     <color name="green">#6fca3b</color>
     <color name="jiemo_color">#6cc158</color>
+    <color name="hint_gray">#cccccc</color>
 
 
     <!--cbprogressbar-->
