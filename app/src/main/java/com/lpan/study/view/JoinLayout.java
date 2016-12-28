@@ -11,7 +11,7 @@ public class JoinLayout {
     //控制缺口圆弧的位置
     private static final float[][] rotations = { new float[] { 360 }, new float[] { 360, 225 },
             new float[] { 120, -120, 0 }, new float[] { 90, 180, -90, 0 },
-            new float[] { 144, 72, 0, -72, -144 }, };
+            new float[] { 144, -144, -72, 0, 72 }, };
 
     public static float[] rotation(int count) {
         return count > 0 && count <= rotations.length ? rotations[count - 1] : null;
@@ -92,13 +92,13 @@ public class JoinLayout {
                 // return new float[] { s1 + xxc1, xx1 };
                 return new float[] { x1 + xxc1, y1 + xx1 };
             case 1:
-                return new float[] { x2 + xxc1, y2 + xx1 };
+                return new float[] { x5 + xxc1, y2 + xx1 };
             case 2:
-                return new float[] { x3 + xxc1, y3 + xx1 };
+                return new float[] { x4 + xxc1, y3 + xx1 };
             case 3:
-                return new float[] { x4 + xxc1, y4 + xx1 };
+                return new float[] { x3 + xxc1, y4 + xx1 };
             case 4:
-                return new float[] { x5 + xxc1, y5 + xx1 };
+                return new float[] { x2 + xxc1, y5 + xx1 };
             default:
                 break;
         }
