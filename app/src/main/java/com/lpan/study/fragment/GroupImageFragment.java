@@ -3,6 +3,7 @@ package com.lpan.study.fragment;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.View;
+import android.widget.Button;
 
 import com.lpan.study.view.CircularImageView;
 import com.test.lpanstudyrecord.R;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 /**
  * Created by lpan on 2016/12/27.
  */
-public class GroupImageFragment extends BaseFragment {
+public class GroupImageFragment extends BaseFragment implements View.OnClickListener {
 
 
     ArrayList<Bitmap> mBmps1 = new ArrayList<Bitmap>();
@@ -27,6 +28,8 @@ public class GroupImageFragment extends BaseFragment {
     CircularImageView mCircularImageView4;
     CircularImageView mCircularImageView5;
 
+    Button mButton1, mButton2, mButton3, mButton4, mButton5;
+
 
     @Override
     protected int getLayoutResource() {
@@ -36,11 +39,23 @@ public class GroupImageFragment extends BaseFragment {
     @Override
     protected void initViews(View view) {
         super.initViews(view);
-        Bitmap avatar1 = BitmapFactory.decodeResource(getResources(), R.mipmap.headshow1);
-        Bitmap avatar2 = BitmapFactory.decodeResource(getResources(), R.mipmap.headshow2);
-        Bitmap avatar3 = BitmapFactory.decodeResource(getResources(), R.mipmap.headshow3);
-        Bitmap avatar4 = BitmapFactory.decodeResource(getResources(), R.mipmap.headshow4);
-        Bitmap avatar5 = BitmapFactory.decodeResource(getResources(), R.mipmap.headshow5);
+        mButton1 = (Button) view.findViewById(R.id.button1);
+        mButton2 = (Button) view.findViewById(R.id.button2);
+        mButton3 = (Button) view.findViewById(R.id.button3);
+        mButton4 = (Button) view.findViewById(R.id.button4);
+        mButton5 = (Button) view.findViewById(R.id.button5);
+        mButton1.setOnClickListener(this);
+        mButton2.setOnClickListener(this);
+        mButton3.setOnClickListener(this);
+        mButton4.setOnClickListener(this);
+        mButton5.setOnClickListener(this);
+
+
+        Bitmap avatar1 = BitmapFactory.decodeResource(getResources(), R.mipmap.a);
+        Bitmap avatar2 = BitmapFactory.decodeResource(getResources(), R.mipmap.b);
+        Bitmap avatar3 = BitmapFactory.decodeResource(getResources(), R.mipmap.c);
+        Bitmap avatar4 = BitmapFactory.decodeResource(getResources(), R.mipmap.d);
+        Bitmap avatar5 = BitmapFactory.decodeResource(getResources(), R.mipmap.e);
 
         mBmps1.add(avatar1);
 
@@ -75,6 +90,32 @@ public class GroupImageFragment extends BaseFragment {
         mCircularImageView4.setImageBitmaps(mBmps4);
         mCircularImageView5.setImageBitmaps(mBmps5);
 
+
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.button1:
+                mCircularImageView1.setImageBitmaps(mBmps1);
+
+                break;
+            case R.id.button2:
+                mCircularImageView2.setImageBitmaps(mBmps2);
+
+                break;
+            case R.id.button3:
+                mCircularImageView3.setImageBitmaps(mBmps3);
+
+                break;
+            case R.id.button4:
+                mCircularImageView4.setImageBitmaps(mBmps4);
+
+                break;
+            case R.id.button5:
+                mCircularImageView5.setImageBitmaps(mBmps5);
+
+                break;
+        }
+    }
 }

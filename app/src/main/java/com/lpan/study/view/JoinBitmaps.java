@@ -94,6 +94,7 @@ public class JoinBitmaps {
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         canvas.drawBitmap(bitmap, 0, 0, paint);
 
+        //控制边角的圆弧
         if (rotation != 360) {
             Matrix matrix = new Matrix();
             // 根据原图的中心位置旋转

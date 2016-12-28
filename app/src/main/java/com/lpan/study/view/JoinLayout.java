@@ -8,14 +8,15 @@ public class JoinLayout {
         return 5;
     }
 
-    private static final float[][] rotations = { new float[] { 360 }, new float[] { 45, 360 },
+    //控制缺口圆弧的位置
+    private static final float[][] rotations = { new float[] { 360 }, new float[] { 360, 225 },
             new float[] { 120, 0, -120 }, new float[] { 90, 180, -90, 0 },
             new float[] { 144, 72, 0, -72, -144 }, };
 
     public static float[] rotation(int count) {
         return count > 0 && count <= rotations.length ? rotations[count - 1] : null;
     }
-
+    //控制相对父控件大小比例
     private static final float[][] sizes = { new float[] { 0.9f, 0.9f },
             new float[] { 0.5f, 0.65f }, new float[] { 0.45f, 0.8f },
             new float[] { 0.45f, 0.91f }, new float[] { 0.38f, 0.80f } };
@@ -44,10 +45,10 @@ public class JoinLayout {
 
     /**
      * 5个头像
-     * 
+     *
      * @param index
      *            下标
-     * @param width
+     * @param dimension
      *            画布边长（正方形）
      * @param size
      *            size[0]缩放 size[1]边距
@@ -106,10 +107,10 @@ public class JoinLayout {
 
     /**
      * 4个头像
-     * 
+     *
      * @param index
      *            下标
-     * @param width
+     * @param dimension
      *            画布边长（正方形）
      * @param size
      *            size[0]缩放 size[1]边距
@@ -157,10 +158,10 @@ public class JoinLayout {
 
     /**
      * 3个头像
-     * 
+     *
      * @param index
      *            下标
-     * @param width
+     * @param dimension
      *            画布边长（正方形）
      * @param size
      *            size[0]缩放 size[1]边距
@@ -197,10 +198,10 @@ public class JoinLayout {
 
     /**
      * 2个头像
-     * 
+     *
      * @param index
      *            下标
-     * @param width
+     * @param dimension
      *            画布边长（正方形）
      * @param size
      *            size[0]缩放 size[1]边距
@@ -236,10 +237,10 @@ public class JoinLayout {
 
     /**
      * 1个头像
-     * 
+     *
      * @param index
      *            下标
-     * @param width
+     * @param dimension
      *            画布边长（正方形）
      * @param size
      *            size[0]缩放 size[1]边距
