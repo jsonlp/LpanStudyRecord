@@ -21,7 +21,7 @@
                 android:gravity="center"
                 android:layout_margin="5dp"
                 android:orientation="horizontal">
-                <com.lpan.study.view.CircularImageView
+                <com.lpan.study.view.GroupAvatarView
                     android:id="@+id/circularImageView1"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
@@ -35,7 +35,7 @@
                 android:gravity="center"
                 android:layout_margin="5dp"
                 android:orientation="horizontal">
-                <com.lpan.study.view.CircularImageView
+                <com.lpan.study.view.GroupAvatarView
                     android:id="@+id/circularImageView2"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
@@ -49,7 +49,7 @@
                 android:gravity="center"
                 android:layout_margin="5dp"
                 android:orientation="horizontal">
-                <com.lpan.study.view.CircularImageView
+                <com.lpan.study.view.GroupAvatarView
                     android:id="@+id/circularImageView3"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
@@ -63,7 +63,7 @@
                 android:gravity="center"
                 android:layout_margin="5dp"
                 android:orientation="horizontal">
-                <com.lpan.study.view.CircularImageView
+                <com.lpan.study.view.GroupAvatarView
                     android:id="@+id/circularImageView4"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
@@ -77,7 +77,7 @@
                 android:gravity="center"
                 android:layout_margin="5dp"
                 android:orientation="horizontal">
-                <com.lpan.study.view.CircularImageView
+                <com.lpan.study.view.GroupAvatarView
                     android:id="@+id/circularImageView5"
                     android:layout_width="50dp"
                     android:layout_height="50dp"

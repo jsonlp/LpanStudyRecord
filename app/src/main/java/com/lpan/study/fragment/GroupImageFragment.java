@@ -5,7 +5,7 @@ import android.graphics.BitmapFactory;
 import android.view.View;
 import android.widget.Button;
 
-import com.lpan.study.view.CircularImageView;
+import com.lpan.study.view.GroupAvatarView;
 import com.test.lpanstudyrecord.R;
 
 import java.util.ArrayList;
@@ -22,11 +22,11 @@ public class GroupImageFragment extends BaseFragment implements View.OnClickList
     ArrayList<Bitmap> mBmps4 = new ArrayList<Bitmap>();
     ArrayList<Bitmap> mBmps5 = new ArrayList<Bitmap>();
 
-    CircularImageView mCircularImageView1;
-    CircularImageView mCircularImageView2;
-    CircularImageView mCircularImageView3;
-    CircularImageView mCircularImageView4;
-    CircularImageView mCircularImageView5;
+    GroupAvatarView mGroupAvatarView1;
+    GroupAvatarView mGroupAvatarView2;
+    GroupAvatarView mGroupAvatarView3;
+    GroupAvatarView mGroupAvatarView4;
+    GroupAvatarView mGroupAvatarView5;
 
     Button mButton1, mButton2, mButton3, mButton4, mButton5;
 
@@ -78,17 +78,17 @@ public class GroupImageFragment extends BaseFragment implements View.OnClickList
         mBmps5.add(avatar5);
 
 
-        mCircularImageView1 = (CircularImageView) view.findViewById(R.id.circularImageView1);
-        mCircularImageView2 = (CircularImageView) view.findViewById(R.id.circularImageView2);
-        mCircularImageView3 = (CircularImageView) view.findViewById(R.id.circularImageView3);
-        mCircularImageView4 = (CircularImageView) view.findViewById(R.id.circularImageView4);
-        mCircularImageView5 = (CircularImageView) view.findViewById(R.id.circularImageView5);
+        mGroupAvatarView1 = (GroupAvatarView) view.findViewById(R.id.circularImageView1);
+        mGroupAvatarView2 = (GroupAvatarView) view.findViewById(R.id.circularImageView2);
+        mGroupAvatarView3 = (GroupAvatarView) view.findViewById(R.id.circularImageView3);
+        mGroupAvatarView4 = (GroupAvatarView) view.findViewById(R.id.circularImageView4);
+        mGroupAvatarView5 = (GroupAvatarView) view.findViewById(R.id.circularImageView5);
 
-        mCircularImageView1.setImageBitmaps(mBmps1);
-        mCircularImageView2.setImageBitmaps(mBmps2);
-        mCircularImageView3.setImageBitmaps(mBmps3);
-        mCircularImageView4.setImageBitmaps(mBmps4);
-        mCircularImageView5.setImageBitmaps(mBmps5);
+        mGroupAvatarView1.setImageBitmaps(mBmps1);
+        mGroupAvatarView2.setImageBitmaps(mBmps2);
+        mGroupAvatarView3.setImageBitmaps(mBmps3);
+        mGroupAvatarView4.setImageBitmaps(mBmps4);
+        mGroupAvatarView5.setImageBitmaps(mBmps5);
 
 
     }
@@ -97,23 +97,23 @@ public class GroupImageFragment extends BaseFragment implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button1:
-                mCircularImageView1.setImageBitmaps(mBmps1);
+                mGroupAvatarView1.setImageBitmaps(mBmps1);
 
                 break;
             case R.id.button2:
-                mCircularImageView2.setImageBitmaps(mBmps2);
+                mGroupAvatarView2.setImageBitmaps(mBmps2);
 
                 break;
             case R.id.button3:
-                mCircularImageView3.setImageBitmaps(mBmps3);
+                mGroupAvatarView3.setImageBitmaps(mBmps3);
 
                 break;
             case R.id.button4:
-                mCircularImageView4.setImageBitmaps(mBmps4);
+                mGroupAvatarView4.setImageBitmaps(mBmps4);
 
                 break;
             case R.id.button5:
-                mCircularImageView5.setImageBitmaps(mBmps5);
+                mGroupAvatarView5.setImageBitmaps(mBmps5);
 
                 break;
         }

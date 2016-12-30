@@ -6,24 +6,24 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import android.view.View;
+import android.widget.ImageView;
 
-public class CircularImageView extends View {
+public class GroupAvatarView extends ImageView {
 
     protected int viewWidth;
     protected int viewHeight;
 
     protected ArrayList<Bitmap> bmps;
 
-    public CircularImageView(Context context) {
+    public GroupAvatarView(Context context) {
         super(context);
     }
 
-    public CircularImageView(Context context, AttributeSet attrs) {
+    public GroupAvatarView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public CircularImageView(Context context, AttributeSet attrs, int defStyle) {
+    public GroupAvatarView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
