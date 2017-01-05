@@ -2,9 +2,14 @@ package com.lpan.study.fragment;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.lpan.study.utils.FragmentUtils;
+import com.lpan.study.utils.ViewUtils;
+import com.lpan.study.view.CircleImnageView;
 import com.lpan.study.view.GroupAvatarView;
 import com.test.lpanstudyrecord.R;
 
@@ -30,6 +35,10 @@ public class GroupImageFragment extends BaseFragment implements View.OnClickList
 
     Button mButton1, mButton2, mButton3, mButton4, mButton5;
 
+    private CircleImnageView mCircleImnageView;
+
+    private GroupAvatarView mGroupAvatarView;
+
 
     @Override
     protected int getLayoutResource() {
@@ -44,11 +53,22 @@ public class GroupImageFragment extends BaseFragment implements View.OnClickList
         mButton3 = (Button) view.findViewById(R.id.button3);
         mButton4 = (Button) view.findViewById(R.id.button4);
         mButton5 = (Button) view.findViewById(R.id.button5);
+
+        mCircleImnageView = (CircleImnageView) view.findViewById(R.id.circle_image);
+        mGroupAvatarView = (GroupAvatarView) view.findViewById(R.id.group_image);
+
+        mCircleImnageView.setStrokeStyle(2 * ViewUtils.ONE_DP, Color.RED);
+
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.mn);
+        mCircleImnageView.setImageBitmap(bitmap);
+
         mButton1.setOnClickListener(this);
         mButton2.setOnClickListener(this);
         mButton3.setOnClickListener(this);
         mButton4.setOnClickListener(this);
         mButton5.setOnClickListener(this);
+
+
 
 
         Bitmap avatar1 = BitmapFactory.decodeResource(getResources(), R.mipmap.a);
@@ -84,6 +104,13 @@ public class GroupImageFragment extends BaseFragment implements View.OnClickList
         mGroupAvatarView4 = (GroupAvatarView) view.findViewById(R.id.circularImageView4);
         mGroupAvatarView5 = (GroupAvatarView) view.findViewById(R.id.circularImageView5);
 
+
+        mGroupAvatarView1.setOnClickListener(this);
+        mGroupAvatarView2.setOnClickListener(this);
+        mGroupAvatarView3.setOnClickListener(this);
+        mGroupAvatarView4.setOnClickListener(this);
+        mGroupAvatarView5.setOnClickListener(this);
+
         mGroupAvatarView1.setImageBitmaps(mBmps1);
         mGroupAvatarView2.setImageBitmaps(mBmps2);
         mGroupAvatarView3.setImageBitmaps(mBmps3);
@@ -91,6 +118,7 @@ public class GroupImageFragment extends BaseFragment implements View.OnClickList
         mGroupAvatarView5.setImageBitmaps(mBmps5);
 
 
+        mGroupAvatarView.setImageBitmap(bitmap);
     }
 
     @Override
@@ -116,6 +144,29 @@ public class GroupImageFragment extends BaseFragment implements View.OnClickList
                 mGroupAvatarView5.setImageBitmaps(mBmps5);
 
                 break;
+
+
+            case R.id.circularImageView1:
+                gotoCreateImage(1);
+                break;
+            case R.id.circularImageView2:
+                gotoCreateImage(2);
+                break;
+            case R.id.circularImageView3:
+                gotoCreateImage(3);
+                break;
+            case R.id.circularImageView4:
+                gotoCreateImage(4);
+                break;
+            case R.id.circularImageView5:
+                gotoCreateImage(5);
+                break;
         }
+    }
+
+    private void gotoCreateImage(int type) {
+        Bundle bundle1 = new Bundle();
+        bundle1.putInt("image_count", type);
+        FragmentUtils.navigateToInNewActivity(getActivity(), new CreateGroupImageFragment(), bundle1);
     }
 }

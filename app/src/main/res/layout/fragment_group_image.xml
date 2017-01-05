@@ -17,10 +17,11 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:background="@drawable/group_avatar_bg"
                 android:gravity="center"
-                android:layout_margin="5dp"
                 android:orientation="horizontal">
+
                 <com.lpan.study.view.GroupAvatarView
                     android:id="@+id/circularImageView1"
                     android:layout_width="50dp"
@@ -31,10 +32,11 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:background="@drawable/group_avatar_bg"
                 android:gravity="center"
-                android:layout_margin="5dp"
                 android:orientation="horizontal">
+
                 <com.lpan.study.view.GroupAvatarView
                     android:id="@+id/circularImageView2"
                     android:layout_width="50dp"
@@ -45,10 +47,11 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:background="@drawable/group_avatar_bg"
                 android:gravity="center"
-                android:layout_margin="5dp"
                 android:orientation="horizontal">
+
                 <com.lpan.study.view.GroupAvatarView
                     android:id="@+id/circularImageView3"
                     android:layout_width="50dp"
@@ -59,10 +62,11 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:background="@drawable/group_avatar_bg"
                 android:gravity="center"
-                android:layout_margin="5dp"
                 android:orientation="horizontal">
+
                 <com.lpan.study.view.GroupAvatarView
                     android:id="@+id/circularImageView4"
                     android:layout_width="50dp"
@@ -73,10 +77,11 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:background="@drawable/group_avatar_bg"
                 android:gravity="center"
-                android:layout_margin="5dp"
                 android:orientation="horizontal">
+
                 <com.lpan.study.view.GroupAvatarView
                     android:id="@+id/circularImageView5"
                     android:layout_width="50dp"
@@ -136,6 +141,32 @@
 
                 android:layout_weight="1"
                 android:text="5"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+
+            <com.lpan.study.view.CircleImnageView
+                android:id="@id/circle_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"/>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <com.lpan.study.view.GroupAvatarView
+                    android:id="@id/group_image"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"/>
+            </FrameLayout>
+
+
         </LinearLayout>
 
     </FrameLayout>

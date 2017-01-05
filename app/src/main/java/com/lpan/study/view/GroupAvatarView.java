@@ -8,6 +8,8 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
+import com.lpan.study.utils.CollectionUtils;
+
 public class GroupAvatarView extends ImageView {
 
     protected int viewWidth;
@@ -58,6 +60,10 @@ public class GroupAvatarView extends ImageView {
     public void onDraw(Canvas canvas) {
         if (viewWidth > 0 && viewHeight > 0) {
             JoinBitmaps.join(canvas, viewWidth, bmps, 0.15f);
+        }
+
+        if(CollectionUtils.isEmpty(bmps)){
+            super.onDraw(canvas);
         }
     }
 }
