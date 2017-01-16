@@ -42,6 +42,7 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mList.add("Android Shimmer");
         mList.add("ClickableSpan");
         mList.add("群组头像");
+        mList.add("IO相关");
 
 
 
@@ -53,6 +54,7 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mToActivityList.add(new ShimmerFragment());
         mToActivityList.add(new ClickableSpanDemoFragment());
         mToActivityList.add(new GroupImageFragment());
+        mToActivityList.add(new IOTestFragment());
 
         getAdapter().addItems(mList);
         mListView.setAdapter(getAdapter());

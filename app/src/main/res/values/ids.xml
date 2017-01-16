@@ -16,5 +16,9 @@
     <item name="circle_image" type="id">circle_image</item>
     <item name="group_image" type="id">group_image</item>
     <item name="image1" type="id">image1</item>
+    <item name="text1" type="id">text1</item>
+    <item name="text2" type="id">text2</item>
+    <item name="text3" type="id">text3</item>
+
 
 </resources>
