@@ -59,7 +59,7 @@ public class GroupAvatarView extends ImageView {
     @Override
     public void onDraw(Canvas canvas) {
         if (viewWidth > 0 && viewHeight > 0) {
-            JoinBitmaps.join(canvas, viewWidth, bmps, 0.15f);
+            JoinBitmaps.join(canvas, viewWidth, bmps, 0.17f);
         }
 
         if(CollectionUtils.isEmpty(bmps)){

@@ -2,8 +2,12 @@ package com.lpan.study.fragment;
 
 import android.os.Environment;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.lpan.study.context.AppContext;
 import com.lpan.study.utils.FileUtils;
 import com.test.lpanstudyrecord.R;
 
@@ -31,7 +35,10 @@ public class IOTestFragment extends BaseFragment implements View.OnClickListener
 
     private TextView mTextView1, mTextView2, mTextView3;
 
+    private EditText mEditText;
+
     private File mFile;
+
 
     @Override
     protected int getLayoutResource() {
@@ -44,9 +51,13 @@ public class IOTestFragment extends BaseFragment implements View.OnClickListener
         mTextView1 = (TextView) view.findViewById(R.id.text1);
         mTextView2 = (TextView) view.findViewById(R.id.text2);
         mTextView3 = (TextView) view.findViewById(R.id.text3);
+        mEditText= (EditText) view.findViewById(R.id.edit1);
+
 
         mTextView1.setOnClickListener(this);
         mTextView2.setOnClickListener(this);
+        mEditText.setOnClickListener(this);
+
 
     }
 
@@ -54,7 +65,7 @@ public class IOTestFragment extends BaseFragment implements View.OnClickListener
     protected void initData() {
         super.initData();
 
-        FileUtils.writeTextFile(CONTENT,getCacheFile().getAbsolutePath());
+//        FileUtils.writeTextFile(CONTENT,getCacheFile().getAbsolutePath());
 //        FileUtils.saveContent(CONTENT, CACHE_FILE_NAME);
 
     }
@@ -70,6 +81,11 @@ public class IOTestFragment extends BaseFragment implements View.OnClickListener
             case R.id.text2:
 
                 break;
+
+            case R.id.edit1:
+                Toast.makeText(AppContext.getContext(),"1111",Toast.LENGTH_SHORT).show();
+                break;
+
         }
     }
 
