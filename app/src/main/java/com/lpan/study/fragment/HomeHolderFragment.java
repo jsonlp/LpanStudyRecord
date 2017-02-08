@@ -43,8 +43,7 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mList.add("ClickableSpan");
         mList.add("群组头像");
         mList.add("IO相关");
-
-
+        mList.add("视频播放");
 
 
 
@@ -55,6 +54,8 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mToActivityList.add(new ClickableSpanDemoFragment());
         mToActivityList.add(new GroupImageFragment());
         mToActivityList.add(new IOTestFragment());
+        mToActivityList.add(new VideoPlayFragment());
+
 
         getAdapter().addItems(mList);
         mListView.setAdapter(getAdapter());

@@ -20,6 +20,11 @@
     <item name="text2" type="id">text2</item>
     <item name="text3" type="id">text3</item>
     <item name="edit1" type="id">edit1</item>
+    <item name="textureview" type="id">textureview</item>
+    <item name="seekbar" type="id">seekbar</item>
+    <item name="text4" type="id">text4</item>
+    <item name="duration" type="id">duration</item>
+    <item name="textureview1" type="id">textureview1</item>
 
 
 </resources>
