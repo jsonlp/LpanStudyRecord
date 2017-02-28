@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.widget.LinearLayout;
 
 import com.lpan.study.fragment.HomeHolderFragment;
+import com.lpan.study.utils.FragmentUtils;
 import com.test.lpanstudyrecord.R;
 
 /**
@@ -37,16 +38,18 @@ public class GoalActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String className = getIntent().getExtras().getString(EXTRAS_CLASS_NAME);
-        loadFragment(className);
+        Bundle activityBundle = getIntent().getBundleExtra(EXTRAS_BUNDLE);
+
+        loadFragment(className,activityBundle);
     }
 
-    private void loadFragment(String className) {
+    private void loadFragment(String className,Bundle bundle) {
         if (!TextUtils.isEmpty(className)) {
             Fragment fragment = null;
             try {
                 fragment = (Fragment) Class.forName(className).newInstance();
-                FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.container, fragment).commit();
+                FragmentUtils.replaceFragment(R.id.container, getSupportFragmentManager(),
+                        fragment, bundle);
 
             } catch (InstantiationException e) {
                 e.printStackTrace();

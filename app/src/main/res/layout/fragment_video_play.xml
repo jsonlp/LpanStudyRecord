@@ -2,14 +2,133 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:background="@color/white"
+              android:background="@color/black"
               android:layout_height="match_parent">
 
-    <ListView
-        android:id="@id/listview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    </ListView>
+        <TextView
+            android:id="@id/text"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:text="本地视频"
+            android:gravity="center"
+            android:layout_height="30dp"/>
+
+        <com.lpan.study.view.TextureVideoView
+            android:id="@id/textureview"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"/>
+
+        <TextView
+            android:id="@id/duration"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@id/play_button"
+            android:src="@mipmap/ic_launcher"
+            android:layout_gravity="center"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+
+    </FrameLayout>
+
+
+    <SeekBar
+        android:id="@id/seekbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:maxHeight="2dp"
+        android:minHeight="2dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:thumb="@drawable/seekbar_thumb"
+        android:progressDrawable="@drawable/seekbar_progress"
+        />
+
+    <TextView
+        android:id="@id/button1"
+        android:textColor="@color/black"
+        android:text="转码"
+        android:gravity="center"
+        android:background="@drawable/button_jiemo_bg"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@id/text1"
+            android:text="ultrafast"
+            android:gravity="center"
+            android:padding="5dp"
+            android:background="@drawable/button_jiemo_bg"
+            android:textColor="@color/black"
+            android:layout_height="40dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@id/text2"
+            android:text="superfast"
+            android:gravity="center"
+            android:padding="5dp"
+            android:background="@drawable/button_jiemo_bg"
+            android:textColor="@color/black"
+            android:layout_height="40dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@id/text3"
+            android:text="fast"
+            android:gravity="center"
+            android:padding="5dp"
+            android:background="@drawable/button_jiemo_bg"
+            android:textColor="@color/black"
+            android:layout_height="40dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="60dp"
+            android:id="@id/text21"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@color/black"
+            android:layout_height="40dp"/>
+
+        <TextView
+            android:layout_width="60dp"
+            android:id="@id/text22"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@color/black"
+            android:layout_height="40dp"/>
+
+        <TextView
+            android:layout_width="60dp"
+            android:id="@id/text23"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@color/black"
+            android:layout_height="40dp"/>
+    </LinearLayout>
+
 
 </LinearLayout>

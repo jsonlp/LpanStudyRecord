@@ -1,6 +1,9 @@
 package com.lpan.study.utils;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
+import android.os.Environment;
 
 import com.lpan.study.context.AppContext;
 
@@ -8,6 +11,9 @@ import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -99,5 +105,72 @@ public class FileUtils {
             }
         }
         return false;
+    }
+
+    /*
+    获取本地视频的缩略图
+     */
+    public static Bitmap getVideoThumbnail(String videoPath, int width, int height,
+                                           int kind) {
+        Bitmap bitmap = null;
+        // 获取视频的缩略图
+        bitmap = ThumbnailUtils.createVideoThumbnail(videoPath, kind);
+        bitmap = ThumbnailUtils.extractThumbnail(bitmap, width, height,
+                ThumbnailUtils.OPTIONS_RECYCLE_INPUT);
+        return bitmap;
+    }
+
+    public static File saveBitmap(Bitmap mBitmap, File file, boolean isNeedRecycle, int type) {
+        if (mBitmap == null) {
+            return null;
+        }
+
+        if (!file.exists()) {
+            File parentFile = file.getParentFile();
+            parentFile.mkdirs();
+            try {
+                file.createNewFile();
+            } catch (Exception e) {
+                return null;
+            }
+
+        } else {
+            file.delete();
+        }
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(file);
+            if (type == 0) {
+                mBitmap.compress(Bitmap.CompressFormat.PNG, 90, fos);
+            } else {
+                mBitmap.compress(Bitmap.CompressFormat.JPEG, 90, fos);
+            }
+            if (isNeedRecycle) {
+                mBitmap.recycle();
+            }
+            fos.flush();
+            fos.close();
+            return file;
+        } catch (FileNotFoundException e) {
+            return null;
+        } catch (Exception e) {
+            return null;
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public static File getVideoFileDir() {
+        File dir = new File(Environment.getExternalStorageDirectory() + "/" + "Jiemoapp" + "/" + "videos/");
+        if (dir != null && dir.exists()) {
+            return dir;
+        }
+        return null;
     }
 }

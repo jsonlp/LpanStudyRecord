@@ -25,6 +25,10 @@
     <item name="text4" type="id">text4</item>
     <item name="duration" type="id">duration</item>
     <item name="textureview1" type="id">textureview1</item>
+    <item name="size" type="id">size</item>
+    <item name="text21" type="id">text21</item>
+    <item name="text22" type="id">text22</item>
+    <item name="text23" type="id">text23</item>
 
 
 </resources>
