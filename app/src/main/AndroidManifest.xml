@@ -28,6 +28,14 @@
             android:name="com.lpan.study.activity.GoalActivity"
             android:screenOrientation="portrait"
             />
+
+        <activity
+            android:name="com.lpan.study.activity.FullScreenActivity"
+            android:screenOrientation="user"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/JiemoFullScreenImageTheme"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            />
     </application>
 
 </manifest>

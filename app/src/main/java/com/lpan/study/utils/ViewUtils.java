@@ -33,6 +33,63 @@ public class ViewUtils {
     }
 
     /**
+     * 有一边超过最大值把长边缩小到最大值
+     *
+     * @param max
+     * @param arr
+     * @return
+     */
+    public static int[] scaleToMax(int max, int[] arr) {
+        int width = arr[0];
+        int height = arr[1];
+        if (width > max || height > max) {
+            float r = (float) width / height;
+            if (r > 1) {
+                width = max;
+                height = (int) (max / r + 0.5f);
+            } else if (r < 1) {
+                height = max;
+                width = (int) (max * r + 0.5f);
+            } else {
+                height = max;
+                width = max;
+            }
+            arr[0] = width;
+            arr[1] = height;
+        }
+
+        return arr;
+    }
+
+    /**
+     * 有一边不到最小值,把长边拉伸到最小值
+     *
+     * @param min
+     * @param arr
+     * @return
+     */
+    public static int[] scaleToMin(int min, int[] arr) {
+        int width = arr[0];
+        int height = arr[1];
+        if (width < min || height < min) {
+            float r = (float) width / height;
+            if (r > 1) {
+                width = min;
+                height = (int) (width / r + 0.5f);
+            } else if (r < 1) {
+                height = min;
+                width = (int) (height * r + 0.5f);
+            } else {
+                width = min;
+                height = min;
+            }
+            arr[0] = width;
+            arr[1] = height;
+        }
+        return arr;
+    }
+
+    /**
      * 获取状态栏的高度
      *
      * @param context

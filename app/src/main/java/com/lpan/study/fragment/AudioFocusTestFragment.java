@@ -72,7 +72,7 @@ public class AudioFocusTestFragment extends BaseFragment implements View.OnClick
 
     @Override
     public void onPrepared(MediaPlayer mp) {
-        Log.e(TAG, "----------onPrepared");
+        Log.e(TAG, "----------onPrepared v1.0");
         if (mMediaPlayer == null) {
             return;
         }

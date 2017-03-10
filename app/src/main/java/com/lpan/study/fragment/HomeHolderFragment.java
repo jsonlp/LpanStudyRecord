@@ -37,16 +37,15 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
     protected void initData() {
         super.initData();
         mList = new ArrayList<>();
-        mList.add("Loading动画");
+        mList.add("smile Loading");
         mList.add("AudioFocus");
         mList.add("Android Shimmer");
         mList.add("ClickableSpan");
-        mList.add("群组头像");
-        mList.add("IO相关");
-        mList.add("视频播放");
+        mList.add("group avatar");
+        mList.add("IO");
+        mList.add("video transform");
         mList.add("scan gallery");
-
-
+        mList.add("compress image");
 
         mToActivityList = new ArrayList<>();
         mToActivityList.add(new LoadingAnimationFragment());
@@ -57,6 +56,7 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mToActivityList.add(new IOTestFragment());
         mToActivityList.add(new VideoPlayFragment());
         mToActivityList.add(new ScanGalleryFragment());
+        mToActivityList.add(new ZoomImageFragment());
 
 
         getAdapter().addItems(mList);
@@ -84,6 +84,10 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
 
     @Override
     public void onClick(View view, String s, int position) {
-        FragmentUtils.navigateToInNewActivity(getActivity(), mToActivityList.get(position), null);
+        if(s.equals("zoom image")){
+            FragmentUtils.navigateToInFullScreenActivity(getActivity(), mToActivityList.get(position), null);
+        }else{
+            FragmentUtils.navigateToInNewActivity(getActivity(), mToActivityList.get(position), null);
+        }
     }
 }

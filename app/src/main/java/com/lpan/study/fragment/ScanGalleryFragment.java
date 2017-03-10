@@ -112,19 +112,19 @@ public class ScanGalleryFragment extends BaseFragment {
 //                    ThumbnailUtils.createVideoThumbnail(videoPath, MediaStore.Video.Thumbnails.MICRO_KIND);
                 }
 
-                MediaMetadataRetriever metadataRetriever = new MediaMetadataRetriever();
-                File file = new File(info.getPath());
-                if (file.exists()) {
-                    File file1 = new File(FileUtils.getVideoFileDir(), id + ".png");
-                    if(file1.exists()){
-                        info.setThumb(file1.getAbsolutePath());
-                    }else{
-                        metadataRetriever.setDataSource(info.getPath());
-                        Bitmap frameAtTime = metadataRetriever.getFrameAtTime();
-                        FileUtils.saveBitmap(frameAtTime, file1, false, 0);
-                        info.setThumb(file1.getAbsolutePath());
-                    }
-                }
+//                MediaMetadataRetriever metadataRetriever = new MediaMetadataRetriever();
+//                File file = new File(info.getPath());
+//                if (file.exists()) {
+//                    File file1 = new File(FileUtils.getVideoFileDir(), id + ".png");
+//                    if(file1.exists()){
+//                        info.setThumb(file1.getAbsolutePath());
+//                    }else{
+//                        metadataRetriever.setDataSource(info.getPath());
+//                        Bitmap frameAtTime = metadataRetriever.getFrameAtTime();
+//                        FileUtils.saveBitmap(frameAtTime, file1, false, 0);
+//                        info.setThumb(file1.getAbsolutePath());
+//                    }
+//                }
 
 
                 //然后将其加入到videoList

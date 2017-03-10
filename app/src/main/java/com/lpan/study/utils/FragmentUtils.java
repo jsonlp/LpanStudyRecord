@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
+import com.lpan.study.activity.FullScreenActivity;
 import com.lpan.study.activity.GoalActivity;
 
 /**
@@ -18,6 +19,16 @@ public class FragmentUtils {
 
     public static void navigateToInNewActivity(Context context, Fragment fragment, Bundle bundle) {
         Intent intent = new Intent(context, GoalActivity.class);
+
+        intent.putExtra(GoalActivity.EXTRAS_CLASS_NAME, fragment.getClass()
+                .getName());
+        intent.putExtra(GoalActivity.EXTRAS_BUNDLE, bundle);
+
+        context.startActivity(intent);
+    }
+
+    public static void navigateToInFullScreenActivity(Context context, Fragment fragment, Bundle bundle) {
+        Intent intent = new Intent(context, FullScreenActivity.class);
 
         intent.putExtra(GoalActivity.EXTRAS_CLASS_NAME, fragment.getClass()
                 .getName());

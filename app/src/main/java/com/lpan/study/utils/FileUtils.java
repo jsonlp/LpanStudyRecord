@@ -173,4 +173,12 @@ public class FileUtils {
         }
         return null;
     }
+
+    public static File getImageFileDir() {
+        File dir = new File(Environment.getExternalStorageDirectory() + "/" + "Jiemoapp");
+        if (dir != null && dir.exists()) {
+            return dir;
+        }
+        return null;
+    }
 }

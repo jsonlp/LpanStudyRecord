@@ -29,6 +29,11 @@
     <item name="text21" type="id">text21</item>
     <item name="text22" type="id">text22</item>
     <item name="text23" type="id">text23</item>
+    <item name="image2" type="id">image2</item>
+    <item name="image3" type="id">image3</item>
+    <item name="image4" type="id">image4</item>
+    <item name="image11" type="id">image11</item>
+    <item name="ok" type="id">ok</item>
 
 
 </resources>

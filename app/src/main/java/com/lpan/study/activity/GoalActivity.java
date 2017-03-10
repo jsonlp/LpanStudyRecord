@@ -43,7 +43,7 @@ public class GoalActivity extends BaseActivity {
         loadFragment(className,activityBundle);
     }
 
-    private void loadFragment(String className,Bundle bundle) {
+    protected void loadFragment(String className,Bundle bundle) {
         if (!TextUtils.isEmpty(className)) {
             Fragment fragment = null;
             try {

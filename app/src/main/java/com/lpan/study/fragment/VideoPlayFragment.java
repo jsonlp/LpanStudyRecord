@@ -25,6 +25,7 @@ import com.lpan.study.model.FFmpegVideoInfo;
 import com.lpan.study.utils.FileUtils;
 import com.lpan.study.utils.Utils;
 import com.lpan.study.view.TextureVideoView;
+import com.lpan.study.view.UnclickSeekBar;
 import com.test.lpanstudyrecord.R;
 
 import java.io.File;
@@ -42,7 +43,7 @@ public class VideoPlayFragment extends BaseFragment implements View.OnClickListe
 
     private ImageView mPlayButton;
 
-    private SeekBar mSeekBar;
+    private UnclickSeekBar mSeekBar;
 
     private TextView mTimeRecord;
 
@@ -169,7 +170,7 @@ public class VideoPlayFragment extends BaseFragment implements View.OnClickListe
         super.initViews(view);
 
         mTextureVideoView = (TextureVideoView) view.findViewById(R.id.textureview);
-        mSeekBar = (SeekBar) view.findViewById(R.id.seekbar);
+        mSeekBar = (UnclickSeekBar) view.findViewById(R.id.seekbar);
         mPlayButton = (ImageView) view.findViewById(R.id.play_button);
         mTimeRecord = (TextView) view.findViewById(R.id.duration);
         mTransform = (TextView) view.findViewById(R.id.button1);
