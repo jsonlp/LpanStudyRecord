@@ -34,6 +34,9 @@
     <item name="image4" type="id">image4</item>
     <item name="image11" type="id">image11</item>
     <item name="ok" type="id">ok</item>
+    <item name="layout" type="id">layout</item>
+    <item name="button1" type="id">button1</item>
+
 
 
 </resources>

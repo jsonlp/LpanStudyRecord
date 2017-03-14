@@ -46,6 +46,8 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mList.add("video transform");
         mList.add("scan gallery");
         mList.add("compress image");
+        mList.add("draw image");
+
 
         mToActivityList = new ArrayList<>();
         mToActivityList.add(new LoadingAnimationFragment());
@@ -57,7 +59,7 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mToActivityList.add(new VideoPlayFragment());
         mToActivityList.add(new ScanGalleryFragment());
         mToActivityList.add(new ZoomImageFragment());
-
+        mToActivityList.add(new DrawImageFragment());
 
         getAdapter().addItems(mList);
         mListView.setAdapter(getAdapter());
