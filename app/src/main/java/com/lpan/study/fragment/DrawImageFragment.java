@@ -18,6 +18,7 @@ import com.lpan.study.context.AppContext;
 import com.lpan.study.utils.BitmapUtils;
 import com.lpan.study.utils.FileUtils;
 import com.lpan.study.utils.Toaster;
+import com.lpan.study.utils.ViewUtils;
 import com.test.lpanstudyrecord.R;
 
 import java.io.File;
@@ -34,6 +35,21 @@ public class DrawImageFragment extends BaseFragment implements View.OnClickListe
 
     private FrameLayout mLayout;
 
+    private String leftName = "张三";
+
+    private String rightName = "李四";
+
+    private String leftSchool = "郑州大学";
+
+    private String rightSchool = "广州大学";
+
+    private String tip1 = "一样的兴趣，相似的轨迹";
+
+    private String tip2 = "与你心有灵犀的同学都在芥末上等你";
+
+    private static final int ONE_DP = ViewUtils.dp2px(AppContext.getContext(), 1);
+
+
     @Override
     protected int getLayoutResource() {
         return R.layout.fragment_draw_image;
@@ -49,12 +65,18 @@ public class DrawImageFragment extends BaseFragment implements View.OnClickListe
 
 
         mButton.setOnClickListener(this);
-//        mImageView.setImageBitmap(saveShareBitmap("钉钉当"));
+        Bitmap leftBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.girl1);
+        Bitmap rightBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.girl2);
+        Bitmap bg = BitmapFactory.decodeResource(getResources(), R.mipmap.heart_eachother_bg);
+
+        mImageView.setImageBitmap(saveMatchBitmap(leftName, rightName, leftSchool, rightSchool, tip1, tip2, leftBitmap, rightBitmap, bg));
     }
 
     @Override
     public void onClick(View v) {
-        Bitmap bitmap = drawView(mLayout);
+//        Bitmap bitmap = drawView(mLayout);
+        Bitmap bitmap = saveShareBitmap("叮叮当");
+
         if (bitmap != null) {
             File file = BitmapUtils.saveBitmap(bitmap, new File(FileUtils.getImageFileDir(), System.currentTimeMillis() + ".jpeg"), true, 1, 100);
 
@@ -94,7 +116,6 @@ public class DrawImageFragment extends BaseFragment implements View.OnClickListe
 
         Bitmap icon = BitmapFactory.decodeResource(getResources(), R.mipmap.jiemo_icon);
         Bitmap qrcode = BitmapFactory.decodeResource(getResources(), R.mipmap.download_qr_code);
-//        Bitmap qrBitmap = addLogo(qrcode, icon);
         Rect iconRect = new Rect(40, 40, 110, 110);
         canvas.drawBitmap(icon, null, iconRect, null);
 
@@ -147,5 +168,24 @@ public class DrawImageFragment extends BaseFragment implements View.OnClickListe
         canvas.drawText("扫码下载", 658, 1042 - paint.getFontMetricsInt().descent, paint);
         return shareBitmap;
 
+    }
+
+    private Bitmap saveMatchBitmap(String leftName, String rightName, String leftSchool, String rightSchool, String tip1, String tip2, Bitmap leftBitmap, Bitmap rightBitmap, Bitmap bg) {
+        Bitmap shareBitmap = Bitmap.createBitmap(1080, 1960, Bitmap.Config.RGB_565);
+        Canvas canvas = new Canvas(shareBitmap);
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setAntiAlias(true);
+
+        //画背景
+        Rect iconRect = new Rect(0, 0, 1080, 1960);
+        canvas.drawBitmap(bg, null, iconRect, null);
+
+        //画标题1
+        paint.setTextSize(50);
+        paint.setColor(Color.RED);
+        paint.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText(tip1, 30 * ONE_DP, 60 * ONE_DP, paint);
+
+        return shareBitmap;
     }
 }

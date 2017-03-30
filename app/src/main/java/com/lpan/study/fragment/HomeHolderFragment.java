@@ -47,6 +47,7 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mList.add("scan gallery");
         mList.add("compress image");
         mList.add("draw image");
+        mList.add("drag and sort list");
 
 
         mToActivityList = new ArrayList<>();
@@ -60,6 +61,8 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mToActivityList.add(new ScanGalleryFragment());
         mToActivityList.add(new ZoomImageFragment());
         mToActivityList.add(new DrawImageFragment());
+        mToActivityList.add(new DragListFragment());
+
 
         getAdapter().addItems(mList);
         mListView.setAdapter(getAdapter());
