@@ -38,6 +38,10 @@
     <item name="button1" type="id">button1</item>
     <item name="dslvList" type="id">dslvList</item>
     <item name="drag" type="id">drag</item>
+    <item name="actionbar_left" type="id">actionbar_left</item>
+    <item name="back_text" type="id">back_text</item>
+    <item name="back_button" type="id">back_button</item>
+    <item name="listview_tabs" type="id">listview_tabs</item>
 
 
 </resources>

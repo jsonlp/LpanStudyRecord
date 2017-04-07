@@ -29,12 +29,6 @@ import java.io.File;
 
 public class DrawImageFragment extends BaseFragment implements View.OnClickListener {
 
-    private ImageView mImageView;
-
-    private TextView mButton;
-
-    private FrameLayout mLayout;
-
     private String leftName = "张三";
 
     private String rightName = "李四";
@@ -59,31 +53,16 @@ public class DrawImageFragment extends BaseFragment implements View.OnClickListe
     protected void initViews(View view) {
         super.initViews(view);
 
-        mImageView = (ImageView) view.findViewById(R.id.image1);
-        mButton = (TextView) view.findViewById(R.id.button1);
-        mLayout = (FrameLayout) view.findViewById(R.id.layout);
 
-
-        mButton.setOnClickListener(this);
         Bitmap leftBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.girl1);
         Bitmap rightBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.girl2);
         Bitmap bg = BitmapFactory.decodeResource(getResources(), R.mipmap.heart_eachother_bg);
 
-        mImageView.setImageBitmap(saveMatchBitmap(leftName, rightName, leftSchool, rightSchool, tip1, tip2, leftBitmap, rightBitmap, bg));
     }
 
     @Override
     public void onClick(View v) {
-//        Bitmap bitmap = drawView(mLayout);
-        Bitmap bitmap = saveShareBitmap("叮叮当");
 
-        if (bitmap != null) {
-            File file = BitmapUtils.saveBitmap(bitmap, new File(FileUtils.getImageFileDir(), System.currentTimeMillis() + ".jpeg"), true, 1, 100);
-
-            if (file != null && file.exists()) {
-                Toaster.toastShort(AppContext.getContext(), "保存在:" + file.getAbsolutePath());
-            }
-        }
     }
 
     /**

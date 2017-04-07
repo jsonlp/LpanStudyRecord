@@ -3,107 +3,39 @@
              xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             android:background="@color/white"
              android:orientation="vertical">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="top"
-        android:gravity="center"
-        android:text="下载芥末校园"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:visibility="gone"/>
-
-    <ImageView
-        android:id="@id/image1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/jiemo_icon"
-        />
-
-    <TextView
-        android:id="@id/button1"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="bottom"
-        android:background="@drawable/button_jiemo_bg"
-        android:gravity="center"
-        android:text="保存图片"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:visibility="gone"/>
-
-    <LinearLayout
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <include layout="@layout/dotted_line"/>
-
-        </FrameLayout>
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <View
-                android:layout_width="3dp"
-                android:layout_height="3dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/circle_gray_5dp"/>
-
-            <View
-                android:layout_width="5dp"
-                android:layout_height="5dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/circle_gray_5dp"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:text="超级喜欢"
-                android:textColor="@color/black"
-                />
+                android:id="@id/text1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:text="1 圆角图片"
+                android:textColor="@color/black"/>
 
             <View
-                android:layout_width="5dp"
-                android:layout_height="5dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/circle_gray_5dp"/>
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black"/>
 
-            <View
-                android:layout_width="3dp"
-                android:layout_height="3dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/circle_gray_5dp"/>
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:text="2 圆角图片"
+                android:textColor="@color/black"/>
         </LinearLayout>
+    </ScrollView>
 
-
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <include layout="@layout/dotted_line"/>
-
-        </FrameLayout>
-    </LinearLayout>
-
-    <include layout="@layout/super_like_dotted_line"/>
-
-
+    <include layout="@layout/actionbar_white"/>
 </FrameLayout>
