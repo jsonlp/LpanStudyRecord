@@ -132,19 +132,6 @@ public class DoubleListFragment extends BaseFragment implements OnProvinceTabCli
                 }
             }
         });
-
-        mTabsView.setOnScrollListener(new AbsListView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
-                Log.d("lp-test","mTabsView   onScrollStateChanged");
-            }
-
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                Log.d("lp-test","mTabsView   onScroll");
-
-            }
-        });
     }
 
     @Override

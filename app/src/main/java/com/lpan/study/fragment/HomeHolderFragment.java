@@ -49,6 +49,9 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mList.add("draw image");
         mList.add("drag and sort list");
         mList.add("double list");
+        mList.add("video list player");
+        mList.add("snackbar test");
+        mList.add("view visibility percent");
 
 
         mToActivityList = new ArrayList<>();
@@ -64,6 +67,10 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mToActivityList.add(new DrawImageFragment());
         mToActivityList.add(new DragListFragment());
         mToActivityList.add(new DoubleListFragment());
+        mToActivityList.add(new VideoListPlayerFragment());
+        mToActivityList.add(new SnackBarFragment());
+        mToActivityList.add(new VisibilityUtilsFrament());
+
 
         getAdapter().addItems(mList);
         mListView.setAdapter(getAdapter());
@@ -90,9 +97,9 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
 
     @Override
     public void onClick(View view, String s, int position) {
-        if(s.equals("zoom image")){
+        if (s.equals("zoom image")) {
             FragmentUtils.navigateToInFullScreenActivity(getActivity(), mToActivityList.get(position), null);
-        }else{
+        } else {
             FragmentUtils.navigateToInNewActivity(getActivity(), mToActivityList.get(position), null);
         }
     }

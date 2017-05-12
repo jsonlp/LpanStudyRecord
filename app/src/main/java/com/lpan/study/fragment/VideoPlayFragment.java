@@ -53,7 +53,11 @@ public class VideoPlayFragment extends BaseFragment implements View.OnClickListe
 
     private TextView mResult1, mResult2, mResult3;
 
+    private TextView mHfilp;
+
     private static final String PATH = "video.mp4";
+
+    private static final String PATH2 = "front_record_video.mp4";
 
     private static final String URL = "http://svideo.spriteapp.com/video/2016/0703/7b5bc740-4134-11e6-ac2b-d4ae5296039d_wpd.mp4";
 
@@ -103,6 +107,9 @@ public class VideoPlayFragment extends BaseFragment implements View.OnClickListe
         if (mTextureVideoView != null && mTextureVideoView.isPlaying()) {
             mTextureVideoView.stop();
         }
+
+        FFmpeg.getInstance(AppContext.getContext()).killRunningProcesses();
+        FFmpeg.clearInstance();
     }
 
     private FFmpegVideoInfo getVideoMsg(String content) {
@@ -182,6 +189,8 @@ public class VideoPlayFragment extends BaseFragment implements View.OnClickListe
         mResult2 = (TextView) view.findViewById(R.id.text22);
         mResult3 = (TextView) view.findViewById(R.id.text23);
 
+        mHfilp = (TextView) view.findViewById(R.id.hflip);
+
         mTextureVideoView.setVideoMode(TextureVideoView.CENTER_CROP_MODE);
 
         mButton1.setOnClickListener(this);
@@ -192,6 +201,7 @@ public class VideoPlayFragment extends BaseFragment implements View.OnClickListe
         mPlayButton.setOnClickListener(this);
         mSeekBar.setOnSeekBarChangeListener(this);
         mTransform.setOnClickListener(this);
+        mHfilp.setOnClickListener(this);
 
     }
 
@@ -276,6 +286,46 @@ public class VideoPlayFragment extends BaseFragment implements View.OnClickListe
         }
     }
 
+    private void hflipVideo(String path) {
+        String out = "/storage/emulated/0/Jiemoapp/111.mp4";
+//        String[] cmd = new String[]{"-i", path, "-vf", "hflip", "-preset", "superfast", out};
+        String[] cmd = new String[]{"-filters"};
+        final long startTime = System.currentTimeMillis();
+        try {
+            FFmpeg.getInstance(AppContext.getContext()).execute(cmd, new FFmpegExecuteResponseHandler() {
+                @Override
+                public void onSuccess(String message) {
+                    Log.d("VideoRecordFragment", "onSuccess----" + message);
+
+                }
+
+                @Override
+                public void onProgress(String message) {
+                    Log.d("VideoRecordFragment", "onProgress----" + message);
+                }
+
+                @Override
+                public void onFailure(String message) {
+                    Log.d("VideoRecordFragment", "onFailure----" + message);
+                }
+
+                @Override
+                public void onStart() {
+                    Log.d("VideoRecordFragment", "onStart----");
+                }
+
+                @Override
+                public void onFinish() {
+                    long cost = System.currentTimeMillis() - startTime;
+                    Log.d("VideoRecordFragment", "onFinish----cost= " + cost);
+                }
+            });
+        } catch (FFmpegCommandAlreadyRunningException e) {
+            Log.d("VideoRecordFragment", "FFmpegCommandAlreadyRunningException----" + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
     private void transformVideo(FFmpegVideoInfo fFmpegVideoInfo, String path) {
         if (fFmpegVideoInfo == null) {
             return;
@@ -313,17 +363,17 @@ public class VideoPlayFragment extends BaseFragment implements View.OnClickListe
             Log.d("lp-test", "transformVideo  1  " + fFmpegVideoInfo.toString());
             return;
         } else if (!TextUtils.isEmpty(vf) && !TextUtils.isEmpty(vb)) {
-            cmd = new String[]{"-i", path, "-vf", vf, "-vb", vb, "-r", "24", "-preset", "superfast", "-ab", "96k", "-fs", "10M", out.getAbsolutePath(),"-debug","v"};
+            cmd = new String[]{"-i", path, "-vf", vf, "-vb", vb, "-r", "24", "-preset", "superfast", "-ab", "96k", "-fs", "10M", out.getAbsolutePath(), "-debug", "v"};
             Log.d("lp-test", "transformVideo  2  " + fFmpegVideoInfo.toString());
 
 
         } else if (!TextUtils.isEmpty(vf) && TextUtils.isEmpty(vb)) {
-            cmd = new String[]{"-i", path, "-vf", vf, "-r", "24", "-preset", "superfast", "-ab", "96k", "-fs", "10M", out.getAbsolutePath(),"-debug","v"};
+            cmd = new String[]{"-i", path, "-vf", vf, "-r", "24", "-preset", "superfast", "-ab", "96k", "-fs", "10M", out.getAbsolutePath(), "-debug", "v"};
             Log.d("lp-test", "transformVideo  3  " + fFmpegVideoInfo.toString());
 
 
         } else if (TextUtils.isEmpty(vf) && !TextUtils.isEmpty(vb)) {
-            cmd = new String[]{"-i", path, "-vb", vb, "-r", "24", "-preset", "superfast", "-ab", "96k", "-fs", "10M", out.getAbsolutePath(),"-debug","v"};
+            cmd = new String[]{"-i", path, "-vb", vb, "-r", "24", "-preset", "superfast", "-ab", "96k", "-fs", "10M", out.getAbsolutePath(), "-debug", "v"};
             Log.d("lp-test", "transformVideo  4  " + fFmpegVideoInfo.toString());
 
         }
@@ -402,6 +452,10 @@ public class VideoPlayFragment extends BaseFragment implements View.OnClickListe
                 break;
 
             case R.id.text3:
+                break;
+
+            case R.id.hflip:
+                hflipVideo(getVideoFileDir().getAbsolutePath() + File.separator + PATH2);
                 break;
         }
     }

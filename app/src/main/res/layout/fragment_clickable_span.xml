@@ -1,24 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:background="@color/white"
               android:layout_width="match_parent"
-              android:padding="10dp"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical"
+              android:padding="10dp">
 
     <TextView
         android:id="@id/text"
         android:layout_width="match_parent"
-        android:textColor="@color/black"
+        android:layout_height="50dp"
         android:gravity="center_vertical"
-        android:layout_height="50dp"/>
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@id/text1"
         android:layout_width="match_parent"
-        android:textColor="@color/black"
+        android:layout_height="50dp"
         android:gravity="center_vertical"
-        android:layout_height="50dp"/>
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@id/text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:maxLines="5"
+        android:text="空旷的口水看打瞌睡了看似IE拉伸了时刻刻哦哦速度快贷款卡离开店铺的口袋里老老实实客人所破事水,空旷的口水看打瞌睡了看似IE拉伸了时刻刻哦哦速度快贷款卡离开店铺的口袋里老老实实客人所破事水,空旷的口水看打瞌睡了看似IE拉伸了时刻刻哦哦速度快贷款卡离开店铺的口袋里老老实实客人所破事水,空旷的口水看打瞌睡了看似IE拉伸了时刻刻哦哦速度快贷款卡离开店铺的口袋里老老实实客人所破事水"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@id/all_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="全文"
+        android:textColor="@color/blue"
+        />
 
 
 </LinearLayout>

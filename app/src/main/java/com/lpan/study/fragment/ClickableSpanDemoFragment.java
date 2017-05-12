@@ -1,6 +1,7 @@
 package com.lpan.study.fragment;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.TextPaint;
 import android.text.TextUtils;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import com.lpan.study.context.AppContext;
 import com.lpan.study.listener.MentionSpanClickListener;
 import com.lpan.study.model.UserInfo;
+import com.lpan.study.utils.FragmentUtils;
 import com.lpan.study.utils.Utils;
 import com.test.lpanstudyrecord.R;
 
@@ -23,7 +25,7 @@ import java.util.regex.Pattern;
 /**
  * Created by lpan on 2016/12/27.
  */
-public class ClickableSpanDemoFragment extends BaseFragment implements MentionSpanClickListener{
+public class ClickableSpanDemoFragment extends BaseFragment implements MentionSpanClickListener, View.OnClickListener {
 
     private static final String TIPS = "大大大看得开";
 
@@ -46,6 +48,10 @@ public class ClickableSpanDemoFragment extends BaseFragment implements MentionSp
 
     private TextView mTextView2;
 
+    private TextView mContent;
+
+    private TextView mAllDescButton;
+
     private List<UserInfo> mInfoList = new ArrayList<>();
 
 
@@ -62,6 +68,10 @@ public class ClickableSpanDemoFragment extends BaseFragment implements MentionSp
 
         mTextView2.setMovementMethod(LinkMovementMethod.getInstance());
         mTextView.setMovementMethod(LinkMovementMethod.getInstance());
+        mContent = (TextView) view.findViewById(R.id.text2);
+        mAllDescButton = (TextView) view.findViewById(R.id.all_desc);
+        mAllDescButton.setOnClickListener(this);
+
 
         UserInfo userInfo = new UserInfo();
         userInfo.setId("UfG3rXh2PcDW16qv20-Hlg");
@@ -123,20 +133,6 @@ public class ClickableSpanDemoFragment extends BaseFragment implements MentionSp
                     setSpanListener(ssb, name1, index1, index1 + name1.length());
                     ssb.append(strs[strs.length - 1]);
                 }
-//                    else {//2个
-//                    ssb.clear();
-//                    ssb.append(strs[0]);
-//                    int index2 = ssb.toString().length();
-//                    ssb.append(name1);
-//                    setSpanListener(ssb, name1, index2, index2 + name1.length());
-//
-//                    ssb.append(strs[1]);
-//                    int index3 = ssb.toString().length();
-//
-//                    ssb.append(name2);
-//                    setSpanListener(ssb, name2, index3, index3 + name2.length());
-//                    ssb.append(strs[strs.length - 1]);
-//                }
             }
             return ssb;
         }
@@ -166,4 +162,16 @@ public class ClickableSpanDemoFragment extends BaseFragment implements MentionSp
         Toast.makeText(getView().getContext(), userInfo.getName(),
                 Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.all_desc:
+                Bundle bundle = new Bundle();
+                bundle.putString(TextDetailFragment.EXTRA_CONTENT, mContent.getText().toString());
+                FragmentUtils.navigateToInNewActivity(getActivity(), new TextDetailFragment(), bundle);
+                break;
+        }
+    }
+
 }
