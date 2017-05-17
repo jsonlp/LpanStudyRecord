@@ -50,7 +50,6 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mList.add("drag and sort list");
         mList.add("double list");
         mList.add("video list player");
-        mList.add("snackbar test");
         mList.add("view visibility percent");
 
 
@@ -68,7 +67,6 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mToActivityList.add(new DragListFragment());
         mToActivityList.add(new DoubleListFragment());
         mToActivityList.add(new VideoListPlayerFragment());
-        mToActivityList.add(new SnackBarFragment());
         mToActivityList.add(new VisibilityUtilsFrament());
 
 

@@ -13,7 +13,7 @@ import com.test.lpanstudyrecord.R;
  * Created by lpan on 2016/12/19.
  */
 
-public class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
 
     @Nullable
     @Override

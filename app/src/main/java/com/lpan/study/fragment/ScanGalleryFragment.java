@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,10 +54,23 @@ public class ScanGalleryFragment extends BaseFragment {
     protected void initData() {
         super.initData();
 
-        init();
+        new AsyncTask<Void, Void, ArrayList<VideoInfo>>() {
+            @Override
+            protected ArrayList<VideoInfo> doInBackground(Void... params) {
+
+                return scanTask();
+            }
+
+            @Override
+            protected void onPostExecute(ArrayList<VideoInfo> list) {
+                super.onPostExecute(list);
+                //然后需要设置ListView的Adapter了，使用我们自定义的Adatper
+                mListView.setAdapter(new VideoAdapter(getActivity(), list));
+            }
+        }.execute();
     }
 
-    private void init() {
+    private ArrayList<VideoInfo> scanTask() {
         String[] thumbColumns = new String[]{
                 MediaStore.Video.Thumbnails.DATA,
                 MediaStore.Video.Thumbnails.VIDEO_ID
@@ -133,9 +147,8 @@ public class ScanGalleryFragment extends BaseFragment {
             } while (cursor.moveToNext());
         }
 
-        //然后需要设置ListView的Adapter了，使用我们自定义的Adatper
-        videoList.size();
-        mListView.setAdapter(new VideoAdapter(getActivity(), videoList));
+        return videoList;
+
     }
 
     /**

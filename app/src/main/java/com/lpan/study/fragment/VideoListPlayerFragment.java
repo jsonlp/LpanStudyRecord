@@ -238,7 +238,9 @@ public class VideoListPlayerFragment extends BaseFragment implements AbsListView
 
                 @Override
                 public void onTextureViewAvaliable() {
-                    playVideo(holder.mTextureVideoView, videoInfo.getPath());
+                    if (!holder.mTextureVideoView.isPlaying()) {
+                        playVideo(holder.mTextureVideoView, videoInfo.getPath());
+                    }
                     Log.d("lp-test", "-----setOnStateChangeListener   onTextureViewAvaliable   position=" + position);
 
                 }

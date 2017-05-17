@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:padding="10dp"
               android:orientation="vertical">
 
     <TextView
@@ -11,10 +12,24 @@
         android:gravity="center"
         android:layout_height="50dp"/>
 
-    <com.lpan.study.view.TextureVideoView
-        android:id="@id/textureview"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"/>
+        android:layout_height="wrap_content">
+
+        <com.lpan.study.view.TextureVideoView
+            android:id="@id/textureview"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/transparent"
+            >
+
+        </FrameLayout>
+
+    </FrameLayout>
 
 
 </LinearLayout>
