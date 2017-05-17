@@ -44,6 +44,7 @@
     <item name="listview_tabs" type="id">listview_tabs</item>
     <item name="order" type="id">order</item>
     <item name="hflip" type="id">hflip</item>
+    <item name="recyclerview" type="id">recyclerview</item>
 
 
 </resources>
