@@ -28,4 +28,6 @@ dependencies {
     compile project(':FFmpegAndroid')
     compile files('libs/recyclerview-v7-24.0.0-sources.jar')
     compile 'com.android.support:recyclerview-v7:25.1.0'
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.7'
+    compile project(':optroundcardview')
 }

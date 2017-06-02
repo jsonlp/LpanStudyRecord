@@ -12,9 +12,12 @@ import android.media.MediaPlayer.OnInfoListener;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
+
+import com.lpan.study.utils.ThreadPoolUtil;
 
 @SuppressLint("NewApi")
 public class TextureVideoView extends TextureView implements
@@ -140,9 +143,7 @@ public class TextureVideoView extends TextureView implements
                                           int width, int height) {
         mSurface = new Surface(surfaceTexture);
         if (mediaPlayer == null) {
-            if (mediaPlayer == null) {
-                mediaPlayer = new MediaPlayer();
-            }
+            mediaPlayer = new MediaPlayer();
             mediaPlayer
                     .setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                         @Override
@@ -181,8 +182,8 @@ public class TextureVideoView extends TextureView implements
                     mVideoHeight = mediaPlayer.getVideoHeight();
                     mVideoWidth = mediaPlayer.getVideoWidth();
                     updateTextureViewSize(mVideoMode);
-                    if (onStateChangeListener!=null){
-                        onStateChangeListener.onVideoSizeChanged(mVideoWidth,mVideoHeight);
+                    if (onStateChangeListener != null) {
+                        onStateChangeListener.onVideoSizeChanged(mVideoWidth, mVideoHeight);
                     }
                 }
             });
@@ -195,41 +196,44 @@ public class TextureVideoView extends TextureView implements
     }
 
     public void stop() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    if (mediaState == MediaState.INIT) {
-                        return;
+        ThreadPoolUtil.execute(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Log.d("TextureVideoView", "-----stop-----thread =" + Thread.currentThread().getName());
+                            if (mediaState == MediaState.INIT) {
+                                return;
+                            }
+                            if (mediaState == MediaState.PREPARING) {
+                                mediaPlayer.reset();
+                                mediaState = MediaState.INIT;
+                                return;
+                            }
+                            if (mediaState == MediaState.PAUSE) {
+                                mediaPlayer.stop();
+                                mediaPlayer.reset();
+                                mediaState = MediaState.INIT;
+                                return;
+                            }
+                            if (mediaState == MediaState.PLAYING) {
+                                mediaPlayer.pause();
+                                mediaPlayer.stop();
+                                mediaPlayer.reset();
+                                mediaState = MediaState.INIT;
+                                return;
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            if (null != mediaPlayer)
+                                mediaPlayer.reset();
+                            mediaState = MediaState.INIT;
+                        } finally {
+                            Message.obtain(mHandler, STOP).sendToTarget();
+                        }
                     }
-                    if (mediaState == MediaState.PREPARING) {
-                        mediaPlayer.reset();
-                        mediaState = MediaState.INIT;
-                        return;
-                    }
-                    if (mediaState == MediaState.PAUSE) {
-                        mediaPlayer.stop();
-                        mediaPlayer.reset();
-                        mediaState = MediaState.INIT;
-                        return;
-                    }
-                    if (mediaState == MediaState.PLAYING) {
-                        mediaPlayer.pause();
-                        mediaPlayer.stop();
-                        mediaPlayer.reset();
-                        mediaState = MediaState.INIT;
-                        return;
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    if (null != mediaPlayer)
-                        mediaPlayer.reset();
-                    mediaState = MediaState.INIT;
-                } finally {
-                    Message.obtain(mHandler, STOP).sendToTarget();
                 }
-            }
-        }).start();
+        );
     }
 
     private final int STOP = 0;
@@ -255,9 +259,9 @@ public class TextureVideoView extends TextureView implements
             onStateChangeListener.onSurfaceTextureDestroyed(surface);
         }
 
-        if (mSurface != null) {
-            mSurface.release();
-        }
+//        if (mSurface != null) {
+//            mSurface.release();
+//        }
         return false;
     }
 
@@ -268,25 +272,24 @@ public class TextureVideoView extends TextureView implements
 
     }
 
-    public void setVideoMode(int mode){
-        mVideoMode=mode;
+    public void setVideoMode(int mode) {
+        mVideoMode = mode;
     }
 
     /**
-     *
      * @param mode Pass {@link #CENTER_CROP_MODE} or {@link #CENTER_MODE}. Default
-     * value is 0.
+     *             value is 0.
      */
-    public void updateTextureViewSize(int mode){
-        if (mode==CENTER_MODE){
+    public void updateTextureViewSize(int mode) {
+        if (mode == CENTER_MODE) {
             updateTextureViewSizeCenter();
-        }else if (mode == CENTER_CROP_MODE){
+        } else if (mode == CENTER_CROP_MODE) {
             updateTextureViewSizeCenterCrop();
         }
     }
 
     //重新计算video的显示位置，裁剪后全屏显示
-    private void updateTextureViewSizeCenterCrop(){
+    private void updateTextureViewSizeCenterCrop() {
 
         float sx = (float) getWidth() / (float) mVideoWidth;
         float sy = (float) getHeight() / (float) mVideoHeight;
@@ -308,7 +311,7 @@ public class TextureVideoView extends TextureView implements
     }
 
     //重新计算video的显示位置，让其全部显示并据中
-    private void updateTextureViewSizeCenter(){
+    private void updateTextureViewSizeCenter() {
 
         float sx = (float) getWidth() / (float) mVideoWidth;
         float sy = (float) getHeight() / (float) mVideoHeight;
@@ -322,9 +325,9 @@ public class TextureVideoView extends TextureView implements
         matrix.preScale(mVideoWidth / (float) getWidth(), mVideoHeight / (float) getHeight());
 
         //第3步,等比例放大或缩小,直到视频区的一边和View一边相等.如果另一边和view的一边不相等，则留下空隙
-        if (sx >= sy){
+        if (sx >= sy) {
             matrix.postScale(sy, sy, getWidth() / 2, getHeight() / 2);
-        }else{
+        } else {
             matrix.postScale(sx, sx, getWidth() / 2, getHeight() / 2);
         }
 
@@ -337,27 +340,35 @@ public class TextureVideoView extends TextureView implements
     }
 
 
-    public void setPath(String path, boolean looping, float volume) {
+    public void setPath(final String path, final boolean looping, final float volume) {
 //        if (mediaState == MediaState.PREPARING) {
 //            stop();
 //            return;
 //        }
-        loacalPath = path;
 
-        mediaPlayer.reset();
-        mediaPlayer.setLooping(looping);
-        mediaPlayer.setVolume(volume, volume);
-        try {
-            mediaPlayer.setDataSource(path);
-            mediaPlayer.prepareAsync();
-            if (onStateChangeListener != null) {
-                onStateChangeListener.onPrepare();
+        ThreadPoolUtil.execute(new Runnable() {
+            @Override
+            public void run() {
+                loacalPath = path;
+
+                mediaPlayer.reset();
+                mediaPlayer.setLooping(looping);
+                mediaPlayer.setVolume(volume, volume);
+                Log.d("TextureVideoView", "-----setPath-----thread =" + Thread.currentThread().getName());
+                try {
+                    mediaPlayer.setDataSource(path);
+                    mediaPlayer.prepareAsync();
+                    if (onStateChangeListener != null) {
+                        onStateChangeListener.onPrepare();
+                    }
+                    mediaState = MediaState.PREPARING;
+                } catch (Exception e) {
+                    mediaPlayer.reset();
+                    mediaState = MediaState.INIT;
+                }
             }
-            mediaState = MediaState.PREPARING;
-        } catch (Exception e) {
-            mediaPlayer.reset();
-            mediaState = MediaState.INIT;
-        }
+        });
+
     }
 
     public void pause() {
@@ -366,12 +377,16 @@ public class TextureVideoView extends TextureView implements
         if (onStateChangeListener != null) {
             onStateChangeListener.onPause();
         }
+        Log.d("TextureVideoView", "-----pause-----thread =" + Thread.currentThread().getName());
+
     }
 
     public void start() {
         playFinished = false;
         mediaPlayer.start();
         mediaState = MediaState.PLAYING;
+        Log.d("TextureVideoView", "-----start-----thread =" + Thread.currentThread().getName());
+
     }
 
     public boolean isPlaying() {
@@ -427,7 +442,7 @@ public class TextureVideoView extends TextureView implements
 
         void onPrepare();
 
-        void onVideoSizeChanged(int vWidth,int vHeight);
+        void onVideoSizeChanged(int vWidth, int vHeight);
 
     }
 }

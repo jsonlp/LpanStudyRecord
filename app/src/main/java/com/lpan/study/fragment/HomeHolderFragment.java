@@ -1,7 +1,6 @@
 package com.lpan.study.fragment;
 
 import android.support.v4.app.Fragment;
-import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.ListView;
 
@@ -46,12 +45,13 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mList.add("video transform");
         mList.add("scan gallery");
         mList.add("compress image");
-        mList.add("draw image");
+        mList.add("gif image");
         mList.add("drag and sort list");
         mList.add("double list");
         mList.add("video list player");
+        mList.add("video recyclerview player");
         mList.add("view visibility percent");
-
+        mList.add("custom card view");
 
         mToActivityList = new ArrayList<>();
         mToActivityList.add(new LoadingAnimationFragment());
@@ -63,11 +63,14 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mToActivityList.add(new VideoPlayFragment());
         mToActivityList.add(new ScanGalleryFragment());
         mToActivityList.add(new ZoomImageFragment());
-        mToActivityList.add(new DrawImageFragment());
+        mToActivityList.add(new GifImageFragment());
         mToActivityList.add(new DragListFragment());
         mToActivityList.add(new DoubleListFragment());
         mToActivityList.add(new VideoListPlayerFragment());
+        mToActivityList.add(new VideoRecyclerFragment());
+
         mToActivityList.add(new VisibilityUtilsFrament());
+        mToActivityList.add(new CustomCardViewFragment());
 
 
         getAdapter().addItems(mList);

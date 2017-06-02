@@ -27,7 +27,7 @@ import java.io.File;
  * Created by lpan on 2017/3/14.
  */
 
-public class DrawImageFragment extends BaseFragment implements View.OnClickListener {
+public class GifImageFragment extends BaseFragment implements View.OnClickListener {
 
     private String leftName = "张三";
 
@@ -54,9 +54,6 @@ public class DrawImageFragment extends BaseFragment implements View.OnClickListe
         super.initViews(view);
 
 
-        Bitmap leftBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.girl1);
-        Bitmap rightBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.girl2);
-        Bitmap bg = BitmapFactory.decodeResource(getResources(), R.mipmap.heart_eachother_bg);
 
     }
 

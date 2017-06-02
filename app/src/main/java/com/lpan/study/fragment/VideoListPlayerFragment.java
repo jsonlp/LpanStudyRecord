@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.lpan.study.adapter.AbstractAdapter;
 import com.lpan.study.context.AppContext;
 import com.lpan.study.model.VideoInfo;
+import com.lpan.study.utils.ViewUtils;
 import com.lpan.study.view.TextureVideoView;
 import com.test.lpanstudyrecord.R;
 
@@ -73,6 +74,47 @@ public class VideoListPlayerFragment extends BaseFragment implements AbsListView
         }
         getAdapter().addItem(mVideoInfos);
         mListView.setAdapter(getAdapter());
+
+        mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+                int childCount = view.getChildCount();
+                for (int i = 0; i < childCount; i++) {
+                    View childAt = view.getChildAt(i);
+                    if (childAt != null) {
+                        if (childAt.getTag() != null && childAt.getTag() instanceof ViewHolder) {
+                            ViewHolder holder = (ViewHolder) childAt.getTag();
+                            if (holder != null) {
+
+
+                                if (scrollState == SCROLL_STATE_TOUCH_SCROLL) {
+                                    Log.d("VideoListPlayerFragment", "-----onScrollStateChanged-----prepare scroll");
+                                    //暂停所有视频
+                                    if (holder.mTextureVideoView.getState() == TextureVideoView.MediaState.PLAYING) {
+                                        holder.mTextureVideoView.pause();
+                                    }
+                                } else if (scrollState == SCROLL_STATE_FLING) {
+                                    Log.d("VideoListPlayerFragment", "-----onScrollStateChanged-----fling");
+
+                                } else if (scrollState == SCROLL_STATE_IDLE) {
+                                    Log.d("VideoListPlayerFragment", "-----onScrollStateChanged-----idle");
+                                    //开始播放视频
+                                    if (holder.mTextureVideoView.getState() == TextureVideoView.MediaState.PAUSE) {
+                                        holder.mTextureVideoView.start();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+            }
+        });
     }
 
     public VideoListPlayAdapter getAdapter() {
@@ -145,6 +187,21 @@ public class VideoListPlayerFragment extends BaseFragment implements AbsListView
         return new Point(w_screen, h_screen);
     }
 
+    public void playVideo(TextureVideoView videoView, String path) {
+        if (videoView == null) {
+            return;
+        }
+        if (videoView.getState() == TextureVideoView.MediaState.INIT || videoView.getState() == TextureVideoView.MediaState.RELEASE) {
+            videoView.setPath(path, true, 0);
+        } else if (videoView.getState() == TextureVideoView.MediaState.PAUSE) {
+            videoView.start();
+        } else if (videoView.getState() == TextureVideoView.MediaState.PLAYING) {
+            videoView.pause();
+        } else if (videoView.getState() == TextureVideoView.MediaState.PREPARING) {
+            videoView.stop();
+        }
+    }
+
     class VideoListPlayAdapter extends AbstractAdapter<VideoInfo> {
 
         private Context mContext;
@@ -182,7 +239,6 @@ public class VideoListPlayerFragment extends BaseFragment implements AbsListView
                 convertView = LayoutInflater.from(mContext).inflate(R.layout.item_video_list_player, parent, false);
                 viewholder.mTextureVideoView = (TextureVideoView) convertView.findViewById(R.id.textureview);
                 viewholder.mTextView = (TextView) convertView.findViewById(R.id.order);
-
                 convertView.setTag(viewholder);
             } else {
                 viewholder = (ViewHolder) convertView.getTag();
@@ -198,6 +254,7 @@ public class VideoListPlayerFragment extends BaseFragment implements AbsListView
             playVideo(holder.mTextureVideoView, videoInfo.getPath());
 
             holder.mTextView.setText(position + "");
+
             holder.mTextureVideoView.setOnStateChangeListener(new TextureVideoView.OnStateChangeListener() {
                 @Override
                 public void onSurfaceTextureDestroyed(SurfaceTexture surface) {
@@ -208,31 +265,31 @@ public class VideoListPlayerFragment extends BaseFragment implements AbsListView
 
                 @Override
                 public void onBuffering() {
-                    Log.d("lp-test", "-----setOnStateChangeListener   onBuffering   position=" + position);
+//                    Log.d("lp-test", "-----setOnStateChangeListener   onBuffering   position=" + position);
 
                 }
 
                 @Override
                 public void onPlaying() {
-                    Log.d("lp-test", "-----setOnStateChangeListener   onBuffering   position=" + position);
+//                    Log.d("lp-test", "-----setOnStateChangeListener   onBuffering   position=" + position);
 
                 }
 
                 @Override
                 public void onSeek(int max, int progress) {
-                    Log.d("lp-test", "-----setOnStateChangeListener   onSeek   position=" + position);
+//                    Log.d("lp-test", "-----setOnStateChangeListener   onSeek   position=" + position);
 
                 }
 
                 @Override
                 public void onStop() {
-                    Log.d("lp-test", "-----setOnStateChangeListener   onStop   position=" + position);
+//                    Log.d("lp-test", "-----setOnStateChangeListener   onStop   position=" + position);
 
                 }
 
                 @Override
                 public void onPause() {
-                    Log.d("lp-test", "-----setOnStateChangeListener   onPause   position=" + position);
+//                    Log.d("lp-test", "-----setOnStateChangeListener   onPause   position=" + position);
 
                 }
 
@@ -241,44 +298,31 @@ public class VideoListPlayerFragment extends BaseFragment implements AbsListView
                     if (!holder.mTextureVideoView.isPlaying()) {
                         playVideo(holder.mTextureVideoView, videoInfo.getPath());
                     }
-                    Log.d("lp-test", "-----setOnStateChangeListener   onTextureViewAvaliable   position=" + position);
+//                    Log.d("lp-test", "-----setOnStateChangeListener   onTextureViewAvaliable   position=" + position);
 
                 }
 
                 @Override
                 public void playFinish() {
-                    Log.d("lp-test", "-----setOnStateChangeListener   playFinish   position=" + position);
+//                    Log.d("lp-test", "-----setOnStateChangeListener   playFinish   position=" + position);
 
                 }
 
                 @Override
                 public void onPrepare() {
-                    Log.d("lp-test", "-----setOnStateChangeListener   onPrepare   position=" + position);
+//                    Log.d("lp-test", "-----setOnStateChangeListener   onPrepare   position=" + position);
 
                 }
 
                 @Override
                 public void onVideoSizeChanged(int vWidth, int vHeight) {
-                    Log.d("lp-test", "-----setOnStateChangeListener   onVideoSizeChanged   position=" + position);
+//                    Log.d("lp-test", "-----setOnStateChangeListener   onVideoSizeChanged   position=" + position);
 
                 }
             });
         }
 
-        private void playVideo(TextureVideoView videoView, String path) {
-            if (videoView == null) {
-                return;
-            }
-            if (videoView.getState() == TextureVideoView.MediaState.INIT || videoView.getState() == TextureVideoView.MediaState.RELEASE) {
-                videoView.setPath(path, true, 0);
-            } else if (videoView.getState() == TextureVideoView.MediaState.PAUSE) {
-                videoView.start();
-            } else if (videoView.getState() == TextureVideoView.MediaState.PLAYING) {
-                videoView.pause();
-            } else if (videoView.getState() == TextureVideoView.MediaState.PREPARING) {
-                videoView.stop();
-            }
-        }
+
     }
 
     class ViewHolder {
@@ -286,5 +330,6 @@ public class VideoListPlayerFragment extends BaseFragment implements AbsListView
         TextureVideoView mTextureVideoView;
 
         TextView mTextView;
+
     }
 }

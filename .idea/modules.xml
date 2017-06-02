@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/FFmpegAndroid/FFmpegAndroid.iml" filepath="$PROJECT_DIR$/FFmpegAndroid/FFmpegAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/PandaStudyRecord.iml" filepath="$PROJECT_DIR$/PandaStudyRecord.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/optroundcardview/optroundcardview.iml" filepath="$PROJECT_DIR$/optroundcardview/optroundcardview.iml" />
     </modules>
   </component>
 </project>
