@@ -32,7 +32,7 @@ public class BaseActivity extends FragmentActivity {
     }
 
     protected int getLayoutResource(){
-        return R.layout.activity_main;
+        return R.layout.activity_base;
     }
 
     @Override

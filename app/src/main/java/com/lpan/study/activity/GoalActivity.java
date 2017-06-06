@@ -2,11 +2,9 @@ package com.lpan.study.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
 import android.widget.LinearLayout;
 
-import com.lpan.study.fragment.HomeHolderFragment;
 import com.lpan.study.utils.FragmentUtils;
 import com.test.lpanstudyrecord.R;
 

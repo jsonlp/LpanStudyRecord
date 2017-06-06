@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.ListView;
 
-import com.lpan.study.adapter.HomeHolderAdapter;
+import com.lpan.study.adapter.NavegationAdapter;
 import com.lpan.study.listener.OnRowAdapterClickListener;
 import com.lpan.study.utils.FragmentUtils;
 import com.test.lpanstudyrecord.R;
@@ -13,14 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by lpan on 2016/12/19.
+ * Created by lpan on 2017/6/6.
  */
 
-public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClickListener<String> {
+public class MediaFragment extends BaseFragment implements OnRowAdapterClickListener<String> {
 
     private ListView mListView;
 
-    private HomeHolderAdapter mAdapter;
+    private NavegationAdapter mAdapter;
 
     private List<String> mList;
 
@@ -29,48 +29,30 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.fragment_home_holder;
+        return R.layout.fragment_tools;
     }
 
     @Override
     protected void initData() {
         super.initData();
         mList = new ArrayList<>();
-        mList.add("smile Loading");
         mList.add("AudioFocus");
-        mList.add("Android Shimmer");
-        mList.add("ClickableSpan");
-        mList.add("group avatar");
-        mList.add("IO");
         mList.add("video transform");
         mList.add("scan gallery");
         mList.add("compress image");
         mList.add("gif image");
-        mList.add("drag and sort list");
-        mList.add("double list");
         mList.add("video list player");
         mList.add("video recyclerview player");
-        mList.add("view visibility percent");
-        mList.add("custom card view");
+
 
         mToActivityList = new ArrayList<>();
-        mToActivityList.add(new LoadingAnimationFragment());
         mToActivityList.add(new AudioFocusTestFragment());
-        mToActivityList.add(new ShimmerFragment());
-        mToActivityList.add(new ClickableSpanDemoFragment());
-        mToActivityList.add(new GroupImageFragment());
-        mToActivityList.add(new IOTestFragment());
         mToActivityList.add(new VideoPlayFragment());
         mToActivityList.add(new ScanGalleryFragment());
         mToActivityList.add(new ZoomImageFragment());
         mToActivityList.add(new GifImageFragment());
-        mToActivityList.add(new DragListFragment());
-        mToActivityList.add(new DoubleListFragment());
         mToActivityList.add(new VideoListPlayerFragment());
         mToActivityList.add(new VideoRecyclerFragment());
-
-        mToActivityList.add(new VisibilityUtilsFrament());
-        mToActivityList.add(new CustomCardViewFragment());
 
 
         getAdapter().addItems(mList);
@@ -84,9 +66,9 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
         mListView = (ListView) view.findViewById(R.id.listview);
     }
 
-    private HomeHolderAdapter getAdapter() {
+    private NavegationAdapter getAdapter() {
         if (mAdapter == null) {
-            mAdapter = new HomeHolderAdapter(this, getActivity());
+            mAdapter = new NavegationAdapter(this, getActivity());
         }
         return mAdapter;
     }
@@ -98,10 +80,10 @@ public class HomeHolderFragment extends BaseFragment implements OnRowAdapterClic
 
     @Override
     public void onClick(View view, String s, int position) {
-        if (s.equals("zoom image")) {
-            FragmentUtils.navigateToInFullScreenActivity(getActivity(), mToActivityList.get(position), null);
-        } else {
-            FragmentUtils.navigateToInNewActivity(getActivity(), mToActivityList.get(position), null);
-        }
+//        if (s.equals("zoom image")) {
+//            FragmentUtils.navigateToInFullScreenActivity(getActivity(), mToActivityList.get(position), null);
+//        } else {
+        FragmentUtils.navigateToInNewActivity(getActivity(), mToActivityList.get(position), null);
+//        }
     }
 }

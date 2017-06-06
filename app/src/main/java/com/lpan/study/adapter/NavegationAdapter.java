@@ -18,7 +18,7 @@ import java.util.List;
  * Created by lpan on 2016/12/19.
  */
 
-public class HomeHolderAdapter extends BaseAdapter {
+public class NavegationAdapter extends BaseAdapter {
 
     private List<String> mList;
 
@@ -26,7 +26,7 @@ public class HomeHolderAdapter extends BaseAdapter {
 
     private Context mContext;
 
-    public HomeHolderAdapter(OnRowAdapterClickListener listener, Context context) {
+    public NavegationAdapter(OnRowAdapterClickListener listener, Context context) {
         mList= new ArrayList<>();
         mListener = listener;
         mContext = context;
@@ -34,6 +34,7 @@ public class HomeHolderAdapter extends BaseAdapter {
     }
 
     public void addItems(List<String> list) {
+        mList.clear();
         mList.addAll(list);
     }
 

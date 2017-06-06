@@ -254,6 +254,11 @@ public class VideoListPlayerFragment extends BaseFragment implements AbsListView
             playVideo(holder.mTextureVideoView, videoInfo.getPath());
 
             holder.mTextView.setText(position + "");
+            if (position % 2 == 1) { //奇数
+                holder.mTextureVideoView.setVideoMode(TextureVideoView.CENTER_CROP_MODE);
+            } else {
+                holder.mTextureVideoView.setVideoMode(TextureVideoView.CENTER_MODE);
+            }
 
             holder.mTextureVideoView.setOnStateChangeListener(new TextureVideoView.OnStateChangeListener() {
                 @Override
@@ -317,9 +322,11 @@ public class VideoListPlayerFragment extends BaseFragment implements AbsListView
                 @Override
                 public void onVideoSizeChanged(int vWidth, int vHeight) {
 //                    Log.d("lp-test", "-----setOnStateChangeListener   onVideoSizeChanged   position=" + position);
-
+                    holder.mTextureVideoView.getLayoutParams().width = AppContext.getContext().getResources().getDisplayMetrics().widthPixels;
+                    holder.mTextureVideoView.getLayoutParams().height = (int) ((float) holder.mTextureVideoView.getLayoutParams().width / (float) vWidth * (float) vHeight);
                 }
             });
+
         }
 
 
