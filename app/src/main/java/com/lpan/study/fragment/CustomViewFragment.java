@@ -44,6 +44,7 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
         mList.add("double list");
         mList.add("view visibility percent");
         mList.add("custom card view");
+        mList.add("video play statu");
 
 
         mToActivityList = new ArrayList<>();
@@ -55,6 +56,7 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
         mToActivityList.add(new DoubleListFragment());
         mToActivityList.add(new VisibilityUtilsFrament());
         mToActivityList.add(new CustomCardViewFragment());
+        mToActivityList.add(new VideoPlayStatuFragment());
 
 
         getAdapter().addItems(mList);

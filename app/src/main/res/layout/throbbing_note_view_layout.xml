@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@id/animation_layout_fake_white"
+        android:layout_width="17dip"
+        android:layout_height="23dip"
+        android:layout_gravity="center"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="2dip"
+                android:layout_height="16dip"
+                android:layout_gravity="bottom"
+                android:src="@drawable/throbbing_note_view_item"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="2dip"
+                android:layout_height="11dip"
+                android:layout_gravity="bottom"
+                android:src="@drawable/throbbing_note_view_item"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="2dip"
+                android:layout_height="18dip"
+                android:layout_gravity="bottom"
+                android:src="@drawable/throbbing_note_view_item"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="2dip"
+                android:layout_height="13dip"
+                android:layout_gravity="bottom"
+                android:src="@drawable/throbbing_note_view_item"/>
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
@@ -23,6 +24,7 @@ import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegNotSupportedExceptio
 import com.lpan.study.context.AppContext;
 import com.lpan.study.model.FFmpegVideoInfo;
 import com.lpan.study.utils.FileUtils;
+import com.lpan.study.utils.Toaster;
 import com.lpan.study.utils.Utils;
 import com.lpan.study.view.TextureVideoView;
 import com.lpan.study.view.UnclickSeekBar;
@@ -55,9 +57,13 @@ public class VideoPlayFragment extends BaseFragment implements View.OnClickListe
 
     private TextView mHfilp;
 
+    private TextView mAddWaterMask;
+
     private static final String PATH = "video.mp4";
 
     private static final String PATH2 = "front_record_video.mp4";
+
+    private static final String IMAGE = "image.png";
 
     private static final String URL = "http://svideo.spriteapp.com/video/2016/0703/7b5bc740-4134-11e6-ac2b-d4ae5296039d_wpd.mp4";
 
@@ -190,7 +196,7 @@ public class VideoPlayFragment extends BaseFragment implements View.OnClickListe
         mResult3 = (TextView) view.findViewById(R.id.text23);
 
         mHfilp = (TextView) view.findViewById(R.id.hflip);
-
+        mAddWaterMask = (TextView) view.findViewById(R.id.add_water_mask);
         mTextureVideoView.setVideoMode(TextureVideoView.CENTER_CROP_MODE);
 
         mButton1.setOnClickListener(this);
@@ -202,7 +208,7 @@ public class VideoPlayFragment extends BaseFragment implements View.OnClickListe
         mSeekBar.setOnSeekBarChangeListener(this);
         mTransform.setOnClickListener(this);
         mHfilp.setOnClickListener(this);
-
+        mAddWaterMask.setOnClickListener(this);
     }
 
     @Override
@@ -457,7 +463,55 @@ public class VideoPlayFragment extends BaseFragment implements View.OnClickListe
             case R.id.hflip:
                 hflipVideo(getVideoFileDir().getAbsolutePath() + File.separator + PATH2);
                 break;
+
+            case R.id.add_water_mask:
+                addWatermask(getVideoFileDir().getAbsolutePath() + File.separator + PATH, getVideoFileDir().getAbsolutePath() + File.separator + IMAGE);
+                break;
         }
+    }
+
+    private void addWatermask(String videoPath, String imagePath) {
+        final File out = new File(getVideoFileDir(), System.currentTimeMillis() + ".mp4");
+
+        String[] cmd = new String[]{"-i", videoPath, "-i", imagePath, "-filter_complex", "overlay=0:0", "-preset", "superfast", "-movflags", "-faststart", "-b:v", "1024k", "-g", "30", out.getAbsolutePath()};
+        try {
+            final long time = SystemClock.elapsedRealtime();
+            FFmpeg.getInstance(AppContext.getContext())
+                    .execute(cmd, new FFmpegExecuteResponseHandler() {
+                        @Override
+                        public void onSuccess(String message) {
+
+                            Log.i("lp-test", "onSuccess       message = " + message + "   cost = " + (SystemClock.elapsedRealtime() - time));
+                            Log.i("lp-test", "onSuccess       path = " + out.getAbsolutePath());
+
+                        }
+
+                        @Override
+                        public void onProgress(String message) {
+                            Log.i("lp-test", "onProgress       message = " + message);
+                        }
+
+                        @Override
+                        public void onFailure(String message) {
+                            Log.i("lp-test", "onFailure       message = " + message);
+                        }
+
+                        @Override
+                        public void onStart() {
+                            Log.i("lp-test", "onStart");
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            Log.i("lp-test", "onFinish" + "   cost = " + (SystemClock.elapsedRealtime() - time));
+                            FFmpeg.clearInstance();
+                        }
+                    });
+        } catch (FFmpegCommandAlreadyRunningException e) {
+            e.printStackTrace();
+            Log.i("lp-test", "onSuccess       message = " + e.getMessage());
+        }
+
     }
 
     @Override

@@ -8,11 +8,91 @@
         android:id="@id/edit1"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:inputType="number"
-        android:hint="输入透明度"/>
+        android:hint="输入透明度"
+        android:inputType="number"/>
 
     <TextView
         android:id="@id/text1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@id/edit2"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:hint="config转初中信息"
+            android:inputType="number"/>
+
+        <TextView
+            android:id="@id/text2"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="ok"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@id/edit3"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:hint="入学年份"
+            android:inputType="number"/>
+
+        <EditText
+            android:id="@id/edit4"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:hint="一年级"
+            android:inputType="number"/>
+
+        <EditText
+            android:id="@id/edit5"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:hint="二年级"
+            android:inputType="number"/>
+        <EditText
+            android:id="@id/edit6"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:hint="三年级"
+            android:inputType="number"/>
+
+        <EditText
+            android:id="@id/edit7"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:hint="四年级"
+            android:inputType="number"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@id/text4"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="初中信息转化config"
+        />
+
+    <TextView
+        android:id="@id/text3"
         android:layout_width="match_parent"
         android:layout_height="60dp"/>
 

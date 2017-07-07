@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lpan.study.context.AppContext;
@@ -15,8 +16,11 @@ import com.test.lpanstudyrecord.R;
  */
 
 public class LoadingAnimationFragment extends BaseFragment {
+    String mString = "打快点聊得来的劳动力低廉的劳动力带来了多大了斗罗大陆\n打快点聊得来的劳动力低廉的劳动力带来了多大了斗罗大陆打快点聊得来的劳动力低廉的劳动力带来了多大了斗罗大陆打快点聊得来的劳动力低廉的劳动力带来了多大了斗罗大陆";
 
     private SimleLoadingView mSimleLoadingView;
+
+    private TextView mTextView;
 
     private Runnable mRunnable = new Runnable() {
         @Override
@@ -45,6 +49,13 @@ public class LoadingAnimationFragment extends BaseFragment {
         mSimleLoadingView = (SimleLoadingView) view.findViewById(R.id.smile);
         mHandler.postDelayed(mRunnable, 5000);
 
+        mTextView = (TextView) view.findViewById(R.id.text1);
+
+        mTextView.setText(mString);
+
+        if (mString.length() > 50) {
+            mTextView.setText(mString.substring(0, 50) + "!!!");
+        }
     }
 
     @Override

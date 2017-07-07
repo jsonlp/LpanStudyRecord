@@ -45,6 +45,18 @@
     <item name="order" type="id">order</item>
     <item name="hflip" type="id">hflip</item>
     <item name="recyclerview" type="id">recyclerview</item>
+    <item name="music_play_animation_layout" type="id">music_play_animation_layout</item>
+    <item name="animation_layout_fake" type="id">animation_layout_fake</item>
+    <item name="animation_layout" type="id">animation_layout</item>
+    <item name="animation_layout_white" type="id">animation_layout_white</item>
+    <item name="animation_layout_fake_white" type="id">animation_layout_fake_white</item>
+    <item name="add_water_mask" type="id">add_water_mask</item>
+    <item name="edit2" type="id">edit2</item>
+    <item name="edit3" type="id">edit3</item>
+    <item name="edit4" type="id">edit4</item>
+    <item name="edit5" type="id">edit5</item>
+    <item name="edit6" type="id">edit6</item>
+    <item name="edit7" type="id">edit7</item>
 
 
 </resources>

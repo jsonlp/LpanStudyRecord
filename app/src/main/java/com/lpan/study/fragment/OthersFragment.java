@@ -36,10 +36,10 @@ public class OthersFragment extends BaseFragment implements OnRowAdapterClickLis
     protected void initData() {
         super.initData();
         mList = new ArrayList<>();
-        mList.add("smile Loading");
+        mList.add("concurrent modification ");
 
         mToActivityList = new ArrayList<>();
-        mToActivityList.add(new LoadingAnimationFragment());
+        mToActivityList.add(new ConcrrentModificationFragment());
 
 
         getAdapter().addItems(mList);

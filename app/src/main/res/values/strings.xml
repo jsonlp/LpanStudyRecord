@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">lpan</string>
+    <string name="app_name_dev">lpan_dev</string>
+
 </resources>

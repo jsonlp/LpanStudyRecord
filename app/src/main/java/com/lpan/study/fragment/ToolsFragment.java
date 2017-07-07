@@ -37,9 +37,12 @@ public class ToolsFragment extends BaseFragment implements OnRowAdapterClickList
         super.initData();
         mList = new ArrayList<>();
         mList.add("calculate alpha");
+        mList.add("add logo");
+
 
         mToActivityList = new ArrayList<>();
         mToActivityList.add(new CalculateAlphaFragment());
+        mToActivityList.add(new AddLogoFragment());
 
 
         getAdapter().addItems(mList);
