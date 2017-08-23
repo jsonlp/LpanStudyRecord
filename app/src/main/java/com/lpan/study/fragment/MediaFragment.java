@@ -1,6 +1,7 @@
 package com.lpan.study.fragment;
 
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
@@ -75,7 +76,7 @@ public class MediaFragment extends BaseFragment implements OnRowAdapterClickList
 
     @Override
     public void onLongClick(View view, String s, int position) {
-
+            Log.d("MediaFragment","onLongClick--------");
     }
 
     @Override

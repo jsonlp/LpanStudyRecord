@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "F:\\studio_space\\PandaStudyRecord\\FFmpegAndroid\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "outputFile": "/Users/lpan/AndroidStudioProjects/PandaStudyRecord/F:\\studio_space\\PandaStudyRecord\\FFmpegAndroid\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,31 @@
                     "endOffset": 108
                 },
                 "from": {
-                    "file": "F:\\studio_space\\PandaStudyRecord\\FFmpegAndroid\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "/Users/lpan/AndroidStudioProjects/PandaStudyRecord/F:\\studio_space\\PandaStudyRecord\\FFmpegAndroid\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 57,
+                        "endOffset": 108
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/Users/lpan/AndroidStudioProjects/PandaStudyRecord/FFmpegAndroid/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 57,
+                    "endOffset": 108
+                },
+                "from": {
+                    "file": "/Users/lpan/AndroidStudioProjects/PandaStudyRecord/FFmpegAndroid/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
