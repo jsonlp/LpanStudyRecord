@@ -209,12 +209,13 @@ public class ScanGalleryFragment extends BaseFragment {
 //            holder.title.setText(Utils.formatTime(System.currentTimeMillis()));
             holder.size.setText(Utils.formatSizeToMB(videoInfo.getSize()) + "");
 
+            final ViewHolder finalHolder = holder;
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     File file = new File(videoInfo.getPath());
                     if (file != null && file.exists()) {
-                        VideoFullScreenFragment.show(context, videoInfo);
+                        VideoFullScreenFragment.show(context, videoInfo, finalHolder.thumbImage);
                     }
                 }
             });

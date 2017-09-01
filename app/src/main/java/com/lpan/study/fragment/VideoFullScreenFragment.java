@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -32,10 +33,10 @@ public class VideoFullScreenFragment extends BaseFragment {
 
     private VideoInfo mVideoInfo;
 
-    public static void show(Context context, VideoInfo videoInfo) {
+    public static void show(Context context, VideoInfo videoInfo,View view) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(EXTRA_VIDEO_INFO, videoInfo);
-        FragmentUtils.navigateToInNewActivity(context, new VideoFullScreenFragment(), bundle);
+        FragmentUtils.navigateToInNewActivityWithTranstion(context,view, new VideoFullScreenFragment(), bundle);
 
     }
 
@@ -56,7 +57,7 @@ public class VideoFullScreenFragment extends BaseFragment {
     protected void initViews(View view) {
         super.initViews(view);
         mImageView = (ImageView) view.findViewById(R.id.image1);
-
+        ViewCompat.setTransitionName(mImageView,"image");
     }
 
     @Override

@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:maxLines="5"
-        android:text="空旷的口水看打瞌睡了看似IE拉伸了时刻刻哦哦速度快贷款卡离开店铺的口袋里老老实实客人所破事水,空旷的口水看打瞌睡了看似IE拉伸了时刻刻哦哦速度快贷款卡离开店铺的口袋里老老实实客人所破事水,空旷的口水看打瞌睡了看似IE拉伸了时刻刻哦哦速度快贷款卡离开店铺的口袋里老老实实客人所破事水,空旷的口水看打瞌睡了看似IE拉伸了时刻刻哦哦速度快贷款卡离开店铺的口袋里老老实实客人所破事水"
+        android:layout_marginTop="50dp"
         android:textColor="@color/black"/>
 
     <TextView
@@ -35,8 +35,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="全文"
+        android:visibility="gone"
         android:textColor="@color/blue"
         />
-
+    <TextView
+        android:id="@id/text3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:maxLines="5"
+        android:textSize="20sp"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/black"/>
 
 </LinearLayout>
