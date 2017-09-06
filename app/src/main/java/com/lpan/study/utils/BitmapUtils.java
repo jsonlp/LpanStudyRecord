@@ -15,22 +15,6 @@ import java.io.IOException;
 
 public class BitmapUtils {
 
-    public static Bitmap compressPhotoFileToBitmap(String filePath, int width, int height) {
-        BitmapFactory.Options opts = new BitmapFactory.Options();
-        opts.inJustDecodeBounds = true;
-        opts.inPreferredConfig = Bitmap.Config.ARGB_8888;
-
-        BitmapFactory.decodeFile(filePath, opts);
-        opts.inSampleSize = calculateInSampleSize(opts, width, height);
-        opts.inJustDecodeBounds = false;
-        try {
-            return BitmapFactory.decodeFile(filePath, opts);
-        } catch (OutOfMemoryError err) {
-            err.printStackTrace();
-        }
-
-        return null;
-    }
 
     private static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth,
                                              int reqHeight) {
@@ -166,4 +150,80 @@ public class BitmapUtils {
 
         return result;
     }
+
+    public static Bitmap compressPhotoFileToBitmap(String filePath, int max, int min) {
+
+        int tempWidth = 2 * max;
+        int tempHeight = 2 * min;
+
+        BitmapFactory.Options opts = new BitmapFactory.Options();
+        opts.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(filePath, opts);
+        opts.inSampleSize = calculateInSampleSize(opts, tempWidth, tempHeight);
+        opts.inJustDecodeBounds = false;
+        try {
+            Bitmap bitmap = BitmapFactory.decodeFile(filePath, opts);
+            int width = bitmap.getWidth();
+            int height = bitmap.getHeight();
+            Bitmap bitmap1 = null;
+
+            /**
+             * 长宽比大于2
+             */
+            if (min > 0 && (width / height > 2 || height / width > 2)) {
+                //最短边>设定值,需要压缩
+                if ((width > min && height > min)) {
+                    bitmap1 = resizeFitMin(bitmap, min);
+                    bitmap.recycle();
+                } else {
+                    return bitmap;
+                }
+            } else {
+                //有边长>最大值
+                if (width > max || height > max) {
+                    bitmap1 = resizeFitMax(bitmap, max);
+                    bitmap.recycle();
+                } else {
+                    return bitmap;
+                }
+            }
+            return bitmap1;
+        } catch (OutOfMemoryError err) {
+            err.printStackTrace();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param bitmap
+     * @param max    最长边长度
+     * @return
+     */
+    public static Bitmap resizeFitMax(Bitmap bitmap, int max) {
+        Bitmap BitmapOrg = bitmap;
+        int width = BitmapOrg.getWidth();
+        int height = BitmapOrg.getHeight();
+        int old = Math.max(width, height);
+        float scale = (float) max / old;
+        Matrix matrix = new Matrix();
+        matrix.postScale(scale, scale);
+        Bitmap resizedBitmap = Bitmap.createBitmap(BitmapOrg, 0, 0, width, height, matrix, true);
+
+        return resizedBitmap;
+    }
+
+    public static Bitmap resizeFitMin(Bitmap bitmap, int min) {
+        Bitmap BitmapOrg = bitmap;
+        int width = BitmapOrg.getWidth();
+        int height = BitmapOrg.getHeight();
+        int old = Math.min(width, height);
+        float scale = (float) min / old;
+        Matrix matrix = new Matrix();
+        matrix.postScale(scale, scale);
+        Bitmap resizedBitmap = Bitmap.createBitmap(BitmapOrg, 0, 0, width, height, matrix, true);
+
+        return resizedBitmap;
+    }
+
 }

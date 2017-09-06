@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.lpan.study.context.AppContext;
 import com.lpan.study.model.VideoInfo;
+import com.lpan.study.utils.BitmapUtils;
 import com.lpan.study.utils.FileUtils;
 import com.lpan.study.utils.FragmentUtils;
 import com.test.lpanstudyrecord.R;
@@ -29,9 +30,13 @@ public class VideoFullScreenFragment extends BaseFragment {
 
     public static final String EXTRA_VIDEO_INFO = "extra_video_info";
 
+    public static final String EXTRA_IMAGE_PATH = "extra_extra_path";
+
     private ImageView mImageView;
 
     private VideoInfo mVideoInfo;
+
+    private String mImagePath;
 
     public static void show(Context context, VideoInfo videoInfo,View view) {
         Bundle bundle = new Bundle();
@@ -40,10 +45,18 @@ public class VideoFullScreenFragment extends BaseFragment {
 
     }
 
+    public static void show(Context context, String imagePath ,View view) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(EXTRA_IMAGE_PATH, imagePath);
+        FragmentUtils.navigateToInNewActivityWithTranstion(context,view, new VideoFullScreenFragment(), bundle);
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
+            mImagePath = getArguments().getString(EXTRA_IMAGE_PATH);
             mVideoInfo = (VideoInfo) getArguments().getSerializable(EXTRA_VIDEO_INFO);
         }
     }
@@ -63,7 +76,10 @@ public class VideoFullScreenFragment extends BaseFragment {
     @Override
     protected void initData() {
         super.initData();
-
+        if (!TextUtils.isEmpty(mImagePath)) {
+            mImageView.setImageURI(Uri.parse(mImagePath));
+            return;
+        }
 
         if (!TextUtils.isEmpty(mVideoInfo.getThumb())) {
 

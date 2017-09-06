@@ -6,10 +6,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.lpan.study.adapter.MainViewpagerAdapter;
-import com.lpan.study.fragment.CustomViewFragment;
-import com.lpan.study.fragment.MediaFragment;
-import com.lpan.study.fragment.OthersFragment;
-import com.lpan.study.fragment.ToolsFragment;
+import com.lpan.study.fragment.home.CustomViewFragment;
+import com.lpan.study.fragment.home.MediaFragment;
+import com.lpan.study.fragment.home.OthersFragment;
+import com.lpan.study.fragment.home.ToolsFragment;
 import com.test.lpanstudyrecord.R;
 
 import java.util.ArrayList;

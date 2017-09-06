@@ -57,6 +57,7 @@
     <item name="edit5" type="id">edit5</item>
     <item name="edit6" type="id">edit6</item>
     <item name="edit7" type="id">edit7</item>
+    <item name="viewpager" type="id">viewpager</item>
 
 
 </resources>

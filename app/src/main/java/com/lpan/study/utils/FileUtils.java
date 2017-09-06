@@ -1,9 +1,15 @@
 package com.lpan.study.utils;
 
+import android.annotation.SuppressLint;
+import android.content.ContentResolver;
 import android.content.Context;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
+import android.net.Uri;
 import android.os.Environment;
+import android.provider.DocumentsContract;
+import android.provider.MediaStore;
 
 import com.lpan.study.context.AppContext;
 
@@ -181,4 +187,50 @@ public class FileUtils {
         }
         return null;
     }
+
+    @SuppressLint("NewApi")
+    public static String getImagePath(Uri uri) {
+        String scheme = uri.getScheme();
+        String imagePath = uri.getPath();
+        if (ContentResolver.SCHEME_FILE.equals(scheme)) {
+            //直接就是uri.getPath
+        } else if (Utils.hasKitkat()
+                && DocumentsContract.isDocumentUri(AppContext.getContext(), uri)) {
+            try {
+                String wholeID = DocumentsContract.getDocumentId(uri);
+                String id = wholeID.split(":")[1];
+                String[] column = {MediaStore.Images.Media.DATA};
+                String sel = MediaStore.Images.Media._ID + "=?";
+                Cursor cursor = AppContext
+                        .getContext()
+                        .getContentResolver()
+                        .query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, column, sel,
+                                new String[]{id}, null);
+                int columnIndex = cursor.getColumnIndex(column[0]);
+                if (cursor.moveToFirst()) {
+                    imagePath = cursor.getString(columnIndex);
+                }
+                cursor.close();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else if (ContentResolver.SCHEME_CONTENT.equals(scheme)) {
+            //这里只处理图片
+            String[] proj = {MediaStore.Images.Media.DATA};
+            Cursor cursor = AppContext.getContext().getContentResolver()
+                    .query(uri, proj, null, null, null);
+
+            if (cursor != null && cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                imagePath = cursor.getString(cursor
+                        .getColumnIndexOrThrow(MediaStore.Images.Media.DATA));
+            }
+            if (cursor != null) {
+                cursor.close();
+            }
+
+        }
+        return imagePath;
+    }
+
 }

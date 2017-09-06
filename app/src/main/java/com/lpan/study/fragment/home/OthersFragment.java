@@ -1,10 +1,12 @@
-package com.lpan.study.fragment;
+package com.lpan.study.fragment.home;
 
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.ListView;
 
 import com.lpan.study.adapter.NavegationAdapter;
+import com.lpan.study.fragment.BaseFragment;
+import com.lpan.study.fragment.ConcrrentModificationFragment;
 import com.lpan.study.listener.OnRowAdapterClickListener;
 import com.lpan.study.utils.FragmentUtils;
 import com.test.lpanstudyrecord.R;

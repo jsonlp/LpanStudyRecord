@@ -1,10 +1,20 @@
-package com.lpan.study.fragment;
+package com.lpan.study.fragment.home;
 
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
 import com.lpan.study.adapter.NavegationAdapter;
+import com.lpan.study.fragment.AudioFocusTestFragment;
+import com.lpan.study.fragment.BaseFragment;
+import com.lpan.study.fragment.GalleryFragment;
+import com.lpan.study.fragment.GifImageFragment;
+import com.lpan.study.fragment.ScanGalleryFragment;
+import com.lpan.study.fragment.VideoListPlayerFragment;
+import com.lpan.study.fragment.VideoPlayFragment;
+import com.lpan.study.fragment.VideoRecyclerFragment;
+import com.lpan.study.fragment.ZoomImageFragment;
 import com.lpan.study.listener.OnRowAdapterClickListener;
 import com.lpan.study.utils.FragmentUtils;
 import com.test.lpanstudyrecord.R;
@@ -16,7 +26,7 @@ import java.util.List;
  * Created by lpan on 2017/6/6.
  */
 
-public class CustomViewFragment extends BaseFragment implements OnRowAdapterClickListener<String> {
+public class MediaFragment extends BaseFragment implements OnRowAdapterClickListener<String> {
 
     private ListView mListView;
 
@@ -36,27 +46,25 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
     protected void initData() {
         super.initData();
         mList = new ArrayList<>();
-        mList.add("smile Loading");
-        mList.add("Android Shimmer");
-        mList.add("ClickableSpan");
-        mList.add("group avatar");
-        mList.add("drag and sort list");
-        mList.add("double list");
-        mList.add("view visibility percent");
-        mList.add("custom card view");
-        mList.add("video play statu");
+        mList.add("AudioFocus");
+        mList.add("video transform");
+        mList.add("scan gallery");
+        mList.add("compress image");
+        mList.add("gif image");
+        mList.add("video list player");
+        mList.add("video recyclerview player");
+        mList.add("gallery");
 
 
         mToActivityList = new ArrayList<>();
-        mToActivityList.add(new LoadingAnimationFragment());
-        mToActivityList.add(new ShimmerFragment());
-        mToActivityList.add(new ClickableSpanDemoFragment());
-        mToActivityList.add(new GroupImageFragment());
-        mToActivityList.add(new DragListFragment());
-        mToActivityList.add(new DoubleListFragment());
-        mToActivityList.add(new VisibilityUtilsFrament());
-        mToActivityList.add(new CustomCardViewFragment());
-        mToActivityList.add(new VideoPlayStatuFragment());
+        mToActivityList.add(new AudioFocusTestFragment());
+        mToActivityList.add(new VideoPlayFragment());
+        mToActivityList.add(new ScanGalleryFragment());
+        mToActivityList.add(new ZoomImageFragment());
+        mToActivityList.add(new GifImageFragment());
+        mToActivityList.add(new VideoListPlayerFragment());
+        mToActivityList.add(new VideoRecyclerFragment());
+        mToActivityList.add(new GalleryFragment());
 
 
         getAdapter().addItems(mList);
@@ -79,7 +87,7 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
 
     @Override
     public void onLongClick(View view, String s, int position) {
-
+            Log.d("MediaFragment","onLongClick--------");
     }
 
     @Override
