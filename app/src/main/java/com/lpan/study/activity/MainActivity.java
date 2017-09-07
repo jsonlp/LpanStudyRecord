@@ -3,6 +3,7 @@ package com.lpan.study.activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lpan.study.adapter.MainViewpagerAdapter;
@@ -29,6 +30,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private List<TextView> mTextViews = new ArrayList<>();
 
+    private ImageView mBackground;
+
+    private int backgrounds[] = {
+            R.drawable.wall01, R.drawable.wall09,
+            R.drawable.wall03, R.drawable.wall04,
+            R.drawable.wall05, R.drawable.wall06,
+            R.drawable.wall07, R.drawable.wall08};
 
     @Override
     protected int getLayoutResource() {
@@ -38,6 +46,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void initView() {
         super.initView();
+        mBackground = (ImageView) findViewById(R.id.background);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mNavegation1 = (TextView) findViewById(R.id.navegation1);
         mNavegation2 = (TextView) findViewById(R.id.navegation2);
@@ -71,10 +80,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void initData() {
         super.initData();
+        mBackground.setImageResource(backgrounds[(int) (Math.random() * backgrounds.length)]);
+
         List<Fragment> list = new ArrayList<>();
-        list.add(new ToolsFragment());
-        list.add(new MediaFragment());
         list.add(new CustomViewFragment());
+        list.add(new MediaFragment());
+        list.add(new ToolsFragment());
         list.add(new OthersFragment());
 
         mAdapter = new MainViewpagerAdapter(getSupportFragmentManager(), list);

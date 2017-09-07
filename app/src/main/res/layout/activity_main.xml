@@ -1,65 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="1">
+    android:layout_height="match_parent">
 
-
-    <android.support.v4.view.ViewPager
-        android:id="@id/viewpager"
+    <ImageView
+        android:id="@+id/background"
+        android:src="@drawable/wall01"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
 
-    </android.support.v4.view.ViewPager>
-
-    <View
-        android:layout_width="match_parent"
-        android:background="@color/red"
-        android:layout_height="1dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:weightSum="4">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
 
-        <TextView
-            android:id="@+id/navegation1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="tools"
-            android:textColor="@color/black"/>
+        <android.support.v4.view.ViewPager
+            android:id="@id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/navegation2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="media"
-            android:textColor="@color/black"/>
+        </android.support.v4.view.ViewPager>
 
-        <TextView
-            android:id="@+id/navegation3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="view"
-            android:textColor="@color/black"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/red"/>
 
-        <TextView
-            android:id="@+id/navegation4"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="other"
-            android:textColor="@color/black"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:weightSum="4">
+
+            <TextView
+                android:id="@+id/navegation1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="view"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/navegation2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="media"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/navegation3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="tools"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/navegation4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="other"
+                android:textColor="@color/black"/>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+
+
+</FrameLayout>

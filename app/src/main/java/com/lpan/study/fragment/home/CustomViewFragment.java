@@ -13,6 +13,7 @@ import com.lpan.study.fragment.DragListFragment;
 import com.lpan.study.fragment.GroupImageFragment;
 import com.lpan.study.fragment.LoadingAnimationFragment;
 import com.lpan.study.fragment.ShimmerFragment;
+import com.lpan.study.fragment.SlidePanelFragment;
 import com.lpan.study.fragment.VideoPlayStatuFragment;
 import com.lpan.study.fragment.VisibilityUtilsFrament;
 import com.lpan.study.listener.OnRowAdapterClickListener;
@@ -55,7 +56,7 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
         mList.add("view visibility percent");
         mList.add("custom card view");
         mList.add("video play statu");
-
+        mList.add("slide panel");
 
         mToActivityList = new ArrayList<>();
         mToActivityList.add(new LoadingAnimationFragment());
@@ -67,6 +68,7 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
         mToActivityList.add(new VisibilityUtilsFrament());
         mToActivityList.add(new CustomCardViewFragment());
         mToActivityList.add(new VideoPlayStatuFragment());
+        mToActivityList.add(new SlidePanelFragment());
 
 
         getAdapter().addItems(mList);

@@ -48,4 +48,8 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.1.0'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.7'
     compile project(':optroundcardview')
+
+    //滑动动画
+    compile 'com.facebook.rebound:rebound:0.3.8'
+
 }

@@ -8,6 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="SplashTheme" parent="@android:style/Theme.Light.NoTitleBar.Fullscreen">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
     <style name="JiemoTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowBackground">@android:color/white</item>

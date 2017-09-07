@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:card="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <com.lpan.study.view.slidepanel.CardSlidePanel
+        android:id="@+id/card_slide_panel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        card:bottomMarginTop="38dp">
+
+    </com.lpan.study.view.slidepanel.CardSlidePanel>
+</LinearLayout>
