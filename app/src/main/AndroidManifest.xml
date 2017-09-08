@@ -33,7 +33,7 @@
 
         <activity
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:name="com.lpan.study.activity.GoalActivity"
+            android:name="com.lpan.study.activity.TransparentActivity"
             android:screenOrientation="portrait"
             />
 

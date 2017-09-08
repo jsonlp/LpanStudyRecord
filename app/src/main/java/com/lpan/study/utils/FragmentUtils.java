@@ -12,7 +12,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
 import com.lpan.study.activity.FullScreenActivity;
-import com.lpan.study.activity.GoalActivity;
+import com.lpan.study.activity.TransparentActivity;
 
 /**
  * Created by lpan on 2016/12/19.
@@ -21,21 +21,20 @@ import com.lpan.study.activity.GoalActivity;
 public class FragmentUtils {
 
     public static void navigateToInNewActivity(Context context, Fragment fragment, Bundle bundle) {
-        Intent intent = new Intent(context, GoalActivity.class);
+        Intent intent = new Intent(context, TransparentActivity.class);
 
-        intent.putExtra(GoalActivity.EXTRAS_CLASS_NAME, fragment.getClass()
+        intent.putExtra(TransparentActivity.EXTRAS_CLASS_NAME, fragment.getClass()
                 .getName());
-        intent.putExtra(GoalActivity.EXTRAS_BUNDLE, bundle);
-
+        intent.putExtra(TransparentActivity.EXTRAS_BUNDLE, bundle);
         context.startActivity(intent);
     }
 
     public static void navigateToInNewActivityWithTranstion(Context context, View view, Fragment fragment, Bundle bundle) {
-        Intent intent = new Intent(context, GoalActivity.class);
+        Intent intent = new Intent(context, TransparentActivity.class);
 
-        intent.putExtra(GoalActivity.EXTRAS_CLASS_NAME, fragment.getClass()
+        intent.putExtra(TransparentActivity.EXTRAS_CLASS_NAME, fragment.getClass()
                 .getName());
-        intent.putExtra(GoalActivity.EXTRAS_BUNDLE, bundle);
+        intent.putExtra(TransparentActivity.EXTRAS_BUNDLE, bundle);
 //        context.startActivity(intent);
 
         // 这里指定了共享的视图元素
@@ -47,9 +46,9 @@ public class FragmentUtils {
     public static void navigateToInFullScreenActivity(Context context, Fragment fragment, Bundle bundle) {
         Intent intent = new Intent(context, FullScreenActivity.class);
 
-        intent.putExtra(GoalActivity.EXTRAS_CLASS_NAME, fragment.getClass()
+        intent.putExtra(TransparentActivity.EXTRAS_CLASS_NAME, fragment.getClass()
                 .getName());
-        intent.putExtra(GoalActivity.EXTRAS_BUNDLE, bundle);
+        intent.putExtra(TransparentActivity.EXTRAS_BUNDLE, bundle);
 
         context.startActivity(intent);
     }

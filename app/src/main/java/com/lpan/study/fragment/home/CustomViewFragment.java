@@ -12,6 +12,7 @@ import com.lpan.study.fragment.DoubleListFragment;
 import com.lpan.study.fragment.DragListFragment;
 import com.lpan.study.fragment.GroupImageFragment;
 import com.lpan.study.fragment.LoadingAnimationFragment;
+import com.lpan.study.fragment.NestedScrollFragment;
 import com.lpan.study.fragment.ShimmerFragment;
 import com.lpan.study.fragment.SlidePanelFragment;
 import com.lpan.study.fragment.VideoPlayStatuFragment;
@@ -57,6 +58,7 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
         mList.add("custom card view");
         mList.add("video play statu");
         mList.add("slide panel");
+        mList.add("nested scroll");
 
         mToActivityList = new ArrayList<>();
         mToActivityList.add(new LoadingAnimationFragment());
@@ -69,6 +71,7 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
         mToActivityList.add(new CustomCardViewFragment());
         mToActivityList.add(new VideoPlayStatuFragment());
         mToActivityList.add(new SlidePanelFragment());
+        mToActivityList.add(new NestedScrollFragment());
 
 
         getAdapter().addItems(mList);
