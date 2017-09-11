@@ -100,7 +100,7 @@ public class CardItemView extends FrameLayout {
     public void bindLayoutResId(int layoutResId) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View view = inflater.inflate(layoutResId, null);
-        addView(view, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+        addView(view, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
     }
 
     public void setVisibilityWithAnimation(final int visibility, int delayIndex) {

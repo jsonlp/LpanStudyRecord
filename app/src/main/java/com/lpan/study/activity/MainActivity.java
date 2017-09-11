@@ -80,7 +80,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void initData() {
         super.initData();
-        mBackground.setImageResource(backgrounds[(int) (Math.random() * backgrounds.length)]);
+//        mBackground.setImageResource(backgrounds[(int) (Math.random() * backgrounds.length)]);
 
         List<Fragment> list = new ArrayList<>();
         list.add(new CustomViewFragment());

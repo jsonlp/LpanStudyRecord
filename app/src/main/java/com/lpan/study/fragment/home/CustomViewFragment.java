@@ -6,6 +6,7 @@ import android.widget.ListView;
 
 import com.lpan.study.adapter.NavegationAdapter;
 import com.lpan.study.fragment.BaseFragment;
+import com.lpan.study.fragment.CardSwipeFragment;
 import com.lpan.study.fragment.ClickableSpanDemoFragment;
 import com.lpan.study.fragment.CustomCardViewFragment;
 import com.lpan.study.fragment.DoubleListFragment;
@@ -59,6 +60,7 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
         mList.add("video play statu");
         mList.add("slide panel");
         mList.add("nested scroll");
+        mList.add("card swipe");
 
         mToActivityList = new ArrayList<>();
         mToActivityList.add(new LoadingAnimationFragment());
@@ -72,6 +74,7 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
         mToActivityList.add(new VideoPlayStatuFragment());
         mToActivityList.add(new SlidePanelFragment());
         mToActivityList.add(new NestedScrollFragment());
+        mToActivityList.add(new CardSwipeFragment());
 
 
         getAdapter().addItems(mList);

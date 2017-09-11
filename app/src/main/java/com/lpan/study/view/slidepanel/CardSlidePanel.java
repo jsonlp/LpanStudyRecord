@@ -109,7 +109,7 @@ public class CardSlidePanel extends ViewGroup {
             CardItemView itemView = new CardItemView(getContext());
             itemView.bindLayoutResId(adapter.getLayoutId());
             itemView.setParentView(this);
-            addView(itemView, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+            addView(itemView, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 
             if (i == 0) {
                 itemView.setAlpha(0);

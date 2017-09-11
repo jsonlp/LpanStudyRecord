@@ -45,8 +45,8 @@ public class UserProfileFragment extends BaseFragment {
     protected void initViews(View view) {
         super.initViews(view);
         mImageView = (ImageView) view.findViewById(R.id.image1);
-//        mImageView.setImageResource(mImageId);
-//        ViewCompat.setTransitionName(mImageView,"image");
+        mImageView.setImageResource(mImageId);
+        ViewCompat.setTransitionName(mImageView,"image");
 
         mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
