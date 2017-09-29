@@ -5,12 +5,13 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.lpan.study.adapter.NavegationAdapter;
-import com.lpan.study.fragment.BaseFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.fragment.CardSwipeFragment;
 import com.lpan.study.fragment.ClickableSpanDemoFragment;
 import com.lpan.study.fragment.CustomCardViewFragment;
 import com.lpan.study.fragment.DoubleListFragment;
 import com.lpan.study.fragment.DragListFragment;
+import com.lpan.study.fragment.AnimationFragment;
 import com.lpan.study.fragment.GroupImageFragment;
 import com.lpan.study.fragment.LoadingAnimationFragment;
 import com.lpan.study.fragment.NestedScrollFragment;
@@ -49,6 +50,7 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
     protected void initData() {
         super.initData();
         mList = new ArrayList<>();
+        mList.add("value animator");
         mList.add("smile Loading");
         mList.add("Android Shimmer");
         mList.add("ClickableSpan");
@@ -62,7 +64,9 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
         mList.add("nested scroll");
         mList.add("card swipe");
 
+
         mToActivityList = new ArrayList<>();
+        mToActivityList.add(new AnimationFragment());
         mToActivityList.add(new LoadingAnimationFragment());
         mToActivityList.add(new ShimmerFragment());
         mToActivityList.add(new ClickableSpanDemoFragment());

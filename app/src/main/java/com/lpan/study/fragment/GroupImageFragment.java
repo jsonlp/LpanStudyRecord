@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.FragmentUtils;
 import com.lpan.study.utils.ViewUtils;
 import com.lpan.study.view.CircleImnageView;

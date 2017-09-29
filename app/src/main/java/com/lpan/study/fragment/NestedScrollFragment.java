@@ -1,5 +1,6 @@
 package com.lpan.study.fragment;
 
+import com.lpan.study.fragment.base.BaseFragment;
 import com.test.lpanstudyrecord.R;
 
 /**

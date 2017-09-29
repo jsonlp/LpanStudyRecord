@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="refresh_text">
+        <item>寻找是一种态度，从不随便</item>
+        <item>世界很美，我们正好有空</item>
+        <item>睁眼，只因世界有迷人的光</item>
+        <item>相遇，春暖花开</item>
+    </string-array>
+</resources>

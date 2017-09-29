@@ -3,9 +3,6 @@ package com.lpan.study.fragment;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.media.MediaMetadataRetriever;
-import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
@@ -16,11 +13,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.lpan.study.context.AppContext;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.model.VideoInfo;
-import com.lpan.study.utils.FileUtils;
 import com.lpan.study.utils.Utils;
 import com.test.lpanstudyrecord.R;
 

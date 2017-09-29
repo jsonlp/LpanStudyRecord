@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="336dp"
     android:layout_height="426dp"
+              android:id="@+id/layout"
     android:background="@drawable/img_card_background"
     android:gravity="center"
     android:orientation="vertical">

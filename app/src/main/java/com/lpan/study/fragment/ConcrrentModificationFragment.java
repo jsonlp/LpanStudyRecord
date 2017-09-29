@@ -1,17 +1,14 @@
 package com.lpan.study.fragment;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.lpan.study.fragment.base.BaseFragment;
 import com.test.lpanstudyrecord.R;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**

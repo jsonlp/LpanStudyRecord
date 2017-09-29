@@ -6,25 +6,25 @@
              android:background="#ffffff"
              android:orientation="vertical">
 
-    <com.lpan.study.view.SimleFaceView
+    <com.lpan.study.view.smilefaceview.SimleFaceView
         android:id="@+id/smileView1"
         android:layout_width="100dp"
         android:layout_gravity="center_horizontal"
         android:layout_height="100dp"/>
 
-    <com.lpan.study.view.SimleEyesView
+    <com.lpan.study.view.smilefaceview.SimleEyesView
         android:id="@+id/smileView2"
         android:layout_gravity="center_horizontal"
         android:layout_width="100dp"
         android:layout_height="100dp"/>
 
-    <com.lpan.study.view.SimleLeftEyeView
+    <com.lpan.study.view.smilefaceview.SimleLeftEyeView
         android:id="@+id/smileView3"
         android:layout_gravity="center_horizontal"
         android:layout_width="100dp"
         android:layout_height="100dp"/>
 
-    <com.lpan.study.view.SimleRightEyeView
+    <com.lpan.study.view.smilefaceview.SimleRightEyeView
         android:id="@+id/smileView4"
         android:layout_gravity="center_horizontal"
         android:layout_width="100dp"

@@ -16,8 +16,8 @@ import android.widget.TextView;
 
 import com.lpan.study.adapter.AbstractAdapter;
 import com.lpan.study.context.AppContext;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.model.VideoInfo;
-import com.lpan.study.utils.ViewUtils;
 import com.lpan.study.view.TextureVideoView;
 import com.test.lpanstudyrecord.R;
 

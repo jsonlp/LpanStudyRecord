@@ -7,6 +7,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 
 import com.lpan.study.utils.Log;
+import com.lpan.study.utils.Variables;
 
 import java.util.List;
 
@@ -43,6 +44,7 @@ public class CardItemTouchHelperCallback<T> extends ItemTouchHelper.Callback {
         int dragFlags = 0;
         int swipeFlags = 0;
         RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
+//        dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
         if (layoutManager instanceof CardLayoutManager) {
             swipeFlags = ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT | ItemTouchHelper.UP;
         }
@@ -107,6 +109,7 @@ public class CardItemTouchHelperCallback<T> extends ItemTouchHelper.Callback {
                     view.setScaleX(scaleX);
                     view.setScaleY(scaleY);
                     view.setTranslationY(-translationY);
+
                 }
             } else {
                 // 当数据源个数小于或等于最大显示数时
@@ -129,11 +132,30 @@ public class CardItemTouchHelperCallback<T> extends ItemTouchHelper.Callback {
                     mListener.onSwiping(viewHolder, ratio, CardConfig.SWIPING_NONE);
                 }
 
-                if(Math.abs(dY) >100){
-                    mListener.onRearchTop(viewHolder,dataList.get(viewHolder.getLayoutPosition()),ratio < 0 ? CardConfig.SWIPING_LEFT : CardConfig.SWIPING_RIGHT);
-                    mListener =null;
+                if (Math.abs(dY) > 100 && Math.abs(dX) < 100 && !Variables.isHasInDetail()) {
+                    Variables.setHasInDetail(true);
+                    mListener.onRearchTop(viewHolder, dataList.get(viewHolder.getLayoutPosition()), CardConfig.SWIPING_NONE);
                 }
+
             }
+
+
+//            if (dY > 0) {
+//                //向上滑动
+//                Log.d("CardItemTouchHelperCallback", "onChildDraw--------向上滑动");
+//                makeMovementFlags(0, (ItemTouchHelper.UP | ItemTouchHelper.DOWN));
+//            }
+//            if (dY < 0) {
+//                //向下滑动
+//                makeMovementFlags(0, (ItemTouchHelper.UP | ItemTouchHelper.DOWN));
+//                Log.d("CardItemTouchHelperCallback", "onChildDraw--------向下滑动");
+//            }
+//            if (dY == 0) {
+//                //水平左右滑动
+//                makeMovementFlags(0, (ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT));
+//
+//                Log.d("CardItemTouchHelperCallback", "onChildDraw--------水平左右滑动");
+//            }
 
             if (Log.DEBUG) {
                 Log.d("CardItemTouchHelperCallback", "onChildDraw--------dx=" + dX + "  dy=" + dY + "  actionState=" + actionState + "  isCurrentlyActive=" + isCurrentlyActive);

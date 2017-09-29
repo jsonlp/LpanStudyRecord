@@ -2,12 +2,12 @@ package com.lpan.study.fragment;
 
 import android.os.Environment;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lpan.study.context.AppContext;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.FileUtils;
 import com.test.lpanstudyrecord.R;
 

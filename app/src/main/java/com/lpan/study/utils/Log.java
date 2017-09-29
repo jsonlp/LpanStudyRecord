@@ -10,7 +10,9 @@ public class Log {
     private static int count = 0;
 
     //    默認值爲BuildConfig.DEBUG
-    public static boolean DEBUG = BuildConfig.DEBUG;
+//    public static boolean DEBUG = BuildConfig.DEBUG;
+    public static boolean DEBUG = true;
+
 
     public static void setSendLogEnabel(boolean open) {
         SEND_LOG = open;

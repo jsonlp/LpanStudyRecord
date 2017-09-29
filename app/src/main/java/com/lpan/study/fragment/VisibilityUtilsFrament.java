@@ -2,7 +2,6 @@ package com.lpan.study.fragment;
 
 import android.content.Context;
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.lpan.study.adapter.AbstractAdapter;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.test.lpanstudyrecord.R;
 
 import java.util.ArrayList;

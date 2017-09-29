@@ -7,7 +7,7 @@ import android.widget.ListView;
 
 import com.lpan.study.adapter.NavegationAdapter;
 import com.lpan.study.fragment.AudioFocusTestFragment;
-import com.lpan.study.fragment.BaseFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.fragment.GalleryFragment;
 import com.lpan.study.fragment.GifImageFragment;
 import com.lpan.study.fragment.ScanGalleryFragment;

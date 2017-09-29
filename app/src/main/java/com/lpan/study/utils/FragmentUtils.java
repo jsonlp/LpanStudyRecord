@@ -1,8 +1,11 @@
 package com.lpan.study.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -32,12 +35,12 @@ public class FragmentUtils {
         intent.putExtra(TransparentActivity.EXTRAS_CLASS_NAME, fragment.getClass()
                 .getName());
         intent.putExtra(TransparentActivity.EXTRAS_BUNDLE, bundle);
-        context.startActivity(intent);
+//        context.startActivity(intent);
 
 //        // 这里指定了共享的视图元素
-//        ActivityOptionsCompat options = ActivityOptionsCompat
-//                .makeSceneTransitionAnimation((Activity) context, view, "image");
-//        ActivityCompat.startActivity(context, intent, options.toBundle());
+        ActivityOptionsCompat options = ActivityOptionsCompat
+                .makeSceneTransitionAnimation((Activity) context, view, "image");
+        ActivityCompat.startActivity(context, intent, options.toBundle());
     }
 
     public static void navigateToInFullScreenActivity(Context context, Fragment fragment, Bundle bundle) {

@@ -6,7 +6,7 @@ import android.widget.ListView;
 
 import com.lpan.study.adapter.NavegationAdapter;
 import com.lpan.study.fragment.AddLogoFragment;
-import com.lpan.study.fragment.BaseFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.fragment.CalculateAlphaFragment;
 import com.lpan.study.listener.OnRowAdapterClickListener;
 import com.lpan.study.utils.FragmentUtils;

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.BitmapUtils;
 import com.lpan.study.utils.FileUtils;
 import com.lpan.study.utils.FragmentUtils;

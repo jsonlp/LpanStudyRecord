@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.lpan.study.audio.AudioFocusCallback;
 import com.lpan.study.audio.AudioFocusHelper;
 import com.lpan.study.context.AppContext;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.test.lpanstudyrecord.R;
 
 import java.io.IOException;

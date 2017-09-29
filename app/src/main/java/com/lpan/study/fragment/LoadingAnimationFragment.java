@@ -3,12 +3,12 @@ package com.lpan.study.fragment;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lpan.study.context.AppContext;
-import com.lpan.study.view.SimleLoadingView;
+import com.lpan.study.fragment.base.BaseFragment;
+import com.lpan.study.view.smilefaceview.SimleLoadingView;
 import com.test.lpanstudyrecord.R;
 
 /**

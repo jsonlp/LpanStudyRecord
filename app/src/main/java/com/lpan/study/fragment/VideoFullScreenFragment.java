@@ -5,8 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
 import android.text.TextUtils;
 import android.view.View;
@@ -14,13 +12,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.lpan.study.context.AppContext;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.model.VideoInfo;
-import com.lpan.study.utils.BitmapUtils;
-import com.lpan.study.utils.FileUtils;
 import com.lpan.study.utils.FragmentUtils;
 import com.test.lpanstudyrecord.R;
-
-import java.io.File;
 
 /**
  * Created by lpan on 2017/2/23.

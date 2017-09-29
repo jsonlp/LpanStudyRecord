@@ -10,18 +10,11 @@ import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.lpan.study.context.AppContext;
-import com.lpan.study.utils.BitmapUtils;
-import com.lpan.study.utils.FileUtils;
-import com.lpan.study.utils.Toaster;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.ViewUtils;
 import com.test.lpanstudyrecord.R;
-
-import java.io.File;
 
 /**
  * Created by lpan on 2017/3/14.

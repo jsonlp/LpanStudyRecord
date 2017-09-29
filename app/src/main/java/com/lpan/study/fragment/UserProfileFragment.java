@@ -6,8 +6,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.FragmentUtils;
+import com.lpan.study.utils.Variables;
 import com.test.lpanstudyrecord.R;
 
 /**
@@ -19,6 +22,8 @@ public class UserProfileFragment extends BaseFragment {
     public static final String EXTRA_IMAGE_PATH = "extra_image_path";
 
     private ImageView mImageView;
+
+    private ScrollView  mScrollView;
 
     private int mImageId;
 
@@ -37,6 +42,12 @@ public class UserProfileFragment extends BaseFragment {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        Variables.setHasInDetail(false);
+    }
+
+    @Override
     protected int getLayoutResource() {
         return R.layout.fragment_user_profile;
     }
@@ -47,6 +58,7 @@ public class UserProfileFragment extends BaseFragment {
         mImageView = (ImageView) view.findViewById(R.id.image1);
         mImageView.setImageResource(mImageId);
         ViewCompat.setTransitionName(mImageView,"image");
+        mScrollView = (ScrollView) view.findViewById(R.id.scrollView);
 
         mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +66,7 @@ public class UserProfileFragment extends BaseFragment {
                 getActivity().onBackPressed();
             }
         });
+
     }
 
 

@@ -3,6 +3,7 @@ package com.lpan.study.fragment;
 import android.view.View;
 
 import com.github.captain_miao.optroundcardview.OptRoundCardView;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.test.lpanstudyrecord.R;
 
 /**

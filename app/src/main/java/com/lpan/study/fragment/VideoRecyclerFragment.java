@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.lpan.study.adapter.RecyclerViewAdapter;
 import com.lpan.study.adapter.RecyclerViewWrapLayoutManager;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.model.VideoInfo;
 import com.lpan.study.view.TextureVideoView;
 import com.test.lpanstudyrecord.R;

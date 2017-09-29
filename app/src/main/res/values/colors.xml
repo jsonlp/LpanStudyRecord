@@ -35,5 +35,6 @@
     <color name="bg_f2">#f2f2f2</color>
     <color name="smile_loading_color">#E8EAEB</color>
     <color name="ebebeb">#EBEBEB</color>
+    <color name="gray2">#8A9499</color>
 
 </resources>

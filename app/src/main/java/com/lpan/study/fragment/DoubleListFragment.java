@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.lpan.study.adapter.AbstractAdapter;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.listener.OnProvinceTabClickListener;
 import com.lpan.study.model.ProvinceTabInfo;
 import com.lpan.study.model.SchoolInfo;

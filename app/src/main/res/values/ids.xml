@@ -58,6 +58,17 @@
     <item name="edit6" type="id">edit6</item>
     <item name="edit7" type="id">edit7</item>
     <item name="viewpager" type="id">viewpager</item>
+    <item name="alpha" type="id">alpha</item>
+    <item name="translationX" type="id">translationX</item>
+    <item name="translationY" type="id">translationY</item>
+    <item name="scaleX" type="id">scaleX</item>
+    <item name="scaleY" type="id">scaleY</item>
+    <item name="rotation" type="id">rotation</item>
+    <item name="animatorset" type="id">animatorset</item>
+    <item name="animatorxml" type="id">animatorxml</item>
+    <item name="item" type="id">item</item>
+    <item name="gridview" type="id">gridview</item>
+    <item name="pull_to_refresh_recyclerview" type="id">pull_to_refresh_recyclerview</item>
 
 
 </resources>

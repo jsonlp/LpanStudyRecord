@@ -1,6 +1,7 @@
-package com.lpan.study.fragment;
+package com.lpan.study.fragment.base;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -18,6 +19,8 @@ import com.test.lpanstudyrecord.R;
  */
 
 public abstract class BaseFragment extends Fragment {
+
+    protected Handler mHandler = new Handler();
 
     @Nullable
     @Override

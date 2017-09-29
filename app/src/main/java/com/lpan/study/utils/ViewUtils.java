@@ -111,4 +111,12 @@ public class ViewUtils {
         Log.e("lp-test", "状态栏-方法1:" + statusBarHeight1);
         return 0;
     }
+
+    public static int getActionbarHeight() {
+        return getDimenPx(AppContext.getContext(), 50);
+    }
+
+    public static int getDimenPx(Context context, int ResId) {
+        return context.getResources().getDimensionPixelSize(ResId);
+    }
 }

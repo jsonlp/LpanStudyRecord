@@ -3,6 +3,7 @@ package com.lpan.study.fragment;
 import android.view.View;
 import android.widget.TextView;
 
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.view.ThrobbingNoteView;
 import com.test.lpanstudyrecord.R;
 

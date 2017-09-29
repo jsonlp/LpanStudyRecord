@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.view.cardswipe.CardConfig;
 import com.lpan.study.view.cardswipe.CardItemTouchHelperCallback;
 import com.lpan.study.view.cardswipe.CardLayoutManager;
@@ -83,7 +85,10 @@ public class CardSwipeFragment extends BaseFragment {
 
             @Override
             public void onRearchTop(RecyclerView.ViewHolder viewHolder, Integer integer, int direction) {
-                UserProfileFragment.show(getActivity(), viewHolder.itemView, integer);
+                if (viewHolder instanceof MyAdapter.MyViewHolder) {
+                    MyAdapter.MyViewHolder myViewHolder = (MyAdapter.MyViewHolder) viewHolder;
+                    UserProfileFragment.show(getActivity(), myViewHolder.avatarImageView, integer);
+                }
 
             }
         });
@@ -118,8 +123,8 @@ public class CardSwipeFragment extends BaseFragment {
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-            ImageView avatarImageView = ((MyViewHolder) holder).avatarImageView;
-            avatarImageView.setImageResource(list.get(position));
+            MyViewHolder myViewHolder = (MyViewHolder) holder;
+            myViewHolder.avatarImageView.setImageResource(list.get(position));
         }
 
         @Override
@@ -132,12 +137,16 @@ public class CardSwipeFragment extends BaseFragment {
             ImageView avatarImageView;
             ImageView likeImageView;
             ImageView dislikeImageView;
+            TextView name;
+            View layout;
 
             MyViewHolder(View itemView) {
                 super(itemView);
                 avatarImageView = (ImageView) itemView.findViewById(R.id.iv_avatar);
                 likeImageView = (ImageView) itemView.findViewById(R.id.iv_like);
                 dislikeImageView = (ImageView) itemView.findViewById(R.id.iv_dislike);
+                layout = itemView.findViewById(R.id.layout);
+                name = (TextView) itemView.findViewById(R.id.tv_name);
             }
 
         }

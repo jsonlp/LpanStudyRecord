@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.model.MiddleClassInfo;
 import com.test.lpanstudyrecord.R;
 

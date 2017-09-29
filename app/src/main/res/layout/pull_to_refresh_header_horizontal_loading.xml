@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <FrameLayout
+        android:id="@id/fl_inner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <com.lpan.study.view.pulltorefresh.internal.LoadingJiemoAnimationView
+            android:id="@id/layout"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@id/item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="center" />
+
+            <TextView
+                android:id="@id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6.4dip"
+                android:layout_marginRight="@dimen/normal_margin"
+                android:textColor="@color/gray2"
+                android:textSize="12sp" />
+
+        </com.lpan.study.view.pulltorefresh.internal.LoadingJiemoAnimationView>
+
+    </FrameLayout>
+
+</merge>

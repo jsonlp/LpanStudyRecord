@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,16 +21,14 @@ import com.github.hiteshsondhi88.libffmpeg.FFmpegExecuteResponseHandler;
 import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegCommandAlreadyRunningException;
 import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegNotSupportedException;
 import com.lpan.study.context.AppContext;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.model.FFmpegVideoInfo;
-import com.lpan.study.utils.FileUtils;
-import com.lpan.study.utils.Toaster;
 import com.lpan.study.utils.Utils;
 import com.lpan.study.view.TextureVideoView;
 import com.lpan.study.view.UnclickSeekBar;
 import com.test.lpanstudyrecord.R;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 

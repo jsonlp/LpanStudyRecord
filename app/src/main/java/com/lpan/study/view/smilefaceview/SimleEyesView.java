@@ -1,4 +1,4 @@
-package com.lpan.study.view;
+package com.lpan.study.view.smilefaceview;
 
 import android.content.Context;
 import android.graphics.Canvas;

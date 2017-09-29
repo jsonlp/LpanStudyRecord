@@ -17,6 +17,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 
+import com.lpan.study.utils.CollectionUtils;
 import com.test.lpanstudyrecord.R;
 
 import java.util.ArrayList;
@@ -59,7 +60,7 @@ public class CardSlidePanel extends ViewGroup {
     private GestureDetectorCompat moveDetector;
     private Point downPoint = new Point();
     private CardAdapter adapter;
-    private static final int VIEW_COUNT = 4;
+    private static final int VIEW_COUNT = 3;
     private Rect draggableArea;
 
     public CardSlidePanel(Context context) {
@@ -395,7 +396,7 @@ public class CardSlidePanel extends ViewGroup {
     /**
      * 点击按钮消失动画
      */
-    private void vanishOnBtnClick(int type) {
+    public void vanishOnBtnClick(int type) {
         View animateView = viewList.get(0);
         if (animateView.getVisibility() != View.VISIBLE || releasedViewList.contains(animateView)) {
             return;
@@ -514,10 +515,12 @@ public class CardSlidePanel extends ViewGroup {
             viewItem.offsetTopAndBottom(offset);
 
             // 3. 调整缩放、重心等
-            viewItem.setPivotY(viewItem.getMeasuredHeight());
+//            viewItem.setPivotY(viewItem.getMeasuredHeight());
             viewItem.setPivotX(viewItem.getMeasuredWidth() / 2);
             viewItem.setScaleX(scale);
             viewItem.setScaleY(scale);
+
+            viewItem.setPivotY(0);
         }
 
         if (childCount > 0) {
@@ -534,6 +537,9 @@ public class CardSlidePanel extends ViewGroup {
         adapter.registerDataSetObserver(new DataSetObserver() {
             @Override
             public void onChanged() {
+                if (CollectionUtils.isEmpty(viewList)) {
+                    return;
+                }
                 orderViewStack();
                 int delay = 0;
                 for (int i = 0; i < VIEW_COUNT; i++) {

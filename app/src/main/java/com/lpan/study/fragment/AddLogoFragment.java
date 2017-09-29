@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lpan.study.context.AppContext;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.BitmapUtils;
 import com.lpan.study.utils.Toaster;
 import com.lpan.study.utils.ViewUtils;

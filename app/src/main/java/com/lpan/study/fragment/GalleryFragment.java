@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.lpan.study.adapter.GalleryAdapter;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.listener.OnRowAdapterClickListener;
 import com.lpan.study.model.ImageInfo;
 import com.lpan.study.task.ScanGalleryTask;

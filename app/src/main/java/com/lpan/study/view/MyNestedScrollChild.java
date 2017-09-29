@@ -9,6 +9,7 @@ import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 /**
@@ -23,6 +24,8 @@ public class MyNestedScrollChild extends LinearLayout implements NestedScrolling
     private int lastY;
     private int showHeight;
 
+    private TextView textView;
+
 
     public MyNestedScrollChild(Context context) {
         super(context);
@@ -30,6 +33,12 @@ public class MyNestedScrollChild extends LinearLayout implements NestedScrolling
 
     public MyNestedScrollChild(Context context, AttributeSet attrs) {
         super(context, attrs);
+    }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+
     }
 
     @Override
