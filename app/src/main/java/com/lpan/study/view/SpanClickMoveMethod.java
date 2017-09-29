@@ -8,9 +8,6 @@ import android.text.style.ClickableSpan;
 import android.view.MotionEvent;
 import android.widget.TextView;
 
-/**
- * Created by wangchao on 16/5/24.
- */
 public class SpanClickMoveMethod extends ScrollingMovementMethod {
 
     private static SpanClickMoveMethod sInstance;

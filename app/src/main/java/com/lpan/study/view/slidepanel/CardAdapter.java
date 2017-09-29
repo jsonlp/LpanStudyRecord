@@ -5,10 +5,6 @@ import android.database.DataSetObserver;
 import android.graphics.Rect;
 import android.view.View;
 
-/**
- * Created by xmuSistone on 2017/7/5.
- */
-
 public abstract class CardAdapter {
 
     private final DataSetObservable mDataSetObservable = new DataSetObservable();

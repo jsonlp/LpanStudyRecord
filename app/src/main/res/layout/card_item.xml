@@ -29,13 +29,6 @@
             app:riv_corner_radius_top_right="10dip"
             app:riv_mutate_background="false"/>
 
-        <com.lpan.study.view.MyOvalBgView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/card_image_view"
-            android:layout_marginTop="180dp"/>
-
-
         <View
             android:id="@+id/maskView"
             android:layout_width="match_parent"

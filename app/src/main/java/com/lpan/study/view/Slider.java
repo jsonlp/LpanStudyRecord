@@ -21,11 +21,6 @@ import com.lpan.study.context.AppContext;
 import com.lpan.study.utils.ViewUtils;
 
 
-/**
- * Like slider
- *
- * @author AlbertGao
- */
 public class Slider extends ViewGroup {
 
     /**

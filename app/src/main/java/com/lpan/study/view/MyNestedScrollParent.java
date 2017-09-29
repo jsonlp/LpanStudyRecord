@@ -10,11 +10,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-/**
- * Created by wangjitao on 2017/2/14 0014.
- * E-Mail：543441727@qq.com
- * 嵌套滑动机制父View
- */
 
 public class MyNestedScrollParent extends LinearLayout implements NestedScrollingParent {
     private ImageView img;

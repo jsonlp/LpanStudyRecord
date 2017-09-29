@@ -18,9 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Created by sks on 2015/5/20.
- */
 public class LoadingJiemoAnimationView extends LinearLayout {
 
     private ImageView mJiemoImage;

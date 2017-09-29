@@ -9,9 +9,6 @@ import android.view.View;
 
 import com.lpan.study.view.pulltorefresh.internal.LoadingLayout;
 
-/**
- * Created by haizhu on 15/4/17.
- */
 public class RecyclerViewRefreshListView extends PullToRefreshBase<JiemoRecyclerView> {
 
     private OnLastItemVisibleListener mOnLastItemVisibleListener;

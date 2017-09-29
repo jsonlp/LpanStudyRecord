@@ -2,8 +2,6 @@ package com.lpan.study.model;
 
 /**
  * 卡片数据装载对象
- *
- * @author xmuSistone
  */
 public class CardDataItem {
     public int imagePath;

@@ -2,8 +2,6 @@ package com.lpan.study.utils;
 
 /**
  * 线程优先级,如果需要设置优先级，请使用该类代替 Runnable
- *
- * @author Author: denghaizhu@longbeach-inc.com
  */
 public abstract class PriorityRunnable implements Runnable {
 

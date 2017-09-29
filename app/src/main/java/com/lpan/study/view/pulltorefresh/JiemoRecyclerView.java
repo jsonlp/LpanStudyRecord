@@ -5,9 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-/**
- * Created by haizhu on 15/5/7.
- */
 public class JiemoRecyclerView extends RecyclerView {
 
     public JiemoRecyclerView(Context context) {

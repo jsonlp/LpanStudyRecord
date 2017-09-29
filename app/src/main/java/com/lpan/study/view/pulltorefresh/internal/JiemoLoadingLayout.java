@@ -10,9 +10,6 @@ import com.lpan.study.view.pulltorefresh.PullToRefreshBase;
 import com.test.lpanstudyrecord.R;
 
 
-/**
- * Created by wangchao on 2015/5/20.
- */
 public class JiemoLoadingLayout extends LoadingLayout {
 
     LoadingJiemoAnimationView mLoadingJiemoAnimationView;

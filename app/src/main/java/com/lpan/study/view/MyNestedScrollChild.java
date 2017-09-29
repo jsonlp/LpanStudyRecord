@@ -12,11 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-/**
- * Created by Administrator on 2017/2/14 0014.
- * E-Mil：543441727@qq.com
- */
-
 public class MyNestedScrollChild extends LinearLayout implements NestedScrollingChild {
     private NestedScrollingChildHelper mNestedScrollingChildHelper;
     private final int[] offset = new int[2]; //偏移量

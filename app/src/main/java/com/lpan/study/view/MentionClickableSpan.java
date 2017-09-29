@@ -10,9 +10,6 @@ import com.lpan.study.model.UserInfo;
 import com.test.lpanstudyrecord.R;
 
 
-/**
- * Created by longbeach1 on 16/4/27.
- */
 public class MentionClickableSpan extends ClickableSpan {
 
     private UserInfo mUser;

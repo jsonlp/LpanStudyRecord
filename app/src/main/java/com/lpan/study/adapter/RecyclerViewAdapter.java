@@ -9,9 +9,6 @@ import com.lpan.study.utils.CollectionUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by haizhu on 15/5/6.
- */
 public abstract class RecyclerViewAdapter<T, V extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<V> {
 
     protected final Context mContext;
