@@ -239,7 +239,7 @@ public class ClickableSpanDemoFragment extends BaseFragment implements MentionSp
         ssb.setSpan(new DynamicDrawableSpan() {
             @Override
             public Drawable getDrawable() {
-                Bitmap bitmap = BitmapFactory.decodeResource(AppContext.getContext().getResources(),R.mipmap.ic_launcher);
+                Bitmap bitmap = BitmapFactory.decodeResource(AppContext.getContext().getResources(),R.drawable.ic_launcher);
                 BitmapDrawable drawable = new BitmapDrawable(AppContext.getContext().getResources(),bitmap);
                 drawable.setBounds(0,0,bitmap.getWidth(),bitmap.getHeight());
                 return drawable;

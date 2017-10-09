@@ -125,7 +125,6 @@ public class AudioFocusTestFragment extends BaseFragment implements View.OnClick
         }
         if (tryToGainFocus()) {
             mMediaPlayer.start();
-            mPlayButton.setImageResource(R.mipmap.music_play_icon);
 
         }
     }
@@ -137,7 +136,6 @@ public class AudioFocusTestFragment extends BaseFragment implements View.OnClick
         if (mMediaPlayer == null) {
             return;
         }
-        mPlayButton.setImageResource(R.mipmap.music_pause_icon);
         mMediaPlayer.pause();
         giveUpFocus();
     }

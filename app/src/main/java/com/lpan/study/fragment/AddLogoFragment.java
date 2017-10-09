@@ -58,8 +58,8 @@ public class AddLogoFragment extends BaseFragment implements View.OnClickListene
     @Override
     protected void initData() {
         super.initData();
-        mBitmap1 = BitmapFactory.decodeResource(getResources(), R.mipmap.image_test);
-        mBitmap2 = BitmapFactory.decodeResource(getResources(), R.mipmap.video_icon_message_list);
+        mBitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.wall01);
+        mBitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.wall02);
 
     }
 

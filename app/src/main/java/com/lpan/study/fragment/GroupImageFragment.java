@@ -60,7 +60,7 @@ public class GroupImageFragment extends BaseFragment implements View.OnClickList
 
         mCircleImnageView.setStrokeStyle(2 * ViewUtils.ONE_DP, Color.RED);
 
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.mn);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
         mCircleImnageView.setImageBitmap(bitmap);
 
         mButton1.setOnClickListener(this);
@@ -72,11 +72,11 @@ public class GroupImageFragment extends BaseFragment implements View.OnClickList
 
 
 
-        Bitmap avatar1 = BitmapFactory.decodeResource(getResources(), R.mipmap.a);
-        Bitmap avatar2 = BitmapFactory.decodeResource(getResources(), R.mipmap.b);
-        Bitmap avatar3 = BitmapFactory.decodeResource(getResources(), R.mipmap.c);
-        Bitmap avatar4 = BitmapFactory.decodeResource(getResources(), R.mipmap.d);
-        Bitmap avatar5 = BitmapFactory.decodeResource(getResources(), R.mipmap.e);
+        Bitmap avatar1 = BitmapFactory.decodeResource(getResources(), R.drawable.wall01);
+        Bitmap avatar2 = BitmapFactory.decodeResource(getResources(), R.drawable.wall02);
+        Bitmap avatar3 = BitmapFactory.decodeResource(getResources(), R.drawable.wall03);
+        Bitmap avatar4 = BitmapFactory.decodeResource(getResources(), R.drawable.wall04);
+        Bitmap avatar5 = BitmapFactory.decodeResource(getResources(), R.drawable.wall05);
 
         mBmps1.add(avatar1);
 

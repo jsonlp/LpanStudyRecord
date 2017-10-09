@@ -8,6 +8,5 @@
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gif_image"
         android:layout_width="wrap_content"
-        android:src="@mipmap/gif3"
         android:layout_height="wrap_content"/>
 </FrameLayout>

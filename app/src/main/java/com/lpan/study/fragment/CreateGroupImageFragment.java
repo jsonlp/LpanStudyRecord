@@ -74,11 +74,11 @@ public class CreateGroupImageFragment extends BaseFragment {
     protected void initData() {
         super.initData();
 
-        Bitmap avatar1 = BitmapFactory.decodeResource(getResources(), R.mipmap.a);
-        Bitmap avatar2 = BitmapFactory.decodeResource(getResources(), R.mipmap.b);
-        Bitmap avatar3 = BitmapFactory.decodeResource(getResources(), R.mipmap.c);
-        Bitmap avatar4 = BitmapFactory.decodeResource(getResources(), R.mipmap.d);
-        Bitmap avatar5 = BitmapFactory.decodeResource(getResources(), R.mipmap.e);
+        Bitmap avatar1 = BitmapFactory.decodeResource(getResources(), R.drawable.wall01);
+        Bitmap avatar2 = BitmapFactory.decodeResource(getResources(), R.drawable.wall02);
+        Bitmap avatar3 = BitmapFactory.decodeResource(getResources(), R.drawable.wall03);
+        Bitmap avatar4 = BitmapFactory.decodeResource(getResources(), R.drawable.wall04);
+        Bitmap avatar5 = BitmapFactory.decodeResource(getResources(), R.drawable.wall05);
 
         mBmps1.add(avatar1);
 

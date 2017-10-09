@@ -83,8 +83,8 @@ public class GifImageFragment extends BaseFragment implements View.OnClickListen
         canvas.drawRect(0, 0, 750, 1082, paint);
 
 
-        Bitmap icon = BitmapFactory.decodeResource(getResources(), R.mipmap.jiemo_icon);
-        Bitmap qrcode = BitmapFactory.decodeResource(getResources(), R.mipmap.download_qr_code);
+        Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.ic_error);
+        Bitmap qrcode = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
         Rect iconRect = new Rect(40, 40, 110, 110);
         canvas.drawBitmap(icon, null, iconRect, null);
 

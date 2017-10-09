@@ -6,7 +6,7 @@
               android:layout_height="match_parent">
     <ImageView
         android:id="@id/image1"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/ic_launcher"
         android:layout_width="100dp"
         android:scaleType="fitXY"
         android:layout_height="100dp"/>

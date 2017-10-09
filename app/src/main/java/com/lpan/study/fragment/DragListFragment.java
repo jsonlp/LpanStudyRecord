@@ -106,7 +106,7 @@ public class DragListFragment extends BaseFragment {
             }
 
             viewHolder.tvTitle.setText(item);
-            viewHolder.ivDragHandle.setImageResource(R.mipmap.ic_launcher);
+            viewHolder.ivDragHandle.setImageResource(R.drawable.ic_launcher);
             return convertView;
         }
 
