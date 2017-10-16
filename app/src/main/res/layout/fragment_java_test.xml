@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+
+    <EditText
+        android:id="@id/edit1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="1.查看一个数的二进制"
+        android:inputType="numberSigned"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@id/text1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="50dp">
+
+        <EditText
+            android:id="@id/edit2"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:hint="2.第一个数"
+            android:inputType="numberSigned"
+            android:textSize="14sp"/>
+
+        <EditText
+            android:id="@id/edit3"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:hint="位运算符号"
+            android:textSize="14sp"/>
+
+        <EditText
+            android:id="@id/edit4"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:hint="第二个数"
+            android:inputType="numberSigned"
+            android:textSize="14sp"/>
+        <TextView
+            android:id="@id/text2"
+            android:text="计算"
+            android:gravity="center"
+            android:background="@drawable/button_bg_gray"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@id/text3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+</LinearLayout>

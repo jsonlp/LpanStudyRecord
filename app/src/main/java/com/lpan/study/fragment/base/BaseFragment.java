@@ -14,6 +14,8 @@ import com.lpan.study.activity.BaseActivity;
 import com.lpan.study.context.AppContext;
 import com.test.lpanstudyrecord.R;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by lpan on 2016/12/19.
  */
@@ -39,12 +41,17 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void initViews(View view) {
-
-
+        if (useButterknife()) {
+            ButterKnife.bind(this,view);
+        }
     }
 
     protected int getLayoutResource() {
         return R.layout.activity_main;
+    }
+
+    protected boolean useButterknife(){
+        return false;
     }
 
     protected void toastShort(String message){

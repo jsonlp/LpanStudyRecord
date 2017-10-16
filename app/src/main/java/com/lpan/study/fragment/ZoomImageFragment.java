@@ -90,7 +90,7 @@ public class ZoomImageFragment extends BaseFragment implements View.OnClickListe
                 super.onPostExecute(file);
 
                 if (file.exists()) {
-                    Toaster.toastShort(AppContext.getContext(), "save successful:  SIZE=" + Utils.formatSizeToKB(file.length()) + "     " + file.getAbsolutePath());
+                    Toaster.toastShort( "save successful:  SIZE=" + Utils.formatSizeToKB(file.length()) + "     " + file.getAbsolutePath());
 
                     mImageView2.setImageBitmap(BitmapUtils.compressPhotoFileToBitmap(file.getAbsolutePath(), WIDTH, HEIGHT));
                 }

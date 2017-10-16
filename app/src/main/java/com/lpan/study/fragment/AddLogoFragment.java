@@ -79,7 +79,7 @@ public class AddLogoFragment extends BaseFragment implements View.OnClickListene
             path = getVideoPath() + File.separator + "image3.png";
             out = new FileOutputStream(path);
             bitmap3.compress(Bitmap.CompressFormat.PNG, 90, out);
-            Toaster.toastShort(AppContext.getContext(), path);
+            Toaster.toastShort( path);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } finally {

@@ -54,7 +54,7 @@ public class GlideFragment extends BaseFragment implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         if (Log.DEBUG) {
-            Toaster.toastShort(getActivity(),"[android-debug]"+"GlideFragment:  onClick   "+"");
+            Toaster.toastShort("[android-debug]"+"GlideFragment:  onClick   "+"");
         }
         Glide.with(this)
                 .load(IMAGE_PATH)

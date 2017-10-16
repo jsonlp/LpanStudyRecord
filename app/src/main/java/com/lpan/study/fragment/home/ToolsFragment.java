@@ -6,6 +6,9 @@ import android.widget.ListView;
 
 import com.lpan.study.adapter.NavegationAdapter;
 import com.lpan.study.fragment.AddLogoFragment;
+import com.lpan.study.fragment.DeviceInfoFragment;
+import com.lpan.study.fragment.DialogFragment;
+import com.lpan.study.fragment.JavaTestFragment;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.fragment.CalculateAlphaFragment;
 import com.lpan.study.listener.OnRowAdapterClickListener;
@@ -41,11 +44,17 @@ public class ToolsFragment extends BaseFragment implements OnRowAdapterClickList
         mList = new ArrayList<>();
         mList.add("calculate alpha");
         mList.add("add logo");
+        mList.add("java test");
+        mList.add("device info");
+        mList.add("remind");
 
 
         mToActivityList = new ArrayList<>();
         mToActivityList.add(new CalculateAlphaFragment());
         mToActivityList.add(new AddLogoFragment());
+        mToActivityList.add(new JavaTestFragment());
+        mToActivityList.add(new DeviceInfoFragment());
+        mToActivityList.add(new DialogFragment());
 
 
         getAdapter().addItems(mList);
