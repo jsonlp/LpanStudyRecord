@@ -1,6 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@color/blue"
@@ -14,16 +13,6 @@
         android:gravity="center"
         android:text="1"/>
 
-    <com.github.captain_miao.optroundcardview.OptRoundCardView
-        android:id="@+id/top_card_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:optRoundCardBottomEdges="false"
-        app:optRoundCardCornerRadius="15dp"
-        app:optRoundCardLeftBottomCorner="true"
-        app:optRoundCardLeftTopCorner="false"
-        app:optRoundCardRightBottomCorner="true"
-        app:optRoundCardRightTopCorner="true">
 
         <com.lpan.study.view.TextureVideoView
             android:id="@id/textureview"
@@ -32,7 +21,6 @@
             android:layout_margin="5dp"/>
 
 
-    </com.github.captain_miao.optroundcardview.OptRoundCardView>
 
 
 </LinearLayout>

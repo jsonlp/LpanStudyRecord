@@ -69,6 +69,30 @@
     <item name="item" type="id">item</item>
     <item name="gridview" type="id">gridview</item>
     <item name="pull_to_refresh_recyclerview" type="id">pull_to_refresh_recyclerview</item>
+    <item name="right_button" type="id">right_button</item>
+    <item name="actionbar_left_text" type="id">actionbar_left_text</item>
+    <item name="actionbar_left_icon" type="id">actionbar_left_icon</item>
+    <item name="actionbar_title" type="id">actionbar_title</item>
+    <item name="actionbar_right_text" type="id">actionbar_right_text</item>
+    <item name="action_bar_background" type="id">action_bar_background</item>
+    <item name="text5" type="id">text5</item>
+    <item name="text6" type="id">text6</item>
+    <item name="text7" type="id">text7</item>
+    <item name="text8" type="id">text8</item>
+    <item name="text9" type="id">text9</item>
+    <item name="iamge1" type="id">iamge1</item>
+    <item name="text10" type="id">text10</item>
+    <item name="text11" type="id">text11</item>
+    <item name="text12" type="id">text12</item>
+    <item name="text13" type="id">text13</item>
+    <item name="text14" type="id">text14</item>
+    <item name="text15" type="id">text15</item>
+    <item name="text16" type="id">text16</item>
+    <item name="text17" type="id">text17</item>
+    <item name="image5" type="id">image5</item>
+    <item name="image6" type="id">image6</item>
+    <item name="image7" type="id">image7</item>
+    <item name="image8" type="id">image8</item>
 
 
 </resources>

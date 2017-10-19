@@ -1,24 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@color/blue"
               android:orientation="vertical">
 
-    <com.github.captain_miao.optroundcardview.OptRoundCardView
-        android:id="@+id/top_card_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        app:optRoundCardBottomEdges="false"
-        app:optRoundCardCornerRadius="18dp"
-        app:optRoundCardLeftBottomCorner="false"
-        app:optRoundCardLeftTopCorner="true"
-        app:optRoundCardRightBottomCorner="false"
-        android:visibility="gone"
-        app:optRoundCardRightTopCorner="false">
 
         <TextView
             android:id="@+id/section_label"
@@ -27,26 +12,11 @@
             android:padding="@dimen/activity_horizontal_margin"
             android:text="skdksdlkslslssmdkdk"/>
 
-    </com.github.captain_miao.optroundcardview.OptRoundCardView>
 
-    <com.github.captain_miao.optroundcardview.OptRoundCardView
-        android:id="@+id/top_card_view2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        app:optRoundCardBottomEdges="false"
-        app:optRoundCardCornerRadius="20dp"
-        app:optRoundCardLeftBottomCorner="false"
-        app:optRoundCardLeftTopCorner="true"
-        app:optRoundCardRightBottomCorner="false"
-        app:optRoundCardRightTopCorner="false">
 
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"/>
-    </com.github.captain_miao.optroundcardview.OptRoundCardView>
 
 
 </LinearLayout>

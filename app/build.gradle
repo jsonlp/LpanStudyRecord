@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.antfortune.freeline'
 
 final RELEASE_APP_NAME = "lpan"
 final DEVELOP_APP_NAME = "lpan_dev"
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.3"
+    buildToolsVersion '26.0.1'
     defaultConfig {
         applicationId "com.test.lpanstudyrecord"
         minSdkVersion 15
@@ -13,9 +14,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        jackOptions {
-            enabled true
-        }
+//        jackOptions {
+//            enabled true
+//        }
     }
 
 //    productFlavors {
@@ -30,15 +31,15 @@ android {
 //    }
 
     // java版本
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+//    }
 
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard.cfg'
         }
         debug {
             applicationIdSuffix '.debug'
@@ -67,7 +68,6 @@ dependencies {
     compile files('libs/recyclerview-v7-24.0.0-sources.jar')
     compile 'com.android.support:recyclerview-v7:25.1.0'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.7'
-    compile project(':optroundcardview')
     compile 'com.android.support:design:25.3.1'
 
     //滑动动画

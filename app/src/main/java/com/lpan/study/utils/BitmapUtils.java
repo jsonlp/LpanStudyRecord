@@ -1,13 +1,17 @@
 package com.lpan.study.utils;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+
+import com.lpan.study.context.AppContext;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Created by lpan on 2017/3/9.
@@ -226,4 +230,35 @@ public class BitmapUtils {
         return resizedBitmap;
     }
 
+    public static Bitmap scaleBitmapFullScreenWidth(Bitmap origin) {
+        if (origin == null) {
+            return null;
+        }
+        int screenWidth = ViewUtils.getScreenWidth(AppContext.getContext());
+        int oldWidth = origin.getWidth();
+        int oldHeight = origin.getHeight();
+        float scale = (float) screenWidth / oldWidth;
+
+        if (oldHeight != screenWidth) {
+            Matrix matrix = new Matrix();
+            matrix.postScale(scale,scale);
+            Bitmap bitmap = Bitmap.createBitmap(origin,0,0,oldWidth,oldHeight,matrix,true);
+            if (!origin.isRecycled()) {
+                origin.recycle();
+                origin=null;
+            }
+            return bitmap;
+        }
+        return null;
+    }
+
+
+    public static Bitmap readBitmapById(Context context, int resId) {
+        BitmapFactory.Options opt = new BitmapFactory.Options();
+        opt.inPreferredConfig = Bitmap.Config.RGB_565;
+        opt.inPurgeable = true;
+        opt.inInputShareable = true;
+        InputStream is = context.getResources().openRawResource(resId);
+        return BitmapFactory.decodeStream(is, null, opt);
+    }
 }

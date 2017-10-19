@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/actionbar"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="1 Point and PointF"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Point point = new Point(1,1)\nPointF pointf = new PointF(1,1)"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/button_bg_gray"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="point.negate()\n取反"/>
+
+            <TextView
+                android:id="@id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/button_bg_gray"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="point.offSet(2,3)\n改变偏移量"/>
+
+            <TextView
+                android:id="@id/text3"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/button_bg_gray"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="pointf.length()\n到(0,0)的距离"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="2 Rect and RectF"/>
+
+        <ImageView
+            android:id="@id/image1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Rect rect = new Rect(1,1,4,3)\nRect empty = new Rect(1,1,1,1)"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@id/text4"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/button_bg_gray"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="empty.isEmpty()\n判断是否是无效矩形"/>
+
+            <TextView
+                android:id="@id/text5"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/button_bg_gray"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="rect.width()/height()\n矩形的长宽"/>
+
+            <TextView
+                android:id="@id/text6"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/button_bg_gray"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="rect.centerX()/centerY(),rect.exactCenterX()/exactCenterY()矩形的(精确)中心点"/>
+
+            <TextView
+                android:id="@id/text7"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/button_bg_gray"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="rect.setEmpty()\n归零"/>
+
+            <TextView
+                android:id="@id/text8"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/button_bg_gray"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="rect.set(int left,top,right,bottom)/set(new Rect)\n赋值"/>
+
+            <TextView
+                android:id="@id/text9"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/button_bg_gray"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="rect.offSet(int dx,int dy)\n移动矩形(x,y各加dx dy)"/>
+
+            <TextView
+                android:id="@id/text10"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/button_bg_gray"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="rect.offSetTo(int newLeft,int newTop)\n移动矩形(移动到)"/>
+
+            <TextView
+                android:id="@id/text11"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/button_bg_gray"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="rect.inset(int dx,int dy)\n缩放矩形"/>
+
+            <TextView
+                android:id="@id/text12"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/button_bg_gray"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="rect.contains(2,2)\n点(2,2)是否在矩形中"/>
+
+            <TextView
+                android:id="@id/text13"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/button_bg_gray"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="rect.contains(1,2,1,2)/contains(new Rect(1,2,1,2))\n矩形(1,2,1,2)是否在rect矩形中"/>
+
+            <TextView
+                android:id="@id/text14"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/button_bg_gray"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="rect1.intersect(rect2)\n两个矩形的交集"/>
+
+            <TextView
+                android:id="@id/text15"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/button_bg_gray"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="rect1.union(rect2)\n两个矩形的并集"/>
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="3 transform Rect and RectF"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@id/text16"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/button_bg_gray"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="new RectF(rect)\nRect transform RectF"/>
+
+            <TextView
+                android:id="@id/text17"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/button_bg_gray"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="rectF.round()/roundOut()\nRectF transform Rect"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</ScrollView>

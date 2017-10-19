@@ -1,1 +1,1 @@
-include ':app', ':FFmpegAndroid', ':optroundcardview'
+include ':app', ':FFmpegAndroid'

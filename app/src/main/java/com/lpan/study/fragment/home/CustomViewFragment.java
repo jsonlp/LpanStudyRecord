@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.lpan.study.adapter.NavegationAdapter;
+import com.lpan.study.fragment.customviewtest.CustomViewTestFragment;
 import com.lpan.study.fragment.GlideFragment;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.fragment.CardSwipeFragment;
@@ -51,6 +52,8 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
     protected void initData() {
         super.initData();
         mList = new ArrayList<>();
+
+        mList.add("custom view test");
         mList.add("glide");
         mList.add("value animator");
         mList.add("smile Loading");
@@ -69,6 +72,7 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
 
         mToActivityList = new ArrayList<>();
 
+        mToActivityList.add(new CustomViewTestFragment());
         mToActivityList.add(new GlideFragment());
         mToActivityList.add(new AnimationFragment());
         mToActivityList.add(new LoadingAnimationFragment());

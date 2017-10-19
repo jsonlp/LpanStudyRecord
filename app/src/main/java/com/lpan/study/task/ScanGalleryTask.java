@@ -9,7 +9,6 @@ import android.text.TextUtils;
 
 import com.lpan.study.context.AppContext;
 import com.lpan.study.model.ImageInfo;
-import com.lpan.study.utils.FileUtils;
 
 import java.io.File;
 import java.util.ArrayList;
