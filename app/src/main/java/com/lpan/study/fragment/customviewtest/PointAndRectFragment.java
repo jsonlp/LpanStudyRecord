@@ -232,5 +232,6 @@ public class PointAndRectFragment extends ButterKnifeFragment implements View.On
         Bitmap bitmap1 = BitmapUtils.scaleBitmapFullScreenWidth(bitmap);
         mRectIv1.setImageBitmap(bitmap1);
 
+        //1111
     }
 }

@@ -244,4 +244,8 @@ public class CanvasAndPaintFragment extends ButterKnifeFragment {
         mImage8.setImageBitmap(bitmapBuffer);
 
     }
+
+    private void draw1(){
+
+    }
 }
