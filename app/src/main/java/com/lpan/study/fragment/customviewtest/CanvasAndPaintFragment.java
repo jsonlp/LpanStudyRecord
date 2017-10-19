@@ -11,6 +11,7 @@ import android.graphics.RectF;
 import android.widget.ImageView;
 
 import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.utils.BitmapUtils;
 import com.test.lpanstudyrecord.R;
 
 import butterknife.BindView;
@@ -234,10 +235,11 @@ public class CanvasAndPaintFragment extends ButterKnifeFragment {
 
         mPaint.setStyle(Paint.Style.STROKE);
         Path path = new Path();
-        path.moveTo(0,100);
+        path.moveTo(100,100);
         path.rLineTo(300,0);
+        path.rLineTo(-240,240);
 
-        path.close();
+//        path.close();
         canvas.drawPath(path,mPaint);
         mImage8.setImageBitmap(bitmapBuffer);
 

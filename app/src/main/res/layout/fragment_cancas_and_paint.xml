@@ -17,10 +17,13 @@
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
             android:text="1 Paint"/>
+
         <ImageView
             android:id="@id/image1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+
+            android:layout_height="wrap_content"
+            android:scaleType="matrix"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -28,10 +31,13 @@
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
             android:text="2 Canvas draw bitmap"/>
+
         <ImageView
             android:id="@id/image2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+
+            android:layout_height="wrap_content"
+            android:scaleType="matrix"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -39,10 +45,13 @@
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
             android:text="3 Canvas draw point"/>
+
         <ImageView
             android:id="@id/image3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+
+            android:layout_height="wrap_content"
+            android:scaleType="matrix"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -50,10 +59,13 @@
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
             android:text="4 Canvas draw line"/>
+
         <ImageView
             android:id="@id/image4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+
+            android:layout_height="wrap_content"
+            android:scaleType="matrix"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -61,10 +73,13 @@
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
             android:text="5 Canvas draw roundRect/rect"/>
+
         <ImageView
             android:id="@id/image5"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+
+            android:layout_height="wrap_content"
+            android:scaleType="matrix"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -72,10 +87,13 @@
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
             android:text="6 Canvas draw oval/circle"/>
+
         <ImageView
             android:id="@id/image6"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+
+            android:layout_height="wrap_content"
+            android:scaleType="matrix"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -83,10 +101,13 @@
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
             android:text="7 Canvas draw arc"/>
+
         <ImageView
             android:id="@id/image7"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+
+            android:scaleType="matrix"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -94,10 +115,12 @@
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
             android:text="8 Canvas draw path"/>
+
         <ImageView
             android:id="@id/image8"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:scaleType="matrix"/>
 
     </LinearLayout>
 </ScrollView>
