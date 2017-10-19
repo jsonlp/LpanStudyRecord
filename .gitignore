@@ -7,3 +7,13 @@
 /build
 /captures
 .externalNativeBuild
+
+
+#new add  --2017.10.19
+*.apk
+*.ap_
+
+freeline.py
+freeline/
+freeline/*
+freeline_project_description.json
