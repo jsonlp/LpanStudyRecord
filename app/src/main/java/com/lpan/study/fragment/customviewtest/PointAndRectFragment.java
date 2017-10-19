@@ -233,5 +233,7 @@ public class PointAndRectFragment extends ButterKnifeFragment implements View.On
         mRectIv1.setImageBitmap(bitmap1);
 
         //1111
+
+        //22
     }
 }
