@@ -12,6 +12,24 @@
 
         <include layout="@layout/actionbar"/>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:text="invalidate()\n(1)public void invalidate()\n(2)public void invalidate(int l, int t, int r, int b)\n(3)public void invalidate(Rect dirty)\ninvalidate()用于重绘组件，不带参数表示重绘整个视图区域，带参数表示重绘指定的区域。 如果要去追溯该方法的源码，大概就是将重绘请求一级级往上 交到 ViewRoot，调用 ViewRoot 的 scheduleTraversals()方法重新发起重绘请求，scheduleTraversals()方法会发送一个异步消息，调 用 performTraversals()方法执行重绘，而 performTraversals()方法最终调用 onDraw()方法(以上过 程请阅读第一章)。所以，简单来说，调用 View 的 invalidate()方法就相当于调用了 onDraw()方法， 而 onDraw()方法中就是我们编写的绘图代码。"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:text="invalidate()方法只能在 UI 线程中调用，如果是在子线程中刷新组件，View 类还定义了另一 组名为 postInvalidate 的方法:\npublic void postInvalidate()\npublic void postInvalidate(int left, int top, int right, int bottom)"/>
+
+        <com.lpan.study.view.BallMoveView
+            android:id="@id/ball_move_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </LinearLayout>
 
 </ScrollView>
