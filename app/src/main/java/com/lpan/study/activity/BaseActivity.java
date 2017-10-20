@@ -63,4 +63,7 @@ public abstract class BaseActivity extends FragmentActivity {
         }
     }
 
+    private void update(){
+        //add in v2.0
+    }
 }
