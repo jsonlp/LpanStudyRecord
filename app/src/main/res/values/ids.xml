@@ -93,6 +93,8 @@
     <item name="image6" type="id">image6</item>
     <item name="image7" type="id">image7</item>
     <item name="image8" type="id">image8</item>
+    <item name="image9" type="id">image9</item>
+    <item name="image10" type="id">image10</item>
 
 
 </resources>

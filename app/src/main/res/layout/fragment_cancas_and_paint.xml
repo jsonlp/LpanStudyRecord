@@ -110,14 +110,40 @@
             android:scaleType="matrix"/>
 
         <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="8 Canvas draw path"/>
+
+        <ImageView
+            android:id="@id/image8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="matrix"/>
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="9 Canvas draw path:bezier"/>
+
+        <ImageView
+            android:id="@id/image9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="matrix"/>
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
-            android:text="8 Canvas draw path"/>
+            android:text="10 test"/>
 
         <ImageView
-            android:id="@id/image8"
+            android:id="@id/image10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="matrix"/>
