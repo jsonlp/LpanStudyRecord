@@ -62,16 +62,4 @@ public abstract class BaseActivity extends FragmentActivity {
             Toast.makeText(AppContext.getContext(),message,Toast.LENGTH_LONG).show();
         }
     }
-
-    private void update(){
-        //add in v2.0
-
-    }
-
-    private void method3(){
-        //update in v3.1
-        //update in v4.0
-
-        //update in v5.0
-    }
 }
