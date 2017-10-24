@@ -49,8 +49,8 @@ public class GalleryAdapter extends RecyclerViewAdapter<ImageInfo, RecyclerView.
         public GalleryViewHolder(View itemView) {
             super(itemView);
             mImageView = (ImageView) itemView.findViewById(R.id.image1);
-            mImageView.getLayoutParams().width = ViewUtils.getScreenWidth(mContext) / 4;
-            mImageView.getLayoutParams().height = ViewUtils.getScreenWidth(mContext) / 4;
+            mImageView.getLayoutParams().width = ViewUtils.getScreenWidth(mContext) / 3;
+            mImageView.getLayoutParams().height = ViewUtils.getScreenWidth(mContext) / 3;
         }
 
         public void bindView(final int position, final ImageInfo imageInfo, final OnRowAdapterClickListener<ImageInfo> listener) {

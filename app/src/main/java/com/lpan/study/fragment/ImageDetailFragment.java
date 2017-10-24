@@ -30,15 +30,22 @@ public class ImageDetailFragment extends BaseFragment {
 
     public static final String EXTRA_IMAGE_IAMGES = "extra_extra_images";
 
+    public static final String EXTRA_IMAGE_POSITION = "extra_image_position";
+
+
     private ViewPager mViewPager;
 
     private ImageDetailAdapter mAdapter;
 
     private ArrayList<String> mImages;
 
-    public static void show(Context context, ArrayList<String> list, View view) {
+    private int mPosition;
+
+
+    public static void show(Context context, ArrayList<String> list, View view, int position) {
         Bundle bundle = new Bundle();
         bundle.putStringArrayList(EXTRA_IMAGE_IAMGES, list);
+        bundle.putInt(EXTRA_IMAGE_POSITION, position);
         FragmentUtils.navigateToInNewActivityWithTranstion(context, view, new ImageDetailFragment(), bundle);
 
     }
@@ -48,6 +55,7 @@ public class ImageDetailFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mImages = getArguments().getStringArrayList(EXTRA_IMAGE_IAMGES);
+            mPosition = getArguments().getInt(EXTRA_IMAGE_POSITION);
         }
     }
 
@@ -110,16 +118,22 @@ public class ImageDetailFragment extends BaseFragment {
             View view = LayoutInflater.from(mContext).inflate(R.layout.item_pager_image_detail, null);
             ImageView imageView = (ImageView) view.findViewById(R.id.image1);
 
-            String path = FileUtils.getImagePath(Uri.parse(mInfoList.get(position)));
-            Bitmap bitmap = BitmapUtils.compressPhotoFileToBitmap(path, 1280,720);
+            String path = FileUtils.getImagePath(Uri.parse(mInfoList.get(mPosition)));
+            Bitmap bitmap = BitmapUtils.compressPhotoFileToBitmap(path, 1280, 720);
             imageView.setImageBitmap(bitmap);
 //            imageView.setImageURI(Uri.parse(mInfoList.get(position)));
 
-            ViewCompat.setTransitionName(imageView,"image");
+            ViewCompat.setTransitionName(imageView, "image");
 
             container.addView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT));
             return view;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+//            super.destroyItem(container, position, object);
+
         }
     }
 }

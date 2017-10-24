@@ -1,6 +1,10 @@
 package com.lpan.study.view;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.icu.util.Calendar;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -10,6 +14,11 @@ import android.view.View;
  */
 
 public class WatchView extends View {
+
+    private Paint mPaint;
+
+    private Calendar mCalendar;
+
     public WatchView(Context context) {
         super(context);
     }
@@ -26,4 +35,18 @@ public class WatchView extends View {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
+    private void init(){
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaint.setColor(Color.GRAY);
+        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setStrokeWidth(1);
+
+        mCalendar = Calendar.getInstance();
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+
+    }
 }

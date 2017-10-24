@@ -70,7 +70,7 @@ public class GalleryFragment extends BaseFragment implements OnRowAdapterClickLi
 
     public RecyclerView.LayoutManager getLayoutManager() {
         if (mLayoutManager == null) {
-            mLayoutManager = new GridLayoutManager(getActivity(), 4, GridLayoutManager.VERTICAL, false);
+            mLayoutManager = new GridLayoutManager(getActivity(), 3, GridLayoutManager.VERTICAL, false);
         }
         return mLayoutManager;
     }
@@ -88,6 +88,6 @@ public class GalleryFragment extends BaseFragment implements OnRowAdapterClickLi
         for (ImageInfo imageInfo1 : list){
             arrayList.add(imageInfo1.getUrl());
         }
-        ImageDetailFragment.show(getActivity(),arrayList,view);
+        ImageDetailFragment.show(getActivity(),arrayList,view,position);
     }
 }
