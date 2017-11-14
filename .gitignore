@@ -13,6 +13,10 @@
 *.apk
 *.ap_
 
+local.properties
+project.properties
+^local\.properties$
+
 freeline.py
 freeline/
 freeline/*
