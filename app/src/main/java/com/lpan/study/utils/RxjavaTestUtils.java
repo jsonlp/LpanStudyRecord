@@ -17,6 +17,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -34,7 +35,13 @@ public class RxjavaTestUtils {
 
 //        flatMap();
 
-        zip();
+//        zip();
+
+//        backPressure();
+
+//        filter();
+
+        sample();
     }
 
 
@@ -244,19 +251,19 @@ public class RxjavaTestUtils {
             public void subscribe(@NonNull ObservableEmitter<Integer> e) throws Exception {
                 Log.d("RxjavaTestUtils", "subscribe--------1");
                 e.onNext(1);
-               
+
 
                 Log.d("RxjavaTestUtils", "subscribe--------2");
                 e.onNext(2);
-               
+
 
                 Log.d("RxjavaTestUtils", "subscribe--------3");
                 e.onNext(3);
-               
+
 
                 Log.d("RxjavaTestUtils", "subscribe--------4");
                 e.onNext(4);
-               
+
 
                 Log.d("RxjavaTestUtils", "subscribe--------onComplete");
                 e.onComplete();
@@ -268,15 +275,15 @@ public class RxjavaTestUtils {
             public void subscribe(@NonNull ObservableEmitter<String> e) throws Exception {
                 Log.d("RxjavaTestUtils", "subscribe--------a");
                 e.onNext("a");
-               
+
 
                 Log.d("RxjavaTestUtils", "subscribe--------b");
                 e.onNext("b");
-               
+
 
                 Log.d("RxjavaTestUtils", "subscribe--------c");
                 e.onNext("c");
-               
+
 
                 Log.d("RxjavaTestUtils", "subscribe--------onComplete");
                 e.onComplete();
@@ -291,8 +298,8 @@ public class RxjavaTestUtils {
         }).subscribe(new Observer<String>() {
             @Override
             public void onSubscribe(@NonNull Disposable d) {
-                if(Log.DEBUG){
-                    Log.d("RxjavaTestUtils","onSubscribe--------");
+                if (Log.DEBUG) {
+                    Log.d("RxjavaTestUtils", "onSubscribe--------");
                 }
             }
 
@@ -305,18 +312,120 @@ public class RxjavaTestUtils {
 
             @Override
             public void onError(@NonNull Throwable e) {
-                if(Log.DEBUG){
-                    Log.d("RxjavaTestUtils","onError--------");
+                if (Log.DEBUG) {
+                    Log.d("RxjavaTestUtils", "onError--------");
                 }
             }
 
             @Override
             public void onComplete() {
-                if(Log.DEBUG){
-                    Log.d("RxjavaTestUtils","onComplete--------");
+                if (Log.DEBUG) {
+                    Log.d("RxjavaTestUtils", "onComplete--------");
                 }
             }
         });
 
+    }
+
+    private static void backPressure() {
+        //zip
+//        Observable<Integer> observable1 = Observable.create(new ObservableOnSubscribe<Integer>() {
+//            @Override
+//            public void subscribe(@NonNull ObservableEmitter<Integer> e) throws Exception {
+//                for (int i = 0; ; i++) {
+//                    e.onNext(i);
+//                }
+//            }
+//        }).subscribeOn(Schedulers.io());
+//
+//        Observable<String> observable2 = Observable.create(new ObservableOnSubscribe<String>() {
+//            @Override
+//            public void subscribe(@NonNull ObservableEmitter<String> e) throws Exception {
+//                e.onNext("a");
+//            }
+//        }).subscribeOn(Schedulers.io());
+//
+//        Observable.zip(observable1, observable2, new BiFunction<Integer, String, String>() {
+//            @Override
+//            public String apply(@NonNull Integer integer, @NonNull String s) throws Exception {
+//                return integer + s;
+//            }
+//
+//        }).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<String>() {
+//            @Override
+//            public void accept(String s) throws Exception {
+//                if (Log.DEBUG) {
+//                    Log.d("RxjavaTestUtils", "accept--------");
+//                }
+//            }
+//        }, new Consumer<Throwable>() {
+//            @Override
+//            public void accept(Throwable throwable) throws Exception {
+//                if (Log.DEBUG) {
+//                    Log.d("RxjavaTestUtils", "accept--------" + throwable);
+//                }
+//            }
+//        });
+
+
+//        Observable.create(new ObservableOnSubscribe<String>() {
+//            @Override
+//            public void subscribe(@NonNull ObservableEmitter<String> e) throws Exception {
+//                for (int j = 0; ; j++) {
+//                    e.onNext(j + "");
+//                }
+//            }
+//        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Consumer<String>() {
+//                    @Override
+//                    public void accept(String s) throws Exception {
+//                        Thread.sleep(1000);
+//                        if (Log.DEBUG) {
+//                            Log.d("RxjavaTestUtils", "accept--------s=" + s);
+//                        }
+//                    }
+//                });
+    }
+
+    private static void filter() {
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<Integer> e) throws Exception {
+                for (int i = 0; i < 10000; i++) {
+                    e.onNext(i);
+                }
+            }
+        }).filter(new Predicate<Integer>() {
+            @Override
+            public boolean test(@NonNull Integer integer) throws Exception {
+                return integer % 100 == 0;
+            }
+        }).subscribe(new Consumer<Integer>() {
+            @Override
+            public void accept(Integer integer) throws Exception {
+                if (Log.DEBUG) {
+                    Log.d("RxjavaTestUtils", "accept--------i=" + integer);
+                }
+            }
+        });
+    }
+
+    private static void sample() {
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<Integer> e) throws Exception {
+                for (int i = 0; i < 10000; i++) {
+                    e.onNext(i);
+                }
+            }
+        }).sample(5, TimeUnit.MILLISECONDS)
+                .subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+                        if (Log.DEBUG) {
+                            Log.d("RxjavaTestUtils", "accept--------" + integer);
+                        }
+                    }
+                });
     }
 }
