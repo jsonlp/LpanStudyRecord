@@ -5,13 +5,29 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lpan.study.fragment.base.BaseFragment;
+import com.lpan.study.model.ImageInfo;
+import com.lpan.study.utils.BitmapUtils;
+import com.lpan.study.utils.CollectionUtils;
+import com.lpan.study.utils.Log;
+import com.lpan.study.utils.RxjavaTestUtils;
+import com.lpan.study.utils.ScanUtils;
 import com.test.lpanstudyrecord.R;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by lpan on 2017/10/9.
@@ -40,6 +56,13 @@ public class JavaTestFragment extends BaseFragment implements View.OnClickListen
 
     @BindView(R.id.text3)
     TextView mOperatorsResult;
+
+//    @BindView(R.id.text4)
+//    TextView mRxjavaTest;
+
+    @BindView(R.id.image1)
+    ImageView mImage1;
+
 
     @Override
     protected int getLayoutResource() {
@@ -92,7 +115,7 @@ public class JavaTestFragment extends BaseFragment implements View.OnClickListen
         super.initData();
     }
 
-    @OnClick({R.id.text1, R.id.text2})
+    @OnClick({R.id.text1, R.id.text2, R.id.text4})
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -103,10 +126,17 @@ public class JavaTestFragment extends BaseFragment implements View.OnClickListen
                         , mOperatorsInput.getText().toString());
                 mOperatorsResult.setText(result);
                 break;
+            case R.id.text4:
+                rxjavaTest();
+                break;
 
             default:
                 break;
         }
+    }
+
+    private void rxjavaTest() {
+        RxjavaTestUtils.start();
     }
 
     private String getResult(int firstNum, int secondNum, String operators) {
@@ -136,5 +166,8 @@ public class JavaTestFragment extends BaseFragment implements View.OnClickListen
 
         return result + "";
     }
+
+
+
 
 }
