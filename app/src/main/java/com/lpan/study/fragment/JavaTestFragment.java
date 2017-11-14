@@ -9,25 +9,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lpan.study.fragment.base.BaseFragment;
-import com.lpan.study.model.ImageInfo;
-import com.lpan.study.utils.BitmapUtils;
-import com.lpan.study.utils.CollectionUtils;
-import com.lpan.study.utils.Log;
 import com.lpan.study.utils.RxjavaTestUtils;
-import com.lpan.study.utils.ScanUtils;
 import com.test.lpanstudyrecord.R;
 
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by lpan on 2017/10/9.
