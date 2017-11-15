@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.lpan.study.adapter.AbstractAdapter;
 import com.lpan.study.fragment.base.BaseFragment;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -8,7 +8,7 @@ import android.view.View;
 import com.lpan.study.adapter.CustomViewTestAdapter;
 import com.lpan.study.fragment.base.ButterKnifeFragment;
 import com.lpan.study.model.RecyclerItemInfo;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.util.ArrayList;
 import java.util.List;

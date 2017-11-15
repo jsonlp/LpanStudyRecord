@@ -5,7 +5,7 @@ import android.widget.ImageView;
 
 import com.lpan.study.fragment.base.ButterKnifeFragment;
 import com.lpan.study.utils.BitmapUtils;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import butterknife.BindView;
 

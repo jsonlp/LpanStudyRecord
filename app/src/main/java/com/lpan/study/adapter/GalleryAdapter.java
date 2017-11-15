@@ -14,7 +14,7 @@ import com.lpan.study.model.ImageInfo;
 import com.lpan.study.utils.BitmapUtils;
 import com.lpan.study.utils.FileUtils;
 import com.lpan.study.utils.ViewUtils;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 /**
  * Created by lpan on 2017/9/1.

@@ -9,7 +9,7 @@ import com.lpan.study.adapter.SlideCardAdapter;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.model.CardDataItem;
 import com.lpan.study.view.slidepanel.CardSlidePanel;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.util.ArrayList;
 import java.util.Collections;

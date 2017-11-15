@@ -26,7 +26,7 @@ import com.lpan.study.model.FFmpegVideoInfo;
 import com.lpan.study.utils.Utils;
 import com.lpan.study.view.TextureVideoView;
 import com.lpan.study.view.UnclickSeekBar;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.io.File;
 import java.util.Timer;

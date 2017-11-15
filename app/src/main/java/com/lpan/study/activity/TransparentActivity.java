@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
 import com.lpan.study.utils.FragmentUtils;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 /**
  * Created by lpan on 2016/12/19.

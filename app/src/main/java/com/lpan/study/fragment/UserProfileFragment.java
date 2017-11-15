@@ -11,7 +11,7 @@ import android.widget.ScrollView;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.FragmentUtils;
 import com.lpan.study.utils.Variables;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 /**
  * Created by lpan on 2017/9/7.

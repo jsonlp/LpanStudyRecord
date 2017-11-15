@@ -9,7 +9,7 @@ import android.view.View;
 
 import com.lpan.study.context.AppContext;
 import com.lpan.study.utils.ViewUtils;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 /**
  * Created by lpan on 2016/12/20.

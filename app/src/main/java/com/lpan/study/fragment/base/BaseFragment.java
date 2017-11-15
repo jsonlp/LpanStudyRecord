@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lpan.study.activity.BaseActivity;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import butterknife.ButterKnife;
 

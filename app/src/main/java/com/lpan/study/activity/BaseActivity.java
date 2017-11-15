@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.lpan.study.context.AppContext;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 /**
  * Created by lpan on 2016/8/12.

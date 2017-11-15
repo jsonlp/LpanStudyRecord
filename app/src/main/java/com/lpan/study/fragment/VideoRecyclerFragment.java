@@ -16,7 +16,7 @@ import com.lpan.study.adapter.RecyclerViewWrapLayoutManager;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.model.VideoInfo;
 import com.lpan.study.view.TextureVideoView;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.io.File;
 import java.util.ArrayList;

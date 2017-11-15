@@ -10,7 +10,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.Log;
 import com.lpan.study.utils.Toaster;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

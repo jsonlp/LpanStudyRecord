@@ -7,7 +7,7 @@ import android.view.View;
 import com.lpan.study.context.AppContext;
 import com.lpan.study.listener.MentionSpanClickListener;
 import com.lpan.study.model.UserInfo;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 
 public class MentionClickableSpan extends ClickableSpan {

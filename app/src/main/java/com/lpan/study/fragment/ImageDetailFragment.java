@@ -17,7 +17,7 @@ import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.BitmapUtils;
 import com.lpan.study.utils.FileUtils;
 import com.lpan.study.utils.FragmentUtils;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.util.ArrayList;
 import java.util.List;

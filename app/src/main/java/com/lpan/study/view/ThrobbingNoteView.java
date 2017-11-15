@@ -12,7 +12,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
 
 import com.lpan.study.utils.PausableAnimationSet;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 /**
  * Created by lpan on 2017/6/9.

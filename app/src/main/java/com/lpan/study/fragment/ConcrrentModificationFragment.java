@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.lpan.study.fragment.base.BaseFragment;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;

@@ -10,7 +10,7 @@ import com.lpan.study.model.CardDataItem;
 import com.lpan.study.utils.CollectionUtils;
 import com.lpan.study.view.roundedimageview.RoundedImageView;
 import com.lpan.study.view.slidepanel.CardAdapter;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.util.ArrayList;
 import java.util.List;

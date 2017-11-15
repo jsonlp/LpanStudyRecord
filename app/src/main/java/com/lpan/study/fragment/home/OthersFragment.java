@@ -9,7 +9,7 @@ import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.fragment.ConcrrentModificationFragment;
 import com.lpan.study.listener.OnRowAdapterClickListener;
 import com.lpan.study.utils.FragmentUtils;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.util.ArrayList;
 import java.util.List;

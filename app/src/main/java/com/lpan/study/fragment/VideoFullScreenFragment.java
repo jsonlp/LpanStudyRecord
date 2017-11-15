@@ -15,7 +15,7 @@ import com.lpan.study.context.AppContext;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.model.VideoInfo;
 import com.lpan.study.utils.FragmentUtils;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 /**
  * Created by lpan on 2017/2/23.

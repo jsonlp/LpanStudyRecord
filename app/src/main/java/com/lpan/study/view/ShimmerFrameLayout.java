@@ -21,7 +21,7 @@ import android.util.Log;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 public class ShimmerFrameLayout extends FrameLayout {
 

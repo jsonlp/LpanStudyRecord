@@ -43,7 +43,7 @@ import android.widget.Checkable;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.io.File;
 import java.io.FileWriter;

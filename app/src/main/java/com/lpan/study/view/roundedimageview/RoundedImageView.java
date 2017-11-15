@@ -32,8 +32,8 @@ import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageView;
+import com.lpan.R;
 
-import com.test.lpanstudyrecord.R;
 
 
 @SuppressWarnings("UnusedDeclaration")

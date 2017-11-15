@@ -14,7 +14,7 @@ import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.listener.OnProvinceTabClickListener;
 import com.lpan.study.model.ProvinceTabInfo;
 import com.lpan.study.model.SchoolInfo;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

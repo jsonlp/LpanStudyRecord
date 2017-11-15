@@ -3,7 +3,7 @@ package com.lpan.study.fragment;
 import android.view.View;
 
 import com.lpan.study.fragment.base.BaseFragment;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 /**
  * Created by lpan on 2017/6/2.

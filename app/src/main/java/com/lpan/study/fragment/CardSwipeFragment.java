@@ -15,7 +15,7 @@ import com.lpan.study.view.cardswipe.CardConfig;
 import com.lpan.study.view.cardswipe.CardItemTouchHelperCallback;
 import com.lpan.study.view.cardswipe.CardLayoutManager;
 import com.lpan.study.view.cardswipe.OnSwipeListener;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.util.ArrayList;
 import java.util.List;

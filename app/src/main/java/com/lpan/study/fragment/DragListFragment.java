@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.view.dragsort.DragSortListView;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.util.ArrayList;
 import java.util.List;

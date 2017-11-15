@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.model.VideoInfo;
 import com.lpan.study.utils.Utils;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.io.File;
 import java.util.ArrayList;

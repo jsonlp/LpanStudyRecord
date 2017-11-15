@@ -18,7 +18,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 
 import com.lpan.study.utils.CollectionUtils;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.util.ArrayList;
 import java.util.List;

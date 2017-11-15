@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.lpan.study.contract.AddlogoContract;
 import com.lpan.study.fragment.base.ButterKnifeFragment;
 import com.lpan.study.presenter.impl.AddlogoPresenter;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import butterknife.BindView;
 import butterknife.OnClick;

@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.lpan.study.model.RecyclerItemInfo;
 import com.lpan.study.utils.FragmentUtils;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 /**
  * Created by lpan on 2017/10/18.

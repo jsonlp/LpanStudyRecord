@@ -12,10 +12,9 @@ import android.widget.ImageView;
 
 import com.lpan.study.context.AppContext;
 import com.lpan.study.fragment.base.ButterKnifeFragment;
-import com.lpan.study.utils.BitmapUtils;
 import com.lpan.study.utils.Log;
 import com.lpan.study.utils.ViewUtils;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import butterknife.BindView;
 

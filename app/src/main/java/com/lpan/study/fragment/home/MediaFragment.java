@@ -17,7 +17,7 @@ import com.lpan.study.fragment.VideoRecyclerFragment;
 import com.lpan.study.fragment.ZoomImageFragment;
 import com.lpan.study.listener.OnRowAdapterClickListener;
 import com.lpan.study.utils.FragmentUtils;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.util.ArrayList;
 import java.util.List;

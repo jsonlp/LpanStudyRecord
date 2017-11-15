@@ -12,7 +12,7 @@ import com.lpan.study.utils.FragmentUtils;
 import com.lpan.study.utils.ViewUtils;
 import com.lpan.study.view.CircleImnageView;
 import com.lpan.study.view.GroupAvatarView;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.util.ArrayList;
 

@@ -4,7 +4,7 @@ import android.widget.LinearLayout;
 
 import com.lpan.study.fragment.base.ButterKnifeFragment;
 import com.lpan.study.view.BallMoveView;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.util.Timer;
 import java.util.TimerTask;

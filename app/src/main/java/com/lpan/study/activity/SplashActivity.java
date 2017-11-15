@@ -3,7 +3,7 @@ package com.lpan.study.activity;
 import android.content.Intent;
 import android.widget.ImageView;
 
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 /**
  * Created by lpan on 2017/9/6.

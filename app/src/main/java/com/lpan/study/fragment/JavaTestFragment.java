@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.RxjavaTestUtils;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 
 import butterknife.BindView;

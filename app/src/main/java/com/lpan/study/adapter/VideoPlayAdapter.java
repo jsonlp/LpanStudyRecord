@@ -9,7 +9,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.lpan.study.view.TextureVideoView;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.util.List;
 

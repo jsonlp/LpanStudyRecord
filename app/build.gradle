@@ -8,7 +8,7 @@ android {
     compileSdkVersion 24
     buildToolsVersion '26.0.1'
     defaultConfig {
-        applicationId "com.test.lpanstudyrecord"
+        applicationId "com.lpan"
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1

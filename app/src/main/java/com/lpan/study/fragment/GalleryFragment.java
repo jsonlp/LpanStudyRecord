@@ -10,7 +10,7 @@ import com.lpan.study.listener.OnRowAdapterClickListener;
 import com.lpan.study.model.ImageInfo;
 import com.lpan.study.task.ScanGalleryTask;
 import com.lpan.study.view.DividerGridItemDecoration;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.util.ArrayList;
 import java.util.List;

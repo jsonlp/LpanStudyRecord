@@ -9,7 +9,7 @@ import android.text.SpannableString;
 import android.text.style.DynamicDrawableSpan;
 
 import com.lpan.study.context.AppContext;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 /**
  * Created by lpan on 2017/8/31.

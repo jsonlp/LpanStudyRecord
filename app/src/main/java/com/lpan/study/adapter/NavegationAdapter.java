@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.lpan.study.listener.OnRowAdapterClickListener;
 import com.lpan.study.utils.CollectionUtils;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.util.ArrayList;
 import java.util.List;

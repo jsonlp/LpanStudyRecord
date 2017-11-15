@@ -27,7 +27,7 @@ import com.lpan.study.model.UserInfo;
 import com.lpan.study.utils.FragmentUtils;
 import com.lpan.study.utils.Utils;
 import com.lpan.study.utils.ViewUtils;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.util.ArrayList;
 import java.util.List;

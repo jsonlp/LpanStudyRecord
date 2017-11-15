@@ -7,13 +7,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.lpan.study.context.AppContext;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.BitmapUtils;
 import com.lpan.study.utils.FileUtils;
 import com.lpan.study.utils.Toaster;
 import com.lpan.study.utils.Utils;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.io.File;
 

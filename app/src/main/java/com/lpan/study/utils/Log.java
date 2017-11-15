@@ -1,7 +1,7 @@
 package com.lpan.study.utils;
 
 
-import com.test.lpanstudyrecord.BuildConfig;
+import com.lpan.BuildConfig;
 
 public class Log {
 

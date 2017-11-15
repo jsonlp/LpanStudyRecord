@@ -7,7 +7,7 @@ import android.widget.ListView;
 
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.view.ShimmerFrameLayout;
-import com.test.lpanstudyrecord.R;
+import com.lpan.R;
 
 import java.util.List;
 
