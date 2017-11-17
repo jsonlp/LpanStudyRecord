@@ -14,6 +14,9 @@ import com.lpan.study.model.UserInfo;
 import com.lpan.study.view.MentionClickableSpan;
 import com.lpan.study.view.SpanClickMoveMethod;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -203,5 +206,15 @@ public class Utils {
 
     public static boolean hasLollipop() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
+    }
+
+    public static byte[] toByteArray(InputStream inputStream) throws IOException {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        byte[] buffer = new byte[4096];
+        int n = 0;
+        while (-1 != (n = inputStream.read(buffer))) {
+            output.write(buffer, 0, n);
+        }
+        return output.toByteArray();
     }
 }

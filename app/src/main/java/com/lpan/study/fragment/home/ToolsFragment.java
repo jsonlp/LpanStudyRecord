@@ -9,6 +9,7 @@ import com.lpan.study.fragment.AddLogoFragment;
 import com.lpan.study.fragment.DeviceInfoFragment;
 import com.lpan.study.fragment.DialogFragment;
 import com.lpan.study.fragment.JavaTestFragment;
+import com.lpan.study.fragment.MyHttpClientFragment;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.fragment.CalculateAlphaFragment;
 import com.lpan.study.listener.OnRowAdapterClickListener;
@@ -47,6 +48,7 @@ public class ToolsFragment extends BaseFragment implements OnRowAdapterClickList
         mList.add("java test");
         mList.add("device info");
         mList.add("remind");
+        mList.add("okhttp");
 
 
         mToActivityList = new ArrayList<>();
@@ -55,6 +57,7 @@ public class ToolsFragment extends BaseFragment implements OnRowAdapterClickList
         mToActivityList.add(new JavaTestFragment());
         mToActivityList.add(new DeviceInfoFragment());
         mToActivityList.add(new DialogFragment());
+        mToActivityList.add(new MyHttpClientFragment());
 
 
         getAdapter().addItems(mList);

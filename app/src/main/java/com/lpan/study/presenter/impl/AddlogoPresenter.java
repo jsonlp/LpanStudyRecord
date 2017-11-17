@@ -67,7 +67,7 @@ public class AddlogoPresenter implements AddlogoContract.Presenter {
 
                 e.onNext(bitmap3);
             }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+        })
                 .subscribe(new Consumer<Bitmap>() {
                     @Override
                     public void accept(Bitmap bitmap) throws Exception {
