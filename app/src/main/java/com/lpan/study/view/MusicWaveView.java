@@ -20,24 +20,24 @@ import com.lpan.R;
  * desc:音频播放 动态效果
  */
 
-public class ThrobbingNoteView extends FrameLayout {
+public class MusicWaveView extends FrameLayout {
 
     private LayoutAnimationController mAnimationController;
     private PausableAnimationSet mAnimationSet;
     private ViewGroup mAnimationLayoutFakeWhite;
 
-    public ThrobbingNoteView(Context context) {
+    public MusicWaveView(Context context) {
         super(context);
         init(context);
     }
 
-    public ThrobbingNoteView(Context context, AttributeSet attrs) {
+    public MusicWaveView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
 
     }
 
-    public ThrobbingNoteView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MusicWaveView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
 

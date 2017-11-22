@@ -4,18 +4,18 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.lpan.study.fragment.base.BaseFragment;
-import com.lpan.study.view.ThrobbingNoteView;
+import com.lpan.study.view.MusicWaveView;
 import com.lpan.R;
 
 /**
  * Created by lpan on 2017/6/9.
  */
 
-public class VideoPlayStatuFragment extends BaseFragment implements View.OnClickListener {
+public class MusicWaveFragment extends BaseFragment implements View.OnClickListener {
 
     private TextView mStart, mStop;
 
-    private ThrobbingNoteView mThrobbingNoteView;
+    private MusicWaveView mMusicWaveView;
 
 
     @Override
@@ -29,7 +29,7 @@ public class VideoPlayStatuFragment extends BaseFragment implements View.OnClick
         super.initViews(view);
         mStart = (TextView) view.findViewById(R.id.text1);
         mStop = (TextView) view.findViewById(R.id.text2);
-        mThrobbingNoteView = (ThrobbingNoteView) view.findViewById(R.id.throbbing_note_view);
+        mMusicWaveView = (MusicWaveView) view.findViewById(R.id.throbbing_note_view);
 
         mStart.setOnClickListener(this);
         mStop.setOnClickListener(this);
@@ -41,11 +41,11 @@ public class VideoPlayStatuFragment extends BaseFragment implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.text1:
-                mThrobbingNoteView.startAnimation();
+                mMusicWaveView.startAnimation();
                 break;
 
             case R.id.text2:
-                mThrobbingNoteView.stopAnimation();
+                mMusicWaveView.stopAnimation();
 
                 break;
         }

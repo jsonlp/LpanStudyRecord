@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lpan.study.audio.AudioFocusCallback;
@@ -32,13 +33,23 @@ public class AudioFocusTestFragment extends BaseFragment implements View.OnClick
 
     private ImageView mPlayButton;
 
+    private TextView mTextView;
+
     private boolean mPrepared;
+
+    public static final String AUDIO_FOCUS = "         例如，一个用户正在听音乐，同时另一个应用程序有很重要的事需要通知用户，由于吵闹的音乐用户可能不会听到提示音。从Android 2.2开始,Android平台为应用程序提供了一个方式来协商设备的音频输出，这个机制被称为音频焦点。\n" +
+            "\n" +
+            "  当您的应用程序需要输出音频，如音乐或一个通知,这时你就必须请求音频焦点。一旦得到焦点，它就可以自由的使用声音输出设备，同时它会不断监听焦点的更改。如果它被通知已经失去了音频焦点，它会要么立即杀死音频或立即降低到一个安静的水平（被称为“ducking”——有一个标记,指示哪一个是适当的）当它再次接收焦点时，继续不断播放。\n" +
+            "\n" +
+            "  音频焦点是自然的合作，应用程序都期望（强烈鼓励）遵守音频焦点指南，但规则并不是系统强制执行的。如果应用程序失去音频焦点后想要播放嘈杂的音乐，在系统中没有什么会阻止他。然而,这样可能会让用户有更糟糕的体验,并可能卸载这运行不当的应用程序。";
 
 
     @Override
     protected void initViews(View view) {
         super.initViews(view);
         mPlayButton = (ImageView) view.findViewById(R.id.play_button);
+        mTextView = (TextView) view.findViewById(R.id.text1);
+
         mPlayButton.setOnClickListener(this);
     }
 
@@ -48,6 +59,8 @@ public class AudioFocusTestFragment extends BaseFragment implements View.OnClick
 
         mMediaPlayer = new MediaPlayer();
         mMediaPlayer.setOnPreparedListener(this);
+
+        mTextView.setText(AUDIO_FOCUS);
     }
 
     @Override
@@ -125,6 +138,7 @@ public class AudioFocusTestFragment extends BaseFragment implements View.OnClick
         }
         if (tryToGainFocus()) {
             mMediaPlayer.start();
+            mPlayButton.setImageResource(R.drawable.music_play_icon);
 
         }
     }
@@ -137,6 +151,7 @@ public class AudioFocusTestFragment extends BaseFragment implements View.OnClick
             return;
         }
         mMediaPlayer.pause();
+        mPlayButton.setImageResource(R.drawable.music_pause_icon);
         giveUpFocus();
     }
 

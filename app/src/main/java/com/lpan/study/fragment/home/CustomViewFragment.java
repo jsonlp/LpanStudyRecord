@@ -19,7 +19,7 @@ import com.lpan.study.fragment.LoadingAnimationFragment;
 import com.lpan.study.fragment.NestedScrollFragment;
 import com.lpan.study.fragment.ShimmerFragment;
 import com.lpan.study.fragment.SlidePanelFragment;
-import com.lpan.study.fragment.VideoPlayStatuFragment;
+import com.lpan.study.fragment.MusicWaveFragment;
 import com.lpan.study.fragment.VisibilityUtilsFrament;
 import com.lpan.study.listener.OnRowAdapterClickListener;
 import com.lpan.study.utils.FragmentUtils;
@@ -64,7 +64,7 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
         mList.add("double list");
         mList.add("view visibility percent");
         mList.add("cardview");
-        mList.add("video play statu");
+        mList.add("music wave");
         mList.add("slide panel");
         mList.add("nested scroll");
         mList.add("card swipe");
@@ -83,7 +83,7 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
         mToActivityList.add(new DoubleListFragment());
         mToActivityList.add(new VisibilityUtilsFrament());
         mToActivityList.add(new CardViewFragment());
-        mToActivityList.add(new VideoPlayStatuFragment());
+        mToActivityList.add(new MusicWaveFragment());
         mToActivityList.add(new SlidePanelFragment());
         mToActivityList.add(new NestedScrollFragment());
         mToActivityList.add(new CardSwipeFragment());
