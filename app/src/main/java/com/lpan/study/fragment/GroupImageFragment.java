@@ -10,7 +10,7 @@ import android.widget.Button;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.FragmentUtils;
 import com.lpan.study.utils.ViewUtils;
-import com.lpan.study.view.CircleImnageView;
+import com.lpan.study.view.CircleImageView;
 import com.lpan.study.view.GroupAvatarView;
 import com.lpan.R;
 
@@ -36,7 +36,7 @@ public class GroupImageFragment extends BaseFragment implements View.OnClickList
 
     Button mButton1, mButton2, mButton3, mButton4, mButton5;
 
-    private CircleImnageView mCircleImnageView;
+    private CircleImageView mCircleImnageView;
 
     private GroupAvatarView mGroupAvatarView;
 
@@ -55,7 +55,7 @@ public class GroupImageFragment extends BaseFragment implements View.OnClickList
         mButton4 = (Button) view.findViewById(R.id.button4);
         mButton5 = (Button) view.findViewById(R.id.button5);
 
-        mCircleImnageView = (CircleImnageView) view.findViewById(R.id.circle_image);
+        mCircleImnageView = (CircleImageView) view.findViewById(R.id.circle_image);
         mGroupAvatarView = (GroupAvatarView) view.findViewById(R.id.group_image);
 
         mCircleImnageView.setStrokeStyle(2 * ViewUtils.ONE_DP, Color.RED);

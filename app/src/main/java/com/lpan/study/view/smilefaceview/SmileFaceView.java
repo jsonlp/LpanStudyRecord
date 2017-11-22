@@ -15,20 +15,18 @@ import com.lpan.R;
  * Created by lpan on 2016/12/20.
  */
 
-public class SimleEyesView extends View {
+public class SmileFaceView extends View {
     private int mFaceOutRadiu = ViewUtils.dp2px(AppContext.getContext(), 21.5f);
 
-    private int mFaceInRadiu = ViewUtils.dp2px(AppContext.getContext(), 19.5f);
+    private int mStrokWidth = ViewUtils.dp2px(AppContext.getContext(), 4);
 
-    private int mStrokWidth = ViewUtils.dp2px(AppContext.getContext(), 1.5f);
+    private int mFaceInRadiu = ViewUtils.dp2px(AppContext.getContext(), 19.5f);
 
     private int mEyesOutRadiu = ViewUtils.dp2px(AppContext.getContext(), 7.75f);
 
     private int mEyesInRadiu = ViewUtils.dp2px(AppContext.getContext(), 7);
 
     private int mEyesBallRadiu = ViewUtils.dp2px(AppContext.getContext(), 2);
-
-    private int mEyesBallRadiuDis = ViewUtils.dp2px(AppContext.getContext(), 2); //两只眼睛的中心在外圈中心上面2dp
 
     private int mErrorDis = ViewUtils.dp2px(AppContext.getContext(), 1);//误差
 
@@ -42,20 +40,24 @@ public class SimleEyesView extends View {
 
     private int mGrayColor = 0xE8EAEB;
 
-
-    public SimleEyesView(Context context) {
+    public SmileFaceView(Context context) {
         super(context);
         init();
     }
 
-    public SimleEyesView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SmileFaceView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
 
-    public SimleEyesView(Context context, AttributeSet attrs) {
+    public SmileFaceView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
+    }
+
+    private void init() {
+        mPaint = new Paint();
+
     }
 
     @Override
@@ -66,41 +68,31 @@ public class SimleEyesView extends View {
 
     }
 
-    private void init() {
-        mPaint = new Paint();
-//        centerX = ViewUtils.getScreenWidth(AppContext.getContext()) / 2;
-//        centerY = ViewUtils.getScreenHeight(AppContext.getContext()) / 2 - ViewUtils.getStatusHeight(AppContext.getContext());
-
-    }
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         mPaint.setAntiAlias(true);
 
-        // 2画左眼  画圆
+        // 1画脸  画空白圆
         mPaint.setColor(mWhiteColor);
         mPaint.setStyle(Paint.Style.FILL);
-        canvas.drawCircle(centerX - mEyesInRadiu, centerY - mEyesBallRadiuDis, mEyesInRadiu, mPaint);
+        canvas.drawCircle(centerX, centerY, mFaceInRadiu, mPaint);
 
-        // 2画左眼  画圆形进度
+        // 1画脸  画边缘上末尾
+        mPaint.setColor(getResources().getColor(R.color.red));
+        mPaint.setStyle(Paint.Style.FILL);
+        canvas.drawCircle(centerX + mStrokWidth / 5, centerY - mFaceInRadiu, mStrokWidth / 2, mPaint);
+
+        // 1画脸  画边缘左末尾
+        mPaint.setColor(getResources().getColor(R.color.red));
+        mPaint.setStyle(Paint.Style.FILL);
+        canvas.drawCircle(centerX - mFaceInRadiu + mStrokWidth / 4, centerY - mEyesBallRadiu * 3.2f, mStrokWidth / 2, mPaint);
+
+        // 1画脸  画描边
         mPaint.setColor(getResources().getColor(R.color.red));
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(mStrokWidth);
-        RectF oval2 = new RectF(centerX - 2 * mEyesInRadiu, centerY - mEyesInRadiu - mEyesBallRadiuDis, centerX, mEyesInRadiu + centerY - mEyesBallRadiuDis);
-        canvas.drawArc(oval2, 0, 360, false, mPaint);
-
-
-        // 3画右眼  画圆
-        mPaint.setColor(mWhiteColor);
-        mPaint.setStyle(Paint.Style.FILL);
-        canvas.drawCircle(centerX + mEyesInRadiu, centerY - mEyesBallRadiuDis, mEyesInRadiu, mPaint);
-
-        // 3画右眼  画圆形进度
-        mPaint.setColor(getResources().getColor(R.color.red));
-        mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(mStrokWidth);
-        RectF oval3 = new RectF(centerX, centerY - mEyesInRadiu - mEyesBallRadiuDis, centerX + 2 * mEyesInRadiu, mEyesInRadiu + centerY - mEyesBallRadiuDis);
-        canvas.drawArc(oval3, 0, 360, false, mPaint);
+        RectF oval = new RectF(centerX - mFaceInRadiu, centerY - mFaceInRadiu, mFaceInRadiu + centerX, mFaceInRadiu + centerY);
+        canvas.drawArc(oval, -90, 290, false, mPaint);
     }
 }

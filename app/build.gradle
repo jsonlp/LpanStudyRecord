@@ -96,4 +96,7 @@ dependencies {
     compile 'com.bluelinelabs:logansquare:1.3.6'
     annotationProcessor project(':logan_processor')
 
+    //cardview
+    compile 'com.android.support:cardview-v7:24.0.+'
+
 }

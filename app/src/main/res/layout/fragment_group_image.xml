@@ -150,7 +150,7 @@
             android:layout_margin="5dp"
             android:orientation="vertical">
 
-            <com.lpan.study.view.CircleImnageView
+            <com.lpan.study.view.CircleImageView
                 android:id="@id/circle_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"/>

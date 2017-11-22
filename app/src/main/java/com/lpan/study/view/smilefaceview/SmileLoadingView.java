@@ -18,7 +18,7 @@ import com.lpan.R;
  * Created by lpan on 2016/12/19.
  */
 
-public class SimleLoadingView extends FrameLayout {
+public class SmileLoadingView extends FrameLayout {
 
     private int mFaceOutRadiu = ViewUtils.dp2px(AppContext.getContext(), 21.5f);
 
@@ -50,22 +50,22 @@ public class SimleLoadingView extends FrameLayout {
 
     private int centerY;
 
-    private SimleFaceView mSmileViewFace;
-    private SimleEyesView mSimleEyesView;
-    private SimleLeftEyeView mSimleLeftEyeView;
-    private SimleRightEyeView mSimleRightEyeView;
+    private SmileFaceView mSmileViewFace;
+    private SmileEyesView mSimleEyesView;
+    private SmileLeftEyeView mSimleLeftEyeView;
+    private SmileRightEyeView mSimleRightEyeView;
     private FrameLayout mBackground;
 
-    public SimleLoadingView(Context context) {
+    public SmileLoadingView(Context context) {
         this(context, null);
 
     }
 
-    public SimleLoadingView(Context context, AttributeSet attrs) {
+    public SmileLoadingView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public SimleLoadingView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SmileLoadingView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
@@ -84,10 +84,10 @@ public class SimleLoadingView extends FrameLayout {
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.smile_layout, this, false);
-        mSmileViewFace = (SimleFaceView) view.findViewById(R.id.smileView1);
-        mSimleEyesView = (SimleEyesView) view.findViewById(R.id.smileView2);
-        mSimleLeftEyeView = (SimleLeftEyeView) view.findViewById(R.id.smileView3);
-        mSimleRightEyeView = (SimleRightEyeView) view.findViewById(R.id.smileView4);
+        mSmileViewFace = (SmileFaceView) view.findViewById(R.id.smileView1);
+        mSimleEyesView = (SmileEyesView) view.findViewById(R.id.smileView2);
+        mSimleLeftEyeView = (SmileLeftEyeView) view.findViewById(R.id.smileView3);
+        mSimleRightEyeView = (SmileRightEyeView) view.findViewById(R.id.smileView4);
         mBackground = (FrameLayout) view.findViewById(R.id.background);
 
 //        rotateView(mSmileViewFace, 0.5f, 0.5f);

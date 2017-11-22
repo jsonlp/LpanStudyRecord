@@ -14,7 +14,7 @@ import com.lpan.R;
  * Created by lpan on 2016/12/20.
  */
 
-public class SimleLeftEyeView extends View {
+public class SmileLeftEyeView extends View {
     private int mFaceOutRadiu = ViewUtils.dp2px(AppContext.getContext(), 21.5f);
 
     private int mFaceInRadiu = ViewUtils.dp2px(AppContext.getContext(), 19.5f);
@@ -39,17 +39,17 @@ public class SimleLeftEyeView extends View {
 
     private int mGrayColor = 0xE8EAEB;
 
-    public SimleLeftEyeView(Context context) {
+    public SmileLeftEyeView(Context context) {
         super(context);
         init();
     }
 
-    public SimleLeftEyeView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SmileLeftEyeView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
 
-    public SimleLeftEyeView(Context context, AttributeSet attrs) {
+    public SmileLeftEyeView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
