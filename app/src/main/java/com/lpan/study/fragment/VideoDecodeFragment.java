@@ -10,7 +10,6 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -36,7 +35,7 @@ import java.util.TimerTask;
  * Created by lpan on 2017/2/7.
  */
 
-public class VideoPlayFragment extends BaseFragment implements View.OnClickListener, TextureVideoView.OnStateChangeListener, SeekBar.OnSeekBarChangeListener {
+public class VideoDecodeFragment extends BaseFragment implements View.OnClickListener, TextureVideoView.OnStateChangeListener, SeekBar.OnSeekBarChangeListener {
 
     private TextureVideoView mTextureVideoView;
 
@@ -47,10 +46,6 @@ public class VideoPlayFragment extends BaseFragment implements View.OnClickListe
     private TextView mTimeRecord;
 
     private TextView mTransform;
-
-    private TextView mButton1, mButton2, mButton3;
-
-    private TextView mResult1, mResult2, mResult3;
 
     private TextView mHfilp;
 
@@ -184,21 +179,10 @@ public class VideoPlayFragment extends BaseFragment implements View.OnClickListe
         mPlayButton = (ImageView) view.findViewById(R.id.play_button);
         mTimeRecord = (TextView) view.findViewById(R.id.duration);
         mTransform = (TextView) view.findViewById(R.id.button1);
-        mButton1 = (TextView) view.findViewById(R.id.text1);
-        mButton2 = (TextView) view.findViewById(R.id.text2);
-        mButton3 = (TextView) view.findViewById(R.id.text3);
-
-        mResult1 = (TextView) view.findViewById(R.id.text21);
-        mResult2 = (TextView) view.findViewById(R.id.text22);
-        mResult3 = (TextView) view.findViewById(R.id.text23);
 
         mHfilp = (TextView) view.findViewById(R.id.hflip);
         mAddWaterMask = (TextView) view.findViewById(R.id.add_water_mask);
-        mTextureVideoView.setVideoMode(TextureVideoView.CENTER_CROP_MODE);
-
-        mButton1.setOnClickListener(this);
-        mButton2.setOnClickListener(this);
-        mButton3.setOnClickListener(this);
+        mTextureVideoView.setVideoMode(TextureVideoView.CENTER_MODE);
 
         mTextureVideoView.setOnStateChangeListener(this);
         mPlayButton.setOnClickListener(this);
@@ -241,7 +225,7 @@ public class VideoPlayFragment extends BaseFragment implements View.OnClickListe
     }
 
     public File getVideoFileDir() {
-        File dir = new File(Environment.getExternalStorageDirectory() + "/" + "Jiemoapp" + "/");
+        File dir = new File(Environment.getExternalStorageDirectory() + "/" );
         if (dir != null && dir.exists()) {
             return dir;
         }
@@ -291,8 +275,8 @@ public class VideoPlayFragment extends BaseFragment implements View.OnClickListe
 
     private void hflipVideo(String path) {
         String out = "/storage/emulated/0/Jiemoapp/111.mp4";
-//        String[] cmd = new String[]{"-i", path, "-vf", "hflip", "-preset", "superfast", out};
-        String[] cmd = new String[]{"-filters"};
+        String[] cmd = new String[]{"-i", path, "-vf", "hflip", "-preset", "superfast", out};
+//        String[] cmd = new String[]{"-filters"};
         final long startTime = System.currentTimeMillis();
         try {
             FFmpeg.getInstance(AppContext.getContext()).execute(cmd, new FFmpegExecuteResponseHandler() {
@@ -417,9 +401,6 @@ public class VideoPlayFragment extends BaseFragment implements View.OnClickListe
 
                     Log.d("lp-test", "   onFinish  cost time   " + Utils.converLongTimeToStr(costTime));
 
-                    mResult1.setText(Utils.converLongTimeToStr(costTime));
-
-
                 }
             });
         } catch (FFmpegCommandAlreadyRunningException e) {
@@ -438,7 +419,8 @@ public class VideoPlayFragment extends BaseFragment implements View.OnClickListe
                     mTextureVideoView.pause();
                 } else {
                     String local = getVideoPath();
-                    mTextureVideoView.setPath(local, false, 1);
+                    mTextureVideoView.setPathFromAssets();
+//                    mTextureVideoView.setPath(local, false, 1);
                     mPlayButton.setVisibility(View.GONE);
                 }
 
@@ -446,15 +428,6 @@ public class VideoPlayFragment extends BaseFragment implements View.OnClickListe
 
             case R.id.button1:
                 analysisVideo(getVideoPath());
-                break;
-
-            case R.id.text1:
-                break;
-
-            case R.id.text2:
-                break;
-
-            case R.id.text3:
                 break;
 
             case R.id.hflip:
@@ -552,10 +525,10 @@ public class VideoPlayFragment extends BaseFragment implements View.OnClickListe
 
     @Override
     public void onVideoSizeChanged(int vWidth, int vHeight) {
-        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mTextureVideoView.getLayoutParams();
-//        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mTextureVideoView.getLayoutParams();
-        params.width = getResources().getDisplayMetrics().widthPixels;
-        params.height = (int) ((float) params.width / (float) vWidth * (float) vHeight);
+//        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mTextureVideoView.getLayoutParams();
+////        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mTextureVideoView.getLayoutParams();
+//        params.width = getResources().getDisplayMetrics().widthPixels;
+//        params.height = (int) ((float) params.width / (float) vWidth * (float) vHeight);
     }
 
 

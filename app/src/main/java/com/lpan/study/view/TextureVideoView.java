@@ -2,6 +2,7 @@ package com.lpan.study.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.AssetFileDescriptor;
 import android.graphics.Matrix;
 import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
@@ -17,7 +18,10 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
 
+import com.lpan.study.context.AppContext;
 import com.lpan.study.utils.ThreadPoolUtil;
+
+import static android.R.attr.path;
 
 @SuppressLint("NewApi")
 public class TextureVideoView extends TextureView implements
@@ -337,6 +341,31 @@ public class TextureVideoView extends TextureView implements
 
     @Override
     public void onSurfaceTextureUpdated(SurfaceTexture surface) {
+    }
+
+    public void setPathFromAssets() {
+        ThreadPoolUtil.execute(new Runnable() {
+            @Override
+            public void run() {
+
+                mediaPlayer.reset();
+                mediaPlayer.setLooping(false);
+                mediaPlayer.setVolume(1, 1);
+                Log.d("TextureVideoView", "-----setPath-----thread =" + Thread.currentThread().getName());
+                try {
+                    AssetFileDescriptor fileDescriptor = AppContext.getContext().getAssets().openFd("video.mp4");
+                    mediaPlayer.setDataSource(fileDescriptor.getFileDescriptor(), fileDescriptor.getStartOffset(), fileDescriptor.getLength());
+                    mediaPlayer.prepareAsync();
+                    if (onStateChangeListener != null) {
+                        onStateChangeListener.onPrepare();
+                    }
+                    mediaState = MediaState.PREPARING;
+                } catch (Exception e) {
+                    mediaPlayer.reset();
+                    mediaState = MediaState.INIT;
+                }
+            }
+        });
     }
 
 

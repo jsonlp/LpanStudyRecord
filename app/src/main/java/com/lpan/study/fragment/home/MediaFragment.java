@@ -12,7 +12,7 @@ import com.lpan.study.fragment.GalleryFragment;
 import com.lpan.study.fragment.GifImageFragment;
 import com.lpan.study.fragment.ScanGalleryFragment;
 import com.lpan.study.fragment.VideoListPlayerFragment;
-import com.lpan.study.fragment.VideoPlayFragment;
+import com.lpan.study.fragment.VideoDecodeFragment;
 import com.lpan.study.fragment.VideoRecyclerFragment;
 import com.lpan.study.fragment.ZoomImageFragment;
 import com.lpan.study.listener.OnRowAdapterClickListener;
@@ -58,7 +58,7 @@ public class MediaFragment extends BaseFragment implements OnRowAdapterClickList
 
         mToActivityList = new ArrayList<>();
         mToActivityList.add(new AudioFocusTestFragment());
-        mToActivityList.add(new VideoPlayFragment());
+        mToActivityList.add(new VideoDecodeFragment());
         mToActivityList.add(new ScanGalleryFragment());
         mToActivityList.add(new ZoomImageFragment());
         mToActivityList.add(new GifImageFragment());
