@@ -4,10 +4,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Shader;
 import android.widget.ImageView;
 
 import com.lpan.study.context.AppContext;
@@ -201,13 +203,19 @@ public class CanvasAndPaintFragment extends ButterKnifeFragment {
 
     //5 绘制椭圆/圆
     private void drawOval() {
-        Bitmap bitmapBuffer = Bitmap.createBitmap(500, 500, Bitmap.Config.ARGB_8888);
+        Bitmap bitmapBuffer = Bitmap.createBitmap(1500, 500, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmapBuffer);
         mPaint.reset();
 
         mPaint.setColor(Color.BLUE);
-//        canvas.drawCircle(100,100,50,mPaint);
-        canvas.drawOval(new RectF(0, 0, 400, 200), mPaint);
+        mPaint.setShader(new LinearGradient(0f, 0f, 300f, 200f, new int[]{Color.RED, Color.YELLOW, Color.BLUE}, null, Shader.TileMode.CLAMP));
+        canvas.drawOval(new RectF(0, 0, 300, 200), mPaint);
+
+        mPaint.setShader(new LinearGradient(300f, 0f, 600f, 200f, new int[]{Color.RED, Color.YELLOW, Color.BLUE}, null, Shader.TileMode.REPEAT));
+        canvas.drawOval(new RectF(300f, 0, 600f, 200), mPaint);
+
+        mPaint.setShader(new LinearGradient(600f, 0f, 900f, 200f, new int[]{Color.RED, Color.YELLOW, Color.BLUE}, new float[]{0.0f, 0.5f, 1.0f}, Shader.TileMode.MIRROR));
+        canvas.drawOval(new RectF(600f, 0, 900f, 200), mPaint);
         mImage6.setImageBitmap(bitmapBuffer);
     }
 
