@@ -63,7 +63,7 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
         mList.add("drag and sort list");
         mList.add("double list");
         mList.add("view visibility percent");
-        mList.add("custom card view");
+        mList.add("cardview");
         mList.add("video play statu");
         mList.add("slide panel");
         mList.add("nested scroll");
