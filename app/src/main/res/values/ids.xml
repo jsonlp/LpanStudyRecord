@@ -97,6 +97,7 @@
     <item name="image10" type="id">image10</item>
     <item name="ball_move_view" type="id">ball_move_view</item>
     <item name="cardview" type="id">cardview</item>
+    <item name="smileloadinbg" type="id">smileloadinbg</item>
 
 
 </resources>
