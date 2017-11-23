@@ -9,12 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.lpan.study.listener.OnRowAdapterClickListener;
 import com.lpan.study.model.ImageInfo;
 import com.lpan.study.utils.BitmapUtils;
 import com.lpan.study.utils.FileUtils;
 import com.lpan.study.utils.ViewUtils;
 import com.lpan.R;
+import com.lpan.study.view.BaseImageView;
 
 /**
  * Created by lpan on 2017/9/1.
@@ -43,12 +46,12 @@ public class GalleryAdapter extends RecyclerViewAdapter<ImageInfo, RecyclerView.
 
     class GalleryViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView mImageView;
+        private BaseImageView mImageView;
 
 
         public GalleryViewHolder(View itemView) {
             super(itemView);
-            mImageView = (ImageView) itemView.findViewById(R.id.image1);
+            mImageView = (BaseImageView) itemView.findViewById(R.id.image1);
             mImageView.getLayoutParams().width = ViewUtils.getScreenWidth(mContext) / 3;
             mImageView.getLayoutParams().height = ViewUtils.getScreenWidth(mContext) / 3;
         }
@@ -57,9 +60,7 @@ public class GalleryAdapter extends RecyclerViewAdapter<ImageInfo, RecyclerView.
             if (imageInfo == null) {
                 return;
             }
-            String path = FileUtils.getImagePath(Uri.parse(imageInfo.getUrl()));
-            Bitmap bitmap = BitmapUtils.compressPhotoFileToBitmap(path, 1280,720);
-            mImageView.setImageBitmap(bitmap);
+            mImageView.setUrl(mContext,imageInfo.getUrl());
 
             mImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
