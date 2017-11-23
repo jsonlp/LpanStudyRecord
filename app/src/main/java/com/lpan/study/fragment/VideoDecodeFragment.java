@@ -70,6 +70,7 @@ public class VideoDecodeFragment extends ButterKnifeFragment implements View.OnC
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter = new VideoDecodePresenter(this);
+        mPresenter.start();
         mPresenter.loadFFmpeg();
     }
 

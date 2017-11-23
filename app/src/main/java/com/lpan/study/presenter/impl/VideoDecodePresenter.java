@@ -1,10 +1,8 @@
 package com.lpan.study.presenter.impl;
 
-import android.os.Environment;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.github.hiteshsondhi88.libffmpeg.FFmpeg;
 import com.github.hiteshsondhi88.libffmpeg.FFmpegExecuteResponseHandler;
@@ -14,6 +12,7 @@ import com.lpan.study.constants.FilePathConstants;
 import com.lpan.study.context.AppContext;
 import com.lpan.study.contract.VideoDecodeContracts;
 import com.lpan.study.model.FFmpegVideoInfo;
+import com.lpan.study.utils.Toaster;
 import com.lpan.study.utils.Utils;
 
 import java.io.File;
@@ -26,13 +25,11 @@ public class VideoDecodePresenter implements VideoDecodeContracts.Presenter {
 
     public static final String TAG = VideoDecodePresenter.class.getSimpleName();
 
-    private static final String VIDEO_PATH_TRANSFOEM = FilePathConstants.EXTERNAL_STORAGE_DIR + File.separator + "transform.mp4";
+    private static final String VIDEO_PATH_TRANSFOEM = FilePathConstants.PANDA_TEST_DIR + "transform.mp4";
 
-    private static final String VIDEO_PATH_HFLIP = FilePathConstants.EXTERNAL_STORAGE_DIR + File.separator + "hflip.mp4";
+    private static final String VIDEO_PATH_HFLIP = FilePathConstants.PANDA_TEST_DIR + "hflip.mp4";
 
-    private static final String VIDEO_PATH_ADDWATERMASK = FilePathConstants.EXTERNAL_STORAGE_DIR + File.separator + "addwatermask.mp4";
-
-    private static final String IMAGE_PATH_ADDWATERMASK = FilePathConstants.EXTERNAL_STORAGE_DIR + File.separator + "logo.png";
+    private static final String IMAGE_PATH_ADDWATERMASK = FilePathConstants.PANDA_TEST_DIR + "logo.png";
 
 
     private VideoDecodeContracts.View mView;
@@ -43,7 +40,8 @@ public class VideoDecodePresenter implements VideoDecodeContracts.Presenter {
 
     @Override
     public void start() {
-
+        //check the test dir is exit or not
+        getVideoFileDir();
     }
 
     @Override
@@ -179,7 +177,7 @@ public class VideoDecodePresenter implements VideoDecodeContracts.Presenter {
             return;
         }
 
-        File out = new File(getVideoFileDir(), "transform_"+System.currentTimeMillis() + ".mp4");
+        File out = new File(getVideoFileDir(), "transform_" + System.currentTimeMillis() + ".mp4");
         final long startTime = System.currentTimeMillis();
         String[] cmd = null;
 
@@ -231,7 +229,6 @@ public class VideoDecodePresenter implements VideoDecodeContracts.Presenter {
 
                 @Override
                 public void onSuccess(String message) {
-                    Toast.makeText(AppContext.getContext(), "onSuccess", Toast.LENGTH_SHORT).show();
                     Log.d("lp-test", "   onSuccess  " + message);
 
                 }
@@ -244,14 +241,13 @@ public class VideoDecodePresenter implements VideoDecodeContracts.Presenter {
 
                 @Override
                 public void onFailure(String message) {
-                    Toast.makeText(AppContext.getContext(), "onFailure", Toast.LENGTH_SHORT).show();
                     Log.d("lp-test", "   onFailure  " + message);
 
                 }
 
                 @Override
                 public void onStart() {
-                    Toast.makeText(AppContext.getContext(), "onStart", Toast.LENGTH_SHORT).show();
+                    Toaster.toastShort("start transform");
                     Log.d("lp-test", "   onStart  ");
 
                 }
@@ -259,6 +255,7 @@ public class VideoDecodePresenter implements VideoDecodeContracts.Presenter {
                 @Override
                 public void onFinish() {
                     long costTime = System.currentTimeMillis() - startTime;
+                    Toaster.toastShort("finish transform and cost=" + costTime);
 
                     Log.d("lp-test", "   onFinish  cost time   " + Utils.converLongTimeToStr(costTime));
 
@@ -274,8 +271,9 @@ public class VideoDecodePresenter implements VideoDecodeContracts.Presenter {
     public void hflipVideo() {
         String path = VIDEO_PATH_HFLIP;
 
-        String out = "/storage/emulated/0/Jiemoapp/111.mp4";
-        String[] cmd = new String[]{"-i", path, "-vf", "hflip", "-preset", "superfast", out};
+        File out = new File(getVideoFileDir(), "hflip_" + System.currentTimeMillis() + ".mp4");
+
+        String[] cmd = new String[]{"-i", path, "-vf", "hflip", "-preset", "superfast", out.getAbsolutePath()};
 //        String[] cmd = new String[]{"-filters"};
         final long startTime = System.currentTimeMillis();
         try {
@@ -298,12 +296,14 @@ public class VideoDecodePresenter implements VideoDecodeContracts.Presenter {
 
                 @Override
                 public void onStart() {
+                    Toaster.toastShort("start hflip");
                     Log.d("VideoRecordFragment", "onStart----");
                 }
 
                 @Override
                 public void onFinish() {
                     long cost = System.currentTimeMillis() - startTime;
+                    Toaster.toastShort("finish hflip and cost=" + cost);
                     Log.d("VideoRecordFragment", "onFinish----cost= " + cost);
                 }
             });
@@ -315,9 +315,9 @@ public class VideoDecodePresenter implements VideoDecodeContracts.Presenter {
 
     @Override
     public void addWaterMask() {
-        String videoPath = VIDEO_PATH_ADDWATERMASK;
+        String videoPath = VIDEO_PATH_HFLIP;
         String imagePath = IMAGE_PATH_ADDWATERMASK;
-        final File out = new File(getVideoFileDir(), System.currentTimeMillis() + ".mp4");
+        final File out = new File(getVideoFileDir(), "addwatermask_"+System.currentTimeMillis() + ".mp4");
 
         String[] cmd = new String[]{"-i", videoPath, "-i", imagePath, "-filter_complex", "overlay=0:0", "-preset", "superfast", "-movflags", "-faststart", "-b:v", "1024k", "-g", "30", out.getAbsolutePath()};
         try {
@@ -361,11 +361,14 @@ public class VideoDecodePresenter implements VideoDecodeContracts.Presenter {
     }
 
     public File getVideoFileDir() {
-        File dir = new File(Environment.getExternalStorageDirectory() + "/");
+        File dir = new File(FilePathConstants.PANDA_TEST_DIR);
         if (dir.exists()) {
             return dir;
+        }else{
+            dir.mkdirs();
         }
-        return null;
+        return dir;
     }
+
 
 }

@@ -4,6 +4,7 @@ import android.os.Environment;
 
 import com.lpan.study.context.AppContext;
 
+
 /**
  * Created by lpan on 2017/11/22.
  */
@@ -19,4 +20,7 @@ public class FilePathConstants {
 
     //      PATH = /data/user/0/com.lpan/files
     public static final String INTERNAL_FILES_STORAGE_DIR = AppContext.getContext().getFilesDir().getAbsolutePath();
+
+    public static final String PANDA_TEST_DIR = EXTERNAL_STORAGE_DIR + "/a_panda/";
+
 }
