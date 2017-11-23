@@ -9,7 +9,6 @@ import com.lpan.study.adapter.NavegationAdapter;
 import com.lpan.study.fragment.AudioFocusTestFragment;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.fragment.GalleryFragment;
-import com.lpan.study.fragment.GifImageFragment;
 import com.lpan.study.fragment.ScanVideoFragment;
 import com.lpan.study.fragment.VideoListPlayerFragment;
 import com.lpan.study.fragment.VideoDecodeFragment;
@@ -50,7 +49,6 @@ public class MediaFragment extends BaseFragment implements OnRowAdapterClickList
         mList.add("video transform");
         mList.add("scan video");
         mList.add("compress image");
-        mList.add("gif image");
         mList.add("video list player");
         mList.add("video recyclerview player");
         mList.add("gallery");
@@ -61,7 +59,6 @@ public class MediaFragment extends BaseFragment implements OnRowAdapterClickList
         mToActivityList.add(new VideoDecodeFragment());
         mToActivityList.add(new ScanVideoFragment());
         mToActivityList.add(new ZoomImageFragment());
-        mToActivityList.add(new GifImageFragment());
         mToActivityList.add(new VideoListPlayerFragment());
         mToActivityList.add(new VideoRecyclerFragment());
         mToActivityList.add(new GalleryFragment());

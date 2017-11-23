@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.lpan.study.constants.FilePathConstants;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.BitmapUtils;
 import com.lpan.study.utils.FileUtils;
@@ -57,7 +58,7 @@ public class ZoomImageFragment extends BaseFragment implements View.OnClickListe
     @Override
     protected void initData() {
         super.initData();
-        imagePath = FileUtils.getImageFileDir() + File.separator + "image.jpg";
+        imagePath = FilePathConstants.PANDA_TEST_DIR + "image.jpeg";
         mBitmap = BitmapUtils.compressPhotoFileToBitmap(imagePath, WIDTH, HEIGHT);
         mImageView1.setImageBitmap(mBitmap);
 
@@ -79,7 +80,7 @@ public class ZoomImageFragment extends BaseFragment implements View.OnClickListe
             @Override
             protected File doInBackground(String... params) {
 
-                File file = BitmapUtils.saveBitmap(BitmapUtils.compressPhotoFileToBitmap(imagePath, WIDTH, HEIGHT), new File(FileUtils.getImageFileDir(), "image_copy_" + quality + ".jpg"), true, 1, quality);
+                File file = BitmapUtils.saveBitmap(BitmapUtils.compressPhotoFileToBitmap(imagePath, WIDTH, HEIGHT), new File(FilePathConstants.PANDA_TEST_DIR, "image_copy_" + quality + ".jpg"), true, 1, quality);
 
                 return file;
             }

@@ -103,7 +103,7 @@ public class VideoRecyclerFragment extends BaseFragment {
 
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.item_video_list_player, parent, false);
+            View view = LayoutInflater.from(mContext).inflate(R.layout.item_video_list_player2, parent, false);
             return new VideoViewHolder(view);
         }
 
