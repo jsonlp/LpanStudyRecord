@@ -1,10 +1,13 @@
 package com.lpan.study.fragment.home;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.ListView;
 
 import com.lpan.study.adapter.NavegationAdapter;
+import com.lpan.study.constants.Constants;
+import com.lpan.study.fragment.TransAnimationFragment;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.fragment.ConcrrentModificationFragment;
 import com.lpan.study.listener.OnRowAdapterClickListener;
@@ -39,10 +42,11 @@ public class OthersFragment extends BaseFragment implements OnRowAdapterClickLis
         super.initData();
         mList = new ArrayList<>();
         mList.add("concurrent modification ");
+        mList.add("transform animation ");
 
         mToActivityList = new ArrayList<>();
         mToActivityList.add(new ConcrrentModificationFragment());
-
+        mToActivityList.add(new TransAnimationFragment());
 
         getAdapter().addItems(mList);
         mListView.setAdapter(getAdapter());
@@ -72,7 +76,13 @@ public class OthersFragment extends BaseFragment implements OnRowAdapterClickLis
 //        if (s.equals("zoom image")) {
 //            FragmentUtils.navigateToInFullScreenActivity(getActivity(), mToActivityList.get(position), null);
 //        } else {
-        FragmentUtils.navigateToInNewActivity(getActivity(), mToActivityList.get(position), null);
+        Bundle bundle = new Bundle();
+//        bundle.putBoolean(Constants.NO_ANIMATION,true);
+//        bundle.putBoolean(Constants.ANIMATION_UP,true);
+//        bundle.putBoolean(Constants.ANIMATION_FADE,true);
+//        bundle.putBoolean(Constants.ANIMATION_LONG_FADE,true);
+
+        FragmentUtils.navigateToInNewActivity(getActivity(), mToActivityList.get(position), bundle);
 //        }
     }
 }

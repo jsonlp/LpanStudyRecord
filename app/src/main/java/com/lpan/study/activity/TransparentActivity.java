@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
+import com.lpan.study.constants.Constants;
 import com.lpan.study.utils.FragmentUtils;
 import com.lpan.R;
 
@@ -13,9 +14,6 @@ import com.lpan.R;
 
 public class TransparentActivity extends BaseActivity {
 
-    public static final String EXTRAS_CLASS_NAME = "extras_class_name";
-
-    public static final String EXTRAS_BUNDLE = "extras_bundle";
 
     @Override
     protected int getLayoutResource() {
@@ -30,8 +28,8 @@ public class TransparentActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String className = getIntent().getExtras().getString(EXTRAS_CLASS_NAME);
-        Bundle activityBundle = getIntent().getBundleExtra(EXTRAS_BUNDLE);
+        String className = getIntent().getExtras().getString(Constants.EXTRAS_CLASS_NAME);
+        Bundle activityBundle = getIntent().getBundleExtra(Constants.EXTRAS_BUNDLE);
 
         loadFragment(className,activityBundle);
     }
