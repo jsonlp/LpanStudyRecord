@@ -1,14 +1,21 @@
 package com.lpan.study.fragment;
 
 import android.content.DialogInterface;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Slide;
 import android.view.View;
 import android.widget.TextView;
 
+import com.lpan.study.constants.Constants;
 import com.lpan.study.fragment.base.ButterKnifeFragment;
 import com.lpan.study.utils.Toaster;
 import com.lpan.R;
+import com.lpan.study.utils.Utils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -31,6 +38,31 @@ public class DialogFragment extends ButterKnifeFragment implements View.OnClickL
     @Override
     protected int getLayoutResource() {
         return R.layout.fragment_dialog;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (getArguments()!=null) {
+            boolean slide = getArguments().getBoolean(Constants.ANIMATION_SLIDE);
+            boolean explode = getArguments().getBoolean(Constants.ANIMATION_EXPLODE);
+            boolean fade21 = getArguments().getBoolean(Constants.ANIMATION_FADE21);
+
+            if (Utils.hasLollipop()) {
+                if (slide) {
+                    getActivity().getWindow().setEnterTransition(new Slide().setDuration(1500));
+                    getActivity().getWindow().setExitTransition(new Slide().setDuration(1500));
+                }else if(explode){
+                    getActivity().getWindow().setEnterTransition(new Explode().setDuration(1500));
+                    getActivity().getWindow().setExitTransition(new Explode().setDuration(1500));
+                }else if(fade21){
+                    getActivity().getWindow().setEnterTransition(new Fade().setDuration(1500));
+                    getActivity().getWindow().setExitTransition(new Fade().setDuration(1500));
+                }
+            }
+        }
+
     }
 
     @OnClick({R.id.text1, R.id.text2, R.id.text3})
