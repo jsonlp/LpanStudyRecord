@@ -134,4 +134,11 @@ public abstract class BaseFragment extends Fragment {
             }
         }
     }
+    protected void toastLong(String message) {
+        if (getActivity() != null) {
+            if (getActivity() instanceof BaseActivity) {
+                ((BaseActivity) getActivity()).toastLong(message);
+            }
+        }
+    }
 }

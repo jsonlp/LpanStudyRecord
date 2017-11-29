@@ -6,11 +6,11 @@ final DEVELOP_APP_NAME = "lpan_dev"
 
 android {
     compileSdkVersion 24
-    buildToolsVersion '26.0.1'
+    buildToolsVersion '25.0.0'
     defaultConfig {
         applicationId "com.lpan"
         minSdkVersion 15
-        targetSdkVersion 24
+        targetSdkVersion 24 //设备的api=此值时代表:此程序在此版本已经经过充分测，没有问题,运行效率会高点;
         versionCode 10010
         versionName "1.10"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
