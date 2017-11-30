@@ -10,5 +10,12 @@
         android:layout_height="50dp"
         android:background="@drawable/button_bg_gray"
         android:gravity="center"
-        android:text="read contacts"/>
+        android:text="test permission"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
+
 </LinearLayout>

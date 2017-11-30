@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.lpan.study.adapter.NavegationAdapter;
-import com.lpan.study.constants.Constants;
 import com.lpan.study.fragment.PermissionFragment;
 import com.lpan.study.fragment.TransAnimationFragment;
 import com.lpan.study.fragment.base.BaseFragment;

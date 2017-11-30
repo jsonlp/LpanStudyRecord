@@ -1,17 +1,25 @@
 package com.lpan.study.fragment;
 
 import android.Manifest;
-import android.content.Intent;
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.lpan.R;
+import com.lpan.study.adapter.PermissionAdapter;
 import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.model.ContactInfo;
+import com.lpan.study.task.ScanContactsTask;
 
+import java.util.List;
+
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -22,26 +30,62 @@ public class PermissionFragment extends ButterKnifeFragment implements View.OnCl
 
     public static final int PERMISSION_CODE = 1;
 
+    @BindView(R.id.recyclerview)
+    RecyclerView mRecyclerView;
+
+    private PermissionAdapter mAdapter;
+
     @Override
     protected int getLayoutResource() {
         return R.layout.fragment_permission;
     }
 
+    @Override
+    protected void initData() {
+        super.initData();
+        mRecyclerView.setLayoutManager(getLayoutManager());
+        mRecyclerView.setAdapter(getAdapter());
+    }
+
+    private PermissionAdapter getAdapter() {
+        if (mAdapter == null) {
+            mAdapter = new PermissionAdapter(getActivity());
+        }
+        return mAdapter;
+    }
+
+    private RecyclerView.LayoutManager getLayoutManager() {
+        return new LinearLayoutManager(getActivity());
+    }
 
     @OnClick({R.id.text1})
     @Override
     public void onClick(View v) {
-        readContacts();
+        testPermission();
     }
 
-    private void readContacts() {
-
-        if (ContextCompat.checkSelfPermission(PermissionFragment.this.getActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+    private void testPermission() {
+        int check = checkPermission(PermissionFragment.this.getActivity(), Manifest.permission.READ_CONTACTS);
+        if (check != PackageManager.PERMISSION_GRANTED) {
             toastLong("try to get permission");
-            ActivityCompat.requestPermissions(this.getActivity(), new String[]{Manifest.permission.CALL_PHONE}, PERMISSION_CODE);
+            if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS)) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("permission rationale")
+                        .setMessage("we need your contact to help you find more friend.")
+                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, PERMISSION_CODE);
+                            }
+                        })
+                        .setNegativeButton("cancel", null)
+                        .show();
+            } else {
+                requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, PERMISSION_CODE);
+            }
         } else {
 
-            callPhone();
+            readContacts();
             toastLong("already had permission");
         }
     }
@@ -51,8 +95,7 @@ public class PermissionFragment extends ButterKnifeFragment implements View.OnCl
         if (requestCode == PERMISSION_CODE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 toastShort("allow");
-                callPhone();
-
+                readContacts();
             } else {
                 toastShort("refuse");
             }
@@ -61,10 +104,26 @@ public class PermissionFragment extends ButterKnifeFragment implements View.OnCl
 
     }
 
-    private void callPhone(){
-        Intent intent = new Intent(Intent.ACTION_CALL);
-        Uri data = Uri.parse("tel:" + "10086");
-        intent.setData(data);
-        startActivity(intent);
+    private void readContacts() {
+        new ScanContactsTask() {
+            @Override
+            protected List<ContactInfo> doInBackground(Void... params) {
+                return super.doInBackground(params);
+            }
+
+            @Override
+            protected void onPostExecute(List<ContactInfo> contactInfos) {
+                super.onPostExecute(contactInfos);
+                toastLong("count=" + contactInfos.size());
+
+                getAdapter().clearItem();
+                getAdapter().addItem(contactInfos);
+                getAdapter().notifyDataSetChanged();
+            }
+        }.execute();
+    }
+
+    public int checkPermission(Activity activity, String permissionName) {
+        return ContextCompat.checkSelfPermission(activity, permissionName);
     }
 }
