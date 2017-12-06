@@ -10,8 +10,9 @@ public class HttpConstants {
 
     public static final String GET_URL_ERROR = "replace with incorrect GET url";
 
-    public static final String POST_URL="replace with correct POST url";
+    public static final String POST_URL = "replace with correct POST url";
 
     private static final String VIDEO_URL = "http://svideo.spriteapp.com/video/2016/0703/7b5bc740-4134-11e6-ac2b-d4ae5296039d_wpd.mp4";
 
+    public static final String SONG_URL = "http://song.*****src.com/test_IC-hWUFgCoXjdLiG475ldg.mp3";
 }

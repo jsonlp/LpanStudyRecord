@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import com.lpan.study.audio.AudioFocusCallback;
 import com.lpan.study.audio.AudioFocusHelper;
+import com.lpan.study.audio.CompatMusicPlayer;
+import com.lpan.study.constants.HttpConstants;
 import com.lpan.study.context.AppContext;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.R;
@@ -19,13 +21,13 @@ import java.io.IOException;
 /**
  * Created by lpan on 2016/12/21.
  */
-public class AudioFocusTestFragment extends BaseFragment implements View.OnClickListener, MediaPlayer.OnPreparedListener, AudioFocusCallback {
+public class AudioFocusTestFragment extends BaseFragment implements View.OnClickListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener, AudioFocusCallback {
 
     private static final String TAG = AudioFocusTestFragment.class.getSimpleName();
 
-    private static final String MUSIC_PATH = "";
+    private static final String MUSIC_PATH = HttpConstants.SONG_URL;
 
-    private MediaPlayer mMediaPlayer;
+    private CompatMusicPlayer mJiemoMusicPlayer;
 
     private AudioFocusHelper mAudioFocusHelper;
 
@@ -34,6 +36,8 @@ public class AudioFocusTestFragment extends BaseFragment implements View.OnClick
     private ImageView mPlayButton;
 
     private TextView mTextView;
+
+    private TextView mNetMusic;
 
     private boolean mPrepared;
 
@@ -49,17 +53,18 @@ public class AudioFocusTestFragment extends BaseFragment implements View.OnClick
         super.initViews(view);
         mPlayButton = (ImageView) view.findViewById(R.id.play_button);
         mTextView = (TextView) view.findViewById(R.id.text1);
-
+        mNetMusic = (TextView) view.findViewById(R.id.text2);
+        mNetMusic.setOnClickListener(this);
         mPlayButton.setOnClickListener(this);
     }
 
     @Override
     protected void initData() {
         super.initData();
-
-        mMediaPlayer = new MediaPlayer();
-        mMediaPlayer.setOnPreparedListener(this);
-
+        mJiemoMusicPlayer = new CompatMusicPlayer();
+        mJiemoMusicPlayer.setOnPreparedListener(this);
+        mJiemoMusicPlayer.setOnCompletionListener(this);
+        mJiemoMusicPlayer.setOnErrorListener(this);
         mTextView.setText(AUDIO_FOCUS);
     }
 
@@ -81,17 +86,36 @@ public class AudioFocusTestFragment extends BaseFragment implements View.OnClick
                     playMusic();
                 }
                 break;
+
+            case R.id.text2:
+
+                break;
         }
     }
 
     @Override
     public void onPrepared(MediaPlayer mp) {
         Log.e(TAG, "----------onPrepared v1.0");
-        if (mMediaPlayer == null) {
+        if (mJiemoMusicPlayer == null) {
             return;
         }
         mPrepared = true;
         playMusic();
+    }
+
+    @Override
+    public void onCompletion(MediaPlayer mp) {
+        Log.e("AudioFocusTestFragment", "onCompletion--------");
+        mPlayButton.setImageResource(R.drawable.music_pause_icon);
+
+    }
+
+    @Override
+    public boolean onError(MediaPlayer mp, int what, int extra) {
+        Log.e("AudioFocusTestFragment", "onError--------");
+        mPlayButton.setImageResource(R.drawable.music_pause_icon);
+
+        return false;
     }
 
     /**
@@ -100,10 +124,10 @@ public class AudioFocusTestFragment extends BaseFragment implements View.OnClick
      * @return
      */
     private boolean isPlaying() {
-        if (mMediaPlayer == null) {
+        if (mJiemoMusicPlayer == null) {
             return false;
         }
-        return mMediaPlayer.isPlaying();
+        return mJiemoMusicPlayer.isPlaying();
     }
 
     /**
@@ -112,16 +136,16 @@ public class AudioFocusTestFragment extends BaseFragment implements View.OnClick
      * @param musicUrl 网络mp3 url
      */
     private void setMusic(String musicUrl) {
-        if (mMediaPlayer == null) {
+        if (mJiemoMusicPlayer == null) {
             return;
         }
         //本地raw文件夹下的gala.mp3文件
         AssetFileDescriptor file = getResources().openRawResourceFd(R.raw.gala);
         try {
-            mMediaPlayer.setDataSource(file.getFileDescriptor(),
+            mJiemoMusicPlayer.setDataSource(file.getFileDescriptor(),
                     file.getStartOffset(), file.getLength());
-//            mMediaPlayer.setDataSource(musicUrl);
-            mMediaPlayer.prepareAsync();
+//            mJiemoMusicPlayer.setDataSource(musicUrl);
+            mJiemoMusicPlayer.prepareAsync();
             mPrepared = false;
 
         } catch (IOException e) {
@@ -133,11 +157,11 @@ public class AudioFocusTestFragment extends BaseFragment implements View.OnClick
      * 播放音乐
      */
     private void playMusic() {
-        if (mMediaPlayer == null) {
+        if (mJiemoMusicPlayer == null) {
             return;
         }
         if (tryToGainFocus()) {
-            mMediaPlayer.start();
+            mJiemoMusicPlayer.start();
             mPlayButton.setImageResource(R.drawable.music_play_icon);
 
         }
@@ -147,10 +171,10 @@ public class AudioFocusTestFragment extends BaseFragment implements View.OnClick
      * 暂停音乐
      */
     private void pauseMusic() {
-        if (mMediaPlayer == null) {
+        if (mJiemoMusicPlayer == null) {
             return;
         }
-        mMediaPlayer.pause();
+        mJiemoMusicPlayer.pause();
         mPlayButton.setImageResource(R.drawable.music_pause_icon);
         giveUpFocus();
     }
@@ -234,4 +258,5 @@ public class AudioFocusTestFragment extends BaseFragment implements View.OnClick
         Toast.makeText(AppContext.getContext(), "  onLostFocusTransientCanDuck ", Toast.LENGTH_SHORT).show();
 
     }
+
 }

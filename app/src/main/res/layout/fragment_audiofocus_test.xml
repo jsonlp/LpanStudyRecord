@@ -48,6 +48,15 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/text2"
+        android:text="net music"
+        android:background="@drawable/button_bg_gray"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+
+    <TextView
         android:id="@id/text1"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
