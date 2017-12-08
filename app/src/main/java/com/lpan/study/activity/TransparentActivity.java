@@ -1,16 +1,12 @@
 package com.lpan.study.activity;
 
-import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 
 import com.lpan.study.constants.Constants;
-import com.lpan.study.fragment.PermissionFragment;
 import com.lpan.study.utils.FragmentUtils;
 import com.lpan.R;
 
@@ -72,5 +68,11 @@ public class TransparentActivity extends BaseActivity {
             }
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+    }
+
+    @Override
+    public void finishAfterTransition() {
+
+        super.finishAfterTransition();
     }
 }

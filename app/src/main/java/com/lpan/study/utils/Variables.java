@@ -8,6 +8,16 @@ public class Variables {
 
     public static boolean hasInDetail;
 
+    private static int exitIndex;
+
+    public static int getExitIndex() {
+        return exitIndex;
+    }
+
+    public static void setExitIndex(int exitIndex) {
+        Variables.exitIndex = exitIndex;
+    }
+
     public static boolean isHasInDetail() {
         return hasInDetail;
     }

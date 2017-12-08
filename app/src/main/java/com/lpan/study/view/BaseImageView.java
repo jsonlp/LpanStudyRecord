@@ -58,4 +58,6 @@ public class BaseImageView extends ImageView {
                 .diskCacheStrategy(DiskCacheStrategy.RESULT)
                 .into(this);
     }
+
+
 }

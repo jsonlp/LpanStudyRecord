@@ -1,6 +1,7 @@
 package com.lpan.study.fragment;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.EditText;
@@ -10,7 +11,6 @@ import android.widget.TextView;
 import com.lpan.study.constants.FilePathConstants;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.BitmapUtils;
-import com.lpan.study.utils.FileUtils;
 import com.lpan.study.utils.Toaster;
 import com.lpan.study.utils.Utils;
 import com.lpan.R;
@@ -59,7 +59,8 @@ public class ZoomImageFragment extends BaseFragment implements View.OnClickListe
     protected void initData() {
         super.initData();
         imagePath = FilePathConstants.PANDA_TEST_DIR + "image.jpeg";
-        mBitmap = BitmapUtils.compressPhotoFileToBitmap(imagePath, WIDTH, HEIGHT);
+//        mBitmap = BitmapUtils.compressPhotoFileToBitmap(imagePath, WIDTH, HEIGHT);
+        mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.inspire);
         mImageView1.setImageBitmap(mBitmap);
 
     }
@@ -69,18 +70,18 @@ public class ZoomImageFragment extends BaseFragment implements View.OnClickListe
         switch (v.getId()) {
             case R.id.ok:
                 int quality = Integer.valueOf(mEditText.getText().toString());
-                compress(imagePath, quality);
+                compress(imagePath, quality, mBitmap);
                 break;
         }
     }
 
-    private void compress(String path, final int quality) {
+    private void compress(final String path, final int quality, final Bitmap bitmap) {
 
         new AsyncTask<String, Void, File>() {
             @Override
             protected File doInBackground(String... params) {
 
-                File file = BitmapUtils.saveBitmap(BitmapUtils.compressPhotoFileToBitmap(imagePath, WIDTH, HEIGHT), new File(FilePathConstants.PANDA_TEST_DIR, "image_copy_" + quality + ".jpg"), true, 1, quality);
+                File file = BitmapUtils.saveBitmap(bitmap, new File(FilePathConstants.PANDA_TEST_DIR, "image_copy_" + quality + ".jpg"), true, 1, quality);
 
                 return file;
             }
@@ -90,7 +91,7 @@ public class ZoomImageFragment extends BaseFragment implements View.OnClickListe
                 super.onPostExecute(file);
 
                 if (file.exists()) {
-                    Toaster.toastShort( "save successful:  SIZE=" + Utils.formatSizeToKB(file.length()) + "     " + file.getAbsolutePath());
+                    Toaster.toastShort("save successful:  SIZE=" + Utils.formatSizeToKB(file.length()) + "     " + file.getAbsolutePath());
 
                     mImageView2.setImageBitmap(BitmapUtils.compressPhotoFileToBitmap(file.getAbsolutePath(), WIDTH, HEIGHT));
                 }

@@ -8,6 +8,7 @@
         android:id="@id/smileloadinbg"
         android:layout_width="100dp"
         android:visibility="gone"
+        android:layout_gravity="center"
         android:layout_height="100dp">
 
     </com.lpan.study.view.smilefaceview.SmileLoadingView>
@@ -18,5 +19,13 @@
         android:layout_height="match_parent">
 
     </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:id="@id/text1"
+        android:text="your device have no picture."
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </FrameLayout>

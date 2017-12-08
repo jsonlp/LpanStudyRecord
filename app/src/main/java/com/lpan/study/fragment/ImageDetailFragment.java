@@ -1,23 +1,22 @@
 package com.lpan.study.fragment;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-
 import com.lpan.study.fragment.base.BaseFragment;
-import com.lpan.study.utils.BitmapUtils;
-import com.lpan.study.utils.FileUtils;
 import com.lpan.study.utils.FragmentUtils;
 import com.lpan.R;
+import com.lpan.study.utils.Log;
+import com.lpan.study.utils.Variables;
+import com.lpan.study.view.BaseImageView;
+import com.lpan.study.view.LazyViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,11 +59,55 @@ public class ImageDetailFragment extends BaseFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+
+                    // handle back button
+                    toastLong("back");
+                    Variables.setExitIndex(mPosition);
+
+                    return false;
+                }
+                return false;
+            }
+        });
+    }
+
+    @Override
     protected void initViews(View view) {
         super.initViews(view);
         mViewPager = (ViewPager) view.findViewById(R.id.viewpager);
         getAdapter().setInfoList(mImages);
         mViewPager.setAdapter(getAdapter());
+
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mPosition = position;
+                if (Log.DEBUG) {
+                    Log.d("ImageDetailFragment", "onPageSelected--------position=" + position);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        //这句代码很关键,不然顺序会乱掉
+        mViewPager.setCurrentItem(mPosition);
     }
 
     public ImageDetailAdapter getAdapter() {
@@ -90,10 +133,6 @@ public class ImageDetailFragment extends BaseFragment {
             mContext = context;
         }
 
-        public List<String> getInfoList() {
-            return mInfoList;
-        }
-
         public void setInfoList(List<String> infoList) {
             mInfoList = infoList;
         }
@@ -109,21 +148,16 @@ public class ImageDetailFragment extends BaseFragment {
         }
 
         @Override
-        public int getItemPosition(Object object) {
-            return POSITION_NONE;
-        }
-
-        @Override
         public Object instantiateItem(ViewGroup container, int position) {
             View view = LayoutInflater.from(mContext).inflate(R.layout.item_pager_image_detail, null);
-            ImageView imageView = (ImageView) view.findViewById(R.id.image1);
-
-            String path = FileUtils.getImagePath(Uri.parse(mInfoList.get(mPosition)));
-            Bitmap bitmap = BitmapUtils.compressPhotoFileToBitmap(path, 1280, 720);
-            imageView.setImageBitmap(bitmap);
-//            imageView.setImageURI(Uri.parse(mInfoList.get(position)));
-
-            ViewCompat.setTransitionName(imageView, "image");
+            BaseImageView imageView = (BaseImageView) view.findViewById(R.id.image1);
+            imageView.setUrl(mContext, mInfoList.get(position));
+            if (Log.DEBUG) {
+                Log.d("ImageDetailAdapter", "instantiateItem--------position=" + position);
+            }
+            if (mPosition == position) {
+                ViewCompat.setTransitionName(imageView, "image");
+            }
 
             container.addView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT));
@@ -132,7 +166,7 @@ public class ImageDetailFragment extends BaseFragment {
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
-//            super.destroyItem(container, position, object);
+            container.removeView((View) object);
 
         }
     }
