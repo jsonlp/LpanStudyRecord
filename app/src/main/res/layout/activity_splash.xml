@@ -5,7 +5,15 @@
               android:layout_height="match_parent">
     <ImageView
         android:id="@id/image1"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:text="welcome"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_height="match_parent"/>
 </LinearLayout>

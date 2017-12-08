@@ -14,19 +14,17 @@ import java.util.List;
  */
 
 public class MyJsonParser implements JsonParserI{
-    public static final String TAG = MyJsonParser.class.getSimpleName();
 
-    private static MyJsonParser sMyJsonParser;
+    private static final MyJsonParser sMyJsonParser = new MyJsonParser();
 
     private MyJsonParser() {
+
     }
 
     public static MyJsonParser getInstance() {
-        if (sMyJsonParser == null) {
-            sMyJsonParser = new MyJsonParser();
-        }
         return sMyJsonParser;
     }
+
 
     @Override
     public <T> T readValue(String content, Class<T> valueType) throws IOException {
