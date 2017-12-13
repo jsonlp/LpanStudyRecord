@@ -7,6 +7,7 @@ import android.widget.ListView;
 
 import com.lpan.study.adapter.NavegationAdapter;
 import com.lpan.study.fragment.AudioFocusTestFragment;
+import com.lpan.study.fragment.TouchImageFragment;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.fragment.GalleryFragment;
 import com.lpan.study.fragment.ScanVideoFragment;
@@ -52,6 +53,7 @@ public class MediaFragment extends BaseFragment implements OnRowAdapterClickList
         mList.add("video list player");
         mList.add("video recyclerview player");
         mList.add("gallery");
+        mList.add("photo view");
 
 
         mToActivityList = new ArrayList<>();
@@ -62,6 +64,7 @@ public class MediaFragment extends BaseFragment implements OnRowAdapterClickList
         mToActivityList.add(new VideoListPlayerFragment());
         mToActivityList.add(new VideoRecyclerFragment());
         mToActivityList.add(new GalleryFragment());
+        mToActivityList.add(new TouchImageFragment());
 
 
         getAdapter().addItems(mList);

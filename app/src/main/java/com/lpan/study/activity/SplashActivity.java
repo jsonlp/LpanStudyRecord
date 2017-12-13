@@ -23,7 +23,7 @@ public class SplashActivity extends BaseActivity{
     protected void initView() {
         super.initView();
         mImageView = (ImageView) findViewById(R.id.image1);
-//        mImageView.setImageResource(R.drawable.wall01);
+        mImageView.setImageResource(R.drawable.wall01);
 
 
         mHandler.postDelayed(new Runnable() {
