@@ -13,13 +13,13 @@ import android.graphics.PathEffect;
 import android.graphics.PointF;
 import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 
 
 import com.lpan.study.context.AppContext;
 import com.lpan.study.utils.ArrayUtils;
+import com.lpan.study.utils.Log;
 import com.lpan.study.utils.ViewUtils;
 
 
@@ -27,7 +27,7 @@ public class TouchImageView extends ImageView {
 
     public static final float VIEW_HEIGHT = ViewUtils.ONE_DP * 300;
     public static final float MARRGIN = ViewUtils.ONE_DP * 1;
-    public static final float VIEW_WIDTH = (ViewUtils.getScreenWidth(AppContext.getContext()) - 1) / 2;
+    public static final float VIEW_WIDTH = (ViewUtils.getScreenWidth(AppContext.getContext()) - MARRGIN) / 2;
 
     private Context context;
     // 手指按下时图片的矩阵
@@ -50,8 +50,6 @@ public class TouchImageView extends ImageView {
     private int mode;
     private static final int NONE = 0; // 无模式
     private static final int TRANS = 1; // 拖拽模式
-    private static final int ROTATE = 2; // 单点旋转模式
-    private static final int ZOOM_SINGLE = 3; // 单点缩放模式
     private static final int ZOOM_MULTI = 4; // 多点缩放模式
 
     // 手指按下屏幕的X坐标
@@ -66,6 +64,10 @@ public class TouchImageView extends ImageView {
     // 图片目前的宽高
     private float imageCurrentWidth;
     private float imageCurrentHeight;
+
+    // 图片最小的宽高
+    private float minWidth;
+    private float minHeight;
 
     // 绘制图片的矩阵
     private Matrix drawMatrix;
@@ -118,13 +120,11 @@ public class TouchImageView extends ImageView {
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
-        if (changed) {
-//            getMatrix().postTranslate(mRandom.nextInt(getWidth() - getStickerWidth()), mRandom.nextInt(getHeight() - getStickerHeight()));
-        }
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
+
         canvas.drawBitmap(getSrcImage(), getMatrix(), null);
     }
 
@@ -137,13 +137,13 @@ public class TouchImageView extends ImageView {
                 downX = event.getX();
                 downY = event.getY();
                 // 平移手势验证
-                if (isInStickerArea(event.getX(), event.getY())) {
-                    mode = TRANS;
-                    downMatrix.set(getMatrix());
-                    Log.d("onTouchEvent", "平移手势");
-                } else {
-                    isStickerOnEdit = false;
-                }
+//                if (isInStickerArea(event.getX(), event.getY())) {
+                mode = TRANS;
+                downMatrix.set(getMatrix());
+                Log.d("onTouchEvent", "平移手势");
+//                } else {
+//                    isStickerOnEdit = false;
+//                }
                 break;
             case MotionEvent.ACTION_POINTER_DOWN: // 多点触控
                 mode = ZOOM_MULTI;
@@ -153,36 +153,44 @@ public class TouchImageView extends ImageView {
                 downMatrix.set(getMatrix());
                 break;
             case MotionEvent.ACTION_MOVE:
-                // 单点缩放/单点旋转
-                if (mode == ZOOM_SINGLE) {
+                if (mode == ZOOM_MULTI) {
+//                    moveMatrix.set(downMatrix);
+//                    float scale = getMultiTouchDistance(event) / oldDistance;
+//                    if (isRotatable()) {
+//                        float deltaRotation = getMultiTouchRotation(event) - oldRotation;
+//                        moveMatrix.postRotate(deltaRotation, midPoint.x, midPoint.y);
+//                    }
+//                    moveMatrix.postScale(scale, scale, midPoint.x, midPoint.y);
+//                    getMatrix().set(moveMatrix);
+//
+//                    float afaterWidth = scale * minWidth;
+//                    float afterHeight = scale * minWidth;
+//                    if (afaterWidth >= minWidth && afterHeight >= minHeight) {
+//                        imageCurrentWidth = afaterWidth;
+//                        imageCurrentHeight = afterHeight;
+//                        invalidate();
+//                        if (Log.DEBUG) {
+//                            Log.d("TouchImageView", "onTouchEvent--------缩放后width=" + imageCurrentWidth + "  height=" + imageCurrentHeight + "   minWidth=" + minWidth + "   minHeight=" + minHeight + "  scale=" + scale);
+//                        }
+//                    } else {
+//                        if (Log.DEBUG) {
+//                            Log.d("TouchImageView", "onTouchEvent--------最小了 没法缩放了width=" + imageCurrentWidth + "  height=" + imageCurrentHeight + "   minWidth=" + minWidth + "   minHeight=" + minHeight + "  scale=" + scale);
+//
+//                        }
+//                    }
+
+
+                } else if (mode == TRANS) {
                     moveMatrix.set(downMatrix);
-                    float scale = getSingleTouchDistance(event, closeMidPoint) / oldDistance;
-                    if (isRotatable()) {
-                        float deltaRotation = getSpaceRotation(event, closeMidPoint) - oldRotation;
-                        moveMatrix.postRotate(deltaRotation, closeMidPoint.x, closeMidPoint.y);
-                    }
-                    moveMatrix.postScale(scale, scale, closeMidPoint.x, closeMidPoint.y);
-                    getMatrix().set(moveMatrix);
-                    invalidate();
-                }
-                // 多点缩放
-                else if (mode == ZOOM_MULTI) {
-                    moveMatrix.set(downMatrix);
-                    float scale = getMultiTouchDistance(event) / oldDistance;
-                    if (isRotatable()) {
-                        float deltaRotation = getMultiTouchRotation(event) - oldRotation;
-                        moveMatrix.postRotate(deltaRotation, midPoint.x, midPoint.y);
-                    }
-                    moveMatrix.postScale(scale, scale, midPoint.x, midPoint.y);
-                    getMatrix().set(moveMatrix);
-                    invalidate();
-                }
-                // 平移
-                else if (mode == TRANS) {
-                    moveMatrix.set(downMatrix);
+                    float x = (event.getX() - downX);
+                    float y = (event.getY() - downY);
+
                     moveMatrix.postTranslate(event.getX() - downX, event.getY() - downY);
                     getMatrix().set(moveMatrix);
                     invalidate();
+                    if (Log.DEBUG) {
+                        Log.d("TouchImageView", "onTouchEvent--------平移  downMatrix=" + downMatrix.toString() + "  moveMatrix=" + moveMatrix + "  x=" + x + "  y=" + y);
+                    }
                 }
                 break;
             case MotionEvent.ACTION_POINTER_UP:
@@ -197,7 +205,6 @@ public class TouchImageView extends ImageView {
         }
         return isStickerOnEdit;
     }
-
 
     private boolean isInStickerArea(float x, float y) {
         float[] points = getBitmapPoints(getSrcImage(), getMatrix());
@@ -293,19 +300,6 @@ public class TouchImageView extends ImageView {
         return (float) Math.toDegrees(radians);
     }
 
-    /**
-     * 【单点缩放】获取手指和图片中心点的距离
-     *
-     * @param event
-     * @return
-     */
-    private float getSingleTouchDistance(MotionEvent event, PointF imageMidPoint) {
-        float x = event.getX(0) - imageMidPoint.x;
-        float y = event.getY(0) - imageMidPoint.y;
-        return (float) Math.sqrt(x * x + y * y);
-    }
-
-
     @Override
     public void setImageResource(int resId) {
         setImageBitmap(BitmapFactory.decodeResource(context.getResources(), resId));
@@ -323,8 +317,16 @@ public class TouchImageView extends ImageView {
 
         float scale1 = VIEW_HEIGHT / height;
         float scale2 = VIEW_WIDTH / width;
+        float scale = Math.max(scale1, scale2);
         if (height < VIEW_HEIGHT || width < VIEW_WIDTH) {
-            drawMatrix.setScale(Math.max(scale1, scale2), Math.max(scale1, scale2));
+            drawMatrix.setScale(scale, scale);
+        }
+        imageCurrentWidth = scale * width;
+        imageCurrentHeight = scale * height;
+        minWidth = scale * width;
+        minHeight = scale * height;
+        if (Log.DEBUG) {
+            Log.d("TouchImageView", "setImageBitmap--------width=" + imageCurrentWidth + "  height=" + imageCurrentHeight);
         }
     }
 }

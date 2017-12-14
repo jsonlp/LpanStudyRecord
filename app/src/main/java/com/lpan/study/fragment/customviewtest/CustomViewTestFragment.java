@@ -65,6 +65,7 @@ public class CustomViewTestFragment extends ButterKnifeFragment {
         list.add(new RecyclerItemInfo("Point and Rect class", new PointAndRectFragment()));
         list.add(new RecyclerItemInfo("Paint and Canvas", new CanvasAndPaintFragment()));
         list.add(new RecyclerItemInfo("Graphics 2D", new Graphics2Dfragment()));
+        list.add(new RecyclerItemInfo("Matrix", new MatrixFragment()));
 
         getAdapter().addItem(list);
         getAdapter().notifyDataSetChanged();

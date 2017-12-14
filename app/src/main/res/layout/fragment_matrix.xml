@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/black">
+
+    <View
+        android:id="@id/maskView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/white"/>
+
+
+    <com.lpan.study.view.MatrixImageView
+        android:id="@id/image1"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginBottom="50dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@id/text1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:text="translate"/>
+
+        <TextView
+            android:id="@id/text2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:text="scale"/>
+
+        <TextView
+            android:id="@id/text3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:text="rotate"/>
+    </LinearLayout>
+</FrameLayout>
