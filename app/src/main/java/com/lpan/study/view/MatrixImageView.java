@@ -2,6 +2,7 @@ package com.lpan.study.view;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.PointF;
@@ -11,10 +12,12 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 
-import com.lpan.study.context.AppContext;
-import com.lpan.study.utils.Log;
-import com.lpan.study.utils.ViewUtils;
 
+import com.lpan.study.utils.Log;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Arrays;
 
 /**
@@ -22,9 +25,6 @@ import java.util.Arrays;
  */
 
 public class MatrixImageView extends ImageView {
-
-//    public static final int TOP = ViewUtils.getStatusHeight(AppContext.getContext());
-    public static final int TOP = 0;
 
     public static final int MODE_NONE = 0;
 
@@ -48,7 +48,7 @@ public class MatrixImageView extends ImageView {
 
     private float oldAngle;
 
-    private boolean touchable;
+    private boolean touchable = true;
 
     private float minWidth;
 
@@ -75,7 +75,8 @@ public class MatrixImageView extends ImageView {
 
     }
 
-    private void init() {
+    protected void init() {
+//        super.init();
         matrix = new Matrix();
         saveMatrix = new Matrix();
         startPoint = new PointF();
@@ -85,7 +86,9 @@ public class MatrixImageView extends ImageView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawBitmap(srcBitmap, matrix, null);
+        if (srcBitmap != null) {
+            canvas.drawBitmap(srcBitmap, matrix, null);
+        }
         super.onDraw(canvas);
     }
 
@@ -107,38 +110,78 @@ public class MatrixImageView extends ImageView {
         this.touchable = touchable;
     }
 
-    public void setBitmap(Bitmap bitmap, float viewWidth, float viewHeight) {
+
+    public void setViewWidth(float viewWidth) {
         this.viewWidth = viewWidth;
+    }
+
+    public void setViewHeight(float viewHeight) {
         this.viewHeight = viewHeight;
+    }
+
+    public void setLocalFile(String path) {
+        if (Log.DEBUG) {
+            Log.d("TouchImageView", "setLocalFile--------path=" + path);
+        }
+        InputStream inputStream = loadPhoto(path);
+        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
         setImageBitmap(bitmap);
     }
 
-    /**
-     * 用上面的方法,指定view的宽高
-     *
-     * @param bm
-     */
-    @Deprecated
+    private InputStream loadPhoto(String url) {
+        InputStream inputStream = null;
+        if (url.startsWith("file")) {
+            try {
+                inputStream = new FileInputStream(url.substring("file://".length()));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return inputStream;
+    }
+
+    public Bitmap getAfterBitmap(){
+        Bitmap afterBitmap;
+        afterBitmap = Bitmap.createBitmap(getMeasuredWidth(),getMeasuredHeight(), Bitmap.Config.RGB_565);
+        Canvas c = new Canvas(afterBitmap);
+        draw(c);
+        return afterBitmap;
+    }
+
     @Override
     public void setImageBitmap(Bitmap bm) {
-        srcBitmap = bm;
+        this.srcBitmap = bm;
 
         int width = srcBitmap.getWidth();
         int height = srcBitmap.getHeight();
 
-        float scale1 = viewHeight / height;
-        float scale2 = viewWidth / width;
-        float scale = Math.max(scale1, scale2);
-        if (height < viewHeight || width < viewWidth) {
-            matrix.setScale(scale, scale);
+//        float scale1 = viewHeight / height;
+//        float scale2 = viewWidth / width;
+//        float scale = Math.max(scale1, scale2);
+//        if (height < viewHeight || width < viewWidth) {
+//            matrix.setScale(scale, scale);
+//        }
+
+        float scale;
+        float dx = 0, dy = 0;
+
+        if (width * viewHeight > viewWidth * height) {
+            scale = (float) viewHeight / (float) height;
+            dx = (viewWidth - width * scale) * 0.5f;
+        } else {
+            scale = (float) viewWidth / (float) width;
+            dy = (viewHeight - height * scale) * 0.5f;
         }
+
+        matrix.setScale(scale, scale);
+        matrix.postTranslate(Math.round(dx), Math.round(dy));
         minWidth = scale * width;
         minHeight = scale * height;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (!touchable) {
+        if (!touchable || srcBitmap == null) {
             return super.onTouchEvent(event);
         }
         int action = MotionEventCompat.getActionMasked(event);
@@ -221,7 +264,7 @@ public class MatrixImageView extends ImageView {
             Log.d("MatrixImageView", "canVTranslate--------1 point=" + points[1] + " dy=" + dy);
 
             return false;
-        } else if (points[5] + dy <= viewHeight + TOP) {
+        } else if (points[5] + dy <= viewHeight) {
             Log.d("MatrixImageView", "canVTranslate--------2 point=" + points[3] + " dy=" + dy);
 
             return false;
@@ -262,7 +305,7 @@ public class MatrixImageView extends ImageView {
         if (scale < 1) {
             float[] points = getBitmapPoints(bitmap, matrix);
 
-            if (points[0] >= 0 || points[1] >= 0 || points[2] <= viewWidth || points[5] <= viewHeight + TOP) {
+            if (points[0] >= 0 || points[1] >= 0 || points[2] <= viewWidth || points[5] <= viewHeight) {
                 if (Log.DEBUG) {
                     Log.e("MatrixImageView", "canScale--------1" + Arrays.toString(points) + "  viewWidth=" + viewWidth + "  viewHeight=" + viewHeight);
                 }
@@ -339,7 +382,7 @@ public class MatrixImageView extends ImageView {
      *
      * @return
      */
-    public float[] getPreviewWidthHeight(Bitmap bitmap, Matrix matrix) {
+    private float[] getPreviewWidthHeight(Bitmap bitmap, Matrix matrix) {
         float[] widthHeight = new float[2];
         float[] bitmapPoints = getBitmapPoints(bitmap, matrix);
         float width = bitmapPoints[4] - bitmapPoints[2];
