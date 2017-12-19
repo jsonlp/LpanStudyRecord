@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.PointF;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
@@ -77,6 +79,7 @@ public class MatrixImageView extends ImageView {
 
     protected void init() {
 //        super.init();
+        setScaleType(ScaleType.MATRIX);
         matrix = new Matrix();
         saveMatrix = new Matrix();
         startPoint = new PointF();
@@ -140,9 +143,9 @@ public class MatrixImageView extends ImageView {
         return inputStream;
     }
 
-    public Bitmap getAfterBitmap(){
+    public Bitmap getAfterBitmap() {
         Bitmap afterBitmap;
-        afterBitmap = Bitmap.createBitmap(getMeasuredWidth(),getMeasuredHeight(), Bitmap.Config.RGB_565);
+        afterBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(), Bitmap.Config.RGB_565);
         Canvas c = new Canvas(afterBitmap);
         draw(c);
         return afterBitmap;
@@ -233,13 +236,17 @@ public class MatrixImageView extends ImageView {
                         matrix.set(saveMatrix);
                         matrix.postScale(scale, scale, middlePoint.x, middlePoint.y);
                         invalidate();
-                        if (Log.DEBUG) {
-                            Log.d("MatrixImageView", "onTouchEvent--------can scale width=" + getPreviewWidthHeight(srcBitmap, matrix)[0] + "    height=" + getPreviewWidthHeight(srcBitmap, matrix)[1]);
-                        }
+//                        if (Log.DEBUG) {
+//                            Log.d("MatrixImageView", "onTouchEvent--------can scale width=" + getPreviewWidthHeight(srcBitmap, matrix)[0] + "    height=" + getPreviewWidthHeight(srcBitmap, matrix)[1]);
+//                        }
                     } else {
-                        if (Log.DEBUG) {
-                            Log.d("MatrixImageView", "onTouchEvent--------can not scale  width=" + getPreviewWidthHeight(srcBitmap, matrix)[0] + "    height=" + getPreviewWidthHeight(srcBitmap, matrix)[1]);
-                        }
+//                        if (Log.DEBUG) {
+//                            Log.d("MatrixImageView", "onTouchEvent--------can not scale  width=" + getPreviewWidthHeight(srcBitmap, matrix)[0] + "    height=" + getPreviewWidthHeight(srcBitmap, matrix)[1]);
+//                        }
+                        float restoreScale = getRestoreScale(srcBitmap, saveMatrix);
+                        matrix.set(saveMatrix);
+                        matrix.postScale(restoreScale, restoreScale, middlePoint.x, middlePoint.y);
+                        invalidate();
                     }
 
                 }
@@ -377,6 +384,16 @@ public class MatrixImageView extends ImageView {
         return dst;
     }
 
+    public RectF getBitmapRects(Bitmap bitmap, Matrix matrix) {
+        RectF dst = new RectF();
+        RectF src = new RectF(0, 0, bitmap.getWidth(), bitmap.getHeight());
+        matrix.mapRect(dst, src);
+        if(Log.DEBUG){
+            Log.d("MatrixImageView","getBitmapRects--------"+dst.toString());
+        }
+        return dst;
+    }
+
     /**
      * 预览转换后的图片宽高
      *
@@ -385,11 +402,24 @@ public class MatrixImageView extends ImageView {
     private float[] getPreviewWidthHeight(Bitmap bitmap, Matrix matrix) {
         float[] widthHeight = new float[2];
         float[] bitmapPoints = getBitmapPoints(bitmap, matrix);
-        float width = bitmapPoints[4] - bitmapPoints[2];
-        float height = bitmapPoints[2] - bitmapPoints[0];
+        float width = bitmapPoints[2] - bitmapPoints[0];
+        float height = bitmapPoints[5] - bitmapPoints[1];
         widthHeight[0] = Math.abs(width);
         widthHeight[1] = Math.abs(height);
         return widthHeight;
+    }
+
+    private float getRestoreScale(Bitmap bitmap, Matrix matrix) {
+        float[] previewWidthHeight = getPreviewWidthHeight(bitmap, matrix);
+        float width = previewWidthHeight[0];
+        float height = previewWidthHeight[1];
+        float scale1 = minWidth / width;
+        float scale2 = minHeight / height;
+
+        if (Log.DEBUG) {
+            Log.d("MatrixImageView", "getRestoreScale--------scale1=" + scale1 + "  scale2=" + scale2);
+        }
+        return scale1;
     }
 
 }

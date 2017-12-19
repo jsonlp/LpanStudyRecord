@@ -129,7 +129,7 @@ public class MatrixFragment extends ButterKnifeFragment implements View.OnClickL
             case R.id.image1:
 //                resetMatrix();
 //                mImage1.setMatrix(matrix);
-//                getWidthHeight(mSrcBitmap,matrix);
+                getWidthHeight(mSrcBitmap,matrix);
 
                 break;
         }
@@ -140,9 +140,6 @@ public class MatrixFragment extends ButterKnifeFragment implements View.OnClickL
     }
 
     private void getWidthHeight(Bitmap bitmap, Matrix matrix) {
-//        float[] currentWidthAndHeight = mImage1.getPreviewWidthHeight(bitmap, matrix);
-//        if (Log.DEBUG) {
-//            Log.d("MatrixFragment", "getWidthHeight--------width=" + currentWidthAndHeight[0] + "  height=" + currentWidthAndHeight[1]);
-//        }
+        mImage1.getBitmapRects(bitmap,matrix);
     }
 }
