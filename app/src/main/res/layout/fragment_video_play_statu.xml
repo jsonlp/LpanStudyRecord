@@ -31,8 +31,13 @@
     <com.lpan.study.view.MusicWaveView
         android:id="@+id/throbbing_note_view"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="match_parent">
 
     </com.lpan.study.view.MusicWaveView>
+
+    <com.lpan.study.view.PaperAirPlanesaView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

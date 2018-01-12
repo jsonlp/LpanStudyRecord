@@ -68,7 +68,12 @@ public class ClassroomAdapter extends RecyclerViewAdapter<UserInfo, RecyclerView
             int top = 0;
             int right = 0;
             int bottom = 0;
-            mImageView.setImageResource(R.drawable.inspire);
+
+            if(position == 24){
+                mImageView.setImageResource(R.drawable.ic_launcher);
+            }else{
+                mImageView.setImageResource(R.drawable.inspire);
+            }
             mImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -102,9 +107,7 @@ public class ClassroomAdapter extends RecyclerViewAdapter<UserInfo, RecyclerView
 
             mView.setPadding(left, top, right, bottom);
 
-            if(position == 5){
 
-            }
         }
     }
 }

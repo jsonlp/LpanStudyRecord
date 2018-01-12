@@ -27,7 +27,7 @@ import butterknife.BindView;
  * Created by liaopan on 2018/1/11 15:29.
  */
 
-public class ClassroomFragment extends ButterKnifeFragment implements OnAvatarClickListener<UserInfo> {
+public class ClassroomFragment extends ButterKnifeFragment implements OnAvatarClickListener<UserInfo>,View.OnClickListener {
 
     @BindView(R.id.recyclerview)
     RecyclerView mRecyclerView;
@@ -189,6 +189,10 @@ public class ClassroomFragment extends ButterKnifeFragment implements OnAvatarCl
         view.setLayoutParams(layoutParams);
     }
 
+    private void throwTapeChat(int destinationx,int destunationy){
+
+    }
+
 
     @Override
     public void OnAvatarClick(UserInfo user, View view, int position) {
@@ -196,6 +200,8 @@ public class ClassroomFragment extends ButterKnifeFragment implements OnAvatarCl
             mPopupContentView = LayoutInflater.from(getActivity()).inflate(R.layout.layout_popup_see_pofile, null);
             View seeProfile = mPopupContentView.findViewById(R.id.see_profile);
             View tapeChat = mPopupContentView.findViewById(R.id.tape_chat);
+            seeProfile.setOnClickListener(this);
+            tapeChat.setOnClickListener(this);
             mPopupWindow = new MyPopupWindow(mPopupContentView, POPUP_WIDTH, POPUP_HEIGHT, true);
         }
         int[] location = new int[2];
@@ -204,5 +210,14 @@ public class ClassroomFragment extends ButterKnifeFragment implements OnAvatarCl
         int y = location[1];
         mPopupWindow.showAtLocation(view, 0, (x - POPUP_WIDTH / 2), (y - POPUP_HEIGHT));
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.tape_chat:
+
+                break;
+        }
     }
 }
