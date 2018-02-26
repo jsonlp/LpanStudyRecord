@@ -1,5 +1,6 @@
 package com.lpan.study.fragment;
 
+import android.graphics.PointF;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,6 +18,8 @@ import com.lpan.study.model.UserInfo;
 import com.lpan.study.utils.Log;
 import com.lpan.study.utils.ViewUtils;
 import com.lpan.study.view.MyPopupWindow;
+import com.lpan.study.view.pathanimation.AnimatorPath;
+import com.lpan.study.view.pathanimation.PaperPlaneView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +30,7 @@ import butterknife.BindView;
  * Created by liaopan on 2018/1/11 15:29.
  */
 
-public class ClassroomFragment extends ButterKnifeFragment implements OnAvatarClickListener<UserInfo>,View.OnClickListener {
+public class ClassroomFragment extends ButterKnifeFragment implements OnAvatarClickListener<UserInfo>, View.OnClickListener {
 
     @BindView(R.id.recyclerview)
     RecyclerView mRecyclerView;
@@ -53,6 +56,24 @@ public class ClassroomFragment extends ButterKnifeFragment implements OnAvatarCl
     @BindView(R.id.right_line)
     View mRightLine;
 
+    @BindView(R.id.paper_plane1)
+    PaperPlaneView mPlane1;
+
+    @BindView(R.id.paper_plane2)
+    PaperPlaneView mPlane2;
+
+    @BindView(R.id.paper_plane3)
+    PaperPlaneView mPlane3;
+
+    @BindView(R.id.paper_plane4)
+    PaperPlaneView mPlane4;
+
+    @BindView(R.id.paper_plane5)
+    PaperPlaneView mPlane5;
+
+    @BindView(R.id.layout)
+    View mRecyclerLayout;
+
 
     private ClassroomAdapter mAdapter;
 
@@ -64,6 +85,9 @@ public class ClassroomFragment extends ButterKnifeFragment implements OnAvatarCl
 
     private static final int POPUP_HEIGHT = (int) (ViewUtils.ONE_DP * 40);
 
+    private int mPosition;
+
+    private List<PaperPlaneView> mPlanes = new ArrayList<>();
 
     @Override
     protected int getLayoutResource() {
@@ -74,10 +98,17 @@ public class ClassroomFragment extends ButterKnifeFragment implements OnAvatarCl
     protected void initViews(View view) {
         super.initViews(view);
         mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 10));
-        mRecyclerView.setAdapter(getAdapter());
+
+        mRecyclerView.setAdapter(getSeatChatAdapter());
+        mPlanes.add(mPlane1);
+        mPlanes.add(mPlane2);
+        mPlanes.add(mPlane3);
+        mPlanes.add(mPlane4);
+        mPlanes.add(mPlane5);
+
     }
 
-    public ClassroomAdapter getAdapter() {
+    public ClassroomAdapter getSeatChatAdapter() {
         if (mAdapter == null) {
             mAdapter = new ClassroomAdapter(getActivity(), this);
         }
@@ -93,8 +124,8 @@ public class ClassroomFragment extends ButterKnifeFragment implements OnAvatarCl
             userInfo.setName("jason" + i);
             list.add(userInfo);
         }
-        getAdapter().addItem(list);
-        getAdapter().notifyDataSetChanged();
+        getSeatChatAdapter().addItem(list);
+        getSeatChatAdapter().notifyDataSetChanged();
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -110,36 +141,48 @@ public class ClassroomFragment extends ButterKnifeFragment implements OnAvatarCl
 
     private void setTag() {
 
+        int itemWidth = (int) (ViewUtils.ONE_DP * 23);
+        View startView = mRecyclerView.getChildAt(0);
+        int[] startLocation = new int[2];
+        startView.getLocationOnScreen(startLocation);
+        int dy = (int) (startLocation[1]);
+
         View topTag = mRecyclerView.getChildAt(4);
         int[] topLocation = new int[2];
         topTag.getLocationOnScreen(topLocation);
-        setLayoutY(mTopTag, (int) (topLocation[1] + ViewUtils.ONE_DP * 60));
+        mTopTag.getLayoutParams().height = (int) (ViewUtils.ONE_DP * 20);
+        mTopTag.getLayoutParams().width = ViewUtils.getScreenWidth(AppContext.getContext());
+        setLayoutY(mTopTag, (int) (topLocation[1] + itemWidth + itemWidth / 2 + ViewUtils.ONE_DP * 10 + -dy));
 
 
         View leftTag = mRecyclerView.getChildAt(21);
         int[] leftLocation = new int[2];
         leftTag.getLocationOnScreen(leftLocation);
         mLeftTag.getLayoutParams().width = ViewUtils.getScreenWidth(AppContext.getContext()) * 3 / 10;
-        setLayoutY(mLeftTag, (int) (leftLocation[1] + ViewUtils.ONE_DP * 40));
+        mLeftTag.getLayoutParams().height = (int) (ViewUtils.ONE_DP * 20);
+        setLayoutY(mLeftTag, (int) (leftLocation[1] + ViewUtils.ONE_DP * 40 - dy));
 
         View centerTag = mRecyclerView.getChildAt(23);
         int[] centerLocation = new int[2];
         centerTag.getLocationOnScreen(centerLocation);
         mCenterTag.getLayoutParams().width = ViewUtils.getScreenWidth(AppContext.getContext()) * 4 / 10;
-        setLayout(mCenterTag, centerLocation[0], (int) (centerLocation[1] + ViewUtils.ONE_DP * 50));
+        mCenterTag.getLayoutParams().height = (int) (ViewUtils.ONE_DP * 20);
+        setLayout(mCenterTag, centerLocation[0], (int) (centerLocation[1] + ViewUtils.ONE_DP * 50 - dy));
 
         View rightTag = mRecyclerView.getChildAt(27);
         int[] rightLocation = new int[2];
         rightTag.getLocationOnScreen(rightLocation);
         mRightTag.getLayoutParams().width = ViewUtils.getScreenWidth(AppContext.getContext()) * 3 / 10;
-        setLayout(mRightTag, rightLocation[0], (int) (rightLocation[1] + ViewUtils.ONE_DP * 40));
+        mRightTag.getLayoutParams().height = (int) (ViewUtils.ONE_DP * 20);
+        setLayout(mRightTag, rightLocation[0], (int) (rightLocation[1] + ViewUtils.ONE_DP * 40 - dy));
 
 
         View bottomTag = mRecyclerView.getChildAt(34);
         int[] bottomLocation = new int[2];
         bottomTag.getLocationOnScreen(bottomLocation);
         mBottomTag.getLayoutParams().height = (int) (ViewUtils.ONE_DP * 20);
-        setLayoutY(mBottomTag, (int) (bottomLocation[1] + ViewUtils.ONE_DP * 60));
+        mBottomTag.getLayoutParams().width = ViewUtils.getScreenWidth(AppContext.getContext());
+        setLayoutY(mBottomTag, (int) (bottomLocation[1] + itemWidth + itemWidth / 2 + ViewUtils.ONE_DP * 10 + -dy));
 
 
         View leftLine = mRecyclerView.getChildAt(13);
@@ -151,6 +194,17 @@ public class ClassroomFragment extends ButterKnifeFragment implements OnAvatarCl
         int[] rightLineLocation = new int[2];
         rightLine.getLocationOnScreen(rightLineLocation);
         setLayout(mRightLine, (int) (rightLineLocation[0] - ViewUtils.ONE_DP * 5), rightLineLocation[1]);
+
+    }
+
+    private void layoutView(View view, int position, int width, int height, int dy) {
+        View tagView = mRecyclerView.getChildAt(position);
+        int[] location = new int[2];
+        tagView.getLocationOnScreen(location);
+        view.getLayoutParams().height = height;
+        view.getLayoutParams().width = width;
+        setLayoutY(mBottomTag, (int) (location[1] + ViewUtils.ONE_DP * 60 - dy));
+
     }
 
     /*
@@ -189,13 +243,10 @@ public class ClassroomFragment extends ButterKnifeFragment implements OnAvatarCl
         view.setLayoutParams(layoutParams);
     }
 
-    private void throwTapeChat(int destinationx,int destunationy){
-
-    }
-
 
     @Override
     public void OnAvatarClick(UserInfo user, View view, int position) {
+        mPosition = position;
         if (mPopupWindow == null) {
             mPopupContentView = LayoutInflater.from(getActivity()).inflate(R.layout.layout_popup_see_pofile, null);
             View seeProfile = mPopupContentView.findViewById(R.id.see_profile);
@@ -203,6 +254,8 @@ public class ClassroomFragment extends ButterKnifeFragment implements OnAvatarCl
             seeProfile.setOnClickListener(this);
             tapeChat.setOnClickListener(this);
             mPopupWindow = new MyPopupWindow(mPopupContentView, POPUP_WIDTH, POPUP_HEIGHT, true);
+//            mPopupWindow.setOutsideTouchable(true);
+            mPopupWindow.setFocusable(false);
         }
         int[] location = new int[2];
         view.getLocationOnScreen(location);
@@ -212,12 +265,87 @@ public class ClassroomFragment extends ButterKnifeFragment implements OnAvatarCl
 
     }
 
+    private PointF getPointByPosition(int position) {
+        int ONE_DP = (int) ViewUtils.ONE_DP;
+        int SCREEN_HEIGHT = ViewUtils.getStatusHeight(AppContext.getContext());
+        int y = (int) mRecyclerLayout.getY();
+        int parentTop = mRecyclerLayout.getTop();
+        if (Log.DEBUG) {
+            Log.d("ClassroomFragment", "getPointByPosition--------y=" + y + "  top=" + parentTop);
+        }
+        View childAt = mRecyclerView.getChildAt(position);
+        int top = 0;
+        if (childAt != null) {
+            int[] location = new int[2];
+            childAt.getLocationOnScreen(location);
+            if (position % 10 == 0 || position % 10 == 9) {
+                top = 0;
+            } else if (position % 10 == 1 || position % 10 == 8) {
+                top = ONE_DP * 5;
+            } else if (position % 10 == 2 || position % 10 == 7) {
+                top = ONE_DP * 9;
+            } else if (position % 10 == 3 || position % 10 == 6) {
+                top = ONE_DP * 11;
+            } else {
+                top = ONE_DP * 12;
+            }
+            return new PointF(location[0], location[1] - SCREEN_HEIGHT - parentTop + top);
+        }
+        return null;
+    }
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.tape_chat:
+                mPopupWindow.dismiss();
+
+                fly(0, mPosition);
+                fly(1, mPosition);
+                fly(2, mPosition);
+                fly(3, mPosition);
+                fly(4, mPosition);
+
+                fly(5, mPosition);
+                fly(6, mPosition);
+                fly(7, mPosition);
+                fly(8, mPosition);
+                fly(9, mPosition);
 
                 break;
         }
+    }
+
+    private void fly(final int fromPosition, final int toPosition) {
+        PointF startPoint = getPointByPosition(fromPosition);
+        PointF endPoint = getPointByPosition(toPosition);
+        if (startPoint != null && endPoint != null) {
+            PointF control = new PointF(endPoint.x, startPoint.y);
+            PaperPlaneView freePlane = getFreePlane();
+            if (freePlane != null) {
+                freePlane.setBusy(true);
+                freePlane.fly(0, startPoint, control, endPoint);
+                if (Log.DEBUG) {
+                    Log.d("ClassroomFragment", "can fly--------" + freePlane.toString());
+                }
+            } else {
+                //没有空闲飞机
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        fly(fromPosition, toPosition);
+                    }
+                }, 1000);
+            }
+        }
+    }
+
+    private PaperPlaneView getFreePlane() {
+        for (PaperPlaneView paperPlaneView : mPlanes) {
+            if (!paperPlaneView.isBusy()) {
+                return paperPlaneView;
+            }
+        }
+        return null;
     }
 }

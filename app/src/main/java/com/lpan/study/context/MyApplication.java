@@ -24,7 +24,7 @@ public class MyApplication extends Application implements Thread.UncaughtExcepti
         int height = ViewUtils.getScreenHeight(getApplicationContext());
         int statuHeight = ViewUtils.getStatusHeight(getApplicationContext());
         if (Log.DEBUG) {
-            Log.d("MyApplication", "onCreate--------width=" + width + " height=" + height + " statuHeight=" + statuHeight);
+            Log.d("MyApplication", "onCreate--------width=" + width + " height=" + height + " statuHeight=" + statuHeight + "  one dp=" + ViewUtils.ONE_DP);
         }
 
         this.mUncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();

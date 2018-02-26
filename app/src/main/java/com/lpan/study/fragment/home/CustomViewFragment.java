@@ -54,6 +54,7 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
         super.initData();
         mList = new ArrayList<>();
 
+        mList.add("class room");
         mList.add("custom view test");
         mList.add("glide");
         mList.add("value animator");
@@ -69,11 +70,11 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
         mList.add("slide panel");
         mList.add("nested scroll");
         mList.add("card swipe");
-        mList.add("class room");
 
 
         mToActivityList = new ArrayList<>();
 
+        mToActivityList.add(new ClassroomFragment());
         mToActivityList.add(new CustomViewTestFragment());
         mToActivityList.add(new GlideFragment());
         mToActivityList.add(new AnimationFragment());
@@ -89,7 +90,6 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
         mToActivityList.add(new SlidePanelFragment());
         mToActivityList.add(new NestedScrollFragment());
         mToActivityList.add(new CardSwipeFragment());
-        mToActivityList.add(new ClassroomFragment());
 
 
         getAdapter().addItems(mList);

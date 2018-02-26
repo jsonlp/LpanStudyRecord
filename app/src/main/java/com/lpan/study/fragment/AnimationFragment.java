@@ -6,11 +6,15 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.TextView;
 
+import com.lpan.study.context.AppContext;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.Log;
 import com.lpan.R;
+import com.lpan.study.utils.ViewUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,7 +51,7 @@ public class AnimationFragment extends BaseFragment implements View.OnClickListe
     TextView mAnimatorXml;
 
     @BindView(R.id.text1)
-    TextView mText;
+    View mText;
 
 
     @Override
@@ -62,7 +66,7 @@ public class AnimationFragment extends BaseFragment implements View.OnClickListe
 
     }
 
-    @OnClick({R.id.alpha, R.id.translationX, R.id.translationY, R.id.scaleX, R.id.scaleY, R.id.rotation, R.id.animatorset, R.id.animatorxml})
+    @OnClick({R.id.alpha, R.id.translationX, R.id.translationY, R.id.scaleX, R.id.scaleY, R.id.rotation, R.id.animatorset, R.id.animatorxml, R.id.text1})
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -74,16 +78,16 @@ public class AnimationFragment extends BaseFragment implements View.OnClickListe
                     @Override
                     public void onAnimationStart(Animator animation) {
                         super.onAnimationStart(animation);
-                        if(Log.DEBUG){
-                            Log.d("AnimationFragment","onAnimationStart--------");
+                        if (Log.DEBUG) {
+                            Log.d("AnimationFragment", "onAnimationStart--------");
                         }
                     }
 
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
-                        if(Log.DEBUG){
-                            Log.d("AnimationFragment","onAnimationEnd--------");
+                        if (Log.DEBUG) {
+                            Log.d("AnimationFragment", "onAnimationEnd--------");
                         }
                     }
                 });
@@ -122,28 +126,63 @@ public class AnimationFragment extends BaseFragment implements View.OnClickListe
                 break;
 
             case R.id.animatorset:
-                ObjectAnimator translationX1 = ObjectAnimator.ofFloat(mText, "translationX", 0.f, 300f);
-                ObjectAnimator translationY1 = ObjectAnimator.ofFloat(mText, "translationY", 0.f, 300f);
-                ObjectAnimator scaleX1 = ObjectAnimator.ofFloat(mText, "scaleX", 1.f, 3f);
-                ObjectAnimator scaleY1 = ObjectAnimator.ofFloat(mText, "scaleY", 1.f, 3f);
-                ObjectAnimator alpha1 = ObjectAnimator.ofFloat(mText, "alpha", 0.f, 1.f);
-                ObjectAnimator rotation1 = ObjectAnimator.ofFloat(mText, "rotation", 0.f, 180f);
+//                ObjectAnimator translationX1 = ObjectAnimator.ofFloat(mText, "translationX", 0.f, 300f);
+//                ObjectAnimator translationY1 = ObjectAnimator.ofFloat(mText, "translationY", 0.f, 300f);
+                ObjectAnimator scaleX1 = ObjectAnimator.ofFloat(mText, "scaleX", 0f, 1f);
+                ObjectAnimator scaleY1 = ObjectAnimator.ofFloat(mText, "scaleY", 0f, 1f);
+//                mText.setPivotY(ViewUtils.getScreenHeight(AppContext.getContext()));
+                int statuHeight = ViewUtils.getStatusHeight(AppContext.getContext());
+                int screenHright = ViewUtils.getScreenHeight(AppContext.getContext());
+
+//                //左上角
+//                mText.setPivotX(0);
+//                mText.setPivotY(0);
+
+//                //左下角
+//                mText.setPivotX(0);
+//                mText.setPivotY(mText.getHeight());
+
+                //右上角
+//                mText.setPivotX(mText.getWidth());
+//                mText.setPivotY(0);
+
+                //右下角
+                mText.setPivotX(mText.getWidth());
+                mText.setPivotY(mText.getHeight());
+
+                float pivotX = mText.getPivotX();
+                float pivotY = mText.getPivotY();
+                if (Log.DEBUG) {
+                    Log.d("AnimationFragment", "onClick--------x=" + pivotX + "  y=" + pivotY + "  top=" + mText.getTop());
+                }
+//                ObjectAnimator alpha1 = ObjectAnimator.ofFloat(mText, "alpha", 0.f, 1.f);
+//                ObjectAnimator rotation1 = ObjectAnimator.ofFloat(mText, "rotation", 0.f, 180f);
 
                 AnimatorSet set = new AnimatorSet();
-                set.play(alpha1)
-                        .with(scaleX1)
-                        .with(scaleY1)
-                        .with(translationY1)
-                        .with(translationX1)
-                        .after(rotation1);
+//                set.play(alpha1)
+//                        .with(scaleX1)
+//                        .with(scaleY1)
+//                        .with(translationY1)
+//                        .with(translationX1)
+//                        .after(rotation1);
+
+                set.play(scaleX1)
+                        .with(scaleY1);
                 set.setDuration(5000);
                 set.start();
                 break;
 
             case R.id.animatorxml:
-                Animator animator = AnimatorInflater.loadAnimator(getActivity(),R.animator.set_1);
+                Animator animator = AnimatorInflater.loadAnimator(getActivity(), R.animator.set_1);
                 animator.setTarget(mText);
                 animator.start();
+
+                break;
+
+            case R.id.text1:
+                ScaleAnimation scaleAnimation = new ScaleAnimation(0.2f, 1f, 0.2f, 1f, Animation.RELATIVE_TO_SELF,1f, Animation.RELATIVE_TO_SELF,1f);
+                scaleAnimation.setDuration(1000);
+                mText.startAnimation(scaleAnimation);
 
                 break;
         }

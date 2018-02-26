@@ -9,9 +9,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lpan.study.fragment.base.BaseFragment;
+import com.lpan.study.utils.Log;
 import com.lpan.study.utils.RxjavaTestUtils;
 import com.lpan.R;
 
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -38,18 +43,23 @@ public class JavaTestFragment extends BaseFragment implements View.OnClickListen
     @BindView(R.id.edit4)
     EditText mSecondNumInput;
 
+    @BindView(R.id.edit5)
+    EditText mTimeInput;
+
     @BindView(R.id.text2)
     TextView mOperatorsDo;
 
     @BindView(R.id.text3)
     TextView mOperatorsResult;
 
-//    @BindView(R.id.text4)
-//    TextView mRxjavaTest;
+    @BindView(R.id.text4)
+    TextView mRxjavaTest;
 
-    @BindView(R.id.image1)
-    ImageView mImage1;
+    @BindView(R.id.text5)
+    TextView mTimeFormat;
 
+    @BindView(R.id.text6)
+    TextView mGetDegree;
 
     @Override
     protected int getLayoutResource() {
@@ -102,7 +112,7 @@ public class JavaTestFragment extends BaseFragment implements View.OnClickListen
         super.initData();
     }
 
-    @OnClick({R.id.text1, R.id.text2, R.id.text4})
+    @OnClick({R.id.text1, R.id.text2, R.id.text4, R.id.text5, R.id.text6})
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -115,6 +125,21 @@ public class JavaTestFragment extends BaseFragment implements View.OnClickListen
                 break;
             case R.id.text4:
                 rxjavaTest();
+                break;
+
+            case R.id.text5:
+                String s = formatTime(Long.valueOf(mTimeInput.getText().toString()));
+                long justNow = System.currentTimeMillis() - 1000 * 60 * 4;
+                long today = System.currentTimeMillis() - 1000 * 60 * 60;
+                long yesterday = 1516784078837l + 1000 * 60 * 60 * 24;
+                long date = 1506784078837l;
+                s = formatTime(yesterday);
+                mTimeFormat.setText(s);
+                break;
+
+            case R.id.text6:
+                getDegree();
+                getDistance(1, 1, 3, 3);
                 break;
 
             default:
@@ -154,7 +179,42 @@ public class JavaTestFragment extends BaseFragment implements View.OnClickListen
         return result + "";
     }
 
+    private String formatTime(long time) {
+        long now = System.currentTimeMillis();
+        long d = now - time;
 
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH), 0, 0);
+        int firstDayOffNew = calendar.get(Calendar.DAY_OF_WEEK) - Calendar.SUNDAY;
+        calendar.add(Calendar.DAY_OF_MONTH, -1);
+        long lastDayTime = calendar.getTimeInMillis();
+        if (d <= 1000 * 60 * 5) {
+            return "刚刚";
+        } else if (d < time - lastDayTime) {
+            return new SimpleDateFormat("HH:mm", Locale.CHINA).format(time);
+        } else if (time > lastDayTime) {
+            return "昨天";
+        }
+
+        return new SimpleDateFormat("MM月dd日", Locale.CHINA).format(time);
+    }
+
+    private void getDegree() {
+        double atan = Math.atan(1.732);
+        double v = Math.toDegrees(atan);
+        if (Log.DEBUG) {
+            Log.d("JavaTestFragment", "getDegree--------a=" + v);
+        }
+    }
+
+    private void getDistance(int startX, int startY, int endX, int endY) {
+        int dx = Math.abs(startX - endX);
+        int dy = Math.abs(startY - endY);
+
+        double v = Math.pow(dx, 2) + Math.pow(dy, 2);
+        double sqrt = Math.sqrt(v);
+    }
 
 
 }

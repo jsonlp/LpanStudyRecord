@@ -7,8 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lpan.R;
+import com.lpan.study.context.AppContext;
 import com.lpan.study.listener.OnAvatarClickListener;
 import com.lpan.study.model.UserInfo;
+import com.lpan.study.utils.Log;
 import com.lpan.study.utils.ViewUtils;
 import com.lpan.study.view.CircleImageView;
 
@@ -37,31 +39,29 @@ public class ClassroomAdapter extends RecyclerViewAdapter<UserInfo, RecyclerView
         classroomViewHolder.bindView(getItem(position), position, mOnAvatarClickListener);
     }
 
-    public float[] getTag1Position() {
-        float[] floats = new float[]{};
-
-
-        return floats;
-    }
-
 
     class ClassroomViewHolder extends RecyclerView.ViewHolder {
 
         CircleImageView mImageView;
-
         View mView;
-//        TextView mTextView;
-
+        final int ONE_DP = (int) ViewUtils.ONE_DP;
+        final int MARGIN_LEFT = ONE_DP * 15;
+        final int MARGIN_RIGHT = ONE_DP * 15;
+        final int ITEM_HORIZONTAL_DIVIDER = ONE_DP * 13;
+        private float mAvatarWidth;
 
         public ClassroomViewHolder(View itemView) {
             super(itemView);
             mImageView = (CircleImageView) itemView.findViewById(R.id.image1);
             mView = itemView.findViewById(R.id.wrapper);
-//            mTextView = (TextView) itemView.findViewById(R.id.text1);
+
+            mAvatarWidth = (ViewUtils.getScreenWidth(AppContext.getContext()) - MARGIN_LEFT - MARGIN_RIGHT - (10 - 1) * ITEM_HORIZONTAL_DIVIDER) / 10.0f +0.5f ;
+            if (Log.DEBUG) {
+                Log.d("SeatChatViewHolder", "SeatChatViewHolder--------avatar width=" + mAvatarWidth);
+            }
         }
 
         public void bindView(final UserInfo userInfo, final int position, final OnAvatarClickListener onAvatarClickListener) {
-//            mTextView.setText(userInfo.getName());
 
             int ONE_DP = (int) ViewUtils.ONE_DP;
             int left = 0;
@@ -87,22 +87,22 @@ public class ClassroomAdapter extends RecyclerViewAdapter<UserInfo, RecyclerView
             } else if (position % 10 == 1 || position % 10 == 8) {
                 top = ONE_DP * 5;
             } else if (position % 10 == 2 || position % 10 == 7) {
-                top = ONE_DP * 10;
+                top = ONE_DP * 9;
             } else if (position % 10 == 3 || position % 10 == 6) {
-                top = ONE_DP * 15;
+                top = ONE_DP * 11;
             } else {
-                top = ONE_DP * 20;
+                top = ONE_DP * 12;
             }
 
 
             if (position / 10 == 0) {
-                bottom = ONE_DP * 20;
+                bottom = ONE_DP * 25;
             } else if (position / 10 == 1) {
-                bottom = ONE_DP * 1;
+                bottom = ONE_DP * 3;
             } else if (position / 10 == 2) {
-                bottom = ONE_DP * 20;
+                bottom = ONE_DP * 25;
             } else if (position / 10 == 3) {
-                bottom = ONE_DP * 1;
+                bottom = ONE_DP * 3;
             }
 
             mView.setPadding(left, top, right, bottom);
