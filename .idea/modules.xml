@@ -3,10 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FFmpegAndroid/FFmpegAndroid.iml" filepath="$PROJECT_DIR$/FFmpegAndroid/FFmpegAndroid.iml" />
-      <module fileurl="file://$PROJECT_DIR$/PandaStudyRecord.iml" filepath="$PROJECT_DIR$/PandaStudyRecord.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/logan_processor/logan_processor.iml" filepath="$PROJECT_DIR$/logan_processor/logan_processor.iml" />
-      <module fileurl="file://$PROJECT_DIR$/panda-study.iml" filepath="$PROJECT_DIR$/panda-study.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/panda-study.iml" filepath="$PROJECT_DIR$/.idea/panda-study.iml" />
     </modules>
   </component>
 </project>
