@@ -18,6 +18,7 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
 
+import com.lpan.BuildConfig;
 import com.lpan.study.context.AppContext;
 import com.lpan.study.utils.ThreadPoolUtil;
 
@@ -85,6 +86,9 @@ public class TextureVideoView extends TextureView implements
     private OnBufferingUpdateListener bufferingUpdateListener = new OnBufferingUpdateListener() {
         @Override
         public void onBufferingUpdate(MediaPlayer mp, int percent) {
+            if(BuildConfig.DEBUG){
+                Log.d("TextureVideoView","onBufferingUpdate--------percent="+percent);
+            }
             if (onStateChangeListener != null) {
                 //在某些情况下视频一次性缓冲100%，有些手机竟然不调用OnInfo回调，比如小米2，导致缓冲指示器一直显示，所以在此处添加此代码
                 if (percent == 100 && mediaState != MediaState.PAUSE) {

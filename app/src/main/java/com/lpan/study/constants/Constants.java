@@ -27,4 +27,9 @@ public class Constants {
     public static final String ANIMATION_SHARE_ELEMENT = "animation_share_element";
 
 
+    public static final int PAGE_TYPE_PHOTO = 0;
+    public static final int PAGE_TYPE_VIDEO = 1;
+    public static final int PAGE_TYPE_BOOK = 2;
+
+
 }

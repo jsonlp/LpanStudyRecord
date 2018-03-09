@@ -7,6 +7,7 @@ import android.widget.ListView;
 import com.lpan.study.adapter.NavegationAdapter;
 import com.lpan.study.fragment.CardViewFragment;
 import com.lpan.study.fragment.ClassroomFragment;
+import com.lpan.study.fragment.MaterialDesignFragment;
 import com.lpan.study.fragment.customviewtest.CustomViewTestFragment;
 import com.lpan.study.fragment.GlideFragment;
 import com.lpan.study.fragment.base.BaseFragment;
@@ -54,6 +55,7 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
         super.initData();
         mList = new ArrayList<>();
 
+        mList.add("material design");
         mList.add("class room");
         mList.add("custom view test");
         mList.add("glide");
@@ -74,6 +76,7 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
 
         mToActivityList = new ArrayList<>();
 
+        mToActivityList.add(new MaterialDesignFragment());
         mToActivityList.add(new ClassroomFragment());
         mToActivityList.add(new CustomViewTestFragment());
         mToActivityList.add(new GlideFragment());

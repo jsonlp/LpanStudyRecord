@@ -31,8 +31,6 @@ import java.util.List;
 
 public class VideoRecyclerFragment extends BaseFragment {
 
-    public static final int STICK_HEIGHT = (int) (ViewUtils.ONE_DP * 50);
-
     private RecyclerView mRecyclerView;
 
     public static final String TAG = VideoRecyclerFragment.class.getSimpleName();
@@ -43,12 +41,6 @@ public class VideoRecyclerFragment extends BaseFragment {
 
     private static final String PATH = "video.mp4";
 
-    private View mStickHeader;
-
-
-    private boolean mIsPlayingAnimation = false;
-
-    private int mCurrentPosition;
 
     @Override
     protected int getLayoutResource() {
@@ -60,96 +52,6 @@ public class VideoRecyclerFragment extends BaseFragment {
         super.initViews(view);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
-        mStickHeader = view.findViewById(R.id.stick_head);
-        mStickHeader.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mStickHeader, "translationY", 0.f, 500f);
-                objectAnimator.setDuration(1000);
-                objectAnimator.start();
-            }
-        });
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-
-                if (Math.abs(dy) < 2) {
-                    return;
-                }
-                if (dy > 0) {
-
-                    if (mStickHeader != null && !mIsPlayingAnimation && mCurrentPosition==0) {
-                        if (Log.DEBUG) {
-                            Log.d("VideoRecyclerFragment", "onScrolled--------向上滑 header消失   " + dy);
-                        }
-                        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mStickHeader, "translationY", 0, -STICK_HEIGHT);
-                        objectAnimator.addListener(new Animator.AnimatorListener() {
-                            @Override
-                            public void onAnimationStart(Animator animation) {
-                                mIsPlayingAnimation = true;
-                            }
-
-                            @Override
-                            public void onAnimationEnd(Animator animation) {
-                                mIsPlayingAnimation = false;
-                                mCurrentPosition = -STICK_HEIGHT;
-                            }
-
-                            @Override
-                            public void onAnimationCancel(Animator animation) {
-
-                            }
-
-                            @Override
-                            public void onAnimationRepeat(Animator animation) {
-
-                            }
-                        });
-                        objectAnimator.setDuration(200);
-                        objectAnimator.start();
-                    }
-                } else if (dy < 0) {
-
-                    if (mStickHeader != null && !mIsPlayingAnimation && mCurrentPosition ==-STICK_HEIGHT) {
-                        if (Log.DEBUG) {
-                            Log.d("VideoRecyclerFragment", "onScrolled--------向下滑 header出现  " + dy);
-                        }
-                        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mStickHeader, "translationY", -STICK_HEIGHT, 0);
-                        objectAnimator.addListener(new Animator.AnimatorListener() {
-                            @Override
-                            public void onAnimationStart(Animator animation) {
-                                mIsPlayingAnimation = true;
-                            }
-
-                            @Override
-                            public void onAnimationEnd(Animator animation) {
-                                mIsPlayingAnimation = false;
-                                mCurrentPosition = 0;
-
-                            }
-
-                            @Override
-                            public void onAnimationCancel(Animator animation) {
-
-                            }
-
-                            @Override
-                            public void onAnimationRepeat(Animator animation) {
-
-                            }
-                        });
-                        objectAnimator.setDuration(200);
-                        objectAnimator.start();
-                    }
-                }
-            }
-        });
     }
 
     @Override

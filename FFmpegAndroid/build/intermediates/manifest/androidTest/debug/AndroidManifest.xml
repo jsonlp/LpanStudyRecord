@@ -13,7 +13,7 @@
         android:label="Tests for com.github.hiteshsondhi88.libffmpeg.test"
         android:targetPackage="com.github.hiteshsondhi88.libffmpeg.test" />
 
-    <application>
+    <application android:debuggable="true" >
         <uses-library android:name="android.test.runner" />
     </application>
 

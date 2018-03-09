@@ -97,6 +97,8 @@
     <item name="ball_move_view" type="id">ball_move_view</item>
     <item name="cardview" type="id">cardview</item>
     <item name="smileloadinbg" type="id">smileloadinbg</item>
+    <item name="floating_action_button" type="id">floating_action_button</item>
+    <item name="tab_layout" type="id">tab_layout</item>
 
 
 </resources>

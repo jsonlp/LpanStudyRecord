@@ -6,7 +6,7 @@ final DEVELOP_APP_NAME = "lpan_dev"
 
 android {
     compileSdkVersion 24
-    buildToolsVersion '25.0.0'
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.lpan"
         minSdkVersion 15
@@ -98,5 +98,8 @@ dependencies {
 
     //cardview
     compile 'com.android.support:cardview-v7:24.0.+'
+
+    //base recyclerview adapter
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.35'
 
 }

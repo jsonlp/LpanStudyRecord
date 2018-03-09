@@ -233,7 +233,9 @@ public class VideoDecodeFragment extends ButterKnifeFragment implements View.OnC
         if (mTextureVideoView.isPlaying()) {
             mTextureVideoView.pause();
         } else {
-            mTextureVideoView.setPathFromAssets();
+            String url = "http://v-test.jiemosrc.com/tuJqCRX7sDXjdLiG475ldg.mp4";
+//            mTextureVideoView.setPathFromAssets();
+            mTextureVideoView.setPath(url,true,1);
             mPlayButton.setVisibility(View.GONE);
         }
     }
