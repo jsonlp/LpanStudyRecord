@@ -79,9 +79,6 @@ dependencies {
     }
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
 
-    //brvah recyclerview
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
-
     //glide
     compile 'com.github.bumptech.glide:glide:3.7.0'
 
@@ -102,7 +99,8 @@ dependencies {
     //base recyclerview adapter
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.35'
 
-    //粘性header
+    //粘性ListView header
     compile 'se.emilsjolander:stickylistheaders:2.7.0'
-
+    //粘性GridView header
+    compile 'com.codewaves.stickyheadergrid:stickyheadergrid:0.9.6'
 }

@@ -8,6 +8,7 @@ import android.widget.ListView;
 import com.lpan.study.adapter.NavegationAdapter;
 import com.lpan.study.fragment.ContactsFragment;
 import com.lpan.study.fragment.PermissionFragment;
+import com.lpan.study.fragment.StickyGridFragment;
 import com.lpan.study.fragment.TestFragment;
 import com.lpan.study.fragment.TransAnimationFragment;
 import com.lpan.study.fragment.base.BaseFragment;
@@ -46,6 +47,7 @@ public class OthersFragment extends BaseFragment implements OnRowAdapterClickLis
         mList.add("concurrent modification ");
         mList.add("transform animation ");
         mList.add("android6.0 permission ");
+        mList.add("contacts ");
         mList.add("sticky list header ");
 
 //        mList.add("test ");
@@ -55,6 +57,7 @@ public class OthersFragment extends BaseFragment implements OnRowAdapterClickLis
         mToActivityList.add(new TransAnimationFragment());
         mToActivityList.add(new PermissionFragment());
         mToActivityList.add(new ContactsFragment());
+        mToActivityList.add(new StickyGridFragment());
 
 //        mToActivityList.add(new TestFragment());
 
