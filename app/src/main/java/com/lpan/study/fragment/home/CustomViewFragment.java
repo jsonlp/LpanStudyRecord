@@ -55,7 +55,7 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
         super.initData();
         mList = new ArrayList<>();
 
-        mList.add("material design");
+        mList.add("material design profile");
         mList.add("class room");
         mList.add("custom view test");
         mList.add("glide");

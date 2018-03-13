@@ -9,10 +9,8 @@ import com.lpan.study.adapter.NavegationAdapter;
 import com.lpan.study.fragment.ContactsFragment;
 import com.lpan.study.fragment.PermissionFragment;
 import com.lpan.study.fragment.StickyGridFragment;
-import com.lpan.study.fragment.TestFragment;
 import com.lpan.study.fragment.TransAnimationFragment;
 import com.lpan.study.fragment.base.BaseFragment;
-import com.lpan.study.fragment.ConcrrentModificationFragment;
 import com.lpan.study.listener.OnRowAdapterClickListener;
 import com.lpan.study.utils.FragmentUtils;
 import com.lpan.R;
@@ -44,16 +42,14 @@ public class OthersFragment extends BaseFragment implements OnRowAdapterClickLis
     protected void initData() {
         super.initData();
         mList = new ArrayList<>();
-        mList.add("concurrent modification ");
         mList.add("transform animation ");
         mList.add("android6.0 permission ");
         mList.add("contacts ");
-        mList.add("sticky list header ");
+        mList.add("sticky grid header ");
 
 //        mList.add("test ");
 
         mToActivityList = new ArrayList<>();
-        mToActivityList.add(new ConcrrentModificationFragment());
         mToActivityList.add(new TransAnimationFragment());
         mToActivityList.add(new PermissionFragment());
         mToActivityList.add(new ContactsFragment());
