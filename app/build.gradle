@@ -49,11 +49,11 @@ android {
     task hello {
         description 'just for test'
         println 'hello world111'
-        doLast{
-            println'hello'
+        doLast {
+            println 'hello'
         }
-        doFirst{
-            println'world'
+        doFirst {
+            println 'world'
         }
     }
 }
@@ -74,8 +74,8 @@ dependencies {
     compile 'com.facebook.rebound:rebound:0.3.8'
 
     //butterknife
-    compile ('com.jakewharton:butterknife:8.7.0') {
-        exclude group : 'com.android.support'
+    compile('com.jakewharton:butterknife:8.7.0') {
+        exclude group: 'com.android.support'
     }
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
 
@@ -101,5 +101,8 @@ dependencies {
 
     //base recyclerview adapter
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.35'
+
+    //粘性header
+    compile 'se.emilsjolander:stickylistheaders:2.7.0'
 
 }

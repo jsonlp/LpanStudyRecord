@@ -99,6 +99,8 @@
     <item name="smileloadinbg" type="id">smileloadinbg</item>
     <item name="floating_action_button" type="id">floating_action_button</item>
     <item name="tab_layout" type="id">tab_layout</item>
+    <item name="scroller_bar" type="id">scroller_bar</item>
+    <item name="guide_text" type="id">guide_text</item>
 
 
 </resources>

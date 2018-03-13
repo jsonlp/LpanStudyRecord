@@ -39,4 +39,8 @@
     <color name="gray2">#8A9499</color>
     <color name="preset_01">#ebedee</color>
 
+    <color name="cropper_bottom_bg">#aa555555</color>
+    <color name="black_55">#55000000</color>
+
+
 </resources>
