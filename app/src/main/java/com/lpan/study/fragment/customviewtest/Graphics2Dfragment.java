@@ -3,6 +3,7 @@ package com.lpan.study.fragment.customviewtest;
 import android.widget.LinearLayout;
 
 import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.model.ActionbarConfig;
 import com.lpan.study.view.BallMoveView;
 import com.lpan.R;
 
@@ -15,7 +16,7 @@ import butterknife.BindView;
  * Created by lpan on 2017/10/20.
  */
 
-public class Graphics2Dfragment extends ButterKnifeFragment {
+public class Graphics2Dfragment extends BaseActionbarFragment {
 
     @BindView(R.id.layout)
     LinearLayout mContainer;
@@ -25,18 +26,13 @@ public class Graphics2Dfragment extends ButterKnifeFragment {
     BallMoveView mBallView;
 
     @Override
+    protected ActionbarConfig getActionbarConfig() {
+        return getDefaultActionbar("Graphics 2D");
+    }
+
+    @Override
     protected int getLayoutResource() {
         return R.layout.fragment_graphics_2d;
-    }
-
-    @Override
-    protected boolean withActionBar() {
-        return true;
-    }
-
-    @Override
-    protected String getActionBarTitle() {
-        return "Graphics 2D";
     }
 
     @Override

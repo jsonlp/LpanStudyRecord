@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.widget.ImageView;
 
 import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.model.ActionbarConfig;
 import com.lpan.study.utils.BitmapUtils;
 import com.lpan.R;
 
@@ -13,7 +14,7 @@ import butterknife.BindView;
  * Created by lpan on 2017/10/18.
  */
 
-public class DrawingViewFragment extends ButterKnifeFragment {
+public class DrawingViewFragment extends BaseActionbarFragment {
 
     @BindView(R.id.image1)
     ImageView mImage1;
@@ -27,6 +28,11 @@ public class DrawingViewFragment extends ButterKnifeFragment {
     private int[] images = {R.drawable.drawing_view_1, R.drawable.drawing_view_2, R.drawable.drawing_view_3};
 
     private ImageView[] imageViews = null;
+
+    @Override
+    protected ActionbarConfig getActionbarConfig() {
+        return getDefaultActionbar("The drawing process of the view");
+    }
 
     @Override
     protected int getLayoutResource() {
@@ -46,15 +52,5 @@ public class DrawingViewFragment extends ButterKnifeFragment {
             }
         }
 
-    }
-
-    @Override
-    protected boolean withActionBar() {
-        return true;
-    }
-
-    @Override
-    protected String getActionBarTitle() {
-        return "The drawing process of the view";
     }
 }

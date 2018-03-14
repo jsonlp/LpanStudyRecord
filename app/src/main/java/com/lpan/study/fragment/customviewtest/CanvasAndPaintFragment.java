@@ -14,6 +14,7 @@ import android.widget.ImageView;
 
 import com.lpan.study.context.AppContext;
 import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.model.ActionbarConfig;
 import com.lpan.study.utils.Log;
 import com.lpan.study.utils.ViewUtils;
 import com.lpan.R;
@@ -24,7 +25,7 @@ import butterknife.BindView;
  * Created by lpan on 2017/10/18.
  */
 
-public class CanvasAndPaintFragment extends ButterKnifeFragment {
+public class CanvasAndPaintFragment extends BaseActionbarFragment {
 
     @BindView(R.id.image1)
     ImageView mImage1;
@@ -59,18 +60,13 @@ public class CanvasAndPaintFragment extends ButterKnifeFragment {
     private Paint mPaint = new Paint();
 
     @Override
+    protected ActionbarConfig getActionbarConfig() {
+        return getDefaultActionbar("Paint and Canvas");
+    }
+
+    @Override
     protected int getLayoutResource() {
         return R.layout.fragment_cancas_and_paint;
-    }
-
-    @Override
-    protected boolean withActionBar() {
-        return true;
-    }
-
-    @Override
-    protected String getActionBarTitle() {
-        return "Paint and Canvas";
     }
 
     @Override

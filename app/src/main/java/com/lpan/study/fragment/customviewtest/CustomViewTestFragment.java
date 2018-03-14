@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.lpan.study.adapter.CustomViewTestAdapter;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.model.ActionbarConfig;
 import com.lpan.study.model.RecyclerItemInfo;
 import com.lpan.R;
 
@@ -19,7 +19,7 @@ import butterknife.BindView;
  * Created by lpan on 2017/10/18.
  */
 
-public class CustomViewTestFragment extends ButterKnifeFragment {
+public class CustomViewTestFragment extends BaseActionbarFragment {
 
     @BindView(R.id.recyclerview)
     RecyclerView mRecyclerView;
@@ -33,21 +33,22 @@ public class CustomViewTestFragment extends ButterKnifeFragment {
         return R.layout.fragment_custom_view_test;
     }
 
-    @Override
-    protected boolean withActionBar() {
-        return true;
-    }
-
-    @Override
-    protected String getActionBarTitle() {
-        return "custom view base use";
-    }
 
     @Override
     protected void initViews(View view) {
         super.initViews(view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setAdapter(getAdapter());
+    }
+
+    @Override
+    protected ActionbarConfig getActionbarConfig() {
+        ActionbarConfig actionbarConfig = new ActionbarConfig.Build()
+                .setShowLeftButton(true)
+                .setShowRightButton(false)
+                .setTitle("custom view")
+                .build();
+        return actionbarConfig;
     }
 
     public CustomViewTestAdapter getAdapter() {

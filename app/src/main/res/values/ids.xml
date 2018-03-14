@@ -101,6 +101,7 @@
     <item name="tab_layout" type="id">tab_layout</item>
     <item name="scroller_bar" type="id">scroller_bar</item>
     <item name="guide_text" type="id">guide_text</item>
+    <item name="actionbar_right_icon" type="id">actionbar_right_icon</item>
 
 
 </resources>

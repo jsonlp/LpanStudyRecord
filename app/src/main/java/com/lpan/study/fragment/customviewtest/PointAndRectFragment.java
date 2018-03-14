@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.model.ActionbarConfig;
 import com.lpan.study.utils.BitmapUtils;
 import com.lpan.R;
 
@@ -20,7 +21,7 @@ import butterknife.OnClick;
  * Created by lpan on 2017/10/18.
  */
 
-public class PointAndRectFragment extends ButterKnifeFragment implements View.OnClickListener {
+public class PointAndRectFragment extends BaseActionbarFragment implements View.OnClickListener {
     @BindView(R.id.text1)
     TextView mPoint1Tv1;
 
@@ -89,18 +90,13 @@ public class PointAndRectFragment extends ButterKnifeFragment implements View.On
 
 
     @Override
+    protected ActionbarConfig getActionbarConfig() {
+        return getDefaultActionbar("Point and Rect class");
+    }
+
+    @Override
     protected int getLayoutResource() {
         return R.layout.fragment_point_and_rect;
-    }
-
-    @Override
-    protected boolean withActionBar() {
-        return true;
-    }
-
-    @Override
-    protected String getActionBarTitle() {
-        return "Point and Rect class";
     }
 
     @OnClick({R.id.text1, R.id.text2, R.id.text3,
