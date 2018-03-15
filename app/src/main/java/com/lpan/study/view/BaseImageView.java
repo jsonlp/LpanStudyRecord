@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.lpan.R;
+import com.lpan.study.context.GlideApp;
 
 
 /**
@@ -36,26 +37,23 @@ public class BaseImageView extends ImageView {
     }
 
     public void setUrl(Fragment fragment, String url) {
-        Glide.with(fragment)
+        GlideApp.with(fragment)
                 .load(url)
                 .placeholder(R.drawable.image_loading)
-                .diskCacheStrategy(DiskCacheStrategy.RESULT)
                 .into(this);
     }
 
     public void setUrl(Activity activity, String url) {
-        Glide.with(activity)
+        GlideApp.with(activity)
                 .load(url)
                 .placeholder(R.drawable.image_loading)
-                .diskCacheStrategy(DiskCacheStrategy.RESULT)
                 .into(this);
     }
 
     public void setUrl(Context context, String url) {
-        Glide.with(context)
+        GlideApp.with(context)
                 .load(url)
                 .placeholder(R.drawable.image_loading)
-                .diskCacheStrategy(DiskCacheStrategy.RESULT)
                 .into(this);
     }
 

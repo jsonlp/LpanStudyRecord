@@ -16,7 +16,6 @@ import com.lpan.R;
 import com.lpan.study.utils.Log;
 import com.lpan.study.utils.Variables;
 import com.lpan.study.view.BaseImageView;
-import com.lpan.study.view.LazyViewPager;
 
 import java.util.ArrayList;
 import java.util.List;

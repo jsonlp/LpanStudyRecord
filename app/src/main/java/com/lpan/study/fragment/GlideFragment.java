@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.lpan.study.context.GlideApp;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.Log;
 import com.lpan.study.utils.Toaster;
@@ -56,7 +57,7 @@ public class GlideFragment extends BaseFragment implements View.OnClickListener 
         if (Log.DEBUG) {
             Toaster.toastShort("[android-debug]"+"GlideFragment:  onClick   "+"");
         }
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(IMAGE_PATH)
                 .placeholder(R.drawable.image_loading)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
