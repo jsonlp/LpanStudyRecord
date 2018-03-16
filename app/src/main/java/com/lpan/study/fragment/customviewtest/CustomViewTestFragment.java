@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.lpan.study.adapter.CustomViewTestAdapter;
+import com.lpan.study.fragment.base.BaseActionbarFragment;
 import com.lpan.study.model.ActionbarConfig;
 import com.lpan.study.model.RecyclerItemInfo;
 import com.lpan.R;

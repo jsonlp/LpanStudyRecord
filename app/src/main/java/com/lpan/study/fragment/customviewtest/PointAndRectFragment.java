@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseActionbarFragment;
 import com.lpan.study.model.ActionbarConfig;
 import com.lpan.study.utils.BitmapUtils;
 import com.lpan.R;

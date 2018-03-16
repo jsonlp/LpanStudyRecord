@@ -2,7 +2,7 @@ package com.lpan.study.fragment.customviewtest;
 
 import android.widget.LinearLayout;
 
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseActionbarFragment;
 import com.lpan.study.model.ActionbarConfig;
 import com.lpan.study.view.BallMoveView;
 import com.lpan.R;

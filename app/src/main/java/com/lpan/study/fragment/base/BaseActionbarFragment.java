@@ -1,4 +1,4 @@
-package com.lpan.study.fragment.customviewtest;
+package com.lpan.study.fragment.base;
 
 import android.view.View;
 import android.widget.ImageView;

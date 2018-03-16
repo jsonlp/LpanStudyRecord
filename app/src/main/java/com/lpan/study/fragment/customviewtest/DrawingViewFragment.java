@@ -3,7 +3,7 @@ package com.lpan.study.fragment.customviewtest;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseActionbarFragment;
 import com.lpan.study.model.ActionbarConfig;
 import com.lpan.study.utils.BitmapUtils;
 import com.lpan.R;
