@@ -1,36 +1,58 @@
 package com.lpan.study.fragment;
 
 
+import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.lpan.study.context.GlideApp;
-import com.lpan.study.fragment.base.BaseFragment;
-import com.lpan.study.utils.Log;
-import com.lpan.study.utils.Toaster;
+import com.lpan.study.constants.FilePathConstants;
+import com.lpan.study.context.AppContext;
+import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.imageloader.ImageLoader;
 import com.lpan.R;
+import com.lpan.study.imageloader.SaveImageListener;
+import com.lpan.study.utils.BitmapUtils;
+import com.lpan.study.utils.ViewUtils;
+
+import java.io.File;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
  * Created by lpan on 2017/9/29.
  */
 
-public class GlideFragment extends BaseFragment implements View.OnClickListener {
+public class GlideFragment extends ButterKnifeFragment implements View.OnClickListener {
 
-    public static final String IMAGE_PATH = "http://pic6.nipic.com/20091207/3337900_161732052452_2.jpg";
+    public static final String URL_PATH = "http://pic6.nipic.com/20091207/3337900_161732052452_2.jpg";
+    public static final String GIF_URL = "http://p-test.jiemosrc.com/NwMOWlSiatTo7csz1RiiBg.gif";
+    public static final String SAVE_PATH = "http://p-test.jiemosrc.com/9vT0OUTxZZPo7csz1RiiBg.jpeg";
 
-    @BindView(R.id.text1)
-    TextView mButton;
 
     @BindView(R.id.image1)
     ImageView mImageView;
 
+    @BindView(R.id.text1)
+    TextView mImageView1;
+
+    @BindView(R.id.text2)
+    TextView mImageView2;
+
+    @BindView(R.id.text3)
+    TextView mImageView3;
+
+    @BindView(R.id.text4)
+    TextView mImageView4;
+
+    @BindView(R.id.text5)
+    TextView mImageView5;
+
+    @BindView(R.id.text6)
+    TextView mImageView6;
+
+    private File mFile;
 
     private Integer imagePaths[] = {
             R.drawable.wall01, R.drawable.wall02,
@@ -48,21 +70,92 @@ public class GlideFragment extends BaseFragment implements View.OnClickListener 
     @Override
     protected void initViews(View view) {
         super.initViews(view);
-        ButterKnife.bind(this,view);
+
+        mFile = new File(FilePathConstants.PANDA_TEST_DIR, "image.jpg");
     }
 
-    @OnClick({R.id.text1})
+    @OnClick({R.id.text1, R.id.text2, R.id.text3,
+            R.id.text4, R.id.text5, R.id.text6,
+            R.id.text7, R.id.text8, R.id.text9})
     @Override
     public void onClick(View v) {
-        if (Log.DEBUG) {
-            Toaster.toastShort("[android-debug]"+"GlideFragment:  onClick   "+"");
+        switch (v.getId()) {
+            case R.id.text1:
+                // url
+                ImageLoader.with(getActivity())
+                        .placeHolder(R.drawable.image_loading)
+                        .error(R.drawable.ic_error)
+                        .loadUrl(GIF_URL)
+                        .into(mImageView);
+                break;
+
+            case R.id.text2:
+                // res
+                ImageLoader.with(getActivity())
+                        .loadRes(R.drawable.wall03)
+                        .into(mImageView);
+
+                break;
+
+            case R.id.text3:
+                // file
+                if (mFile == null) {
+                    toastShort(FilePathConstants.EXTERNAL_STORAGE_DIR + " image.jpg is not exit");
+                    return;
+                }
+                ImageLoader.with(getActivity())
+                        .loadFile(mFile)
+                        .into(mImageView);
+                break;
+
+            case R.id.text4:
+                // file path
+                if (mFile == null) {
+                    toastShort(FilePathConstants.EXTERNAL_STORAGE_DIR + " image.jpg is not exit");
+                    return;
+                }
+                ImageLoader.with(getActivity())
+                        .loadFilePath(mFile.getAbsolutePath())
+                        .into(mImageView);
+                break;
+
+            case R.id.text5:
+                // round corner
+                ImageLoader.with(getActivity())
+                        .loadUrl(URL_PATH)
+                        .roundCorner(ViewUtils.dp2px(AppContext.getContext(), 10))
+                        .into(mImageView);
+                break;
+
+            case R.id.text6:
+                // blur
+                ImageLoader.with(getActivity())
+                        .loadUrl(URL_PATH)
+                        .blur(ViewUtils.dp2px(AppContext.getContext(), 10))
+                        .into(mImageView);
+                break;
+
+            case R.id.text7:
+                // circle
+                ImageLoader.with(getActivity())
+                        .loadUrl(URL_PATH)
+                        .placeHolder(R.drawable.ic_launcher)
+                        .error(R.drawable.ic_error)
+                        .circle()
+                        .into(mImageView);
+                break;
+            case R.id.text8:
+                // download
+                ImageLoader.with(getActivity())
+                        .loadUrl(SAVE_PATH)
+                        .download(new SaveImageListener() {
+                            @Override
+                            public void getBitmap(Bitmap bitmap) {
+                            }
+                        });
+                break;
         }
-        GlideApp.with(this)
-                .load(IMAGE_PATH)
-                .placeholder(R.drawable.image_loading)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .error(R.drawable.ic_error)
-                .override(100,100)
-                .into(mImageView);
+
+
     }
 }
