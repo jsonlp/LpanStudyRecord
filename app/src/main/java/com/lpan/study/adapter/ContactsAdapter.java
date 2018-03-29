@@ -8,6 +8,7 @@ import android.widget.SectionIndexer;
 import android.widget.TextView;
 
 import com.lpan.R;
+import com.lpan.study.model.FriendInfo;
 import com.lpan.study.model.UserInfo;
 import com.lpan.study.utils.LetterUtil;
 
@@ -20,7 +21,7 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
  * Created by lpan on 2018/3/12.
  */
 
-public class ContactsAdapter extends AbstractAdapter<UserInfo> implements StickyListHeadersAdapter,SectionIndexer {
+public class ContactsAdapter extends AbstractAdapter<FriendInfo> implements StickyListHeadersAdapter,SectionIndexer {
 
     public ContactsAdapter(Context context) {
         mContext = context;
@@ -34,12 +35,12 @@ public class ContactsAdapter extends AbstractAdapter<UserInfo> implements Sticky
     }
 
     @Override
-    public void addItem(UserInfo s) {
+    public void addItem(FriendInfo s) {
         mList.add(s);
     }
 
     @Override
-    public void addItem(List<UserInfo> list) {
+    public void addItem(List<FriendInfo> list) {
         mList.addAll(list);
     }
 
@@ -55,7 +56,7 @@ public class ContactsAdapter extends AbstractAdapter<UserInfo> implements Sticky
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.mTextView.setText(mList.get(position).getName());
+        holder.mTextView.setText(mList.get(position).getUserInfo().getName());
         return convertView;
     }
 
@@ -72,14 +73,14 @@ public class ContactsAdapter extends AbstractAdapter<UserInfo> implements Sticky
             holder = (HeaderViewHolder) convertView.getTag();
         }
         //set header text as first char in name
-        String headerText = "" + LetterUtil.getPinYin(mList.get(position).getName()).substring(0, 1);
+        String headerText = "" + LetterUtil.getPinYin(mList.get(position).getUserInfo().getName()).substring(0, 1);
         holder.mTextView.setText(headerText);
         return convertView;
     }
 
     @Override
     public long getHeaderId(int position) {
-        return LetterUtil.getPinYin(mList.get(position).getName()).toUpperCase().charAt(0);
+        return LetterUtil.getPinYin(mList.get(position).getUserInfo().getName()).toUpperCase().charAt(0);
     }
 
     @Override
@@ -93,7 +94,7 @@ public class ContactsAdapter extends AbstractAdapter<UserInfo> implements Sticky
             return 0;
         }
         for (int i = 0; i < getCount(); i++) {
-            String sortStr = LetterUtil.getPinYin(mList.get(i).getName()).substring(0, 1);
+            String sortStr = LetterUtil.getPinYin(mList.get(i).getUserInfo().getName()).substring(0, 1);
             char firstChar = sortStr.toUpperCase().charAt(0);
             if (firstChar == sectionIndex) {
                 return i + 1;
@@ -104,7 +105,7 @@ public class ContactsAdapter extends AbstractAdapter<UserInfo> implements Sticky
 
     @Override
     public int getSectionForPosition(int position) {
-        return LetterUtil.getPinYin(mList.get(position).getName()).substring(0, 1).charAt(0);
+        return LetterUtil.getPinYin(mList.get(position).getUserInfo().getName()).substring(0, 1).charAt(0);
     }
 
     class ViewHolder {

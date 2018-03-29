@@ -2,6 +2,8 @@ package com.lpan.study.model;
 
 import android.support.annotation.NonNull;
 
+import com.bluelinelabs.logansquare.annotation.JsonField;
+import com.bluelinelabs.logansquare.annotation.JsonObject;
 import com.lpan.study.utils.LetterUtil;
 
 import org.greenrobot.greendao.annotation.Entity;
@@ -12,11 +14,17 @@ import java.util.Comparator;
 /**
  * Created by lpan on 2017/4/6.
  */
+@JsonObject
 public class UserInfo implements Comparable<UserInfo> {
 
+    @JsonField
     String name;
 
+    @JsonField
     String id;
+
+    @JsonField
+    String sex;
 
 
     public String getName() {
@@ -35,11 +43,25 @@ public class UserInfo implements Comparable<UserInfo> {
         this.id = id;
     }
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
     public UserInfo() {
     }
 
     public UserInfo(String name) {
         this.name = name;
+    }
+
+    public UserInfo(String name, String id, String sex) {
+        this.name = name;
+        this.id = id;
+        this.sex = sex;
     }
 
     @Override

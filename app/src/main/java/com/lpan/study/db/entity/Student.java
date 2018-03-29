@@ -1,4 +1,4 @@
-package com.lpan.study.model;
+package com.lpan.study.db.entity;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;

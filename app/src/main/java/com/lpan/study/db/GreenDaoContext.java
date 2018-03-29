@@ -1,4 +1,4 @@
-package com.lpan.study.context;
+package com.lpan.study.db;
 
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 
 import com.lpan.study.constants.FilePathConstants;
+import com.lpan.study.context.AppContext;
 import com.lpan.study.utils.Log;
 
 import java.io.File;

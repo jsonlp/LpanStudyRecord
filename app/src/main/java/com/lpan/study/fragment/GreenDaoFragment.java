@@ -4,12 +4,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.lpan.R;
-import com.lpan.study.context.GreenDaoContext;
+import com.lpan.study.db.StudentDaoManager;
 import com.lpan.study.fragment.base.ButterKnifeFragment;
-import com.lpan.study.greendao.DaoMaster;
-import com.lpan.study.greendao.DaoSession;
-import com.lpan.study.greendao.StudentDao;
-import com.lpan.study.model.Student;
+import com.lpan.study.db.entity.Student;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,13 +27,6 @@ public class GreenDaoFragment extends ButterKnifeFragment {
     @BindView(R.id.green_dao_query_tv) TextView mGreenDaoQueryTv;
     @BindView(R.id.desc) TextView mDesc;
 
-    private DaoMaster mDaoMaster;
-
-    private DaoSession mDaoSession;
-
-    private StudentDao mStudentDao;
-
-
     @Override
     protected int getLayoutResource() {
         return R.layout.fragment_green_dao;
@@ -45,83 +35,46 @@ public class GreenDaoFragment extends ButterKnifeFragment {
     @Override
     protected void initViews(View view) {
         super.initViews(view);
-        getStuDao();
     }
-
-    private void getStuDao() {
-        DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(new GreenDaoContext(), "student.db", null);
-        mDaoMaster = new DaoMaster(devOpenHelper.getWritableDatabase());
-        mDaoSession = mDaoMaster.newSession();
-        mStudentDao = mDaoSession.getStudentDao();
-    }
-
 
     @OnClick({R.id.green_dao_insert_tv, R.id.green_dao_delete_tv, R.id.green_dao_update_tv, R.id.green_dao_query_tv, R.id.desc,
             R.id.green_dao_insert_all_tv, R.id.green_dao_delete_all_tv, R.id.green_dao_query_all_tv,})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.green_dao_insert_tv:
-                insert();
+                Student student1 = new Student(95227, "01229270", "李四", "女", "22", 168);
+                StudentDaoManager.insert(student1);
 
                 break;
             case R.id.green_dao_delete_tv:
-                delete();
+                StudentDaoManager.deletebyName("李四");
+
                 break;
             case R.id.green_dao_query_tv:
-                queryWhere();
+                List<Student> students1 = StudentDaoManager.querybyName("李四");
+                setText(students1);
                 break;
 
             case R.id.green_dao_insert_all_tv:
-                insertAll();
+                List<Student> list = new ArrayList<>();
+                for (int i = 0; i < 10; i++) {
+                    Student student = new Student((i + 1020), "020" + (i + 2010), "张小" + i, "男", "" + (i + 20), 188);
+                    list.add(student);
+                }
+                StudentDaoManager.insertAll(list);
 
                 break;
             case R.id.green_dao_delete_all_tv:
 
                 break;
             case R.id.green_dao_query_all_tv:
-                queryAll();
+                List<Student> students = StudentDaoManager.queryAll();
+                setText(students);
                 break;
             case R.id.green_dao_update_tv:
-                update();
+                StudentDaoManager.update();
                 break;
         }
-    }
-
-    private void insert() {
-        Student student = new Student(95227, "01229270", "李四", "女", "22",168);
-        mStudentDao.insert(student);
-        toastShort("insert success");
-    }
-
-    private void insertAll() {
-        List<Student> list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            Student student = new Student((i + 1020), "020" + (i + 2010), "张小" + i, "男", "" + (i + 20),188);
-            list.add(student);
-        }
-        mStudentDao.insertInTx(list);
-        toastShort("insert success");
-    }
-
-    private void queryAll() {
-        List<Student> list = mStudentDao.queryBuilder().list();
-        setText(list);
-    }
-
-    private void queryWhere() {
-        List<Student> students = mStudentDao.queryBuilder().where(StudentDao.Properties.StuName.eq("张小3")).list();
-        setText(students);
-    }
-
-
-    private void delete() {
-        mStudentDao.queryBuilder().where(StudentDao.Properties.StuSex.eq("女")).buildDelete().executeDeleteWithoutDetachingEntities();
-    }
-
-    private void update() {
-        Student student = mStudentDao.queryBuilder().where(StudentDao.Properties.StuName.eq("李四")).build().unique();
-        student.setStuName("更名李五");
-        mStudentDao.update(student);
     }
 
 

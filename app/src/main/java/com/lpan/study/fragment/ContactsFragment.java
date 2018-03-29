@@ -5,10 +5,14 @@ import android.widget.TextView;
 
 import com.lpan.R;
 import com.lpan.study.adapter.ContactsAdapter;
+import com.lpan.study.db.FriendDaoManager;
 import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.model.FriendInfo;
 import com.lpan.study.model.UserInfo;
+import com.lpan.study.utils.Log;
 import com.lpan.study.view.SectionIndexerScrollerBar;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -57,56 +61,137 @@ public class ContactsFragment extends ButterKnifeFragment {
         mListView.setAdapter(getAdapter());
     }
 
-    @Override
-    protected void initData() {
-        super.initData();
-        List<UserInfo> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            list.add(new UserInfo("张三" + i));
-        }
-
-        for (int i = 0; i < 20; i++) {
-            list.add(new UserInfo("李四" + i));
-        }
-
-        for (int i = 0; i < 20; i++) {
-            list.add(new UserInfo("丁一" + i));
-        }
-
-        for (int i = 0; i < 20; i++) {
-            list.add(new UserInfo("赵周" + i));
-        }
-
-        for (int i = 0; i < 20; i++) {
-            list.add(new UserInfo("安以轩" + i));
-            list.add(new UserInfo("艾派德" + i));
-
-        }
-
-        for (int i = 0; i < 20; i++) {
-            list.add(new UserInfo("胡歌" + i));
-            list.add(new UserInfo("崔季" + i));
-            list.add(new UserInfo("董小姐" + i));
-            list.add(new UserInfo("高空" + i));
-            list.add(new UserInfo("黄河" + i));
-            list.add(new UserInfo("季藏" + i));
-            list.add(new UserInfo("木子" + i));
-            list.add(new UserInfo("彭砰" + i));
-
-            list.add(new UserInfo("&$!@" + i));
-
-        }
-        Collections.sort(list);
-
-        getAdapter().addItem(list);
-        getAdapter().notifyDataSetChanged();
-
-    }
-
     private ContactsAdapter getAdapter() {
         if (mAdapter == null) {
             mAdapter = new ContactsAdapter(getActivity());
         }
         return mAdapter;
     }
+
+
+    @Override
+    protected void initData() {
+        super.initData();
+        if (FriendDaoManager.getFriendCount() > 0) {
+            if (Log.DEBUG) {
+                Log.d("ContactsFragment", "initData--------db exit");
+            }
+            List<FriendInfo> friends = getFriends();
+            Collections.sort(friends);
+            getAdapter().addItem(friends);
+            getAdapter().notifyDataSetChanged();
+        } else {
+            if (Log.DEBUG) {
+                Log.d("ContactsFragment", "initData--------first in , no db");
+            }
+            saveFriend();
+        }
+    }
+
+    private void saveFriend() {
+        int count = 20;
+        List<FriendInfo> list = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            FriendInfo friendInfo = new FriendInfo();
+            friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
+            friendInfo.setUserInfo(new UserInfo("张三" + i));
+            list.add(friendInfo);
+        }
+
+        for (int i = 0; i < count; i++) {
+            FriendInfo friendInfo = new FriendInfo();
+            friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
+            friendInfo.setUserInfo(new UserInfo("李四" + i));
+            list.add(friendInfo);
+        }
+
+        for (int i = 0; i < count; i++) {
+
+            FriendInfo friendInfo = new FriendInfo();
+            friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
+            friendInfo.setUserInfo(new UserInfo("丁一" + i));
+            list.add(friendInfo);
+        }
+
+        for (int i = 0; i < count; i++) {
+            FriendInfo friendInfo = new FriendInfo();
+            friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
+            friendInfo.setUserInfo(new UserInfo("赵周" + i));
+            list.add(friendInfo);
+        }
+
+        for (int i = 0; i < count; i++) {
+            FriendInfo friendInfo = new FriendInfo();
+            friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
+            friendInfo.setUserInfo(new UserInfo("安以轩" + i));
+            list.add(friendInfo);
+        }
+
+        for (int i = 0; i < count; i++) {
+            FriendInfo friendInfo = new FriendInfo();
+            friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
+            friendInfo.setUserInfo(new UserInfo("艾派德" + i));
+            list.add(friendInfo);
+        }
+
+        for (int i = 0; i < count; i++) {
+            FriendInfo friendInfo = new FriendInfo();
+            friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
+            friendInfo.setUserInfo(new UserInfo("胡歌" + i));
+            list.add(friendInfo);
+        }
+
+        for (int i = 0; i < count; i++) {
+            FriendInfo friendInfo = new FriendInfo();
+            friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
+            friendInfo.setUserInfo(new UserInfo("崔季" + i));
+            list.add(friendInfo);
+        }
+
+        for (int i = 0; i < count; i++) {
+            FriendInfo friendInfo = new FriendInfo();
+            friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
+            friendInfo.setUserInfo(new UserInfo("董小姐" + i));
+            list.add(friendInfo);
+        }
+
+        for (int i = 0; i < count; i++) {
+            FriendInfo friendInfo = new FriendInfo();
+            friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
+            friendInfo.setUserInfo(new UserInfo("高空" + i));
+            list.add(friendInfo);
+        }
+
+//        for (int i = 0; i < count; i++) {
+//            FriendInfo friendInfo = new FriendInfo();
+//            friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
+//            friendInfo.setUserInfo(new UserInfo("季藏" + i));
+//            list.add(friendInfo);
+//        }
+//
+//        for (int i = 0; i < count; i++) {
+//            FriendInfo friendInfo = new FriendInfo();
+//            friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
+//            friendInfo.setUserInfo(new UserInfo("彭砰" + i));
+//            list.add(friendInfo);
+//        }
+        try {
+            FriendDaoManager.saveFriends(list);
+            toastShort("写入数据库成功,请返回重新进入次页面");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private List<FriendInfo> getFriends() {
+        try {
+            return FriendDaoManager.getAllFriend();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
 }
