@@ -46,36 +46,36 @@ public class TransAnimationFragment extends ButterKnifeFragment implements View.
 
             case R.id.text1:
 
-                FragmentUtils.navigateWithNoAnimation(getActivity(), new DialogFragment());
+                FragmentUtils.navigateWithNoAnimation(getActivity(), new MyDialogFragment());
                 break;
 
             case R.id.text2:
-                FragmentUtils.navigateWithUpAnimation(getActivity(), new DialogFragment());
+                FragmentUtils.navigateWithUpAnimation(getActivity(), new MyDialogFragment());
                 break;
 
 
             case R.id.text3:
-                FragmentUtils.navigateWithFadeAnimation(getActivity(), new DialogFragment());
+                FragmentUtils.navigateWithFadeAnimation(getActivity(), new MyDialogFragment());
 
                 break;
 
             case R.id.text4:
-                FragmentUtils.navigateWithLongFadeAnimation(getActivity(), new DialogFragment());
+                FragmentUtils.navigateWithLongFadeAnimation(getActivity(), new MyDialogFragment());
 
                 break;
 
             case R.id.text5:
-                FragmentUtils.navigateWithSlideAnimation(getActivity(), new DialogFragment());
+                FragmentUtils.navigateWithSlideAnimation(getActivity(), new MyDialogFragment());
 
                 break;
 
             case R.id.text6:
-                FragmentUtils.navigateWithExplodeAnimation(getActivity(), new DialogFragment());
+                FragmentUtils.navigateWithExplodeAnimation(getActivity(), new MyDialogFragment());
 
                 break;
 
             case R.id.text7:
-                FragmentUtils.navigateWithFade21Animation(getActivity(), new DialogFragment());
+                FragmentUtils.navigateWithFade21Animation(getActivity(), new MyDialogFragment());
 
                 break;
 

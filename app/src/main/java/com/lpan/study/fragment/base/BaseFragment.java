@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.lpan.study.activity.BaseActivity;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by lpan on 2016/12/19.
@@ -21,6 +22,7 @@ public abstract class BaseFragment extends Fragment {
     protected Handler mHandler = new Handler();
 
 
+    Unbinder unbinder;
 
     @Nullable
     @Override
@@ -40,7 +42,15 @@ public abstract class BaseFragment extends Fragment {
 
     protected void initViews(View view) {
         if (useButterknife()) {
-            ButterKnife.bind(this, view);
+            unbinder = ButterKnife.bind(this, view);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (unbinder != null) {
+            unbinder.unbind();
         }
     }
 

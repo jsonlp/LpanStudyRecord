@@ -7,7 +7,7 @@ import android.widget.ListView;
 import com.lpan.study.adapter.NavegationAdapter;
 import com.lpan.study.fragment.AddLogoFragment;
 import com.lpan.study.fragment.DeviceInfoFragment;
-import com.lpan.study.fragment.DialogFragment;
+import com.lpan.study.fragment.MyDialogFragment;
 import com.lpan.study.fragment.JavaTestFragment;
 import com.lpan.study.fragment.MyHttpClientFragment;
 import com.lpan.study.fragment.base.BaseFragment;
@@ -56,7 +56,7 @@ public class ToolsFragment extends BaseFragment implements OnRowAdapterClickList
         mToActivityList.add(new AddLogoFragment());
         mToActivityList.add(new JavaTestFragment());
         mToActivityList.add(new DeviceInfoFragment());
-        mToActivityList.add(new DialogFragment());
+        mToActivityList.add(new MyDialogFragment());
         mToActivityList.add(new MyHttpClientFragment());
 
 

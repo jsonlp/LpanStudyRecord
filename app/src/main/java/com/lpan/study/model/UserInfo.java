@@ -4,17 +4,20 @@ import android.support.annotation.NonNull;
 
 import com.lpan.study.utils.LetterUtil;
 
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
+
 import java.util.Comparator;
 
 /**
  * Created by lpan on 2017/4/6.
  */
-
 public class UserInfo implements Comparable<UserInfo> {
 
     String name;
 
     String id;
+
 
     public String getName() {
         return name;

@@ -5,7 +5,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lpan.R;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
 import com.lpan.study.model.ActionbarConfig;
 
 import butterknife.BindView;

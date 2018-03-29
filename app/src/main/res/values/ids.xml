@@ -102,6 +102,13 @@
     <item name="scroller_bar" type="id">scroller_bar</item>
     <item name="guide_text" type="id">guide_text</item>
     <item name="actionbar_right_icon" type="id">actionbar_right_icon</item>
+    <item name="green_dao_insert_tv" type="id">green_dao_insert_tv</item>
+    <item name="green_dao_delete_tv" type="id">green_dao_delete_tv</item>
+    <item name="green_dao_query_tv" type="id">green_dao_query_tv</item>
+    <item name="green_dao_update_tv" type="id">green_dao_update_tv</item>
+    <item name="green_dao_insert_all_tv" type="id">green_dao_insert_all_tv</item>
+    <item name="green_dao_delete_all_tv" type="id">green_dao_delete_all_tv</item>
+    <item name="green_dao_query_all_tv" type="id">green_dao_query_all_tv</item>
 
 
 </resources>
