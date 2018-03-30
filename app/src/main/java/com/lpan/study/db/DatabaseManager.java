@@ -21,11 +21,12 @@ public class DatabaseManager {
     private static DaoMaster mDaoMaster;
 
     private static DaoSession mDaoSession;
+    static Context mContext = new GreenDaoContext();
+
 
     private DatabaseManager() {
 //        Context context = AppContext.context;
-        Context context = new GreenDaoContext();
-        mDevOpenHelper = new DaoMaster.DevOpenHelper(context, DB_NAME);
+        mDevOpenHelper = new DaoMaster.DevOpenHelper(mContext, DB_NAME);
         getDaoMaster();
         getDaoSession();
     }
@@ -45,7 +46,7 @@ public class DatabaseManager {
         if (null == mDaoMaster) {
             synchronized (DatabaseManager.class) {
                 if (null == mDaoMaster) {
-                    MyOpenHelper helper = new MyOpenHelper(AppContext.context,DB_NAME,null);
+                    MyOpenHelper helper = new MyOpenHelper(mContext,DB_NAME,null);
                     mDaoMaster = new DaoMaster(helper.getWritableDatabase());
                 }
             }

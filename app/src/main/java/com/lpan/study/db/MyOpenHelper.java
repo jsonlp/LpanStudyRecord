@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.lpan.study.greendao.DaoMaster;
-import com.lpan.study.greendao.FriendDao;
 import com.lpan.study.greendao.StudentDao;
 
 import org.greenrobot.greendao.database.Database;
@@ -24,7 +23,6 @@ public class MyOpenHelper extends DaoMaster.OpenHelper {
         ////操作数据库的更新 有几个表升级都可以传入到下面
 
         MigrationHelper.getInstance().migrate(db,StudentDao.class);
-        MigrationHelper.getInstance().migrate(db,FriendDao.class);
 
     }
 }

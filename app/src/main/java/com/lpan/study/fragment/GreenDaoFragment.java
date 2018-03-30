@@ -43,7 +43,7 @@ public class GreenDaoFragment extends ButterKnifeFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.green_dao_insert_tv:
-                Student student1 = new Student(95227, "01229270", "李四", "女", "22");
+                Student student1 = new Student(95227, "01229270", "李四", "女", "22",1);
                 StudentDaoManager.insert(student1);
 
                 break;
@@ -59,7 +59,7 @@ public class GreenDaoFragment extends ButterKnifeFragment {
             case R.id.green_dao_insert_all_tv:
                 List<Student> list = new ArrayList<>();
                 for (int i = 0; i < 10; i++) {
-                    Student student = new Student((i + 1020), "020" + (i + 2010), "张小" + i, "男", "" + (i + 20));
+                    Student student = new Student((i + 1020), "020" + (i + 2010), "张小" + i, "男", "" + (i + 20),2);
                     list.add(student);
                 }
                 StudentDaoManager.insertAll(list);
