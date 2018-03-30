@@ -15,7 +15,7 @@ import com.lpan.study.db.entity.Student;
 /** 
  * DAO for table "STUDENT".
 */
-public class StudentDao extends AbstractDao<Student, Long> {
+public class StudentDao extends AbstractDao<Student, String> {
 
     public static final String TABLENAME = "STUDENT";
 
@@ -24,12 +24,13 @@ public class StudentDao extends AbstractDao<Student, Long> {
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {
-        public final static Property StuId = new Property(0, long.class, "stuId", true, "_id");
-        public final static Property StuNo = new Property(1, String.class, "stuNo", false, "STU_NO");
+        public final static Property StuId = new Property(0, long.class, "stuId", false, "STU_ID");
+        public final static Property StuNo = new Property(1, String.class, "stuNo", true, "STU_NO");
         public final static Property StuName = new Property(2, String.class, "stuName", false, "STU_NAME");
         public final static Property StuSex = new Property(3, String.class, "stuSex", false, "STU_SEX");
         public final static Property StuScore = new Property(4, String.class, "stuScore", false, "STU_SCORE");
         public final static Property ClassNum = new Property(5, Integer.class, "classNum", false, "CLASS_NUM");
+        public final static Property PhoneNum = new Property(6, Integer.class, "phoneNum", false, "PHONE_NUM");
     }
 
 
@@ -45,12 +46,13 @@ public class StudentDao extends AbstractDao<Student, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"STUDENT\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ," + // 0: stuId
-                "\"STU_NO\" TEXT," + // 1: stuNo
+                "\"STU_ID\" INTEGER NOT NULL ," + // 0: stuId
+                "\"STU_NO\" TEXT PRIMARY KEY NOT NULL ," + // 1: stuNo
                 "\"STU_NAME\" TEXT," + // 2: stuName
                 "\"STU_SEX\" TEXT," + // 3: stuSex
                 "\"STU_SCORE\" TEXT," + // 4: stuScore
-                "\"CLASS_NUM\" INTEGER);"); // 5: classNum
+                "\"CLASS_NUM\" INTEGER," + // 5: classNum
+                "\"PHONE_NUM\" INTEGER);"); // 6: phoneNum
         // Add Indexes
         db.execSQL("CREATE UNIQUE INDEX " + constraint + "IDX_STUDENT_STU_NO ON \"STUDENT\"" +
                 " (\"STU_NO\" ASC);");
@@ -91,6 +93,11 @@ public class StudentDao extends AbstractDao<Student, Long> {
         if (classNum != null) {
             stmt.bindLong(6, classNum);
         }
+ 
+        Integer phoneNum = entity.getPhoneNum();
+        if (phoneNum != null) {
+            stmt.bindLong(7, phoneNum);
+        }
     }
 
     @Override
@@ -122,23 +129,22 @@ public class StudentDao extends AbstractDao<Student, Long> {
         if (classNum != null) {
             stmt.bindLong(6, classNum);
         }
+ 
+        Integer phoneNum = entity.getPhoneNum();
+        if (phoneNum != null) {
+            stmt.bindLong(7, phoneNum);
+        }
     }
 
     @Override
-    public Long readKey(Cursor cursor, int offset) {
-        return cursor.getLong(offset + 0);
+    public String readKey(Cursor cursor, int offset) {
+        return cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1);
     }    
 
     @Override
     public Student readEntity(Cursor cursor, int offset) {
-        Student entity = new Student( //
-            cursor.getLong(offset + 0), // stuId
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // stuNo
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // stuName
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // stuSex
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // stuScore
-            cursor.isNull(offset + 5) ? null : cursor.getInt(offset + 5) // classNum
-        );
+        Student entity = new Student();
+        readEntity(cursor, entity, offset);
         return entity;
     }
      
@@ -150,18 +156,18 @@ public class StudentDao extends AbstractDao<Student, Long> {
         entity.setStuSex(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setStuScore(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
         entity.setClassNum(cursor.isNull(offset + 5) ? null : cursor.getInt(offset + 5));
+        entity.setPhoneNum(cursor.isNull(offset + 6) ? null : cursor.getInt(offset + 6));
      }
     
     @Override
-    protected final Long updateKeyAfterInsert(Student entity, long rowId) {
-        entity.setStuId(rowId);
-        return rowId;
+    protected final String updateKeyAfterInsert(Student entity, long rowId) {
+        return entity.getStuNo();
     }
     
     @Override
-    public Long getKey(Student entity) {
+    public String getKey(Student entity) {
         if(entity != null) {
-            return entity.getStuId();
+            return entity.getStuNo();
         } else {
             return null;
         }
@@ -169,7 +175,7 @@ public class StudentDao extends AbstractDao<Student, Long> {
 
     @Override
     public boolean hasKey(Student entity) {
-        throw new UnsupportedOperationException("Unsupported for entities with a non-null key");
+        return entity.getStuNo() != null;
     }
 
     @Override

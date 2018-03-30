@@ -1,5 +1,6 @@
 package com.lpan.study.fragment;
 
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.TextView;
 
@@ -36,6 +37,7 @@ public class GreenDaoFragment extends ButterKnifeFragment {
     @Override
     protected void initViews(View view) {
         super.initViews(view);
+        mDesc.setMovementMethod(new ScrollingMovementMethod());
     }
 
     @OnClick({R.id.green_dao_insert_tv, R.id.green_dao_delete_tv, R.id.green_dao_update_tv, R.id.green_dao_query_tv, R.id.desc,
@@ -44,8 +46,12 @@ public class GreenDaoFragment extends ButterKnifeFragment {
         switch (view.getId()) {
             case R.id.green_dao_insert_tv:
 //                Student student1 = new Student(95227, "01229270", "李四", "女", "22");
-                Student student1 = new Student(95227, "01229270", "李四", "女", "22",1);
-
+                Student student1 = new Student();
+                student1.setStuNo("kimjhw");
+                student1.setClassNum(301);
+                student1.setStuName("张三");
+                student1.setStuSex("100");
+                student1.setPhoneNum(132131111);
                 StudentDaoManager.insert(student1);
 
                 break;
@@ -61,9 +67,12 @@ public class GreenDaoFragment extends ButterKnifeFragment {
             case R.id.green_dao_insert_all_tv:
                 List<Student> list = new ArrayList<>();
                 for (int i = 0; i < 10; i++) {
-//                    Student student = new Student((i + 1020), "020" + (i + 2010), "张小" + i, "男", "" + (i + 20));
-                    Student student = new Student((i + 1020), "020" + (i + 2010), "张小" + i, "男", "" + (i + 20),2);
-
+                    Student student = new Student();
+                    student.setStuNo("klsklndn" + i);
+                    student.setClassNum(302);
+                    student.setStuName("李四");
+                    student.setStuSex("88");
+                    student.setPhoneNum(182131121);
                     list.add(student);
                 }
                 StudentDaoManager.insertAll(list);
@@ -78,9 +87,9 @@ public class GreenDaoFragment extends ButterKnifeFragment {
                 break;
             case R.id.green_dao_update_tv:
 //                StudentDaoManager.update();
-                Student student2 = new Student(922225227, "0122929920", "jason", "女", "22",3);
-
-                StudentDaoManager.insert(student2);
+//                Student student2 = new Student(25227, "022929920", "解决", "男", "2", 3, 3322222);
+//
+//                StudentDaoManager.insert(student2);
                 break;
         }
     }

@@ -18,8 +18,17 @@ import java.util.List;
 public class FriendDaoManager {
 
 
-    public static void insert(Friend friend) {
-        DatabaseManager.getDaoSession().getFriendDao().insert(friend);
+    public static void saveFriend(FriendInfo friendInfo) {
+        String data = null;
+        try {
+            data = MyJsonParser.getInstance().writeValueAsString(friendInfo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String uuid = friendInfo.getUserInfo().getId();
+        int relation = friendInfo.getRelation();
+        Friend friend = new Friend(0, uuid, relation, data);
+        DatabaseManager.getDaoSession().getFriendDao().insertOrReplace(friend);
     }
 
     public static void saveFriends(List<FriendInfo> friendInfos) throws IOException {
@@ -38,7 +47,7 @@ public class FriendDaoManager {
         }
         parserCost = System.currentTimeMillis() - startTime;
         startTime = System.currentTimeMillis();
-        DatabaseManager.getDaoSession().getFriendDao().insertInTx(list);
+        DatabaseManager.getDaoSession().getFriendDao().insertOrReplaceInTx(list);
         insertCost = System.currentTimeMillis() - startTime;
         if (Log.DEBUG) {
             Log.d("FriendDaoManager", "saveFriends--------save friend success  count=" + list.size() + "  parserCost= " + parserCost + "   insertCost= " + insertCost);

@@ -10,13 +10,13 @@ import org.greenrobot.greendao.annotation.Generated;
  */
 
 
-@Entity
+@Entity(generateConstructors = false)
 public class Student {
 
-    @Id(autoincrement = true)
     private long stuId;
 
     @Index(unique = true)
+    @Id
     private String stuNo;
 
     private String stuName;
@@ -27,24 +27,11 @@ public class Student {
 
     private Integer classNum;
 
+    private Integer phoneNum;
 
 
-    @Generated(hash = 1701661380)
-    public Student(long stuId, String stuNo, String stuName, String stuSex,
-            String stuScore, Integer classNum) {
-        this.stuId = stuId;
-        this.stuNo = stuNo;
-        this.stuName = stuName;
-        this.stuSex = stuSex;
-        this.stuScore = stuScore;
-        this.classNum = classNum;
-    }
-
-    @Generated(hash = 1556870573)
     public Student() {
     }
-
-
 
     public long getStuId() {
         return this.stuId;
@@ -103,6 +90,15 @@ public class Student {
                 ", stuSex='" + stuSex + '\'' +
                 ", stuScore='" + stuScore + '\'' +
                 ", classNum=" + classNum +
+                ", phoneNum=" + phoneNum +
                 '}';
+    }
+
+    public Integer getPhoneNum() {
+        return this.phoneNum;
+    }
+
+    public void setPhoneNum(Integer phoneNum) {
+        this.phoneNum = phoneNum;
     }
 }

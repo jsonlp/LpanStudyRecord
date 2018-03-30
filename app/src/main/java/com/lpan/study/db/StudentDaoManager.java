@@ -14,11 +14,11 @@ public class StudentDaoManager {
 
 
     public static void insert(Student student) {
-        DatabaseManager.getDaoSession().getStudentDao().insert(student);
+        DatabaseManager.getDaoSession().getStudentDao().insertOrReplace(student);
     }
 
     public static void insertAll(List<Student> students) {
-        DatabaseManager.getDaoSession().getStudentDao().insertInTx(students);
+        DatabaseManager.getDaoSession().getStudentDao().insertOrReplaceInTx(students);
     }
 
     public static List<Student> queryAll() {

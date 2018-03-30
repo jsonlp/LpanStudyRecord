@@ -2,7 +2,6 @@ package com.lpan.study.db;
 
 import android.content.Context;
 
-import com.lpan.study.context.AppContext;
 import com.lpan.study.greendao.DaoMaster;
 import com.lpan.study.greendao.DaoSession;
 
