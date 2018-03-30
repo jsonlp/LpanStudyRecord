@@ -81,4 +81,14 @@ public class Student {
         this.stuScore = stuScore;
     }
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "stuId=" + stuId +
+                ", stuNo='" + stuNo + '\'' +
+                ", stuName='" + stuName + '\'' +
+                ", stuSex='" + stuSex + '\'' +
+                ", stuScore='" + stuScore + '\'' +
+                '}';
+    }
 }
