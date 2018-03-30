@@ -1,0 +1,2 @@
+com.github.hiteshsondhi88.libffmpeg
+int string shipped_ffmpeg_version 0x7f150001

@@ -25,20 +25,25 @@ public class Student {
 
     private String stuScore;
 
+    private Integer classNum;
 
-    @Generated(hash = 992196339)
+
+
+    @Generated(hash = 1701661380)
     public Student(long stuId, String stuNo, String stuName, String stuSex,
-            String stuScore) {
+            String stuScore, Integer classNum) {
         this.stuId = stuId;
         this.stuNo = stuNo;
         this.stuName = stuName;
         this.stuSex = stuSex;
         this.stuScore = stuScore;
+        this.classNum = classNum;
     }
 
     @Generated(hash = 1556870573)
     public Student() {
     }
+
 
 
     public long getStuId() {
@@ -81,6 +86,14 @@ public class Student {
         this.stuScore = stuScore;
     }
 
+    public Integer getClassNum() {
+        return this.classNum;
+    }
+
+    public void setClassNum(Integer classNum) {
+        this.classNum = classNum;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -89,6 +102,7 @@ public class Student {
                 ", stuName='" + stuName + '\'' +
                 ", stuSex='" + stuSex + '\'' +
                 ", stuScore='" + stuScore + '\'' +
+                ", classNum=" + classNum +
                 '}';
     }
 }
