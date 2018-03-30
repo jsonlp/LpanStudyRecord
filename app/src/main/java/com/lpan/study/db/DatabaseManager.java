@@ -1,8 +1,8 @@
 package com.lpan.study.db;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 
+import com.lpan.study.context.AppContext;
 import com.lpan.study.greendao.DaoMaster;
 import com.lpan.study.greendao.DaoSession;
 
@@ -45,7 +45,8 @@ public class DatabaseManager {
         if (null == mDaoMaster) {
             synchronized (DatabaseManager.class) {
                 if (null == mDaoMaster) {
-                    mDaoMaster = new DaoMaster(getWritableDatabase());
+                    MyOpenHelper helper = new MyOpenHelper(AppContext.context,DB_NAME,null);
+                    mDaoMaster = new DaoMaster(helper.getWritableDatabase());
                 }
             }
         }
@@ -60,21 +61,6 @@ public class DatabaseManager {
         }
 
         return mDaoSession;
-    }
-
-    public static SQLiteDatabase getReadableDatabase() {
-        if (null == mDevOpenHelper) {
-            getInstance();
-        }
-        return mDevOpenHelper.getReadableDatabase();
-    }
-
-    public static SQLiteDatabase getWritableDatabase() {
-        if (null == mDevOpenHelper) {
-            getInstance();
-        }
-
-        return mDevOpenHelper.getWritableDatabase();
     }
 
 }

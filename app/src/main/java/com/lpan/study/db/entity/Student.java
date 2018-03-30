@@ -9,6 +9,7 @@ import org.greenrobot.greendao.annotation.Generated;
  * Created by lpan on 2018/3/29.
  */
 
+
 @Entity
 public class Student {
 
@@ -24,22 +25,21 @@ public class Student {
 
     private String stuScore;
 
-    private int height;
 
-    @Generated(hash = 16687046)
+    @Generated(hash = 992196339)
     public Student(long stuId, String stuNo, String stuName, String stuSex,
-            String stuScore, int height) {
+            String stuScore) {
         this.stuId = stuId;
         this.stuNo = stuNo;
         this.stuName = stuName;
         this.stuSex = stuSex;
         this.stuScore = stuScore;
-        this.height = height;
     }
 
     @Generated(hash = 1556870573)
     public Student() {
     }
+
 
     public long getStuId() {
         return this.stuId;
@@ -81,22 +81,4 @@ public class Student {
         this.stuScore = stuScore;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "stuId=" + stuId +
-                ", stuNo='" + stuNo + '\'' +
-                ", stuName='" + stuName + '\'' +
-                ", stuSex='" + stuSex + '\'' +
-                ", stuScore='" + stuScore + '\'' +
-                '}';
-    }
-
-    public int getHeight() {
-        return this.height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
 }

@@ -7,6 +7,7 @@ import com.lpan.R;
 import com.lpan.study.db.StudentDaoManager;
 import com.lpan.study.fragment.base.ButterKnifeFragment;
 import com.lpan.study.db.entity.Student;
+import com.lpan.study.utils.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,7 @@ public class GreenDaoFragment extends ButterKnifeFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.green_dao_insert_tv:
-                Student student1 = new Student(95227, "01229270", "李四", "女", "22", 168);
+                Student student1 = new Student(95227, "01229270", "李四", "女", "22");
                 StudentDaoManager.insert(student1);
 
                 break;
@@ -58,7 +59,7 @@ public class GreenDaoFragment extends ButterKnifeFragment {
             case R.id.green_dao_insert_all_tv:
                 List<Student> list = new ArrayList<>();
                 for (int i = 0; i < 10; i++) {
-                    Student student = new Student((i + 1020), "020" + (i + 2010), "张小" + i, "男", "" + (i + 20), 188);
+                    Student student = new Student((i + 1020), "020" + (i + 2010), "张小" + i, "男", "" + (i + 20));
                     list.add(student);
                 }
                 StudentDaoManager.insertAll(list);
@@ -80,6 +81,9 @@ public class GreenDaoFragment extends ButterKnifeFragment {
 
     private void setText(List<Student> list) {
         StringBuilder stringBuilder = new StringBuilder();
+        if (CollectionUtils.isEmpty(list)) {
+            stringBuilder.append("没有数据");
+        }
         for (Student student : list) {
             stringBuilder.append(student.toString());
             stringBuilder.append("\n");
