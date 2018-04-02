@@ -94,14 +94,14 @@ public class ContactsFragment extends ButterKnifeFragment {
         for (int i = 0; i < count; i++) {
             FriendInfo friendInfo = new FriendInfo();
             friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
-            friendInfo.setUserInfo(new UserInfo("张三" + i));
+            friendInfo.setUserInfo(new UserInfo("张三" + i,"id_is_a"+i,"男"));
             list.add(friendInfo);
         }
 
         for (int i = 0; i < count; i++) {
             FriendInfo friendInfo = new FriendInfo();
             friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
-            friendInfo.setUserInfo(new UserInfo("李四" + i));
+            friendInfo.setUserInfo(new UserInfo("李四" + i,"id_is_b"+i,"男"));
             list.add(friendInfo);
         }
 
@@ -109,56 +109,56 @@ public class ContactsFragment extends ButterKnifeFragment {
 
             FriendInfo friendInfo = new FriendInfo();
             friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
-            friendInfo.setUserInfo(new UserInfo("丁一" + i));
+            friendInfo.setUserInfo(new UserInfo("丁一" + i,"id_is_c"+i,"女"));
             list.add(friendInfo);
         }
 
         for (int i = 0; i < count; i++) {
             FriendInfo friendInfo = new FriendInfo();
             friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
-            friendInfo.setUserInfo(new UserInfo("赵周" + i));
+            friendInfo.setUserInfo(new UserInfo("赵周" + i,"id_is_d"+i,"男"));
             list.add(friendInfo);
         }
 
         for (int i = 0; i < count; i++) {
             FriendInfo friendInfo = new FriendInfo();
             friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
-            friendInfo.setUserInfo(new UserInfo("安以轩" + i));
+            friendInfo.setUserInfo(new UserInfo("安以轩" + i,"id_is_e"+i,"女"));
             list.add(friendInfo);
         }
 
         for (int i = 0; i < count; i++) {
             FriendInfo friendInfo = new FriendInfo();
             friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
-            friendInfo.setUserInfo(new UserInfo("艾派德" + i));
+            friendInfo.setUserInfo(new UserInfo("艾派德" + i,"id_is_f"+i,"男"));
             list.add(friendInfo);
         }
 
         for (int i = 0; i < count; i++) {
             FriendInfo friendInfo = new FriendInfo();
             friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
-            friendInfo.setUserInfo(new UserInfo("胡歌" + i));
+            friendInfo.setUserInfo(new UserInfo("胡歌" + i,"id_is_g"+i,"男"));
             list.add(friendInfo);
         }
 
         for (int i = 0; i < count; i++) {
             FriendInfo friendInfo = new FriendInfo();
             friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
-            friendInfo.setUserInfo(new UserInfo("崔季" + i));
+            friendInfo.setUserInfo(new UserInfo("崔季" + i,"id_is_h"+i,"女"));
             list.add(friendInfo);
         }
 
         for (int i = 0; i < count; i++) {
             FriendInfo friendInfo = new FriendInfo();
             friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
-            friendInfo.setUserInfo(new UserInfo("董小姐" + i));
+            friendInfo.setUserInfo(new UserInfo("董小姐" + i,"id_is_i"+i,"女"));
             list.add(friendInfo);
         }
 
         for (int i = 0; i < count; i++) {
             FriendInfo friendInfo = new FriendInfo();
             friendInfo.setRelation(FriendInfo.TYPE_FRIEND);
-            friendInfo.setUserInfo(new UserInfo("高空" + i));
+            friendInfo.setUserInfo(new UserInfo("高空" + i,"id_is_j"+i,"男"));
             list.add(friendInfo);
         }
 

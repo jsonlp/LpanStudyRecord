@@ -86,7 +86,7 @@ public class GreenDaoFragment extends ButterKnifeFragment {
                 setText(students);
                 break;
             case R.id.green_dao_update_tv:
-//                StudentDaoManager.update();
+                StudentDaoManager.update();
 //                Student student2 = new Student(25227, "022929920", "解决", "男", "2", 3, 3322222);
 //
 //                StudentDaoManager.insert(student2);

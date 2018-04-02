@@ -15,7 +15,7 @@ import com.lpan.study.db.entity.Friend;
 /** 
  * DAO for table "FRIEND".
 */
-public class FriendDao extends AbstractDao<Friend, Long> {
+public class FriendDao extends AbstractDao<Friend, String> {
 
     public static final String TABLENAME = "FRIEND";
 
@@ -24,10 +24,9 @@ public class FriendDao extends AbstractDao<Friend, Long> {
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {
-        public final static Property Id = new Property(0, long.class, "id", true, "_id");
-        public final static Property Uuid = new Property(1, String.class, "uuid", false, "UUID");
-        public final static Property Relation = new Property(2, int.class, "relation", false, "RELATION");
-        public final static Property Data = new Property(3, String.class, "data", false, "DATA");
+        public final static Property Uuid = new Property(0, String.class, "uuid", true, "UUID");
+        public final static Property Relation = new Property(1, int.class, "relation", false, "RELATION");
+        public final static Property Data = new Property(2, String.class, "data", false, "DATA");
     }
 
 
@@ -43,10 +42,9 @@ public class FriendDao extends AbstractDao<Friend, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"FRIEND\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ," + // 0: id
-                "\"UUID\" TEXT," + // 1: uuid
-                "\"RELATION\" INTEGER NOT NULL ," + // 2: relation
-                "\"DATA\" TEXT);"); // 3: data
+                "\"UUID\" TEXT PRIMARY KEY NOT NULL ," + // 0: uuid
+                "\"RELATION\" INTEGER NOT NULL ," + // 1: relation
+                "\"DATA\" TEXT);"); // 2: data
         // Add Indexes
         db.execSQL("CREATE UNIQUE INDEX " + constraint + "IDX_FRIEND_UUID ON \"FRIEND\"" +
                 " (\"UUID\" ASC);");
@@ -61,71 +59,66 @@ public class FriendDao extends AbstractDao<Friend, Long> {
     @Override
     protected final void bindValues(DatabaseStatement stmt, Friend entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getId());
  
         String uuid = entity.getUuid();
         if (uuid != null) {
-            stmt.bindString(2, uuid);
+            stmt.bindString(1, uuid);
         }
-        stmt.bindLong(3, entity.getRelation());
+        stmt.bindLong(2, entity.getRelation());
  
         String data = entity.getData();
         if (data != null) {
-            stmt.bindString(4, data);
+            stmt.bindString(3, data);
         }
     }
 
     @Override
     protected final void bindValues(SQLiteStatement stmt, Friend entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getId());
  
         String uuid = entity.getUuid();
         if (uuid != null) {
-            stmt.bindString(2, uuid);
+            stmt.bindString(1, uuid);
         }
-        stmt.bindLong(3, entity.getRelation());
+        stmt.bindLong(2, entity.getRelation());
  
         String data = entity.getData();
         if (data != null) {
-            stmt.bindString(4, data);
+            stmt.bindString(3, data);
         }
     }
 
     @Override
-    public Long readKey(Cursor cursor, int offset) {
-        return cursor.getLong(offset + 0);
+    public String readKey(Cursor cursor, int offset) {
+        return cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0);
     }    
 
     @Override
     public Friend readEntity(Cursor cursor, int offset) {
         Friend entity = new Friend( //
-            cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // uuid
-            cursor.getInt(offset + 2), // relation
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3) // data
+            cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0), // uuid
+            cursor.getInt(offset + 1), // relation
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2) // data
         );
         return entity;
     }
      
     @Override
     public void readEntity(Cursor cursor, Friend entity, int offset) {
-        entity.setId(cursor.getLong(offset + 0));
-        entity.setUuid(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setRelation(cursor.getInt(offset + 2));
-        entity.setData(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
+        entity.setUuid(cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0));
+        entity.setRelation(cursor.getInt(offset + 1));
+        entity.setData(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
      }
     
     @Override
-    protected final Long updateKeyAfterInsert(Friend entity, long rowId) {
-        entity.setId(rowId);
-        return rowId;
+    protected final String updateKeyAfterInsert(Friend entity, long rowId) {
+        return entity.getUuid();
     }
     
     @Override
-    public Long getKey(Friend entity) {
+    public String getKey(Friend entity) {
         if(entity != null) {
-            return entity.getId();
+            return entity.getUuid();
         } else {
             return null;
         }
@@ -133,7 +126,7 @@ public class FriendDao extends AbstractDao<Friend, Long> {
 
     @Override
     public boolean hasKey(Friend entity) {
-        throw new UnsupportedOperationException("Unsupported for entities with a non-null key");
+        return entity.getUuid() != null;
     }
 
     @Override

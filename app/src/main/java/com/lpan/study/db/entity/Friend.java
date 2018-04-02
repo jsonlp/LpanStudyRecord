@@ -12,19 +12,19 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity
 public class Friend {
 
-    @Id(autoincrement = true)
-    private long id;
-
     @Index(unique = true)
+    @Id()
     private String uuid;
 
     private int relation;
 
     private String data;
 
-    @Generated(hash = 2050883336)
-    public Friend(long id, String uuid, int relation, String data) {
-        this.id = id;
+
+
+
+    @Generated(hash = 1726384459)
+    public Friend(String uuid, int relation, String data) {
         this.uuid = uuid;
         this.relation = relation;
         this.data = data;
@@ -34,13 +34,8 @@ public class Friend {
     public Friend() {
     }
 
-    public long getId() {
-        return this.id;
-    }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+
 
     public String getUuid() {
         return this.uuid;
