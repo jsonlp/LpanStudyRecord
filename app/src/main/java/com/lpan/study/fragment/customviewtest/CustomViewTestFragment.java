@@ -7,9 +7,9 @@ import android.view.View;
 
 import com.lpan.study.adapter.CustomViewTestAdapter;
 import com.lpan.study.fragment.base.BaseActionbarFragment;
-import com.lpan.study.model.ActionbarConfig;
 import com.lpan.study.model.RecyclerItemInfo;
 import com.lpan.R;
+import com.lpan.study.view.actionbar.ActionbarConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,12 +44,7 @@ public class CustomViewTestFragment extends BaseActionbarFragment {
 
     @Override
     protected ActionbarConfig getActionbarConfig() {
-        ActionbarConfig actionbarConfig = new ActionbarConfig.Build()
-                .setShowLeftButton(true)
-                .setShowRightButton(false)
-                .setTitle("custom view")
-                .build();
-        return actionbarConfig;
+        return getDefaultActionbar("custom view");
     }
 
     public CustomViewTestAdapter getAdapter() {

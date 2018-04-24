@@ -6,12 +6,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.lpan.study.constants.FilePathConstants;
 import com.lpan.study.context.AppContext;
+import com.lpan.study.context.GlideApp;
 import com.lpan.study.fragment.base.ButterKnifeFragment;
 import com.lpan.study.imageloader.ImageLoader;
 import com.lpan.R;
 import com.lpan.study.imageloader.SaveImageListener;
+import com.lpan.study.imageloader.transformation.BlurTransformation;
 import com.lpan.study.utils.BitmapUtils;
 import com.lpan.study.utils.ViewUtils;
 
@@ -153,6 +156,17 @@ public class GlideFragment extends ButterKnifeFragment implements View.OnClickLi
                             public void getBitmap(Bitmap bitmap) {
                             }
                         });
+                break;
+
+            case R.id.text9:
+                mImageView.getLayoutParams().width = ViewUtils.getScreenWidth(AppContext.context)/3;
+                mImageView.getLayoutParams().height = ViewUtils.getScreenWidth(AppContext.context)/2;
+
+                //multi
+                GlideApp.with(getActivity())
+                        .load(URL_PATH)
+                        .transforms(new BlurTransformation(10),new RoundedCorners(10))
+                        .into(mImageView);
                 break;
         }
 

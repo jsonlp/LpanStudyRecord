@@ -6,4 +6,8 @@
     <dimen name="normal_margin">14dip</dimen>
     <dimen name="header_shadow_size">5dp</dimen>
 
+
+    <dimen name="page_padding_left">16dp</dimen>
+    <dimen name="page_padding_right">16dp</dimen>
+
 </resources>

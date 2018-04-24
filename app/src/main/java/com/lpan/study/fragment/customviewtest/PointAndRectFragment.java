@@ -10,9 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lpan.study.fragment.base.BaseActionbarFragment;
-import com.lpan.study.model.ActionbarConfig;
 import com.lpan.study.utils.BitmapUtils;
 import com.lpan.R;
+import com.lpan.study.view.actionbar.ActionbarConfig;
 
 import butterknife.BindView;
 import butterknife.OnClick;

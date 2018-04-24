@@ -1,12 +1,20 @@
 package com.lpan.study.fragment;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.transition.Explode;
 import android.transition.Fade;
 import android.transition.Slide;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lpan.study.constants.Constants;
@@ -23,7 +31,7 @@ import butterknife.OnClick;
  * Created by lpan on 2017/10/10.
  */
 
-public class MyDialogFragment extends ButterKnifeFragment implements View.OnClickListener {
+public class MyDialogFragment extends ButterKnifeFragment implements View.OnClickListener,BaseDialogFragment.OnSelectPhotoListener {
     public static final String TAG = MyDialogFragment.class.getSimpleName();
 
     @BindView(R.id.text1)
@@ -65,7 +73,7 @@ public class MyDialogFragment extends ButterKnifeFragment implements View.OnClic
 
     }
 
-    @OnClick({R.id.text1, R.id.text2, R.id.text3})
+    @OnClick({R.id.text1, R.id.text2, R.id.text3, R.id.text4})
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -81,25 +89,28 @@ public class MyDialogFragment extends ButterKnifeFragment implements View.OnClic
             case R.id.text3:
                 showSnackBar();
                 break;
+
+            case R.id.text4:
+                showBottomDialog();
+                break;
             default:
                 break;
         }
     }
 
     private void showDialog() {
-//        AlertDialog.Builder build = new AlertDialog.Builder(getActivity());
-//        build.setTitle("title")
-//                .setMessage("content")
-//                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        toastShort("ok");
-//                    }
-//                })
-//                .setNegativeButton("cancel", null)
-//                .create()
-//                .show();
-        BaseDialogFragment.newInstance().show(getChildFragmentManager(), TAG);
+        AlertDialog.Builder build = new AlertDialog.Builder(getActivity());
+        build.setTitle("title")
+                .setMessage("content")
+                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        toastShort("ok");
+                    }
+                })
+                .setNegativeButton("cancel", null)
+                .create()
+                .show();
     }
 
     private void showToast() {
@@ -115,5 +126,20 @@ public class MyDialogFragment extends ButterKnifeFragment implements View.OnClic
                     }
                 })
                 .show();
+    }
+
+    private void showBottomDialog(){
+        BaseDialogFragment.newInstance(this).show(getChildFragmentManager(),"base_dialog");
+    }
+
+    @Override
+    public void takePhoto() {
+        toastShort("take photo");
+    }
+
+    @Override
+    public void gotoGallery() {
+        toastShort("goto Gallery");
+
     }
 }

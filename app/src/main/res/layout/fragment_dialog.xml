@@ -1,37 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="horizontal"
               android:layout_width="match_parent"
+              android:layout_height="match_parent"
               android:background="@color/blue"
-              android:layout_height="match_parent">
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="dialog"/>
+
+        <TextView
+            android:id="@id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="toast"/>
+
+        <TextView
+            android:id="@id/text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="snackbar"/>
+    </LinearLayout>
+
 
     <TextView
-        android:id="@id/text1"
-        android:text="dialog"
-        android:layout_weight="1"
-        android:background="@drawable/button_bg_gray"
+        android:id="@id/text4"
         android:layout_width="wrap_content"
-        android:padding="20dp"
-        android:gravity="center"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@id/text2"
-        android:text="toast"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:background="@drawable/button_bg_gray"
-        android:layout_width="wrap_content"
-        android:padding="20dp"
         android:gravity="center"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@id/text3"
-        android:text="snackbar"
-        android:layout_weight="1"
-        android:background="@drawable/button_bg_gray"
-        android:layout_width="wrap_content"
         android:padding="20dp"
-        android:gravity="center"
-        android:layout_height="wrap_content"/>
+        android:text="bottom dialog"/>
 </LinearLayout>

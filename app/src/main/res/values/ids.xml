@@ -109,6 +109,11 @@
     <item name="green_dao_insert_all_tv" type="id">green_dao_insert_all_tv</item>
     <item name="green_dao_delete_all_tv" type="id">green_dao_delete_all_tv</item>
     <item name="green_dao_query_all_tv" type="id">green_dao_query_all_tv</item>
+    <item name="actionbar_background" type="id">actionbar_background</item>
+    <item name="left" type="id">left</item>
+    <item name="left_icon" type="id">left_icon</item>
+    <item name="right" type="id">right</item>
+    <item name="my_actionbar" type="id">my_actionbar</item>
 
 
 </resources>

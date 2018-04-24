@@ -14,10 +14,10 @@ import android.widget.ImageView;
 
 import com.lpan.study.context.AppContext;
 import com.lpan.study.fragment.base.BaseActionbarFragment;
-import com.lpan.study.model.ActionbarConfig;
 import com.lpan.study.utils.Log;
 import com.lpan.study.utils.ViewUtils;
 import com.lpan.R;
+import com.lpan.study.view.actionbar.ActionbarConfig;
 
 import butterknife.BindView;
 
