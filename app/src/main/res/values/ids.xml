@@ -114,6 +114,7 @@
     <item name="left_icon" type="id">left_icon</item>
     <item name="right" type="id">right</item>
     <item name="my_actionbar" type="id">my_actionbar</item>
+    <item name="recycler_view" type="id">recycler_view</item>
 
 
 </resources>
