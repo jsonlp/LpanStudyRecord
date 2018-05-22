@@ -14,6 +14,8 @@ public class BaseRecyclerItem {
 
     private int rightIconResId;
 
+    private String url;
+
     public BaseRecyclerItem() {
     }
 
@@ -54,5 +56,13 @@ public class BaseRecyclerItem {
 
     public void setRightIconResId(int rightIconResId) {
         this.rightIconResId = rightIconResId;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

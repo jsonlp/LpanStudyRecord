@@ -64,6 +64,7 @@ public class CustomViewTestFragment extends BaseActionbarFragment {
         list.add(new RecyclerItemInfo("Graphics 2D", new Graphics2Dfragment()));
         list.add(new RecyclerItemInfo("Matrix", new MatrixFragment()));
         list.add(new RecyclerItemInfo("path animation", new PathAnimationFragment()));
+        list.add(new RecyclerItemInfo("outline", new OutlineFragment()));
 
         getAdapter().addItem(list);
         getAdapter().notifyDataSetChanged();

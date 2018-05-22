@@ -11,6 +11,7 @@ import com.lpan.study.fragment.HttpStudyFragment;
 import com.lpan.study.fragment.MyDialogFragment;
 import com.lpan.study.fragment.JavaTestFragment;
 import com.lpan.study.fragment.MyHttpClientFragment;
+import com.lpan.study.fragment.ThreadsTestFragment;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.fragment.CalculateAlphaFragment;
 import com.lpan.study.listener.OnRowAdapterClickListener;
@@ -49,8 +50,9 @@ public class ToolsFragment extends BaseFragment implements OnRowAdapterClickList
         mList.add("java test");
         mList.add("device info");
         mList.add("remind");
-        mList.add("okhttp");
+        mList.add("ok http");
         mList.add("android net");
+        mList.add("android threads");
 
 
         mToActivityList = new ArrayList<>();
@@ -61,6 +63,7 @@ public class ToolsFragment extends BaseFragment implements OnRowAdapterClickList
         mToActivityList.add(new MyDialogFragment());
         mToActivityList.add(new MyHttpClientFragment());
         mToActivityList.add(new HttpStudyFragment());
+        mToActivityList.add(new ThreadsTestFragment());
 
 
         getAdapter().addItems(mList);

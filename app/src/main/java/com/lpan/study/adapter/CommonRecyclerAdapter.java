@@ -13,9 +13,9 @@ import java.util.List;
  * Created by lpan on 2018/4/24.
  */
 
-public class CommonReyclerAdapter extends BaseQuickAdapter<BaseRecyclerItem, BaseViewHolder> {
+public class CommonRecyclerAdapter extends BaseQuickAdapter<BaseRecyclerItem, BaseViewHolder> {
 
-    public CommonReyclerAdapter(int layoutResId, @Nullable List<BaseRecyclerItem> data) {
+    public CommonRecyclerAdapter(int layoutResId, @Nullable List<BaseRecyclerItem> data) {
         super(layoutResId, data);
     }
 

@@ -43,6 +43,10 @@ public abstract class BaseRecyclerFragment<T> extends BaseActionbarFragment impl
 
     protected abstract BaseQuickAdapter getAdapter();
 
+    protected RecyclerView getRecyclerView(){
+        return mRecyclerView;
+    }
+
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
 

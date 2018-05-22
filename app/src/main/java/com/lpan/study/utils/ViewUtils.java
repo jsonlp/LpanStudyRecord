@@ -16,6 +16,10 @@ public class ViewUtils {
     public static final float ONE_DP = dp2px(AppContext.getContext(), 1);
 
 
+    public static int dp2px(float dpValue) {
+        return dp2px(AppContext.context,dpValue);
+    }
+
     /**
      * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
      */
