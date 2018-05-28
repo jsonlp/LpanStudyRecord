@@ -203,14 +203,14 @@
             android:text="flatMap"/>
 
         <TextView
-            android:id="@+id/concat_map_bt"
+            android:id="@+id/retry_bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/button_bg_gray"
             android:gravity="center"
             android:padding="10dp"
-            android:text="concat_map"/>
+            android:text="retry"/>
 
     </LinearLayout>
 

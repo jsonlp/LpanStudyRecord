@@ -20,6 +20,7 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.BiPredicate;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
@@ -55,7 +56,7 @@ public class RXJavaStudyFragment extends ButterKnifeFragment implements RxjavaFe
             R.id.never_bt, R.id.empty_bt, R.id.error_bt,
             R.id.defer_bt, R.id.timer_bt, R.id.interval_bt,
             R.id.interval_range_bt, R.id.range_bt, R.id.range_long_bt,
-            R.id.map_bt, R.id.flat_map_bt, R.id.concat_map_bt,
+            R.id.map_bt, R.id.flat_map_bt, R.id.retry_bt,
 
             R.id.desc})
     public void onViewClicked(View view) {
@@ -111,14 +112,15 @@ public class RXJavaStudyFragment extends ButterKnifeFragment implements RxjavaFe
                 break;
 
             case R.id.map_bt:
-                fetchGirl();
+
                 break;
 
             case R.id.flat_map_bt:
                 flatMap();
                 break;
 
-            case R.id.concat_map_bt:
+            case R.id.retry_bt:
+                retry();
                 break;
             case R.id.desc:
                 mDesc.setText("");
@@ -183,10 +185,22 @@ public class RXJavaStudyFragment extends ButterKnifeFragment implements RxjavaFe
 
     }
 
-    private void fetchGirl() {
+    private void retry() {
         RetrofitService.getGirlService().getBeauties(10, 1)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .retry(new BiPredicate<Integer, Throwable>() {
+                    @Override
+                    public boolean test(Integer integer, Throwable throwable) throws Exception {
+                        if (Log.DEBUG) {
+                            Log.d("RXJavaStudyFragment", "test--------重试次数=" + integer + "  错误:" + throwable.getMessage());
+                        }
+                        if (integer < 5) {
+                            return true;
+                        }
+                        return false;
+                    }
+                })
                 .subscribe(new Consumer<GirlData>() {
                     @Override
                     public void accept(GirlData girlData) throws Exception {
