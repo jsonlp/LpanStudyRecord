@@ -9,6 +9,7 @@ import com.lpan.study.adapter.NavegationAdapter;
 import com.lpan.study.fragment.ContactsFragment;
 import com.lpan.study.fragment.GreenDaoFragment;
 import com.lpan.study.fragment.PermissionFragment;
+import com.lpan.study.fragment.RXJavaStudyFragment;
 import com.lpan.study.fragment.StickyGridFragment;
 import com.lpan.study.fragment.TransAnimationFragment;
 import com.lpan.study.fragment.base.BaseFragment;
@@ -48,6 +49,7 @@ public class OthersFragment extends BaseFragment implements OnRowAdapterClickLis
         mList.add("contacts ");
         mList.add("sticky grid header ");
         mList.add("green dao ");
+        mList.add("rxjava ");
 
 //        mList.add("test ");
 
@@ -57,6 +59,7 @@ public class OthersFragment extends BaseFragment implements OnRowAdapterClickLis
         mToActivityList.add(new ContactsFragment());
         mToActivityList.add(new StickyGridFragment());
         mToActivityList.add(new GreenDaoFragment());
+        mToActivityList.add(new RXJavaStudyFragment());
 
 //        mToActivityList.add(new TestFragment());
 

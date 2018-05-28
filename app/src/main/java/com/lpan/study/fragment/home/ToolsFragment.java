@@ -50,7 +50,7 @@ public class ToolsFragment extends BaseFragment implements OnRowAdapterClickList
         mList.add("java test");
         mList.add("device info");
         mList.add("remind");
-        mList.add("ok http");
+//        mList.add("ok http");
         mList.add("android net");
         mList.add("android threads");
 
@@ -61,7 +61,7 @@ public class ToolsFragment extends BaseFragment implements OnRowAdapterClickList
         mToActivityList.add(new JavaTestFragment());
         mToActivityList.add(new DeviceInfoFragment());
         mToActivityList.add(new MyDialogFragment());
-        mToActivityList.add(new MyHttpClientFragment());
+//        mToActivityList.add(new MyHttpClientFragment());
         mToActivityList.add(new HttpStudyFragment());
         mToActivityList.add(new ThreadsTestFragment());
 

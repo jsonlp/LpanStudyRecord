@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:padding="10dp">
+
+    <TextView
+        android:text="创建方式:"
+        android:paddingBottom="@dimen/dp_10"
+        android:paddingTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/create_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="create"/>
+
+        <TextView
+            android:id="@+id/just_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="just"/>
+
+        <TextView
+            android:id="@+id/from_array_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="fromArray"/>
+
+        <TextView
+            android:id="@+id/fromIterable_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="fromIterable"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/never_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="never"/>
+
+        <TextView
+            android:id="@+id/empty_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="empty"/>
+
+        <TextView
+            android:id="@+id/error_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="error"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/defer_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="defer"/>
+
+        <TextView
+            android:id="@+id/timer_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="timer"/>
+
+        <TextView
+            android:id="@+id/interval_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="interval"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/interval_range_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="interval_range"/>
+
+        <TextView
+            android:id="@+id/range_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="range"/>
+
+        <TextView
+            android:id="@+id/range_long_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="range_long"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:text="变换方式:"
+        android:paddingBottom="@dimen/dp_10"
+        android:paddingTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/map_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="map"/>
+
+        <TextView
+            android:id="@+id/flat_map_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="flatMap"/>
+
+        <TextView
+            android:id="@+id/concat_map_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_gray"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="concat_map"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+</LinearLayout>

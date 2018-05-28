@@ -8,7 +8,6 @@ import com.lpan.R;
 import com.lpan.study.contract.MyhttpContract;
 import com.lpan.study.fragment.base.ButterKnifeFragment;
 import com.lpan.study.model.ConfigInfo;
-import com.lpan.study.presenter.impl.MyHttpPresenter;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -48,7 +47,6 @@ public class MyHttpClientFragment extends ButterKnifeFragment implements View.On
     @Override
     protected void initViews(View view) {
         super.initViews(view);
-        mPresenter = new MyHttpPresenter(this);
     }
 
     @OnClick({R.id.text1, R.id.text2, R.id.text3, R.id.text4})

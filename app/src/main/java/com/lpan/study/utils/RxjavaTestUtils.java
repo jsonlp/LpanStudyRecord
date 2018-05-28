@@ -41,7 +41,10 @@ public class RxjavaTestUtils {
 
 //        filter();
 
-        sample();
+//        sample();
+
+        create();
+        just();
     }
 
 
@@ -428,4 +431,76 @@ public class RxjavaTestUtils {
                     }
                 });
     }
+
+    private static void log(String message) {
+        if (Log.DEBUG) {
+            Log.d("RxjavaTestUtils", "log--------" + message);
+        }
+    }
+
+    /**
+     * 最基本的事件流
+     */
+    private static void create() {
+        Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(ObservableEmitter<String> e) throws Exception {
+                e.onNext("one");
+                e.onNext("two");
+                e.onNext("three");
+            }
+        }).subscribe(new Observer<String>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                log("onSubscribe");
+            }
+
+            @Override
+            public void onNext(String s) {
+                log(s);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                log(e.getMessage());
+
+            }
+
+            @Override
+            public void onComplete() {
+                log("onComplete");
+            }
+        });
+    }
+
+    /**
+     * 快速创建一个被观察者,参数最多10个
+     */
+    private static void just() {
+        Observable.just("1", "2", "3")
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        log("onSubscribe");
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+                        log(s);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        log(e.getMessage());
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        log("onComplete");
+                    }
+                });
+    }
+
+
 }

@@ -1,12 +1,12 @@
 package com.lpan.study.http;
 
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
-
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * Created by lpan on 2017/11/16.
@@ -36,13 +36,12 @@ public class MyHttpClient {
     }
 
     public void init() {
-        mOkHttpClient = new OkHttpClient();
-        mOkHttpClient.setConnectTimeout(DEFAULT_CONNECTION_TIMEOUT, TimeUnit.SECONDS);
-        mOkHttpClient.setReadTimeout(DEFAULT_READ_TIMEOUT, TimeUnit.SECONDS);
-        mOkHttpClient.setWriteTimeout(DEFAULT_WRITE_TIMEOUT, TimeUnit.SECONDS);
-        mOkHttpClient.setRetryOnConnectionFailure(true);
-//        mOkHttpClient.interceptors().add(new LoggingInterceptor());
-        mOkHttpClient.setRetryOnConnectionFailure(true);
+        mOkHttpClient = mOkHttpClient = new OkHttpClient.Builder().connectTimeout(15, TimeUnit.SECONDS)
+                .readTimeout(15, TimeUnit.SECONDS)
+                .writeTimeout(15, TimeUnit.SECONDS)
+                .retryOnConnectionFailure(true)
+                .addInterceptor(new LoggingInterceptor())
+                .build();
     }
 
     public Response get(String url) throws IOException {
@@ -50,7 +49,7 @@ public class MyHttpClient {
         return processRequest(request);
     }
 
-    public Response post(String url,RequestBody requestBody) throws IOException {
+    public Response post(String url, RequestBody requestBody) throws IOException {
         Request request = new Request.Builder().url(url).post(requestBody).build();
         return processRequest(request);
     }
@@ -60,6 +59,10 @@ public class MyHttpClient {
             return null;
         }
         return mOkHttpClient.newCall(request).execute();
+    }
+
+    public OkHttpClient getOkHttpClient(){
+        return mOkHttpClient;
     }
 
 }
