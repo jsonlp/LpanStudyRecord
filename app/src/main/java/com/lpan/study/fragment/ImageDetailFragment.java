@@ -1,7 +1,9 @@
 package com.lpan.study.fragment;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewCompat;
@@ -10,6 +12,8 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.lpan.study.context.AppContext;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.FragmentUtils;
 import com.lpan.R;
@@ -55,6 +59,13 @@ public class ImageDetailFragment extends BaseFragment {
             mImages = getArguments().getStringArrayList(EXTRA_IMAGE_IAMGES);
             mPosition = getArguments().getInt(EXTRA_IMAGE_POSITION);
         }
+        //1方式1
+        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("name", Context.MODE_PRIVATE);
+        //2方式2
+        SharedPreferences sharedPreferences2 = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
+        sharedPreferences1.edit().putString("key","value").commit();
+        String value = sharedPreferences1.getString("key", "");
     }
 
     @Override

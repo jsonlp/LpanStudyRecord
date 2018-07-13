@@ -196,6 +196,7 @@ public class ThreadsTestFragment extends BaseActionbarFragment implements View.O
 
                         mOtherHandler.sendEmptyMessage(111);
 
+                        Looper.prepare();
                         MyHandler myHandler = new MyHandler(getActivity());
                         try {
                             Thread.sleep(2000);
