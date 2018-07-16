@@ -1,2 +1,0 @@
-com.github.hiteshsondhi88.libffmpeg.test
-int string shipped_ffmpeg_version 0x7f010000

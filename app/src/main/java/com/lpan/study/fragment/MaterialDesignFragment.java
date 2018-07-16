@@ -3,8 +3,6 @@ package com.lpan.study.fragment;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,7 +10,6 @@ import android.widget.TextView;
 import com.lpan.BuildConfig;
 import com.lpan.R;
 import com.lpan.study.adapter.MaterialDesignAdapter;
-import com.lpan.study.adapter.SimpleRecyclerAdapter;
 import com.lpan.study.fragment.base.ButterKnifeFragment;
 import com.lpan.study.utils.Log;
 
