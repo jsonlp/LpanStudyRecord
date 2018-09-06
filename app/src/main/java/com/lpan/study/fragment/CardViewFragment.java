@@ -1,13 +1,25 @@
 package com.lpan.study.fragment;
 
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lpan.R;
+import com.lpan.study.adapter.CardViewAdapter;
+import com.lpan.study.fragment.base.BaseActionbarFragment;
+import com.lpan.study.fragment.base.BaseRecyclerFragment;
 import com.lpan.study.fragment.base.ButterKnifeFragment;
 import com.lpan.study.utils.Utils;
 import com.lpan.study.utils.ViewUtils;
 import com.lpan.study.view.CircleImageView;
+import com.lpan.study.view.actionbar.ActionbarConfig;
+import com.lpan.study.view.slidepanel.CardAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -15,14 +27,13 @@ import butterknife.BindView;
  * Created by lpan on 2017/6/2.
  */
 
-public class CardViewFragment extends ButterKnifeFragment {
+public class CardViewFragment extends BaseActionbarFragment {
 
-    @BindView(R.id.cardview)
-    CardView mCardView;
+    private CardViewAdapter mAdapter;
 
+    @BindView(R.id.recycler_view)
+    RecyclerView mRecyclerView;
 
-    @BindView(R.id.circle_image)
-    CircleImageView mCircleImageView;
 
     @Override
     protected int getLayoutResource() {
@@ -32,18 +43,26 @@ public class CardViewFragment extends ButterKnifeFragment {
     @Override
     protected void initViews(View view) {
         super.initViews(view);
-        mCircleImageView.setImageResource(R.drawable.cat_image);
-
-        configCard();
+        mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        mRecyclerView.setAdapter(getAdapter());
+        List<String> list = new ArrayList<>();
+        list.add("111");
+        list.add("111");
+        list.add("111");
+        list.add("111");
+        getAdapter().addData(list);
+        getAdapter().notifyDataSetChanged();
     }
 
-    private void configCard() {
-//        mCardView.setRadius(ViewUtils.ONE_DP * 15);
-//        mCardView.setBackgroundColor(Color.GRAY);
-        if (Utils.hasLollipop()) {
-            mCardView.setElevation(20 * ViewUtils.ONE_DP);
-        }
-//        mCardView.setMaxCardElevation(20 * ViewUtils.ONE_DP);
+    @Override
+    protected ActionbarConfig getActionbarConfig() {
+        return null;
+    }
 
+    protected BaseQuickAdapter getAdapter() {
+        if (mAdapter == null) {
+            mAdapter = new CardViewAdapter(R.layout.item_card_view);
+        }
+        return mAdapter;
     }
 }

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/banner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/cat_image"
+        app:layout_constraintDimensionRatio="16:9"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintWidth_percent="0.5"/>
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="上图:宽高比16:9,且宽度为父布局的一半"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/banner"/>
+
+
+    <ImageView
+        android:id="@+id/tab1_icon1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_like"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tab2"
+        app:layout_constraintTop_toBottomOf="@id/title"/>
+
+    <ImageView
+        android:id="@+id/tab1_icon2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_like"
+        app:layout_constraintLeft_toRightOf="@id/tab1"
+        app:layout_constraintRight_toLeftOf="@id/tab3"
+        app:layout_constraintTop_toBottomOf="@id/title"/>
+
+    <ImageView
+        android:id="@+id/tab1_icon3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_like"
+        app:layout_constraintLeft_toRightOf="@id/tab2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"/>
+
+
+    <TextView
+        android:id="@+id/tab1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:text="TAB1"
+        android:textColor="@color/white"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/tab2"
+        app:layout_constraintTop_toBottomOf="@id/tab1_icon1"/>
+
+
+    <TextView
+        android:id="@+id/tab2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPlayerBlackTrans"
+        android:gravity="center"
+        android:text="TAB2"
+        android:textColor="@color/white"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toRightOf="@id/tab1"
+        app:layout_constraintRight_toLeftOf="@+id/tab3"
+        app:layout_constraintTop_toBottomOf="@id/tab1_icon2"/>
+
+    <TextView
+        android:id="@+id/tab3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="TAB3"
+        android:textColor="@color/white"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toRightOf="@id/tab2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tab1_icon3"/>
+
+    <!--控制多个控件的visible-->
+    <android.support.constraint.Group
+        android:layout_width="wrap_content"
+        android:visibility="visible"
+        android:background="@color/red"
+        app:constraint_referenced_ids="tab1,tab1_icon1"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="姓名:"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tab1"/>
+
+    <TextView
+        android:id="@+id/phone"
+        android:text="电话电话电话电话:"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="16dp"
+        android:hint="输入姓名"
+        app:layout_constraintLeft_toLeftOf="@id/barrier"
+        app:layout_constraintTop_toTopOf="@id/name"/>
+
+
+
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier"
+        android:background="@color/red"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="wrap_content"
+        app:barrierDirection="right"
+        app:constraint_referenced_ids="name,phone"
+        android:layout_height="wrap_content"/>
+
+</android.support.constraint.ConstraintLayout>

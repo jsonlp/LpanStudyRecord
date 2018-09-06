@@ -10,7 +10,6 @@ import com.lpan.study.fragment.DeviceInfoFragment;
 import com.lpan.study.fragment.HttpStudyFragment;
 import com.lpan.study.fragment.MyDialogFragment;
 import com.lpan.study.fragment.JavaTestFragment;
-import com.lpan.study.fragment.MyHttpClientFragment;
 import com.lpan.study.fragment.ThreadsTestFragment;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.fragment.CalculateAlphaFragment;

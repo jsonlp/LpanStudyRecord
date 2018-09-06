@@ -1,7 +1,7 @@
 package com.lpan.study.fragment;
 
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import com.lpan.R;
@@ -14,16 +14,13 @@ import java.util.List;
 
 import butterknife.BindView;
 
-/*************************************************************************************
- * Author: liaopan
- * Date: 2018/7/13
- *******************************************************************/
 
-public class CustomLayoutMFragment extends ButterKnifeFragment{
+public class CustomLayoutMFragment extends ButterKnifeFragment {
 
     @BindView(R.id.recyclerview)
-    RecyclerView  mRecyclerView;
+    RecyclerView mRecyclerView;
 
+    private SimpleRecyclerAdapter mAdapter;
 
     @Override
     protected int getLayoutResource() {
@@ -38,11 +35,20 @@ public class CustomLayoutMFragment extends ButterKnifeFragment{
             list.add("title" + i);
         }
         mRecyclerView.setLayoutManager(getLayoutManager());
-        mRecyclerView.setAdapter(new SimpleRecyclerAdapter(R.layout.item_text,list));
+        getAdapter().addData(list);
+        View header = LayoutInflater.from(getActivity()).inflate(R.layout.layout_header,null);
+        getAdapter().addHeaderView(header);
+        mRecyclerView.setAdapter(getAdapter());
     }
 
-    private RecyclerView.LayoutManager getLayoutManager(){
+    private RecyclerView.LayoutManager getLayoutManager() {
         return new CustomLayoutManager();
     }
 
+    private SimpleRecyclerAdapter getAdapter() {
+        if (mAdapter == null) {
+            mAdapter = new SimpleRecyclerAdapter(R.layout.item_normal_user);
+        }
+        return mAdapter;
+    }
 }

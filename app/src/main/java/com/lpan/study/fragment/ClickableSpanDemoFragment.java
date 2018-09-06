@@ -32,6 +32,8 @@ import com.lpan.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.grantland.widget.AutofitTextView;
+
 /**
  * Created by lpan on 2016/12/27.
  */
@@ -57,6 +59,8 @@ public class ClickableSpanDemoFragment extends BaseFragment implements MentionSp
 
     private String mSchoolName="郑州大学州大学郑州大学.  ";
 
+    public static final String LONG_TEXT = "在过去几年间，风行陆续获得了《财经时报》2006年中国首届web2.0十大创新品牌、《第一财经日报》2008年度最具成长潜力奖、中国国际私募股权投资论坛2008中国最具投资价值企业30强、《商务周刊》2008年度快速成长企业50强、《互联网周刊》2008年度最佳网络视频公司、《广告导报》第三届中国广告风云榜“2007-2008年度中国广告业10大最具成长力公司”、以及在PCHOME2008年度杰出产品评选中获得“2008年最佳网络电视类软件”、CBSi（中国）和中关村在线举办的“中国软件崛起峰会”上获得“最佳用户体验奖”等荣誉 [1]  。";
+
     private String mTag="热门";
 
     private TextView mTextView;
@@ -66,6 +70,9 @@ public class ClickableSpanDemoFragment extends BaseFragment implements MentionSp
     private TextView mContent;
 
     private TextView mAllDescButton;
+
+    private AutofitTextView mAutofitTextView;
+    private TextView mNormal;
 
     private List<UserInfo> mInfoList = new ArrayList<>();
 
@@ -81,6 +88,9 @@ public class ClickableSpanDemoFragment extends BaseFragment implements MentionSp
         mTextView = (TextView) view.findViewById(R.id.text);
         mTextView2 = (TextView) view.findViewById(R.id.text1);
         mTextView3 = (TextView) view.findViewById(R.id.text3);
+        mAutofitTextView = view.findViewById(R.id.auto_fit);
+        mNormal = view.findViewById(R.id.normal);
+
 
         mTextView2.setMovementMethod(LinkMovementMethod.getInstance());
         mTextView.setMovementMethod(LinkMovementMethod.getInstance());
@@ -100,6 +110,9 @@ public class ClickableSpanDemoFragment extends BaseFragment implements MentionSp
 
         mTextView3.setText(addDrawableSpan(mSchoolName,mTag), TextView.BufferType.SPANNABLE);
         initData();
+        mAutofitTextView.setText("autoFit: "+LONG_TEXT);
+        mNormal.setText("normal: "+LONG_TEXT);
+
     }
 
     @Override

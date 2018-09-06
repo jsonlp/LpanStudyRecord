@@ -18,6 +18,10 @@ public class SimpleRecyclerAdapter extends BaseQuickAdapter<String, BaseViewHold
         super(layoutResId, data);
     }
 
+    public SimpleRecyclerAdapter(int layoutResId) {
+        super(layoutResId);
+    }
+
     @Override
     protected void convert(BaseViewHolder helper, String item) {
         helper.setText(R.id.text1, item);
