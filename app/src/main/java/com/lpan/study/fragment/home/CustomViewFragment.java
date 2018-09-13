@@ -8,6 +8,7 @@ import com.lpan.study.adapter.NavegationAdapter;
 import com.lpan.study.fragment.CardViewFragment;
 import com.lpan.study.fragment.ClassroomFragment;
 import com.lpan.study.fragment.CustomLayoutMFragment;
+import com.lpan.study.fragment.FlowLayoutFragment;
 import com.lpan.study.fragment.MaterialDesignFragment;
 import com.lpan.study.fragment.customviewtest.CustomViewTestFragment;
 import com.lpan.study.fragment.GlideFragment;
@@ -56,6 +57,7 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
         super.initData();
         mList = new ArrayList<>();
 
+        mList.add("flow layout");
         mList.add("custom LayoutManager");
         mList.add("material design profile");
         mList.add("class room");
@@ -74,10 +76,11 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
         mList.add("slide panel");
         mList.add("nested scroll");
         mList.add("card swipe");
+        mList.add("card swipe");
 
 
         mToActivityList = new ArrayList<>();
-
+        mToActivityList.add(new FlowLayoutFragment());
         mToActivityList.add(new CustomLayoutMFragment());
         mToActivityList.add(new MaterialDesignFragment());
         mToActivityList.add(new ClassroomFragment());

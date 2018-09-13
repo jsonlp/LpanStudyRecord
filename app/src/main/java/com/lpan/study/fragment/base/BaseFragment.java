@@ -57,7 +57,7 @@ public abstract class BaseFragment extends Fragment {
     protected abstract int getLayoutResource();
 
     protected boolean useButterknife() {
-        return false;
+        return true;
     }
 
 

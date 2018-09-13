@@ -1,4 +1,4 @@
-package com.zhy.view.flowlayout;
+package com.lpan.study.view.flowlayout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -13,13 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.lpan.R;
+
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-/**
- * Created by zhy on 15/9/10.
- */
 public class TagFlowLayout extends FlowLayout
         implements TagAdapter.OnDataChangedListener {
 

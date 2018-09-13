@@ -1,4 +1,4 @@
-package com.zhy.view.flowlayout;
+package com.lpan.study.view.flowlayout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -7,6 +7,8 @@ import android.util.LayoutDirection;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.text.TextUtilsCompat;
+
+import com.lpan.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
