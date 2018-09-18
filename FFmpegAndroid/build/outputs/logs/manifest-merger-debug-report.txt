@@ -1,25 +1,25 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/lpan/AndroidStudio3Projects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml:1:1-5:12
-INJECTED from /Users/lpan/AndroidStudio3Projects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml:1:1-5:12
-INJECTED from /Users/lpan/AndroidStudio3Projects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml:1:1-5:12
+ADDED from /Users/lpan/AndroidStudioProjects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml:1:1-5:12
+INJECTED from /Users/lpan/AndroidStudioProjects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml:1:1-5:12
+INJECTED from /Users/lpan/AndroidStudioProjects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml:1:1-5:12
 	package
-		ADDED from /Users/lpan/AndroidStudio3Projects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml:1:11-56
-		INJECTED from /Users/lpan/AndroidStudio3Projects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
-		INJECTED from /Users/lpan/AndroidStudio3Projects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
+		ADDED from /Users/lpan/AndroidStudioProjects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml:1:11-56
+		INJECTED from /Users/lpan/AndroidStudioProjects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
+		INJECTED from /Users/lpan/AndroidStudioProjects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
 application
-ADDED from /Users/lpan/AndroidStudio3Projects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml:3:5-20
+ADDED from /Users/lpan/AndroidStudioProjects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml:3:5-20
 uses-sdk
-INJECTED from /Users/lpan/AndroidStudio3Projects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /Users/lpan/AndroidStudio3Projects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
-INJECTED from /Users/lpan/AndroidStudio3Projects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
-INJECTED from /Users/lpan/AndroidStudio3Projects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
-INJECTED from /Users/lpan/AndroidStudio3Projects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
+INJECTED from /Users/lpan/AndroidStudioProjects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/lpan/AndroidStudioProjects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
+INJECTED from /Users/lpan/AndroidStudioProjects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
+INJECTED from /Users/lpan/AndroidStudioProjects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
+INJECTED from /Users/lpan/AndroidStudioProjects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from /Users/lpan/AndroidStudio3Projects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
-		ADDED from /Users/lpan/AndroidStudio3Projects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
-		INJECTED from /Users/lpan/AndroidStudio3Projects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
+		INJECTED from /Users/lpan/AndroidStudioProjects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
+		ADDED from /Users/lpan/AndroidStudioProjects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
+		INJECTED from /Users/lpan/AndroidStudioProjects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /Users/lpan/AndroidStudio3Projects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
-		ADDED from /Users/lpan/AndroidStudio3Projects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
-		INJECTED from /Users/lpan/AndroidStudio3Projects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
+		INJECTED from /Users/lpan/AndroidStudioProjects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
+		ADDED from /Users/lpan/AndroidStudioProjects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
+		INJECTED from /Users/lpan/AndroidStudioProjects/panda-study/FFmpegAndroid/src/main/AndroidManifest.xml
