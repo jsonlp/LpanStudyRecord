@@ -110,6 +110,8 @@ public class JavaTestFragment extends BaseFragment implements View.OnClickListen
     @Override
     protected void initData() {
         super.initData();
+
+        randomSix();
     }
 
     @OnClick({R.id.text1, R.id.text2, R.id.text4, R.id.text5, R.id.text6})
@@ -216,5 +218,17 @@ public class JavaTestFragment extends BaseFragment implements View.OnClickListen
         double sqrt = Math.sqrt(v);
     }
 
+
+    private void randomSix() {
+        String[] source = {"0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"};
+        for (int j = 0; j < 100; j++) {
+            String result = "";
+            for (int i = 0; i < 6; i++) {
+                int random = (int) (Math.random() * source.length);
+                result = result +source[random];
+            }
+            Log.d("JavaTestFragment", "randomSix--------" + result);
+        }
+    }
 
 }

@@ -58,6 +58,7 @@ public class CustomViewTestFragment extends BaseActionbarFragment {
     protected void initData() {
         super.initData();
         List<RecyclerItemInfo> list = new ArrayList<>();
+        list.add(new RecyclerItemInfo("rounded mask", new RoundedMaskFragment()));
         list.add(new RecyclerItemInfo("The drawing process of the view", new DrawingViewFragment()));
         list.add(new RecyclerItemInfo("Point and Rect class", new PointAndRectFragment()));
         list.add(new RecyclerItemInfo("Paint and Canvas", new CanvasAndPaintFragment()));

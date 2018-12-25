@@ -6,12 +6,12 @@ final RELEASE_APP_NAME = "lpan"
 final DEVELOP_APP_NAME = "lpan_dev"
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 26
     buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.lpan"
         minSdkVersion 21
-        targetSdkVersion 27 //设备的api=此值时代表:此程序在此版本已经经过充分测，没有问题,运行效率会高点;
+        targetSdkVersion 26 //设备的api=此值时代表:此程序在此版本已经经过充分测，没有问题,运行效率会高点;
         versionCode 10010
         versionName "1.10"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -72,15 +72,14 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:appcompat-v7:26.0.0'
+    compile 'com.android.support:recyclerview-v7:26.0.0'
+    compile 'com.android.support:design:26.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
-
     testCompile 'junit:junit:4.12'
     compile project(':FFmpegAndroid')
     compile files('libs/recyclerview-v7-24.0.0-sources.jar')
-    compile 'com.android.support:recyclerview-v7:25.1.0'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.7'
-    compile 'com.android.support:design:25.3.1'
 
     //滑动动画
     compile 'com.facebook.rebound:rebound:0.3.8'
@@ -129,4 +128,6 @@ dependencies {
 
     //
     compile 'me.grantland:autofittextview:0.2.+'
+
+    compile 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
 }
