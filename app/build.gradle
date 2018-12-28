@@ -130,4 +130,7 @@ dependencies {
     compile 'me.grantland:autofittextview:0.2.+'
 
     compile 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
+
+    implementation 'com.google.zxing:core:3.3.0'
+
 }

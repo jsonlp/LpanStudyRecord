@@ -10,6 +10,7 @@ import com.lpan.study.fragment.DeviceInfoFragment;
 import com.lpan.study.fragment.HttpStudyFragment;
 import com.lpan.study.fragment.MyDialogFragment;
 import com.lpan.study.fragment.JavaTestFragment;
+import com.lpan.study.fragment.QRCodeCreateFragment;
 import com.lpan.study.fragment.ThreadsTestFragment;
 import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.fragment.CalculateAlphaFragment;
@@ -52,6 +53,7 @@ public class ToolsFragment extends BaseFragment implements OnRowAdapterClickList
 //        mList.add("ok http");
         mList.add("android net");
         mList.add("android threads");
+        mList.add("zxing");
 
 
         mToActivityList = new ArrayList<>();
@@ -63,6 +65,7 @@ public class ToolsFragment extends BaseFragment implements OnRowAdapterClickList
 //        mToActivityList.add(new MyHttpClientFragment());
         mToActivityList.add(new HttpStudyFragment());
         mToActivityList.add(new ThreadsTestFragment());
+        mToActivityList.add(new QRCodeCreateFragment());
 
 
         getAdapter().addItems(mList);
