@@ -7,6 +7,7 @@ import android.widget.ViewFlipper;
 
 import com.lpan.R;
 import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.view.DanceTextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,9 @@ public class ViewFlipperFragment extends ButterKnifeFragment {
 
     @BindView(R.id.view_flipper2)
     ViewFlipper mViewFlipper2;
+
+    @BindView(R.id.dance_text_view)
+    DanceTextView mDanceTextView;
 
     List<String> data = new ArrayList<>();   //文字数据集合
 
@@ -90,6 +94,8 @@ public class ViewFlipperFragment extends ButterKnifeFragment {
             textView1.setText(list1.get(i));
             mViewFlipper2.addView(child);
         }
+
+        mDanceTextView.dance(0,834262462);
     }
 
     @Override

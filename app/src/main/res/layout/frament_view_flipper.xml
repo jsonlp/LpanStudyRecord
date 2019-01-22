@@ -3,43 +3,61 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="horizontal">
-
-    <ImageView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginLeft="20dp"
-        android:src="@drawable/inspire"/>
+    android:orientation="vertical">
 
     <LinearLayout
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
 
-        <ViewFlipper
-            android:id="@+id/view_flipper1"
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/inspire"/>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:autoStart="true"
-            android:flipInterval="5000"
-            android:inAnimation="@anim/view_flipper_in"
-            android:outAnimation="@anim/view_flipper_out"/>
+            android:orientation="vertical">
+
+            <ViewFlipper
+                android:id="@+id/view_flipper1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:autoStart="true"
+                android:flipInterval="5000"
+                android:inAnimation="@anim/view_flipper_in"
+                android:outAnimation="@anim/view_flipper_out"/>
 
 
-        <ViewFlipper
-            android:id="@+id/view_flipper2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:autoStart="true"
-            android:flipInterval="5000"
-            android:inAnimation="@anim/view_flipper_in"
-            android:outAnimation="@anim/view_flipper_out"/>
+            <ViewFlipper
+                android:id="@+id/view_flipper2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:autoStart="true"
+                android:flipInterval="5000"
+                android:inAnimation="@anim/view_flipper_in"
+                android:outAnimation="@anim/view_flipper_out"/>
 
 
+        </LinearLayout>
     </LinearLayout>
+
+
+
+    <com.lpan.study.view.DanceTextView
+        android:id="@+id/dance_text_view"
+        android:layout_width="match_parent"
+        android:text="ddd"
+        android:gravity="center"
+        android:textSize="57sp"
+        android:textColor="#581d01"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"/>
 
 
 </LinearLayout>
