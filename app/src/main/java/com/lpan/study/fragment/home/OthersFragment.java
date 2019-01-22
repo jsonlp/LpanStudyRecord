@@ -10,7 +10,7 @@ import com.lpan.study.fragment.ContactsFragment;
 import com.lpan.study.fragment.GreenDaoFragment;
 import com.lpan.study.fragment.PermissionFragment;
 import com.lpan.study.fragment.RXJavaStudyFragment;
-import com.lpan.study.fragment.ShareLoginFragment;
+import com.lpan.study.fragment.WorkTimeFragment;
 import com.lpan.study.fragment.StickyGridFragment;
 import com.lpan.study.fragment.TransAnimationFragment;
 import com.lpan.study.fragment.base.BaseFragment;
@@ -45,7 +45,7 @@ public class OthersFragment extends BaseFragment implements OnRowAdapterClickLis
     protected void initData() {
         super.initData();
         mList = new ArrayList<>();
-        mList.add("third share login ");
+        mList.add("work time ");
         mList.add("transform animation ");
         mList.add("android6.0 permission ");
         mList.add("contacts ");
@@ -56,7 +56,7 @@ public class OthersFragment extends BaseFragment implements OnRowAdapterClickLis
 //        mList.add("test ");
 
         mToActivityList = new ArrayList<>();
-        mToActivityList.add(new ShareLoginFragment());
+        mToActivityList.add(new WorkTimeFragment());
         mToActivityList.add(new TransAnimationFragment());
         mToActivityList.add(new PermissionFragment());
         mToActivityList.add(new ContactsFragment());

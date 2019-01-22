@@ -1,12 +1,8 @@
 package com.lpan.study.fragment;
 
 import android.Manifest;
-import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -16,6 +12,7 @@ import com.lpan.study.adapter.PermissionAdapter;
 import com.lpan.study.fragment.base.ButterKnifeFragment;
 import com.lpan.study.model.ContactInfo;
 import com.lpan.study.task.ScanContactsTask;
+import com.lpan.study.utils.PermissionUtils;
 
 import java.util.List;
 
@@ -27,8 +24,6 @@ import butterknife.OnClick;
  */
 
 public class PermissionFragment extends ButterKnifeFragment implements View.OnClickListener {
-
-    public static final int PERMISSION_CODE = 1;
 
     @BindView(R.id.recyclerview)
     RecyclerView mRecyclerView;
@@ -65,34 +60,16 @@ public class PermissionFragment extends ButterKnifeFragment implements View.OnCl
     }
 
     private void testPermission() {
-        int check = checkPermission(PermissionFragment.this.getActivity(), Manifest.permission.READ_CONTACTS);
-        if (check != PackageManager.PERMISSION_GRANTED) {
-            toastLong("try to get permission");
-            if (shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS)) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("permission rationale")
-                        .setMessage("we need your contact to help you find more friend.")
-                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, PERMISSION_CODE);
-                            }
-                        })
-                        .setNegativeButton("cancel", null)
-                        .show();
-            } else {
-                requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, PERMISSION_CODE);
-            }
-        } else {
-
+        if (PermissionUtils.hasPermission(getActivity(), Manifest.permission.READ_CONTACTS)) {
             readContacts();
-            toastLong("already had permission");
+        }else{
+            PermissionUtils.requestPermission(new String[]{Manifest.permission.READ_CONTACTS},this,PermissionUtils.PERMISSION_CODE);
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == PERMISSION_CODE) {
+        if (requestCode == PermissionUtils.PERMISSION_CODE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 toastShort("allow");
                 readContacts();
@@ -101,7 +78,6 @@ public class PermissionFragment extends ButterKnifeFragment implements View.OnCl
             }
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
-
     }
 
     private void readContacts() {
@@ -121,9 +97,5 @@ public class PermissionFragment extends ButterKnifeFragment implements View.OnCl
                 getAdapter().notifyDataSetChanged();
             }
         }.execute();
-    }
-
-    public int checkPermission(Activity activity, String permissionName) {
-        return ContextCompat.checkSelfPermission(activity, permissionName);
     }
 }
