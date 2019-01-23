@@ -6,7 +6,8 @@ import android.content.pm.PackageManager;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.SwitchCompat;
-import android.text.TextUtils;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,10 +47,22 @@ public class WorkTimeFragment extends BaseActionbarFragment {
         super.initViews(view);
         mSwitchCompat.setChecked(true);
         mSwitchCompat.setOnCheckedChangeListener((buttonView, isChecked) -> handleData(isChecked));
-        mButton.setOnClickListener(new View.OnClickListener() {
+        mButton.setOnClickListener(v -> handleData(mSwitchCompat.isChecked()));
+        mEditText.setSelection(mEditText.getText().toString().length());
+        mEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
-                handleData(mSwitchCompat.isChecked());
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mEditText.setSelection(s.length());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
     }
