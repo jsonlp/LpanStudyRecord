@@ -1,5 +1,7 @@
 package com.lpan.study.model;
 
+import java.util.List;
+
 /**
  * Created by lpan on 2019/1/22.
  */
@@ -9,6 +11,9 @@ public class TimeInfo {
     private int days;
     private String mostEarly;
     private String mostLast;
+    private List<String> rest;
+    private String fromDate;
+    private String endDate;
 
 
     public float getHours() {
@@ -43,6 +48,30 @@ public class TimeInfo {
         this.mostLast = mostLast;
     }
 
+    public List<String> getRest() {
+        return rest;
+    }
+
+    public void setRest(List<String> rest) {
+        this.rest = rest;
+    }
+
+    public String getFromDate() {
+        return fromDate;
+    }
+
+    public void setFromDate(String fromDate) {
+        this.fromDate = fromDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endData) {
+        this.endDate = endData;
+    }
+
     @Override
     public String toString() {
         return "TimeInfo{" +
@@ -50,6 +79,9 @@ public class TimeInfo {
                 ", days=" + days +
                 ", mostEarly='" + mostEarly + '\'' +
                 ", mostLast='" + mostLast + '\'' +
+                ", rest=" + rest +
+                ", fromDate='" + fromDate + '\'' +
+                ", endDate='" + endDate + '\'' +
                 '}';
     }
 }
