@@ -21,13 +21,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TimeZone;
+import java.util.regex.Pattern;
 
 /**
  * Created by lpan on 2019/1/22.
  */
 public class WorkTimer {
 
-    public static final String REGEX="(?:(?!0000)[0-9]{4}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)\\s+([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]";
+    public static final String REGEX = "(?:(?!0000)[0-9]{4}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)\\s+([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]";
 
     public static TimeInfo handleData(String content, boolean filterDay) {
         Map<String, List<String>> map = splitData(content);
@@ -56,7 +57,7 @@ public class WorkTimer {
             while ((line = bufferedReader.readLine()) != null) {
                 content += line + "\n";
             }
-            content += content + "end";
+//            content += content + "end";
             inputStream.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,8 +66,26 @@ public class WorkTimer {
     }
 
     private static List<String> toList(String content) {
+        List<String> newList = new ArrayList<>();
+        Pattern pattern = Pattern.compile(REGEX);
+
         String[] split = content.split("\n");
-        return Arrays.asList(split);
+        for (int i = 0; i < split.length; i++) {
+            String s = split[i];
+            String temp = "";
+            String[] split1 = s.split("\t");
+
+            if (split1.length == 0) {
+                temp = s;
+            } else {
+                temp = split1[0];
+            }
+            if (pattern.matcher(temp).matches()) {
+                newList.add(temp);
+            }
+        }
+        newList.add("end");
+        return newList;
     }
 
     private static List<Long> toLongList(String content) {
@@ -187,6 +206,6 @@ public class WorkTimer {
     }
 
     public static double formatDouble1(double d) {
-        return (double)Math.round(d*100)/100;
+        return (double) Math.round(d * 100) / 100;
     }
 }
