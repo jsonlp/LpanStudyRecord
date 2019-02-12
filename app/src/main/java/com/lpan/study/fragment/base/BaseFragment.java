@@ -28,6 +28,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getLayoutResource(), container, false);
+        unbinder = ButterKnife.bind(this, view);
 
         initViews(view);
 
@@ -41,9 +42,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void initViews(View view) {
-        if (useButterknife()) {
-            unbinder = ButterKnife.bind(this, view);
-        }
+
     }
 
     @Override
@@ -55,10 +54,6 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected abstract int getLayoutResource();
-
-    protected boolean useButterknife() {
-        return true;
-    }
 
 
     protected void toastShort(String message) {

@@ -7,6 +7,7 @@ import android.widget.ListView;
 import com.lpan.study.adapter.NavegationAdapter;
 import com.lpan.study.fragment.CardViewFragment;
 import com.lpan.study.fragment.ClassroomFragment;
+import com.lpan.study.fragment.ConstrainLayoutFragment;
 import com.lpan.study.fragment.CustomLayoutMFragment;
 import com.lpan.study.fragment.DoubleRecyclerFragment;
 import com.lpan.study.fragment.FlowLayoutFragment;
@@ -60,6 +61,7 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
         super.initData();
         mList = new ArrayList<>();
 
+        mList.add("constraint layout");
         mList.add("View Stub");
         mList.add("ViewFlipper");
         mList.add("recyclerview in recyclerview");
@@ -86,6 +88,7 @@ public class CustomViewFragment extends BaseFragment implements OnRowAdapterClic
 
 
         mToActivityList = new ArrayList<>();
+        mToActivityList.add(new ConstrainLayoutFragment());
         mToActivityList.add(new ViewStubFragment());
         mToActivityList.add(new ViewFlipperFragment());
         mToActivityList.add(new DoubleRecyclerFragment());

@@ -1,6 +1,5 @@
 package com.lpan.study.fragment;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,17 +8,12 @@ import android.support.v7.app.AlertDialog;
 import android.transition.Explode;
 import android.transition.Fade;
 import android.transition.Slide;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lpan.study.constants.Constants;
 import com.lpan.study.fragment.base.BaseDialogFragment;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.Toaster;
 import com.lpan.R;
 import com.lpan.study.utils.Utils;
@@ -31,7 +25,7 @@ import butterknife.OnClick;
  * Created by lpan on 2017/10/10.
  */
 
-public class MyDialogFragment extends ButterKnifeFragment implements View.OnClickListener,BaseDialogFragment.OnSelectPhotoListener {
+public class MyDialogFragment extends BaseFragment implements View.OnClickListener,BaseDialogFragment.OnSelectPhotoListener {
     public static final String TAG = MyDialogFragment.class.getSimpleName();
 
     @BindView(R.id.text1)

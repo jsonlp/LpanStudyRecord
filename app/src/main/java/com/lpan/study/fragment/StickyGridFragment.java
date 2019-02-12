@@ -7,7 +7,7 @@ import android.view.View;
 import com.codewaves.stickyheadergrid.StickyHeaderGridLayoutManager;
 import com.lpan.R;
 import com.lpan.study.adapter.StickyGridAdapter;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.model.BookInfo;
 import com.lpan.study.model.PostInfo;
 
@@ -20,7 +20,7 @@ import butterknife.BindView;
  * Created by lpan on 2018/3/13.
  */
 
-public class StickyGridFragment extends ButterKnifeFragment {
+public class StickyGridFragment extends BaseFragment {
 
     private static final int SPAN_SIZE = 3;
 

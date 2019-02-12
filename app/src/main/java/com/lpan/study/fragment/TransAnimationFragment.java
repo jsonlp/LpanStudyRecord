@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.lpan.R;
 import com.lpan.study.activity.TransparentActivity;
 import com.lpan.study.constants.Constants;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.FragmentUtils;
 import com.lpan.study.utils.Utils;
 
@@ -24,7 +24,7 @@ import butterknife.OnClick;
  * Created by lpan on 2017/11/27.
  */
 
-public class TransAnimationFragment extends ButterKnifeFragment implements View.OnClickListener {
+public class TransAnimationFragment extends BaseFragment implements View.OnClickListener {
 
     @BindView(R.id.text8)
     TextView mElement1;

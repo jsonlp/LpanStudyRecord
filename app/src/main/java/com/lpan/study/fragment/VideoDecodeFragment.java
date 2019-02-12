@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import com.lpan.study.contract.VideoDecodeContracts;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.presenter.impl.VideoDecodePresenter;
 import com.lpan.study.utils.Utils;
 import com.lpan.study.view.TextureVideoView;
@@ -27,7 +27,7 @@ import butterknife.BindView;
  * Created by lpan on 2017/2/7.
  */
 
-public class VideoDecodeFragment extends ButterKnifeFragment implements View.OnClickListener, TextureVideoView.OnStateChangeListener, SeekBar.OnSeekBarChangeListener
+public class VideoDecodeFragment extends BaseFragment implements View.OnClickListener, TextureVideoView.OnStateChangeListener, SeekBar.OnSeekBarChangeListener
         , VideoDecodeContracts.View {
 
     @BindView(R.id.textureview)

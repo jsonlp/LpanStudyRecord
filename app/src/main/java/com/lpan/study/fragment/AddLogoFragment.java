@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lpan.study.contract.AddlogoContract;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.presenter.impl.AddlogoPresenter;
 import com.lpan.R;
 
@@ -18,7 +18,7 @@ import butterknife.OnClick;
  * Created by lpan on 2017/6/14.
  */
 
-public class AddLogoFragment extends ButterKnifeFragment implements View.OnClickListener, AddlogoContract.View {
+public class AddLogoFragment extends BaseFragment implements View.OnClickListener, AddlogoContract.View {
 
     @BindView(R.id.text1)
     TextView mButton;

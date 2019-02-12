@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.lpan.R;
 import com.lpan.study.adapter.DoubleRecyclerAdapter;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.model.BlockInfo;
 import com.lpan.study.model.ContentInfo;
 import com.lpan.study.utils.CollectionUtils;
@@ -24,7 +24,7 @@ import butterknife.BindView;
 /**
  * Created by lpan on 2018/10/9.
  */
-public class DoubleRecyclerFragment extends ButterKnifeFragment {
+public class DoubleRecyclerFragment extends BaseFragment {
 
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;

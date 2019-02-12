@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.lpan.R;
 import com.lpan.study.db.StudentDaoManager;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.db.entity.Student;
 import com.lpan.study.utils.CollectionUtils;
 
@@ -20,7 +20,7 @@ import butterknife.OnClick;
  * Created by lpan on 2018/3/29.
  */
 
-public class GreenDaoFragment extends ButterKnifeFragment {
+public class GreenDaoFragment extends BaseFragment {
 
 
     @BindView(R.id.green_dao_insert_tv) TextView mGreenDaoInsertTv;

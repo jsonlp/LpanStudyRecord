@@ -6,7 +6,7 @@ import android.widget.TextView;
 import com.lpan.R;
 import com.lpan.study.adapter.ContactsAdapter;
 import com.lpan.study.db.FriendDaoManager;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.model.FriendInfo;
 import com.lpan.study.model.UserInfo;
 import com.lpan.study.utils.Log;
@@ -24,7 +24,7 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
  * Created by lpan on 2018/3/12.
  */
 
-public class ContactsFragment extends ButterKnifeFragment {
+public class ContactsFragment extends BaseFragment {
 
     @BindView(R.id.listview)
     StickyListHeadersListView mListView;

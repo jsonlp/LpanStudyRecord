@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lpan.study.fragment.base.BaseFragment;
@@ -100,11 +99,6 @@ public class JavaTestFragment extends BaseFragment implements View.OnClickListen
                 }
             }
         });
-    }
-
-    @Override
-    protected boolean useButterknife() {
-        return true;
     }
 
     @Override

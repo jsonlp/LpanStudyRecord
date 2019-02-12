@@ -5,7 +5,7 @@ import android.widget.ImageView;
 
 import com.lpan.R;
 import com.lpan.study.context.AppContext;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.Log;
 import com.lpan.study.utils.ViewUtils;
 import com.lpan.study.view.BrokenLineView;
@@ -15,7 +15,7 @@ import com.lpan.study.view.pathanimation.PaperPlaneView;
  * Created by liaopan on 2018/1/22 14:18.
  */
 
-public class PathAnimationFragment extends ButterKnifeFragment implements View.OnClickListener {
+public class PathAnimationFragment extends BaseFragment implements View.OnClickListener {
 
     private ImageView fab;
 

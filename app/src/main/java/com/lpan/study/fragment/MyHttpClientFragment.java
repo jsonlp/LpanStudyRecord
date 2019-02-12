@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.lpan.R;
 import com.lpan.study.contract.MyhttpContract;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.model.ConfigInfo;
 
 import butterknife.BindView;
@@ -16,7 +16,7 @@ import butterknife.OnClick;
  * Created by lpan on 2017/11/16.
  */
 
-public class MyHttpClientFragment extends ButterKnifeFragment implements View.OnClickListener, MyhttpContract.View {
+public class MyHttpClientFragment extends BaseFragment implements View.OnClickListener, MyhttpContract.View {
 
     @BindView(R.id.text1)
     TextView getButton;

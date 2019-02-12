@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.lpan.R;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.view.RoundedMaskImageView;
 
 import butterknife.BindView;
@@ -14,7 +14,7 @@ import butterknife.BindView;
 /**
  * Created by lpan on 2018/10/24.
  */
-public class RoundedMaskFragment extends ButterKnifeFragment{
+public class RoundedMaskFragment extends BaseFragment {
 
     public static final String GIF_URL = "http://p-test.jiemosrc.com/NwMOWlSiatTo7csz1RiiBg.gif";
     public static final String IMAGE_PATH = "http://p-test.jiemosrc.com/9vT0OUTxZZPo7csz1RiiBg.jpeg";

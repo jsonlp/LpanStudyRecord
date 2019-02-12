@@ -28,11 +28,6 @@ public class DeviceInfoFragment extends BaseFragment implements View.OnClickList
     }
 
     @Override
-    protected boolean useButterknife() {
-        return true;
-    }
-
-    @Override
     protected void initViews(View view) {
         super.initViews(view);
         StringBuilder stringBuilder = new StringBuilder();

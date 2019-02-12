@@ -12,13 +12,12 @@ import android.widget.TextView;
 import com.lpan.R;
 import com.lpan.study.adapter.ClassroomAdapter;
 import com.lpan.study.context.AppContext;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.listener.OnAvatarClickListener;
 import com.lpan.study.model.UserInfo;
 import com.lpan.study.utils.Log;
 import com.lpan.study.utils.ViewUtils;
 import com.lpan.study.view.MyPopupWindow;
-import com.lpan.study.view.pathanimation.AnimatorPath;
 import com.lpan.study.view.pathanimation.PaperPlaneView;
 
 import java.util.ArrayList;
@@ -30,7 +29,7 @@ import butterknife.BindView;
  * Created by liaopan on 2018/1/11 15:29.
  */
 
-public class ClassroomFragment extends ButterKnifeFragment implements OnAvatarClickListener<UserInfo>, View.OnClickListener {
+public class ClassroomFragment extends BaseFragment implements OnAvatarClickListener<UserInfo>, View.OnClickListener {
 
     @BindView(R.id.recyclerview)
     RecyclerView mRecyclerView;

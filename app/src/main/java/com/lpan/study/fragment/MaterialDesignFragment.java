@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.lpan.BuildConfig;
 import com.lpan.R;
 import com.lpan.study.adapter.MaterialDesignAdapter;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.Log;
 
 
@@ -23,7 +23,7 @@ import butterknife.BindView;
  * Created by lpan on 2018/3/8.
  */
 
-public class MaterialDesignFragment extends ButterKnifeFragment implements AppBarLayout.OnOffsetChangedListener {
+public class MaterialDesignFragment extends BaseFragment implements AppBarLayout.OnOffsetChangedListener {
 
     @BindView(R.id.viewpager)
     ViewPager mViewPager;

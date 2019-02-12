@@ -10,12 +10,11 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.lpan.study.constants.FilePathConstants;
 import com.lpan.study.context.AppContext;
 import com.lpan.study.context.GlideApp;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.imageloader.ImageLoader;
 import com.lpan.R;
 import com.lpan.study.imageloader.SaveImageListener;
 import com.lpan.study.imageloader.transformation.BlurTransformation;
-import com.lpan.study.utils.BitmapUtils;
 import com.lpan.study.utils.ViewUtils;
 
 import java.io.File;
@@ -27,7 +26,7 @@ import butterknife.OnClick;
  * Created by lpan on 2017/9/29.
  */
 
-public class GlideFragment extends ButterKnifeFragment implements View.OnClickListener {
+public class GlideFragment extends BaseFragment implements View.OnClickListener {
 
     public static final String URL_PATH = "http://pic6.nipic.com/20091207/3337900_161732052452_2.jpg";
     public static final String GIF_URL = "http://p-test.jiemosrc.com/NwMOWlSiatTo7csz1RiiBg.gif";

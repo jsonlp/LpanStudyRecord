@@ -5,7 +5,7 @@ import android.widget.TextView;
 
 import com.lpan.R;
 import com.lpan.study.feature.RxjavaFeature;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.http.RetrofitService;
 import com.lpan.study.model.GirlData;
 import com.lpan.study.model.Meta;
@@ -29,7 +29,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by lpan on 2018/5/24.
  */
 
-public class RXJavaStudyFragment extends ButterKnifeFragment implements RxjavaFeature {
+public class RXJavaStudyFragment extends BaseFragment implements RxjavaFeature {
 
 
     @BindView(R.id.create_bt) TextView mCreateBt;

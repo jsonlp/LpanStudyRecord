@@ -2,14 +2,11 @@ package com.lpan.study.fragment;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lpan.R;
 import com.lpan.study.adapter.SimpleRecyclerAdapter;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
-import com.lpan.study.view.CustomLayoutManager;
+import com.lpan.study.fragment.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +14,7 @@ import java.util.List;
 import butterknife.BindView;
 
 
-public class CustomLayoutMFragment extends ButterKnifeFragment{
+public class CustomLayoutMFragment extends BaseFragment {
 
     @BindView(R.id.recyclerview)
     RecyclerView mRecyclerView;

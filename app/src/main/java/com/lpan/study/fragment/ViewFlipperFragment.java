@@ -6,7 +6,7 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.lpan.R;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.view.DanceTextView;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import butterknife.BindView;
 /**
  * Created by lpan on 2018/10/31.
  */
-public class ViewFlipperFragment extends ButterKnifeFragment {
+public class ViewFlipperFragment extends BaseFragment {
 
     @BindView(R.id.view_flipper1)
     ViewFlipper mViewFlipper1;

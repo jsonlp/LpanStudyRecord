@@ -4,13 +4,13 @@ import com.lpan.R;
 import com.lpan.study.fragment.base.BaseFragment;
 
 /**
- * Created by lpan on 2018/3/5.
+ * Created by lpan on 2019/2/12.
  */
-
-public class OpenGLStudyFragment extends BaseFragment {
+public class ConstrainLayoutFragment extends BaseFragment{
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.fragment_opengl_study;
+        return R.layout.fragment_constraint_layout;
     }
+
 }

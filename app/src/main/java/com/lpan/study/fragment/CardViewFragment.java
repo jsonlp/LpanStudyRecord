@@ -1,8 +1,6 @@
 package com.lpan.study.fragment;
 
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -10,13 +8,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lpan.R;
 import com.lpan.study.adapter.CardViewAdapter;
 import com.lpan.study.fragment.base.BaseActionbarFragment;
-import com.lpan.study.fragment.base.BaseRecyclerFragment;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
-import com.lpan.study.utils.Utils;
-import com.lpan.study.utils.ViewUtils;
-import com.lpan.study.view.CircleImageView;
 import com.lpan.study.view.actionbar.ActionbarConfig;
-import com.lpan.study.view.slidepanel.CardAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -5,7 +5,7 @@ import android.view.ViewStub;
 import android.widget.TextView;
 
 import com.lpan.R;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -13,7 +13,7 @@ import butterknife.OnClick;
 /**
  * Created by lpan on 2019/1/30.
  */
-public class ViewStubFragment extends ButterKnifeFragment{
+public class ViewStubFragment extends BaseFragment {
 
     @BindView(R.id.view_stub) ViewStub mViewStub;
     private TextView mStubChild;

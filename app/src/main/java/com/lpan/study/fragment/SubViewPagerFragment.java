@@ -9,7 +9,7 @@ import android.view.View;
 import com.lpan.R;
 import com.lpan.study.adapter.SimpleRecyclerAdapter;
 import com.lpan.study.constants.Constants;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ import butterknife.BindView;
  * Created by lpan on 2018/3/8.
  */
 
-public class SubViewPagerFragment extends ButterKnifeFragment {
+public class SubViewPagerFragment extends BaseFragment {
 
     public static final String PAGE_TYPE = "type";
 

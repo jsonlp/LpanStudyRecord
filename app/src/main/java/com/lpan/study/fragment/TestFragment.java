@@ -3,7 +3,7 @@ package com.lpan.study.fragment;
 import android.view.View;
 
 import com.lpan.R;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -12,7 +12,7 @@ import butterknife.OnClick;
  * Created by liaopan on 2018/1/22 10:24.
  */
 
-public class TestFragment extends ButterKnifeFragment implements View.OnClickListener {
+public class TestFragment extends BaseFragment implements View.OnClickListener {
 
     @BindView(R.id.layout1)
     View layout1;

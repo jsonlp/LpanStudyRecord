@@ -9,7 +9,7 @@ import android.view.View;
 
 import com.lpan.R;
 import com.lpan.study.adapter.PermissionAdapter;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.model.ContactInfo;
 import com.lpan.study.task.ScanContactsTask;
 import com.lpan.study.utils.PermissionUtils;
@@ -23,7 +23,7 @@ import butterknife.OnClick;
  * Created by lpan on 2017/11/28.
  */
 
-public class PermissionFragment extends ButterKnifeFragment implements View.OnClickListener {
+public class PermissionFragment extends BaseFragment implements View.OnClickListener {
 
     @BindView(R.id.recyclerview)
     RecyclerView mRecyclerView;

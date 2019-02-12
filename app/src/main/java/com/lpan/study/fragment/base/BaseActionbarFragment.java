@@ -12,7 +12,7 @@ import butterknife.BindView;
  * Created by lpan on 2018/3/14.
  */
 
-public abstract class BaseActionbarFragment extends ButterKnifeFragment {
+public abstract class BaseActionbarFragment extends BaseFragment {
 
     @BindView(R.id.my_actionbar)
     MyActionbarView mMyActionbarView;

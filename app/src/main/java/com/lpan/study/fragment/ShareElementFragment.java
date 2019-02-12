@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.lpan.R;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 
 /**
  * Created by lpan on 2017/11/28.
  */
 
-public class ShareElementFragment extends ButterKnifeFragment {
+public class ShareElementFragment extends BaseFragment {
 
     @Override
     protected int getLayoutResource() {

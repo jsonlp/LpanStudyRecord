@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.lpan.R;
 import com.lpan.study.constants.FilePathConstants;
 import com.lpan.study.context.AppContext;
-import com.lpan.study.fragment.base.ButterKnifeFragment;
+import com.lpan.study.fragment.base.BaseFragment;
 import com.lpan.study.utils.BitmapUtils;
 import com.lpan.study.utils.Log;
 import com.lpan.study.utils.ViewUtils;
@@ -23,7 +23,7 @@ import butterknife.OnClick;
  * Created by liaopan on 2017/12/14 10:53.
  */
 
-public class MatrixFragment extends ButterKnifeFragment implements View.OnClickListener {
+public class MatrixFragment extends BaseFragment implements View.OnClickListener {
 
     public static final float MARRGIN = ViewUtils.ONE_DP * 33;
 
