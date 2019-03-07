@@ -3,30 +3,48 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#fff">
 
     <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#6f3"
+        app:layout_constraintTop_toTopOf="@+id/button1"
+        app:layout_constraintBottom_toBottomOf="@+id/button2"
+        app:layout_constraintLeft_toLeftOf="@+id/barrier_left"
+        app:layout_constraintRight_toLeftOf="@+id/barrier_right"/>
+
+    <TextView
         android:id="@+id/button1"
-        android:layout_width="70dp"
-        android:layout_height="80dp"
-        android:background="#ff76ff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:text="button1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <View
+    <TextView
         android:id="@+id/button2"
-        android:layout_width="70dp"
-        android:layout_height="50dp"
-        android:background="#ff7"
-        app:layout_constraintBaseline_toBaselineOf="@id/button1"
-        app:layout_constraintLeft_toRightOf="@id/button1"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="button22button2button2333"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button1"/>
 
-    <View
-        android:id="@+id/button3"
-        android:layout_width="70dp"
-        android:layout_height="50dp"
-        android:background="#f76"
-        app:layout_constraintLeft_toRightOf="@id/button2"
-        app:layout_constraintRight_toRightOf="parent"/>
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left"
+        app:constraint_referenced_ids="button1,button2"/>
+
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="right"
+        app:constraint_referenced_ids="button1,button2"/>
 
 </android.support.constraint.ConstraintLayout>
