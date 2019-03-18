@@ -52,6 +52,7 @@ public class ConstrainLayoutFragment extends BaseFragment {
         list.add(videoInfo5);
         list.add(videoInfo6);
 
+
         testData(list);
     }
 
