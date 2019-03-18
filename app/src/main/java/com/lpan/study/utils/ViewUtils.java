@@ -13,7 +13,7 @@ import com.lpan.study.context.AppContext;
 
 public class ViewUtils {
 
-    public static final float ONE_DP = dp2px(AppContext.getContext(), 1);
+    public static final float ONE_DP = dp2pxppp(AppContext.getContext(), 1);
 
 
     public static int dp2px(float dpValue) {
@@ -26,6 +26,11 @@ public class ViewUtils {
     public static int dp2px(Context context, float dpValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
+    }
+
+    public static float dp2pxppp(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return dpValue * scale;
     }
 
     public static float spToPx(Context context, int spValue) {

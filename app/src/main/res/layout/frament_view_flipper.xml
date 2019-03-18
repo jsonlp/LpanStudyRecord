@@ -59,5 +59,11 @@
         android:layout_gravity="center"
         android:layout_height="wrap_content"/>
 
+    <ImageView
+        android:id="@+id/image"
+        android:src="@drawable/svg_car"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 
 </LinearLayout>
