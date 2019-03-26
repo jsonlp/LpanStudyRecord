@@ -1,5 +1,6 @@
 package com.lpan.study.fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -7,12 +8,18 @@ import android.widget.ViewFlipper;
 
 import com.lpan.R;
 import com.lpan.study.fragment.base.BaseFragment;
+import com.lpan.study.http.RetrofitService;
+import com.lpan.study.model.StudentData;
 import com.lpan.study.view.DanceTextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by lpan on 2018/10/31.
@@ -27,6 +34,9 @@ public class ViewFlipperFragment extends BaseFragment {
 
     @BindView(R.id.dance_text_view)
     DanceTextView mDanceTextView;
+
+    @BindView(R.id.remote_result)
+    TextView mRemoteResult;
 
     List<String> data = new ArrayList<>();   //文字数据集合
 
@@ -59,14 +69,14 @@ public class ViewFlipperFragment extends BaseFragment {
 //
 //            mViewFlipper.addView(child);
 //        }
-        if(data.size()>2){
+        if (data.size() > 2) {
             mViewFlipper1.setAutoStart(true);
             mViewFlipper2.setAutoStart(true);
             mViewFlipper2.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             mViewFlipper1.setAutoStart(false);
             mViewFlipper2.setAutoStart(false);
-            if(data.size()==1){
+            if (data.size() == 1) {
                 mViewFlipper2.setVisibility(View.GONE);
             }
         }
@@ -75,7 +85,7 @@ public class ViewFlipperFragment extends BaseFragment {
         List<String> list1 = new ArrayList<>();
         for (int i = 0; i < data.size(); i++) {
             list0.add(data.get(i));
-            if (i!= 0) {
+            if (i != 0) {
                 list1.add(data.get(i));
             }
         }
@@ -95,13 +105,29 @@ public class ViewFlipperFragment extends BaseFragment {
             mViewFlipper2.addView(child);
         }
 
-        mDanceTextView.dance(0,834262462);
+        mDanceTextView.dance(0, 834262462);
     }
 
     @Override
     protected void initData() {
         super.initData();
 
+        RetrofitService.getGirlService().getStudent()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<StudentData>() {
+                    @Override
+                    public void accept(StudentData studentData) throws Exception {
+                        Log.d("ViewFlipperFragment", "success--------" + studentData);
+                        mRemoteResult.setText(studentData.toString());
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Log.d("ViewFlipperFragment", "fail--------" );
+                        mRemoteResult.setText(throwable.toString());
+                    }
+                });
     }
 
 }
