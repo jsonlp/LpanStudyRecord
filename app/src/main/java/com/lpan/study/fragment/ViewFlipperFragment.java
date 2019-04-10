@@ -106,6 +106,8 @@ public class ViewFlipperFragment extends BaseFragment {
         }
 
         mDanceTextView.dance(0, 834262462);
+        
+        Log.d("ViewFlipperFragment","initViews--------");
     }
 
     @Override
